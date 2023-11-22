@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.security.Key;
 
 
-public class Graphics implements GUI{
+public class Graphics implements GUI {
     private final Screen screen;
     private Terminal createTerminal(int width, int height) throws IOException {
         TerminalSize terminalSize = new TerminalSize(width, height);
@@ -69,7 +69,7 @@ public class Graphics implements GUI{
         textGraphics.putString(position.getX(), position.getY(), text);
     }
     @Override
-    public void drawHero(Position position){
+    public void drawIceCream(Position position){
         drawCharacter(position.getX(), position.getY(), 'I', "#FFFFFF");
     }
     @Override

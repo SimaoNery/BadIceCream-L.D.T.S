@@ -2,11 +2,12 @@ package org.example.states;
 
 import org.example.controller.Controller;
 import org.example.controller.menu.MainMenuController;
+import org.example.controller.menu.PauseMenuController;
 import org.example.model.menu.MainMenu;
-import org.example.model.menu.Menu;
 import org.example.model.menu.PauseMenu;
+import org.example.viewer.Viewer;
 
-public class PauseMenuState {
+public class PauseMenuState extends State<PauseMenu> {
     public PauseMenuState(PauseMenu model) {
         super(model);
     }
@@ -17,7 +18,7 @@ public class PauseMenuState {
     }
 
     @Override
-    protected Controller<MainMenu> getController() {
-        return new MainMenuController(getModel());
+    protected Controller<PauseMenu> getController() {
+        return new PauseMenuController(getModel());
     }
 }

@@ -15,4 +15,7 @@ public class Element {
     public void setPosition(Position position) {
         this.position = position;
     }
+    public int getType(){
+        return 0;
+    }
 }

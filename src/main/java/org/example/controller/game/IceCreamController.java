@@ -11,11 +11,11 @@ public class IceCreamController extends GameController {
             super(arena);
         }
 
-        public void moveHeroLeft() {
+        public void moveIceCreamLeft() {
             moveIceCream(getModel().getIceCream().getPosition().getLeft());
         }
 
-        public void moveHeroRight() {
+        public void moveIceCreamRight() {
             moveIceCream(getModel().getIceCream().getPosition().getRight());
         }
 
@@ -34,9 +34,9 @@ public class IceCreamController extends GameController {
         @Override
         public void step(Game game, GUI.ACTION action, long time) {
             if (action == GUI.ACTION.UP) moveIceCreamUp();
-            if (action == GUI.ACTION.RIGHT) moveHeroRight();
+            if (action == GUI.ACTION.RIGHT) moveIceCreamRight();
             if (action == GUI.ACTION.DOWN) moveIceCreamDown();
-            if (action == GUI.ACTION.LEFT) moveHeroLeft();
+            if (action == GUI.ACTION.LEFT) moveIceCreamLeft();
         }
 }
 
