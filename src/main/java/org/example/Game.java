@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.model.menu.MainMenu;
+import org.example.states.MainMenuState;
 import org.example.states.State;
 
 import java.awt.*;
@@ -12,7 +14,7 @@ public class Game {
 
     public Game() throws FontFormatException, IOException, URISyntaxException {
         this.gui = new LanternaGUI(20, 20);
-        this.state = new MenuState(new Menu());
+        this.state = new MainMenuState(new MainMenu());
     }
 
     public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException {

@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import org.example.GUI.GUI;
 import org.example.Game;
 
 import java.io.IOException;
@@ -15,5 +16,5 @@ public abstract class Controller<T> {
         return model;
     }
 
-    public abstract void step(Game game, GUI.ACTION action, long time) throws IOException;
+    public abstract void step(Game game, GUI.GUI.ACTION action, long time) throws IOException;
 }
