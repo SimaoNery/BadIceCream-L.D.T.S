@@ -4,6 +4,7 @@ import org.example.controller.Controller;
 import org.example.controller.game.ArenaController;
 import org.example.model.game.arena.Arena;
 import org.example.viewer.Viewer;
+import org.example.viewer.game.ArenaViewer;
 
 public class GameState extends State<Arena> {
     public GameState(Arena arena) {
@@ -13,7 +14,7 @@ public class GameState extends State<Arena> {
 
     @Override
     protected Viewer<Arena> getViewer() {
-        return new GameViewer(getModel());
+        return new ArenaViewer(getModel());
     }
 
     @Override
