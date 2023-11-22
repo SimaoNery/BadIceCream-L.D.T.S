@@ -41,6 +41,7 @@ public class Arena {
     public List<Wall> getWalls() {
         return walls;
     }
+    public List<Fruit> getFruits(){return fruits;}
     public void setIceCream(IceCream iceCream) {
         this.iceCream = iceCream;
     }

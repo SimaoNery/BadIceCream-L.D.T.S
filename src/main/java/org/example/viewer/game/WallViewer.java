@@ -1,8 +1,6 @@
 package org.example.viewer.game;
 
 import org.example.GUI.GUI;
-import org.example.model.Position;
-import org.example.model.game.elements.IceWall;
 import org.example.model.game.elements.Wall;
 
 public class WallViewer implements ElementViewer<Wall> {
