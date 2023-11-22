@@ -81,8 +81,20 @@ public class Graphics implements GUI{
         drawCharacter(position.getX(), position.getY(), '+', "#87CEFA");
     }
     @Override
-    public void drawMonster(Position position){
-        drawCharacter(position.getX(), position.getY(), 'M', "#B22222");
+    public void drawDefaultMonster(Position position){
+        drawCharacter(position.getX(), position.getY(), 'D', "#00FF00");
+    }
+    @Override
+    public void drawJumperMonster(Position position){
+        drawCharacter(position.getX(), position.getY(), 'J', "#FF3333");
+    }
+    @Override
+    public void drawRunnerMonster(Position position){
+        drawCharacter(position.getX(), position.getY(), 'R', "#FFFF66");
+    }
+    @Override
+    public void drawWallBreakerMonster(Position position){
+        drawCharacter(position.getX(), position.getY(), 'W', "#FF99FF");
     }
     @Override
     public void clear(){
