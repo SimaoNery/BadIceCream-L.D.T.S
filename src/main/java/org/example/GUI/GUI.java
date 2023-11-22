@@ -1,5 +1,7 @@
 package org.example.GUI;
 
+import org.example.model.Position;
+
 import java.io.IOException;
 
 public class GUI {
