@@ -1,5 +1,6 @@
 package org.example.model.game.arena;
 
+import org.example.model.game.elements.fruits.Fruit;
 import org.example.model.game.elements.IceCream;
 import org.example.model.game.elements.monsters.Monster;
 import org.example.model.game.elements.Wall;
@@ -12,6 +13,7 @@ public abstract class ArenaBuilder {public Arena createArena() {
     arena.setIceCream(createIceCream());
     arena.setMonsters(createMonsters());
     arena.setWalls(createWalls());
+    arena.setFruits(createFruits());
 
     return arena;
 }
@@ -25,4 +27,5 @@ public abstract class ArenaBuilder {public Arena createArena() {
     protected abstract List<Monster> createMonsters();
 
     protected abstract IceCream createIceCream();
+    protected abstract List<Fruit> createFruits();
 }

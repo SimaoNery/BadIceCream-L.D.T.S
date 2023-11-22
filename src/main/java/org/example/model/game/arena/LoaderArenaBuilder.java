@@ -2,6 +2,7 @@ package org.example.model.game.arena;
 
 import org.example.model.game.elements.*;
 import org.example.model.game.elements.monsters.*;
+import org.example.model.game.elements.fruits.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -79,5 +80,21 @@ public class LoaderArenaBuilder extends ArenaBuilder{
                 if (line.charAt(x) == 'I') return new IceCream(x, y);
         }
         return null;
+    }
+
+    @Override
+    protected List<Fruit> createFruits() {
+        List<Fruit> fruits = new ArrayList<>();
+
+        for (int y = 0; y < lines.size(); y++) {
+            String line = lines.get(y);
+            for (int x = 0; x < line.length(); x++)
+                if (line.charAt(x) == 'B') fruits.add(new BananaFruit(x,y));
+                else if (line.charAt(x) == 'S') fruits.add(new StrawberryFruit(x,y));
+                else if (line.charAt(x) == 'P') fruits.add(new PepperFruit(x,y));
+                else if (line.charAt(x) == 'N') fruits.add(new PineappleFruit(x,y));
+                else if (line.charAt(x) == 'Q') fruits.add(new PineappleFruit(x,y));
+        }
+        return fruits;
     }
 }
