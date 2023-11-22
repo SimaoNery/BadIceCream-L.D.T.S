@@ -4,24 +4,23 @@ import org.example.model.Position;
 
 import java.io.IOException;
 
-public class GUI {
-    public interface GUI {
-        ACTION getNextAction() throws IOException;
 
-        void drawHero(Position position);
+public interface GUI {
+    ACTION getNextAction() throws IOException;
 
-        void drawWall(Position position);
+    void drawHero(Position position);
 
-        void drawMonster(Position position);
+    void drawWall(Position position);
 
-        void drawText(Position position, String text, String color);
+    void drawMonster(Position position);
 
-        void clear();
+    void drawText(Position position, String text, String color);
 
-        void refresh() throws IOException;
+    void clear();
 
-        void close() throws IOException;
+    void refresh() throws IOException;
 
-        enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT, RESUME}
-    }
+    void close() throws IOException;
+
+    enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT, RESUME}
 }
