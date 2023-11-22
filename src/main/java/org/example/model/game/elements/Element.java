@@ -1,4 +1,4 @@
-package org.example.model.elements;
+package org.example.model.game.elements;
 
 import org.example.model.Position;
 
