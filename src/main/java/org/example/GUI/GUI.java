@@ -13,7 +13,16 @@ public interface GUI {
     void drawStoneWall(Position position);
     void drawIceWall(Position position);
 
-    void drawMonster(Position position);
+    void drawDefaultMonster(Position position);
+    void drawRunnerMonster(Position position);
+    void drawJumperMonster(Position position);
+    void drawWallBreakerMonster(Position position);
+    void drawAppleFruit(Position position);
+    void drawBananaFruit(Position position);
+    void drawPineappleFruit(Position position);
+    void drawPepperFruit(Position position);
+    void drawStrawberryFruit(Position position);
+
 
     void drawText(Position position, String text, String color);
 

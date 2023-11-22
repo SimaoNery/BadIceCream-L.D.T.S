@@ -81,9 +81,47 @@ public class Graphics implements GUI {
         drawCharacter(position.getX(), position.getY(), '+', "#87CEFA");
     }
     @Override
-    public void drawMonster(Position position){
-        drawCharacter(position.getX(), position.getY(), 'M', "#B22222");
+    public void drawDefaultMonster(Position position){
+        drawCharacter(position.getX(), position.getY(), 'D', "#00FF00");
     }
+    @Override
+    public void drawJumperMonster(Position position){
+        drawCharacter(position.getX(), position.getY(), 'J', "#FF3333");
+    }
+    @Override
+    public void drawRunnerMonster(Position position){
+        drawCharacter(position.getX(), position.getY(), 'R', "#FFFF66");
+    }
+    @Override
+    public void drawWallBreakerMonster(Position position){
+        drawCharacter(position.getX(), position.getY(), 'W', "#FF99FF");
+    }
+
+    @Override
+    public void drawAppleFruit(Position position) {
+        drawCharacter(position.getX(), position.getY(), 'A', "#FF0000");
+    }
+
+    @Override
+    public void drawBananaFruit(Position position) {
+        drawCharacter(position.getX(), position.getY(), 'B', "#FFFF00");
+    }
+
+    @Override
+    public void drawPineappleFruit(Position position) {
+        drawCharacter(position.getX(), position.getY(), 'N', "#FFFF66");
+    }
+
+    @Override
+    public void drawPepperFruit(Position position) {
+        drawCharacter(position.getX(), position.getY(), 'P', "#FF0000");
+    }
+
+    @Override
+    public void drawStrawberryFruit(Position position) {
+        drawCharacter(position.getX(), position.getY(), 'S', "#FFFF00");
+    }
+
     @Override
     public void clear(){
         screen.clear();
