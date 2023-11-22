@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.security.Key;
 
 
-public class Graphics implements GUI{
+public class Graphics implements GUI {
     private final Screen screen;
     private Terminal createTerminal(int width, int height) throws IOException {
         TerminalSize terminalSize = new TerminalSize(width, height);
