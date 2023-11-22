@@ -1,7 +1,7 @@
 package org.example.viewer.game;
 
 import org.example.GUI.GUI;
-import org.example.model.game.elements.JumperMonster;
+import org.example.model.game.elements.monsters.JumperMonster;
 
 public class JumperMonsterViewer implements ElementViewer<JumperMonster>{
     @Override
