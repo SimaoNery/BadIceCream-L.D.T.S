@@ -10,7 +10,8 @@ public interface GUI {
 
     void drawHero(Position position);
 
-    void drawWall(Position position);
+    void drawStoneWall(Position position);
+    void drawIceWall(Position position);
 
     void drawMonster(Position position);
 

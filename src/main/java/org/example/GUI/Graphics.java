@@ -1,12 +1,15 @@
 package org.example.GUI;
 
 import com.googlecode.lanterna.TerminalSize;
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
+import org.example.model.Position;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -29,6 +32,12 @@ public class Graphics implements GUI{
         screen.doResizeIfNecessary();
         return screen;
     }
+    private void drawCharacter(int a, int b, char c, String color) {
+        TextGraphics textGraphics = screen.newTextGraphics();
+        textGraphics.setForegroundColor(TextColor.Factory.fromString(color));
+        textGraphics.putString(a, b, "" + c);
+    }
+
 
     public Graphics(Screen screen){
         this.screen = screen;
@@ -51,5 +60,40 @@ public class Graphics implements GUI{
         if(keyStroke.getKeyType() == KeyType.Escape) return ACTION.PAUSE;
 
         return ACTION.NONE;
+    }
+
+    @Override
+    public void drawText(Position position, String text, String color){
+        TextGraphics textGraphics = screen.newTextGraphics();
+        textGraphics.setForegroundColor(TextColor.Factory.fromString(color));
+        textGraphics.putString(position.getX(), position.getY(), text);
+    }
+    @Override
+    public void drawHero(Position position){
+        drawCharacter(position.getX(), position.getY(), 'I', "#FFFFFF");
+    }
+    @Override
+    public void drawStoneWall(Position position){
+        drawCharacter(position.getX(), position.getY(), '#', "#696969");
+    }
+    @Override
+    public void drawIceWall(Position position){
+        drawCharacter(position.getX(), position.getY(), '+', "#87CEFA");
+    }
+    @Override
+    public void drawMonster(Position position){
+        drawCharacter(position.getX(), position.getY(), 'M', "#B22222");
+    }
+    @Override
+    public void clear(){
+        screen.clear();
+    }
+    @Override
+    public void refresh() throws IOException{
+        screen.refresh();
+    }
+    @Override
+    public void close() throws IOException{
+        screen.close();
     }
 }
