@@ -8,7 +8,7 @@ import java.io.IOException;
 public interface GUI {
     ACTION getNextAction() throws IOException;
 
-    void drawHero(Position position);
+    void drawIceCream(Position position);
 
     void drawStoneWall(Position position);
     void drawIceWall(Position position);

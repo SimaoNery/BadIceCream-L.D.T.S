@@ -69,7 +69,7 @@ public class Graphics implements GUI{
         textGraphics.putString(position.getX(), position.getY(), text);
     }
     @Override
-    public void drawHero(Position position){
+    public void drawIceCream(Position position){
         drawCharacter(position.getX(), position.getY(), 'I', "#FFFFFF");
     }
     @Override
