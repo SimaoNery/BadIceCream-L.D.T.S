@@ -3,6 +3,7 @@ package org.example.controller.menu;
 import org.example.GUI.GUI;
 import org.example.Game;
 import org.example.controller.Controller;
+import org.example.model.game.arena.LoaderArenaBuilder;
 import org.example.model.menu.MainMenu;
 import org.example.states.GameState;
 
@@ -14,7 +15,7 @@ public class MainMenuController extends Controller<MainMenu> {
     }
 
     @Override
-    public void step(Game game, GUI.GUI.ACTION action, long time) throws IOException {
+    public void step(Game game, GUI.ACTION action, long time) throws IOException {
         switch (action) {
             case UP:
                 getModel().previousEntry();

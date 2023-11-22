@@ -13,7 +13,7 @@ public class PauseMenuController extends Controller<MainMenu> {
     }
 
     @Override
-    public void step(Game game, GUI.GUI.ACTION action, long time) throws IOException {
+    public void step(Game game, GUI.ACTION action, long time) throws IOException {
         switch (action) {
             case UP:
                 getModel().previousEntry();

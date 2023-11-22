@@ -1,7 +1,9 @@
 package org.example.states;
 
+import org.example.GUI.GUI;
 import org.example.Game;
 import org.example.controller.Controller;
+import org.example.viewer.Viewer;
 
 import java.io.IOException;
 
