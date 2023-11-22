@@ -10,7 +10,8 @@ public interface GUI {
 
     void drawHero(Position position);
 
-    void drawWall(Position position);
+    void drawStoneWall(Position position);
+    void drawIceWall(Position position);
 
     void drawMonster(Position position);
 
@@ -22,5 +23,5 @@ public interface GUI {
 
     void close() throws IOException;
 
-    enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT, RESUME}
+    enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT, RESUME, PAUSE}
 }
