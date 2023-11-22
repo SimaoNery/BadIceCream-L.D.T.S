@@ -96,6 +96,32 @@ public class Graphics implements GUI{
     public void drawWallBreakerMonster(Position position){
         drawCharacter(position.getX(), position.getY(), 'W', "#FF99FF");
     }
+
+    @Override
+    public void drawAppleFruit(Position position) {
+        drawCharacter(position.getX(), position.getY(), 'A', "#FF0000");
+    }
+
+    @Override
+    public void drawBananaFruit(Position position) {
+        drawCharacter(position.getX(), position.getY(), 'B', "#FFFF00");
+    }
+
+    @Override
+    public void drawPineappleFruit(Position position) {
+        drawCharacter(position.getX(), position.getY(), 'N', "#FFFF66");
+    }
+
+    @Override
+    public void drawPepperFruit(Position position) {
+        drawCharacter(position.getX(), position.getY(), 'P', "#FF0000");
+    }
+
+    @Override
+    public void drawStrawberryFruit(Position position) {
+        drawCharacter(position.getX(), position.getY(), 'S', "#FFFF00");
+    }
+
     @Override
     public void clear(){
         screen.clear();
