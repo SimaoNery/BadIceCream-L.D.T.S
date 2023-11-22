@@ -3,17 +3,17 @@ package org.example;
 import org.example.model.menu.MainMenu;
 import org.example.states.MainMenuState;
 import org.example.states.State;
-
+import org.example.GUI.Graphics;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
 public class Game {
-    private final LanternaGUI gui;
+    private final Graphics gui;
     private State state;
 
     public Game() throws FontFormatException, IOException, URISyntaxException {
-        this.gui = new LanternaGUI(20, 20);
+        this.gui = new Graphics(20, 20);
         this.state = new MainMenuState(new MainMenu());
     }
 

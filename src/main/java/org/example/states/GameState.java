@@ -1,9 +1,15 @@
 package org.example.states;
 
+import org.example.controller.Controller;
+import org.example.controller.game.ArenaController;
+import org.example.model.game.arena.Arena;
+import org.example.viewer.Viewer;
+
 public class GameState extends State<Arena> {
     public GameState(Arena arena) {
         super(arena);
     }
+
 
     @Override
     protected Viewer<Arena> getViewer() {
