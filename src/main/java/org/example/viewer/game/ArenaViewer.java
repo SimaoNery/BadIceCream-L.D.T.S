@@ -17,32 +17,21 @@ public class ArenaViewer extends Viewer<Arena> {
     public ArenaViewer(Arena arena){
         super(arena);
     }
-    private <T extends Element, P extends ElementViewer<T>> void drawElement(GUI gui, T element, ElementViewer<P> viewer) {
+    private <T extends Element> void drawElement(GUI gui, T element, ElementViewer<T> viewer) {
         viewer.draw(element, gui);
     }
 
     @Override
-    <P extends Element>
     public void drawElements(GUI gui) {
+        for (Wall wall : getModel().getWalls()) {
+            drawElement(gui, wall, new WallViewer());
+        }
+
         drawElement(gui, getModel().getIceCream(), new IceCreamViewer());
-        for(P wall : getModel().getWalls()){
-            if(wall.getType() == 1){drawElement(gui, wall, new IceWallViewer());}
-            else{drawElement(gui, StoneWall, new StoneWallViewer());}
-        }
+
         for(Monster monster : getModel().getMonsters()){
-            if(monster.getType() == 1){
-                drawElement(gui, DefaultMonster, new DefaultMonsterViewer());
-            }
-            else if(monster.getType() == 2){
-                drawElement(gui, JumperMonster, new JumperMonsterViewer());
-            }
-            else if(monster.getType() == 3){
-                drawElement(gui, RunnerMonster, new RunnerMonsterViewer());
-            }
-            else{
-                drawElement(gui, WallBreakerMonster, new WallBreakerMonsterViewer());
-            }
+            drawElement(gui, monster, new MonsterViewer());
         }
-        for(Fruit fruit : getModel().)
+
     }
 }
