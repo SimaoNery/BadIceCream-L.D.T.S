@@ -2,12 +2,8 @@ package org.example.controller.game;
 
 import org.example.GUI.GUI;
 import org.example.Game;
-import org.example.model.Position;
 import org.example.model.game.arena.Arena;
-import org.example.model.game.elements.DefaultMonster;
-import org.example.model.game.elements.JumperMonster;
-import org.example.model.game.elements.Monster;
-import org.example.model.game.elements.Wall;
+import org.example.model.game.elements.monsters.Monster;
 
 import java.io.IOException;
 

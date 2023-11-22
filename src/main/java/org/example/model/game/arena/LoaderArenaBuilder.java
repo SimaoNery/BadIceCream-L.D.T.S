@@ -1,6 +1,7 @@
 package org.example.model.game.arena;
 
 import org.example.model.game.elements.*;
+import org.example.model.game.elements.monsters.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

@@ -1,7 +1,7 @@
 package org.example.model.game.arena;
 
 import org.example.model.game.elements.IceCream;
-import org.example.model.game.elements.Monster;
+import org.example.model.game.elements.monsters.Monster;
 import org.example.model.game.elements.Wall;
 
 import java.util.List;
