@@ -2,6 +2,7 @@ package org.example.model.game.arena;
 
 import org.example.model.Position;
 import org.example.model.game.elements.IceCream;
+import org.example.model.game.elements.IceWall;
 import org.example.model.game.elements.Monster;
 import org.example.model.game.elements.Wall;
 
@@ -52,6 +53,14 @@ public class Arena {
         for (Wall wall : walls)
             if (wall.getPosition().equals(position))
                 return false;
+        return true;
+    }
+    public boolean isIceWall(Position position) {
+        for (Wall wall : walls) {
+            if (wall instanceof IceWall && wall.getPosition().equals(position)) {
+                return true;
+            }
+        }
         return true;
     }
     public boolean isMonster(Position position) {
