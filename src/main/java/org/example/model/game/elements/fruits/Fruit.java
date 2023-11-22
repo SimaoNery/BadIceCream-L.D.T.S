@@ -6,4 +6,5 @@ public abstract class Fruit extends Element {
     public Fruit(int x, int y) {
         super(x, y);
     }
+    abstract public int getType();
 }
