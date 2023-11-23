@@ -28,7 +28,10 @@ public class IceCreamController extends GameController {
         }
 
         private void moveIceCream(Position position) {
-
+            if (getModel().isEmpty(position)) {
+                getModel().getIceCream().setPosition(position);
+                if (getModel().isMonster(position)) getModel().getIceCream();
+            }
         }
 
         @Override
