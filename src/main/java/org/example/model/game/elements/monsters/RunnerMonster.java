@@ -9,7 +9,7 @@ public class RunnerMonster extends Monster {
         super(x, y);
     }
     public void startRunning() {this.run = true;}
-    public void stopRunning(){this.run = false;}
+    public void stopRunning() {this.run = false;}
 
     public int getType() {return type;}
 }
