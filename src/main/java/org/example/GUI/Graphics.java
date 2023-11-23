@@ -119,7 +119,7 @@ public class Graphics implements GUI {
 
     @Override
     public void drawStrawberryFruit(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'S', "#FFFF00");
+        drawCharacter(position.getX(), position.getY(), 'S', "#FF0000");
     }
 
     @Override
