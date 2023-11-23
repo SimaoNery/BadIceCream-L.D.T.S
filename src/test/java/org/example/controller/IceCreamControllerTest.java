@@ -1,20 +1,28 @@
 package org.example.controller;
 
+import org.example.GUI.GUI;
+import org.example.Game;
 import org.example.controller.game.IceCreamController;
 import org.example.model.Position;
 import org.example.model.game.arena.Arena;
 import org.example.model.game.elements.IceCream;
 import org.example.model.game.elements.IceWall;
 import org.example.model.game.elements.StoneWall;
+import org.example.model.game.elements.monsters.DefaultMonster;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.awt.*;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class IceCreamControllerTest {
     private IceCreamController controller;
+
+    private Game game;
     private IceCream iceCream;
     private Arena arena;
 
@@ -124,5 +132,31 @@ class IceCreamControllerTest {
         controller = new IceCreamController(arena);
         controller.moveIceCreamUp();
         assertEquals(new Position(5,5), iceCream.getPosition());
+    }
+
+    @Test
+    void testMonsterColision() {
+        arena.setMonsters(Arrays.asList(new DefaultMonster(5,4)));
+
+        controller = new IceCreamController(arena);
+        controller.moveIceCreamUp();
+        assertFalse(iceCream.getAlive());
+    }
+
+    @Test
+    void testMonsterNoColision() {
+        arena.setMonsters(Arrays.asList(new DefaultMonster(5,6)));
+
+        controller = new IceCreamController(arena);
+        controller.moveIceCreamUp();
+        assertTrue(iceCream.getAlive());
+    }
+
+    @Test
+    void testAction() throws IOException, URISyntaxException, FontFormatException {
+        game = new Game();
+        controller = new IceCreamController(arena);
+        controller.step(game, GUI.ACTION.UP, 0);
+        assertEquals(new Position(5,4), iceCream.getPosition());
     }
 }
