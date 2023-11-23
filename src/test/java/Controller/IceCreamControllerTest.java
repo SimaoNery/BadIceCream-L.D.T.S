@@ -6,7 +6,6 @@ import org.example.model.game.arena.Arena;
 import org.example.model.game.elements.IceCream;
 import org.example.model.game.elements.IceWall;
 import org.example.model.game.elements.StoneWall;
-import org.example.model.game.elements.Wall;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +13,7 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class IceCreamControllerTest {
+class IceCreamControllerTest {
     private IceCreamController controller;
     private IceCream iceCream;
     private Arena arena;

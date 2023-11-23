@@ -5,6 +5,7 @@ import org.example.controller.menu.MainMenuController;
 import org.example.model.menu.MainMenu;
 import org.example.model.menu.Menu;
 import org.example.viewer.Viewer;
+import org.example.viewer.menu.MainMenuViewer;
 
 public class MainMenuState extends State<MainMenu> {
     public MainMenuState(MainMenu model) {
@@ -13,7 +14,7 @@ public class MainMenuState extends State<MainMenu> {
 
     @Override
     protected Viewer<MainMenu> getViewer() {
-        return new MenuViewer(getModel());
+        return new MainMenuViewer(getModel());
     }
 
     @Override
