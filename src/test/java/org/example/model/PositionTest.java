@@ -21,24 +21,28 @@ public class PositionTest {
     public void testGetLeft() {
         Position newpos = position.getLeft();
         Position expected = new Position(-1, 0);
-        assertEquals(expected, newpos);
+        assertEquals(expected.getX(), newpos.getX());
+        assertEquals(expected.getY(), newpos.getY());
     }
     @Test
     public void testGetRight() {
         Position newpos = position.getRight();
         Position expected = new Position(1, 0);
-        assertEquals(expected, newpos);
+        assertEquals(expected.getX(), newpos.getX());
+        assertEquals(expected.getY(), newpos.getY());
     }
     @Test
     public void testGetUp() {
         Position newpos = position.getUp();
         Position expected = new Position(0, -1);
-        assertEquals(expected, newpos);
+        assertEquals(expected.getX(), newpos.getX());
+        assertEquals(expected.getY(), newpos.getY());
     }
     @Test
     public void testGetDown() {
         Position newpos = position.getDown();
         Position expected = new Position(0, 1);
-        assertEquals(expected, newpos);
+        assertEquals(expected.getX(), newpos.getX());
+        assertEquals(expected.getY(), newpos.getY());
     }
 }
