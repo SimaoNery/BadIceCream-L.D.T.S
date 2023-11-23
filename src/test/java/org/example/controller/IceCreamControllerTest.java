@@ -1,4 +1,4 @@
-package Controller;
+package org.example.controller;
 
 import org.example.controller.game.IceCreamController;
 import org.example.model.Position;
@@ -6,7 +6,6 @@ import org.example.model.game.arena.Arena;
 import org.example.model.game.elements.IceCream;
 import org.example.model.game.elements.IceWall;
 import org.example.model.game.elements.StoneWall;
-import org.example.model.game.elements.Wall;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +13,7 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class IceCreamControllerTest {
+class IceCreamControllerTest {
     private IceCreamController controller;
     private IceCream iceCream;
     private Arena arena;
@@ -29,80 +28,80 @@ public class IceCreamControllerTest {
     }
 
     @Test
-    void moveIceCreamRightEmpty() {
+    void testMoveIceCreamRightEmpty() {
         controller.moveIceCreamRight();
         assertEquals(new Position(6,5), iceCream.getPosition());
     }
 
     @Test
-    void moveIceCreamRightNotEmptyStone() {
+    void testMoveIceCreamRightNotEmptyStone() {
         arena.setWalls(Arrays.asList(new StoneWall(6,5)));
         controller.moveIceCreamRight();
         assertEquals(new Position(5,5), iceCream.getPosition());
     }
 
     @Test
-    void moveIceCreamRightNotEmptyIce() {
+    void testMoveIceCreamRightNotEmptyIce() {
         arena.setWalls(Arrays.asList(new IceWall(6,5)));
         controller.moveIceCreamRight();
         assertEquals(new Position(5,5), iceCream.getPosition());
     }
 
     @Test
-    void moveIceCreamLeftEmpty() {
+    void testMoveIceCreamLeftEmpty() {
         controller.moveIceCreamLeft();
         assertEquals(new Position(4,5), iceCream.getPosition());
     }
 
     @Test
-    void moveIceCreamLeftNotEmptyStone() {
+    void testMoveIceCreamLeftNotEmptyStone() {
         arena.setWalls(Arrays.asList(new StoneWall(4,5)));
         controller.moveIceCreamLeft();
         assertEquals(new Position(5,5), iceCream.getPosition());
     }
 
     @Test
-    void moveIceCreamLeftNotEmptyIce() {
+    void testMoveIceCreamLeftNotEmptyIce() {
         arena.setWalls(Arrays.asList(new IceWall(4,5)));
         controller.moveIceCreamLeft();
         assertEquals(new Position(5,5), iceCream.getPosition());
     }
 
     @Test
-    void moveIceCreamDownEmpty() {
+    void testMoveIceCreamDownEmpty() {
         controller.moveIceCreamDown();
         assertEquals(new Position(5,4), iceCream.getPosition());
     }
 
     @Test
-    void moveIceCreamDownNotEmptyStone() {
+    void testMoveIceCreamDownNotEmptyStone() {
         arena.setWalls(Arrays.asList(new StoneWall(5,4)));
         controller.moveIceCreamDown();
         assertEquals(new Position(5,5), iceCream.getPosition());
     }
 
     @Test
-    void moveIceCreamDownNotEmptyIce() {
+    void testMoveIceCreamDownNotEmptyIce() {
         arena.setWalls(Arrays.asList(new IceWall(5,4)));
         controller.moveIceCreamDown();
         assertEquals(new Position(5,5), iceCream.getPosition());
     }
 
     @Test
-    void moveIceCreamUpEmpty() {
+    void testMoveIceCreamUpEmpty() {
         controller.moveIceCreamUp();
         assertEquals(new Position(5,6), iceCream.getPosition());
     }
 
     @Test
-    void moveIceCreamUpNotEmptyStone() {
+    void testMoveIceCreamUpNotEmptyStone() {
         arena.setWalls(Arrays.asList(new StoneWall(5,6)));
         controller.moveIceCreamUp();
         assertEquals(new Position(5,5), iceCream.getPosition());
     }
 
     @Test
-    void moveIceCreamUpNotEmptyIce() {
+    void testMoveIceCreamUpNotEmptyIce() {
         arena.setWalls(Arrays.asList(new IceWall(5,6)));
         controller.moveIceCreamUp();
         assertEquals(new Position(5,5), iceCream.getPosition());
