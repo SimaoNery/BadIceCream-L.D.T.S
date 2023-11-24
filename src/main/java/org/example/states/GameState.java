@@ -11,7 +11,6 @@ public class GameState extends State<Arena> {
         super(arena);
     }
 
-
     @Override
     protected Viewer<Arena> getViewer() {
         return new ArenaViewer(getModel());

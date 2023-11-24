@@ -8,7 +8,7 @@ import org.example.model.menu.PauseMenu;
 
 import java.io.IOException;
 
-public class PauseMenuController extends Controller<PauseMenu> {
+public class PauseMenuController extends MenuController<PauseMenu> {
     public PauseMenuController(PauseMenu menu) {
         super(menu);
     }
