@@ -19,30 +19,32 @@ import java.util.Arrays;
 public class ArenaViewerTest {
     private GUI gui;
     private ArenaViewer viewer;
-    private Arena arena;
 
     @BeforeEach
     void setUp() {
-        arena = new Arena(10, 10);
+        Arena arena = new Arena(10, 10);
         gui = Mockito.mock(GUI.class);
 
         viewer = new ArenaViewer(arena);
 
-        arena.setWalls(Arrays.asList(new IceWall(1, 1), new IceWall(2, 2), new IceWall(3, 3)));
-        arena.setWalls(Arrays.asList(new StoneWall(4, 4), new StoneWall(5, 5), new StoneWall(6, 6)));
+        arena.setWalls(Arrays.asList(
+                new IceWall(1, 1), new IceWall(2, 2), new IceWall(3, 3),
+                new StoneWall(4, 4), new StoneWall(5, 5), new StoneWall(6, 6)));
 
-        arena.setMonsters(Arrays.asList(new DefaultMonster(1, 2), new DefaultMonster(1, 3)));
-        arena.setMonsters(Arrays.asList(new JumperMonster(1, 4), new JumperMonster(1, 5)));
-        arena.setMonsters(Arrays.asList(new RunnerMonster(1, 6), new RunnerMonster(1, 7)));
-        arena.setMonsters(Arrays.asList(new WallBreakerMonster(1, 8), new WallBreakerMonster(1, 9)));
+        arena.setMonsters(Arrays.asList(
+                new DefaultMonster(1, 2), new DefaultMonster(1, 3),
+                new JumperMonster(1, 4), new JumperMonster(1, 5),
+                new RunnerMonster(1, 6), new RunnerMonster(1, 7),
+                new WallBreakerMonster(1, 8), new WallBreakerMonster(1, 9)));
 
         arena.setIceCream(new IceCream(5, 8));
 
-        arena.setFruits(Arrays.asList(new AppleFruit(2, 3), new AppleFruit(2, 4)));
-        arena.setFruits(Arrays.asList(new BananaFruit(2, 5), new BananaFruit(2, 6)));
-        arena.setFruits(Arrays.asList(new PepperFruit(2, 7), new PepperFruit(2, 8)));
-        arena.setFruits(Arrays.asList(new PineappleFruit(3, 4), new PineappleFruit(3, 5)));
-        arena.setFruits(Arrays.asList(new StrawberryFruit(3, 6), new StrawberryFruit(3, 7)));
+        arena.setFruits(Arrays.asList(
+                new AppleFruit(2, 3), new AppleFruit(2, 4),
+                new BananaFruit(2, 5), new BananaFruit(2, 6),
+                new PepperFruit(2, 7), new PepperFruit(2, 8),
+                new PineappleFruit(3, 4), new PineappleFruit(3, 5),
+                new StrawberryFruit(3, 6), new StrawberryFruit(3, 7)));
     }
     @Test
     void drawIceWalls() throws IOException {
@@ -109,7 +111,7 @@ public class ArenaViewerTest {
 
         Mockito.verify(gui, Mockito.times(1)).drawAppleFruit(new Position(2, 3));
         Mockito.verify(gui, Mockito.times(1)).drawAppleFruit(new Position(2, 4));
-        Mockito.verify(gui, Mockito.times(1)).drawAppleFruit(Mockito.any(Position.class));
+        Mockito.verify(gui, Mockito.times(2)).drawAppleFruit(Mockito.any(Position.class));
     }
     @Test
     void drawBananaFruit() throws IOException{
@@ -117,7 +119,7 @@ public class ArenaViewerTest {
 
         Mockito.verify(gui, Mockito.times(1)).drawBananaFruit(new Position(2, 5));
         Mockito.verify(gui, Mockito.times(1)).drawBananaFruit(new Position(2, 6));
-        Mockito.verify(gui, Mockito.times(1)).drawBananaFruit(Mockito.any(Position.class));
+        Mockito.verify(gui, Mockito.times(2)).drawBananaFruit(Mockito.any(Position.class));
     }
     @Test
     void drawPepperFruit() throws IOException{
@@ -125,7 +127,7 @@ public class ArenaViewerTest {
 
         Mockito.verify(gui, Mockito.times(1)).drawPepperFruit(new Position(2, 7));
         Mockito.verify(gui, Mockito.times(1)).drawPepperFruit(new Position(2, 8));
-        Mockito.verify(gui, Mockito.times(1)).drawPepperFruit(Mockito.any(Position.class));
+        Mockito.verify(gui, Mockito.times(2)).drawPepperFruit(Mockito.any(Position.class));
     }
     @Test
     void drawPineappleFruit() throws IOException{
@@ -133,7 +135,7 @@ public class ArenaViewerTest {
 
         Mockito.verify(gui, Mockito.times(1)).drawPineappleFruit(new Position(3, 4));
         Mockito.verify(gui, Mockito.times(1)).drawPineappleFruit(new Position(3, 5));
-        Mockito.verify(gui, Mockito.times(1)).drawPineappleFruit(Mockito.any(Position.class));
+        Mockito.verify(gui, Mockito.times(2)).drawPineappleFruit(Mockito.any(Position.class));
     }
     @Test
     void drawStrawberryFruit() throws IOException{
@@ -141,7 +143,7 @@ public class ArenaViewerTest {
 
         Mockito.verify(gui, Mockito.times(1)).drawStrawberryFruit(new Position(3, 6));
         Mockito.verify(gui, Mockito.times(1)).drawStrawberryFruit(new Position(3, 7));
-        Mockito.verify(gui, Mockito.times(1)).drawStrawberryFruit(Mockito.any(Position.class));
+        Mockito.verify(gui, Mockito.times(2)).drawStrawberryFruit(Mockito.any(Position.class));
     }
 
     @Test
