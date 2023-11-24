@@ -2,6 +2,10 @@ package org.example.controller.game;
 
 import org.example.GUI.GUI;
 import org.example.Game;
+import org.example.controller.game.monsters.DefaultController;
+import org.example.controller.game.monsters.JumperController;
+import org.example.controller.game.monsters.RunnerController;
+import org.example.controller.game.monsters.WallBreakerController;
 import org.example.model.game.arena.Arena;
 import org.example.model.game.elements.monsters.*;
 

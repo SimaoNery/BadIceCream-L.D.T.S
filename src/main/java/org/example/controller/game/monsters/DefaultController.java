@@ -1,27 +1,27 @@
-package org.example.controller.game;
+package org.example.controller.game.monsters;
 
 import org.example.GUI.GUI;
+import org.example.controller.game.MonsterController;
 import org.example.model.Position;
 import org.example.model.game.arena.Arena;
 import org.example.model.game.elements.monsters.Monster;
 
 import java.io.IOException;
 
-public class JumperController implements MonsterController {
+public class DefaultController implements MonsterController {
     private final Arena arena;
     private long lastMovement;
 
-    public JumperController(Arena arena) {
-        this.arena = arena;
-        this.lastMovement = 0;
+    public DefaultController(Arena arena) {
+        this.arena = arena; this.lastMovement = 0;
     }
 
-    @Override
     public void step(Monster monster, GUI.ACTION action, long time) throws IOException {
-        if (time - lastMovement >= 500) {
-            moveMonster(monster, new Position(1, 1));
+        if (time - lastMovement >= 750) {
+            moveMonster(monster, new Position(1,1));
             lastMovement = time;
         }
+
     }
 
     @Override
