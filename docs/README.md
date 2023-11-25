@@ -141,7 +141,7 @@ Vantagens
 
 ## Testes
 ### _Coverage Report_
-**TO BE DONE**
+![](resources/TestCoverage.png)
 
 ### _Mutation Testing Report_
 **TO BE DONE**
