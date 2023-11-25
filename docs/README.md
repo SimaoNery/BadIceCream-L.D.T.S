@@ -137,7 +137,7 @@ Pelo facto das classes RunnerController, DefaultController, JumperController e W
 ### Implementação
 A implementação deste padrão é representada através do seguinte modelo UML:
 
-<img src="resources/Strategy.png" width="1100" height="550" />
+<img src="resources/uml.png" width="1100" height="550" />
 
 ### Consequências
    
