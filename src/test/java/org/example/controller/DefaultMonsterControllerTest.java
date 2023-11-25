@@ -1,16 +1,13 @@
 package org.example.controller;
 
 import org.example.GUI.GUI;
-import org.example.Game;
 import org.example.controller.game.monsters.DefaultController;
 import org.example.model.Position;
 import org.example.model.game.arena.Arena;
-import org.example.model.game.elements.IceCream;
 import org.example.model.game.elements.StoneWall;
 import org.example.model.game.elements.monsters.DefaultMonster;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.io.IOException;
 import java.util.List;

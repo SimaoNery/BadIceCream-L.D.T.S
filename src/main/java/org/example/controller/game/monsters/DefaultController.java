@@ -17,13 +17,13 @@ public class DefaultController implements MonsterController {
         this.arena = arena; this.lastMovement = 0;
     }
 
+    @Override
     public void step(Monster monster, GUI.ACTION action, long time) throws IOException {
         if (time - lastMovement >= 750) {
             Position pos = getPossible(monster);
             if (pos != null) moveMonster(monster, pos);
             lastMovement = time;
         }
-
     }
 
     private Position getPossible(Monster monster) {

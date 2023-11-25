@@ -1,9 +1,7 @@
 package org.example.model.game.elements.monsters;
 
-import org.example.model.game.elements.monsters.Monster;
 
 public class RunnerMonster extends Monster {
-    private final int type = 3;
     private boolean run = false;
     public RunnerMonster(int x, int y) {
         super(x, y);
@@ -13,5 +11,5 @@ public class RunnerMonster extends Monster {
 
     public boolean isRunning() {return run;}
     @Override
-    public int getType() {return type;}
+    public int getType() {return 3;}
 }

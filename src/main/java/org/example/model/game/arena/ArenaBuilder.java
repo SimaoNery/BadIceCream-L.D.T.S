@@ -7,7 +7,8 @@ import org.example.model.game.elements.Wall;
 
 import java.util.List;
 
-public abstract class ArenaBuilder {public Arena createArena() {
+public abstract class ArenaBuilder {
+    public Arena createArena() {
     Arena arena = new Arena(getWidth(), getHeight());
 
     arena.setIceCream(createIceCream());

@@ -2,8 +2,6 @@ package org.example.controller.menu;
 
 import org.example.GUI.GUI;
 import org.example.Game;
-import org.example.controller.Controller;
-import org.example.model.menu.MainMenu;
 import org.example.model.menu.PauseMenu;
 
 import java.io.IOException;

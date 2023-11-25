@@ -2,7 +2,6 @@ package org.example.Viewer;
 
 import org.example.GUI.GUI;
 import org.example.model.game.elements.fruits.*;
-import org.example.model.game.elements.monsters.*;
 import org.example.viewer.game.FruitViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

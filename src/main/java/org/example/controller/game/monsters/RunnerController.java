@@ -16,6 +16,7 @@ public class RunnerController implements MonsterController {
         this.arena = arena; this.lastMovement = 0;
     }
 
+    @Override
     public void step(Monster monster, GUI.ACTION action, long time) throws IOException {
         if (time - lastMovement >= 250) {
             moveMonster(monster, new Position(1,1));

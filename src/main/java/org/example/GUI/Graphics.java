@@ -11,9 +11,7 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import org.example.model.Position;
 
-import javax.swing.*;
 import java.io.IOException;
-import java.security.Key;
 
 
 public class Graphics implements GUI {

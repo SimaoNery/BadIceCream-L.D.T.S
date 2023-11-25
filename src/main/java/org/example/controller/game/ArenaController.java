@@ -5,11 +5,9 @@ import org.example.Game;
 import org.example.model.game.arena.Arena;
 import org.example.model.menu.MainMenu;
 import org.example.states.MainMenuState;
-import org.example.states.MenuState;
 
 
 import java.io.IOException;
-import java.util.List;
 
 public class ArenaController extends GameController {
     private final IceCreamController iceCreamController;

@@ -11,6 +11,7 @@ import org.example.model.game.elements.StoneWall;
 import org.example.model.game.elements.monsters.DefaultMonster;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.awt.*;
 import java.io.IOException;
@@ -154,7 +155,7 @@ class IceCreamControllerTest {
 
     @Test
     void testAction() throws IOException, URISyntaxException, FontFormatException {
-        game = new Game();
+        game = Mockito.mock(Game.class);
         controller = new IceCreamController(arena);
         controller.step(game, GUI.ACTION.UP, 0);
         assertEquals(new Position(5,4), iceCream.getPosition());
