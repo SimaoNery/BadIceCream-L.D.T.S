@@ -109,7 +109,7 @@ O _State Pattern_ permite resolver este problema facilmente, pegando no código 
 A implementação deste padrão é representada através do seguinte modelo UML:
 
 # 
-<img src="resources/State.drawio.png" width="1100" height="550" />
+<img src="resources/State.png" width="1000" height="550" />
 
 # 
 
