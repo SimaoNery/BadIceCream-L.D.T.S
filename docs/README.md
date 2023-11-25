@@ -137,7 +137,7 @@ Pelo facto das classes RunnerController, DefaultController, JumperController e W
 ### Implementação
 A implementação deste padrão é representada através do seguinte modelo UML:
 
-<img src="resources/Strategy.png" width="1500" height="300" />
+<img src="resources/Strategy.png" width="1700" height="280" />
 
 ### Consequências
 Desta forma, quando se pretende executar step de qualquer monstro, faz-se via MonsterControllerManager e este executa o respetivo MonsterController que irá processar e satisfazer o pedido.
@@ -152,7 +152,7 @@ Este padrão consiste num loop onde é controlado o tempo de cada iteração, pe
 ### Implementação
 A implementação deste padrão é representada através do seguinte modelo UML:
 
-<img src="resources/gameLoop.png" width="1500" height="400" />
+<img src="resources/gameLoop.png" width="1600" height="400" />
 
 ### Consequências
 Desta forma, consegue-se controlar a fluidez e a progressão do jogo ao longo do tempo.
