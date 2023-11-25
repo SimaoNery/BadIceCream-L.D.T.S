@@ -15,7 +15,7 @@
 ## Menu de Pausa:
 ![PauseMenu.png](docs%2Fresources%2FPauseMenu.png)
 ## Menu de Fim de Nível:
-![LevelCompleteMenu.webp](docs%2Fresources%2FLevelCompleteMenu.webp)
+![LevelCompleteMenu.png](docs%2Fresources%2FLevelCompleteMenu.png)
 ## Menu de Fim de Jogo:
 ![GameOver.png](docs%2Fresources%2FGameOver.png)
 
