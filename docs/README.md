@@ -152,7 +152,7 @@ Este padrão consiste num loop onde é controlado o tempo de cada iteração, pe
 ### Implementação
 A implementação deste padrão é representada através do seguinte modelo UML:
 
-<img src="resources/gameLoop.png" width="1600" height="400" />
+<img src="resources/gameLoop.png" width="1700" height="300" />
 
 ### Consequências
 Desta forma, consegue-se controlar a fluidez e a progressão do jogo ao longo do tempo.
