@@ -46,7 +46,7 @@ public class Graphics implements GUI {
         Terminal terminal = createTerminal(width, height);
         this.screen = createScreen(terminal);
     }
-
+    @Override
     public ACTION getNextAction() throws IOException{
         KeyStroke keyStroke = screen.pollInput();
         if(keyStroke == null) return ACTION.NONE;
