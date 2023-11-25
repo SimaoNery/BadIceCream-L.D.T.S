@@ -59,6 +59,11 @@ public class Arena {
         for (Wall wall : walls)
             if (wall.getPosition().equals(position))
                 return false;
+        for (Monster monster : monsters) {
+            if (monster.getPosition().equals(position)) {
+                return false;
+            }
+        }
         return true;
     }
     public boolean isIceWall(Position position) {
