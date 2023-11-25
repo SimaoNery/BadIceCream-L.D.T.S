@@ -140,6 +140,7 @@ A implementação deste padrão é representada através do seguinte modelo UML:
 <img src="resources/Strategy.png" width="1500" height="300" />
 
 ### Consequências
+Desta forma, quando se pretende executar step de qualquer monstro, faz-se via MonsterControllerManager e este executa o respetivo MonsterController que irá processar e satisfazer o pedido.
    
 ## _Code Smells_
 **TO BE DONE**  
