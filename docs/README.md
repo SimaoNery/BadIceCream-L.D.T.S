@@ -141,11 +141,9 @@ Vantagens
 
 ## Testes
 ### _Coverage Report_
-
 **TO BE DONE**
 
 ### _Mutation Testing Report_
-
 **TO BE DONE**
 
 ## Self-evaluation
