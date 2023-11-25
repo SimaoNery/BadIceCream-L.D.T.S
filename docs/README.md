@@ -106,7 +106,7 @@ Ao longo do jogo, é possível que um objeto se encontre em diferentes estados, 
 O _State Pattern_ permite resolver este problema facilmente, pegando no código que posteriormente estaria numa só classe e dividindo-o em várias classes, fazendo com que o objeto consiga mudar de comportamento quando o seu estado muda. Esta abordagem faz sentido quando um objeto atua de forma diferente consoante o seu estado interno. (Como por exemplo nos estados dos diversos Menus utilizados)
 ### Implementação
 
-A implantação deste  padrão é representada através do seguinte modelo U.M.L:
+A implementação deste padrão é representada através do seguinte modelo UML:
 
 # 
 <img src="resources/State.drawio.png" width="1100" height="550" />
@@ -129,12 +129,18 @@ Vantagens
 
 ## _*** Pattern_
 ### Contexto do Problema
+As classes RunnerController, DefaultController, JumperController e WallBreakerController difererem apenas na definição dos métodos step e moveMonster. Criando quatro classes completamente iguais na sua interface mas apenas diferentes nas implementações desses métodos trás redundância ao projeto (por estar a repetir alguns campos idênticos).
 
 ### Padrão
+Pelo facto das classes RunnerController, DefaultController, JumperController e WallBreakerController difererem apenas na definição dos métodos step e moveMonster, recorreu-se ao design pattern Strategy, que define implementações diferentes dos métodos referidos consoante o tipo de Controller em questão. As entidades que chamam estes métodos não têm informação acerca de como estão implementados cada um deles, estando apenas interessados em executá-los. 
 
 ### Implementação
+A implementação deste padrão é representada através do seguinte modelo UML:
+
+<img src="resources/Strategy.png" width="1500" height="300" />
 
 ### Consequências
+Desta forma, quando se pretende executar step de qualquer monstro, faz-se via MonsterControllerManager e este executa o respetivo MonsterController que irá processar e satisfazer o pedido.
    
 ## _Code Smells_
 **TO BE DONE**  
