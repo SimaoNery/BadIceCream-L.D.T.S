@@ -6,5 +6,6 @@ public class JumperMonster extends Monster {
         super(x, y);
     }
 
+    @Override
     public int getType() {return type;}
 }
