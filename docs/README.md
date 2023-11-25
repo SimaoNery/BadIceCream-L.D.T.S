@@ -21,15 +21,15 @@ Neste jogo de _arcade_ poderás ajudar o Bad Ice Cream a roubar as suas frutas f
 
 # _Features_ Planeadas
 ## _In-Game Features_ 
-- Habilidade do Personagem: Quando a tecla de espaço for pressionada, o personagem irá construir uma parede de gelo até ao primeiro bloqueio que lhe aparecer (monstro, fruta, parede ou hot floor). No caso de já existir uma parede de gelo à sua frente, o personagem irá destruí-la em cascada (a destruição é interrompida quando encontrar um espaço vazio ou Stone Wall);
+- Habilidade do Personagem: Quando a tecla de espaço for pressionada, o personagem irá construir uma parede de gelo até ao primeiro bloqueio que lhe aparecer (monstro, fruta, parede ou hot floor). No caso de já existir uma parede de gelo à sua frente, o personagem irá destruí-la em cascata (a destruição é interrompida quando encontrar um espaço vazio ou Stone Wall);
 
 ![](resources/IceCreamAbility.gif)
 
-- Movimento do RunnerMonster: O RunnerMonster inicialmente irá ter o comportamento de um Defaultmonster, mas em intervalos curtos de tempo, a sua velocidade será aumentada e este passará a conseguir localizar o personagem (cálculo da trajetória mais curta), por isso foge enquanto podes;
+- Movimento do RunnerMonster: O RunnerMonster inicialmente irá ter o comportamento de um Defaultmonster, mas em intervalos curtos de tempo, a sua velocidade será aumentada e este passará a conseguir localizar o personagem (cálculo da trajetória mais curta), por isso foge enquanto podes!;
 
 ![](resources/Runner.gif)
 
-- Movimento do JumperMonster: O JumperMonster será capaz de saltar para cima de paredes e andar em cima das memsmas de modo a conseguir percorrer sempre o caminho mais curto até ao personagem principal;
+- Movimento do JumperMonster: O JumperMonster será capaz de saltar para cima de paredes e andar em cima das mesmas de modo a conseguir percorrer sempre o caminho mais curto até ao personagem principal;
 
 ![](resources/Jumper.gif)
 
