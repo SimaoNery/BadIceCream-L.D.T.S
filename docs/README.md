@@ -137,7 +137,16 @@ Pelo facto das classes RunnerController, DefaultController, JumperController e W
 ### Implementação
 A implementação deste padrão é representada através do seguinte modelo UML:
 
+<<<<<<< HEAD
+<img src="resources/Strategy.png" width="1500" height="300" />
+
+O código para a implementação deste padrão encontra-se nos seguintes links:
+- MonstrerControllerManager-(https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/MonsterControllerManager.java)
+- MonsterController-(https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/MonsterController.java)
+- Monsters-(https://github.com/FEUP-LDTS-2023/project-l10gr08/tree/main/src/main/java/badIceCream/controller/game/monsters)
+=======
 <img src="resources/Strategy.png" width="1700" height="280" />
+>>>>>>> origin/main
 
 O código para as classes que utilizam este padrão encontra-se nos seguintes links:
 - MonsterControllerManager (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/MonsterControllerManager.java)
@@ -146,6 +155,30 @@ O código para as classes que utilizam este padrão encontra-se nos seguintes li
 - RunnerController (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/monsters/RunnerController.java)
 - WallBreakerController (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/monsters/WallBreakerController.java)
 ### Consequências
+<<<<<<< HEAD
+Desta forma, quando se pretende executar _step_ de qualquer monstro, faz-se via _MonsterControllerManager_ e este executa o respetivo _MonsterController_ que irá processar e satisfazer o pedido.
+
+## _Factory Method Pattern_
+### Contexto do Problema
+A classe _State_, com subclasses GameState e MenuState, tem a necessidade de antecipar que objetos deve criar a partir dos métodos getController() e getViewer(). O mesmo verifica-se para uma das suas sublasses, MenuState, com subclasses PauseMenuState e MainMenuState.
+### Padrão
+Por este motivo, recorreu-se ao _Factory Method Pattern_, que elimina a necessidade de vincular classes específcas para cada aplicação no código. Deste modo, as subclasses das classes _State_ e _MenuState_ especificam o tipo de objetos a criar.
+
+### Implementação
+A implementação deste padrão é representada através do seguinte modelo UML:
+<img src="resources/FactoryPattern.png" width="1500" height="300" />
+
+O código para a implementação deste padrão encontra-se nos seguintes links:
+- State(https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/State.java)
+- GameState(https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/GameState.java)
+- MenuState(https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/MenuState.java)
+- MainMenuState(https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/MainMenuState.java)
+- PauseMenuState(https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/PauseMenuState.java)
+
+### Consequências
+Desta forma, quando se executa getController() ou getViewer(), a partir das subclasses implementadas para State() e MenuState(), o código só necessita de lidar com as classes State ou MenuState, sendo as suas sublcasses as que delegam onde se encontra a informação a obter.
+
+=======
 Desta forma, quando se pretende executar step de qualquer monstro, faz-se via MonsterControllerManager e este executa o respetivo MonsterController que irá processar e satisfazer o pedido.
 
 ## _Game Loop Pattern_
@@ -173,6 +206,7 @@ O código que reflete este padrão encontra-se nos seguintes links:
 ### Consequências
 Desta forma, consegue-se controlar a fluidez e a progressão do jogo ao longo do tempo.
    
+>>>>>>> origin/main
 ## _Code Smells_
 **TO BE DONE**  
 
