@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -32,8 +32,8 @@ class IceCreamControllerTest {
         iceCream = new IceCream(5,5);
 
         arena.setIceCream(iceCream);
-        arena.setWalls(Arrays.asList());
-        arena.setMonsters(Arrays.asList());
+        arena.setWalls(List.of());
+        arena.setMonsters(List.of());
     }
 
     @Test
@@ -45,7 +45,7 @@ class IceCreamControllerTest {
 
     @Test
     void testMoveIceCreamRightNotEmptyStone() {
-        arena.setWalls(Arrays.asList(new StoneWall(6,5)));
+        arena.setWalls(List.of(new StoneWall(6, 5)));
         controller = new IceCreamController(arena);
         controller.moveIceCreamRight();
         assertEquals(new Position(5,5), iceCream.getPosition());
@@ -53,7 +53,7 @@ class IceCreamControllerTest {
 
     @Test
     void testMoveIceCreamRightNotEmptyIce() {
-        arena.setWalls(Arrays.asList(new IceWall(6,5)));
+        arena.setWalls(List.of(new IceWall(6, 5)));
 
         controller = new IceCreamController(arena);
         controller.moveIceCreamRight();
@@ -69,7 +69,7 @@ class IceCreamControllerTest {
 
     @Test
     void testMoveIceCreamLeftNotEmptyStone() {
-        arena.setWalls(Arrays.asList(new StoneWall(4,5)));
+        arena.setWalls(List.of(new StoneWall(4, 5)));
 
         controller = new IceCreamController(arena);
         controller.moveIceCreamLeft();
@@ -78,7 +78,7 @@ class IceCreamControllerTest {
 
     @Test
     void testMoveIceCreamLeftNotEmptyIce() {
-        arena.setWalls(Arrays.asList(new IceWall(4,5)));
+        arena.setWalls(List.of(new IceWall(4, 5)));
         controller = new IceCreamController(arena);
         controller.moveIceCreamLeft();
         assertEquals(new Position(5,5), iceCream.getPosition());
@@ -93,7 +93,7 @@ class IceCreamControllerTest {
 
     @Test
     void testMoveIceCreamDownNotEmptyStone() {
-        arena.setWalls(Arrays.asList(new StoneWall(5,6)));
+        arena.setWalls(List.of(new StoneWall(5, 6)));
 
         controller = new IceCreamController(arena);
         controller.moveIceCreamDown();
@@ -102,7 +102,7 @@ class IceCreamControllerTest {
 
     @Test
     void testMoveIceCreamDownNotEmptyIce() {
-        arena.setWalls(Arrays.asList(new IceWall(5,6)));
+        arena.setWalls(List.of(new IceWall(5, 6)));
 
         controller = new IceCreamController(arena);
         controller.moveIceCreamDown();
@@ -118,7 +118,7 @@ class IceCreamControllerTest {
 
     @Test
     void testMoveIceCreamUpNotEmptyStone() {
-        arena.setWalls(Arrays.asList(new StoneWall(5,4)));
+        arena.setWalls(List.of(new StoneWall(5, 4)));
 
         controller = new IceCreamController(arena);
         controller.moveIceCreamUp();
@@ -127,7 +127,7 @@ class IceCreamControllerTest {
 
     @Test
     void testMoveIceCreamUpNotEmptyIce() {
-        arena.setWalls(Arrays.asList(new IceWall(5,4)));
+        arena.setWalls(List.of(new IceWall(5, 4)));
 
         controller = new IceCreamController(arena);
         controller.moveIceCreamUp();
@@ -136,7 +136,7 @@ class IceCreamControllerTest {
 
     @Test
     void testMonsterColision() {
-        arena.setMonsters(Arrays.asList(new DefaultMonster(5,4)));
+        arena.setMonsters(List.of(new DefaultMonster(5, 4)));
 
         controller = new IceCreamController(arena);
         controller.moveIceCreamUp();
@@ -145,7 +145,7 @@ class IceCreamControllerTest {
 
     @Test
     void testMonsterNoColision() {
-        arena.setMonsters(Arrays.asList(new DefaultMonster(5,6)));
+        arena.setMonsters(List.of(new DefaultMonster(5, 6)));
 
         controller = new IceCreamController(arena);
         controller.moveIceCreamUp();
