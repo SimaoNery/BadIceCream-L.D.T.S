@@ -82,9 +82,9 @@ A implantação deste padrão pode ser representada através do seguinte modelo 
 
 
 As 3 classes podem ser encontradas nos seguintes links:
-- Controller-(https://github.com/FEUP-LDTS-2023/project-l10gr08/tree/main/src/main/java/org/example/controller)
-- Model-(https://github.com/FEUP-LDTS-2023/project-l10gr08/tree/main/src/main/java/org/example/model)
-- View-(https://github.com/FEUP-LDTS-2023/project-l10gr08/tree/main/src/main/java/org/example/viewer)
+- Controller-(https://github.com/FEUP-LDTS-2023/project-l10gr08/tree/main/src/main/java/badIceCream/controller)
+- Model-(https://github.com/FEUP-LDTS-2023/project-l10gr08/tree/main/src/main/java/badIceCream/model)
+- View-(https://github.com/FEUP-LDTS-2023/project-l10gr08/tree/main/src/main/java/badIceCream/viewer)
 
 ### Consequências
 A escolha deste padrão trouxe vantagens e desvantagens:
@@ -114,9 +114,9 @@ A implantação deste  padrão é representada através do seguinte modelo U.M.L
 # 
 
 O código para as classes que estendem State ainda não está completo, mas a sua base encontra-se nos seguintes links:
-- GameState-(https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/org/example/states/GameState.java);
-- MainMenuState-(https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/org/example/states/MainMenuState.java);
-- PauseMenuState-(https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/org/example/states/PauseMenuState.java).
+- GameState-(https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/GameState.java);
+- MainMenuState-(https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/MainMenuState.java);
+- PauseMenuState-(https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/PauseMenuState.java).
 
 ### Consequências
 A escolha deste padrão trouxe várias vantagens:
