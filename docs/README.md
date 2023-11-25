@@ -73,7 +73,7 @@ Neste jogo de _arcade_ poderás ajudar o Bad Ice Cream a roubar as suas frutas f
 Desde o início do projeto, visou-se desenvolver uma estrutura que fosse bem organizada, de modo ao código ser fácil de ler e de se tornar trivial a localização de snippets de código nos diversos ficheiros, permitindo ainda, que diversas pessoas consigam alterar o código, sem prejudicarem o trabalho dos outros.
 
 ### Padrão
-Com estes problemas em mente, optou-se por aplicar o padrão arquitetural MVC (Model View Controller), que divide o programa em três camadas, View, Model e Controller. A camada Model contém apenas os dados, que caso sofram mudanças, informará a _View_ . Por sua vez a View é responsável pela interface com a qual o jogado vai interagir, tendo em conta os dados atuais e envia ações do utilizador para o Controller. Esta última camada interpreta os inputs recebidos pelo utilizador e fornecidos pelo View e atualiza o _model_ com base nessa informação. 
+Com estes problemas em mente, optou-se por aplicar o padrão arquitetural MVC (Model View Controller), que divide o programa em três camadas, _View_, _Model_ e _Controller_. A camada _Model_ contém apenas os dados, que caso sofram mudanças, informará a _View_ . Por sua vez a _View_ é responsável pela interface com a qual o jogado vai interagir, tendo em conta os dados atuais e envia ações do utilizador para o _Controller_. Esta última camada interpreta os inputs recebidos pelo utilizador e fornecidos pelo _View_ e atualiza o _Model_ com base nessa informação. 
 
 ### Implementação
 A implantação deste padrão pode ser representada através do seguinte modelo U.M.L:
