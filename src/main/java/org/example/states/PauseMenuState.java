@@ -4,13 +4,14 @@ import org.example.controller.Controller;
 import org.example.controller.menu.MainMenuController;
 import org.example.controller.menu.PauseMenuController;
 import org.example.model.menu.MainMenu;
+import org.example.model.menu.Menu;
 import org.example.model.menu.PauseMenu;
 import org.example.viewer.Viewer;
 import org.example.viewer.menu.MainMenuViewer;
 import org.example.viewer.menu.PauseMenuViewer;
 
 
-public class PauseMenuState extends State<PauseMenu> {
+public class PauseMenuState extends MenuState<PauseMenu> {
     public PauseMenuState(PauseMenu model) {
         super(model);
     }

@@ -11,5 +11,7 @@ public class RunnerMonster extends Monster {
     public void startRunning() {this.run = true;}
     public void stopRunning() {this.run = false;}
 
+    public boolean isRunning() {return run;}
+    @Override
     public int getType() {return type;}
 }

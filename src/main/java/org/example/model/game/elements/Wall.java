@@ -5,6 +5,5 @@ public abstract class Wall extends Element{
         super(x, y);
     }
 
-    @Override
     public abstract int getType();
 }

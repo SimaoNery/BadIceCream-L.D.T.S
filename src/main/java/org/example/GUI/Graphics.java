@@ -47,6 +47,7 @@ public class Graphics implements GUI {
         this.screen = createScreen(terminal);
     }
 
+    @Override
     public ACTION getNextAction() throws IOException{
         KeyStroke keyStroke = screen.pollInput();
         if(keyStroke == null) return ACTION.NONE;

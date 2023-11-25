@@ -67,7 +67,7 @@ public class Arena {
                 return true;
             }
         }
-        return true;
+        return false;
     }
     public boolean isMonster(Position position) {
         for (Monster monster : monsters)
@@ -75,7 +75,7 @@ public class Arena {
                 return true;
         return false;
     }
-    public boolean isFruit(Position position){
+    public boolean isFruit(Position position) {
         for (Fruit fruit : fruits) {
             if (fruit.getPosition().equals(position))
                 return true;

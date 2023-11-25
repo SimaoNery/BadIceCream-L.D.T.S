@@ -31,14 +31,6 @@ public class Menu {
         return currentEntry == i;
     }
 
-    public boolean isSelectedExit() {
-        return isSelected(1);
-    }
-
-    public boolean isSelectedStart() {
-        return isSelected(0);
-    }
-
     public int getNumberEntries() {
         return this.entries.size();
     }
