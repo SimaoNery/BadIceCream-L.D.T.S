@@ -7,5 +7,6 @@ public class StoneWall extends Wall{
         super(x, y);
     }
 
+    @Override
     public int getType() {return type;}
 }

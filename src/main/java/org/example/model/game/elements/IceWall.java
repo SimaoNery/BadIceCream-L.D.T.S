@@ -6,5 +6,6 @@ public class IceWall extends Wall{
         super(x, y);
     }
 
+    @Override
     public int getType() {return type;}
 }
