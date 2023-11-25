@@ -168,4 +168,6 @@ Desta forma, consegue-se controlar a fluidez e a progressão do jogo ao longo do
 **TO BE DONE**
 
 ## Self-evaluation
-**To BE DONE**
+Nelson Neto 33.3%
+Paulo Fidalgo 33.3%
+Simão Neri 33.3%
