@@ -26,8 +26,8 @@ Neste jogo de _arcade_ poderás ajudar o Bad Ice Cream a roubar as suas frutas f
 - Menu Principal: Quando o jogo é iniciado, o "Main Menu" é aberto. Neste, o jogador poderá escolher entre começar a jogar, aceder às instruções ou sair do jogo;
 - Instruções: Ao escolher a opção "Instructions" no "Main Menu", o jogador tem acesso a uma página com uma descrição do jogo e os controlos para jogar;
 - Seleção de Nível: Ao escolher a opção "Start Game" no "Main Menu", outro menu é aberto, onde será possível escolher entre os diferentes níveis existentes. Com exceção ao nível 1, só é possível escolher um nível se o anterior tiver sido completado com sucesso;
-- Menu de Pausa: No decorrer do jogo, o jogador pode clicar na tecla _Escape_, abrindo um menu que pausa o jogo. Neste, poderá escolher
-  entre continuar a jogar ou sair para o "Main Menu".
+- Menu de Pausa: No decorrer do jogo, o jogador pode clicar na tecla _Escape_, abrindo um menu que pausa o jogo. Neste, poderá escolher entre continuar a jogar ou sair para o "Main Menu".
+- Menu de Fim de Nível: Após um nível ser terminado, um novo menu irá abrir, onde o utilizador poderá escolher entre continuar para o próximo nível, ou retornar ao menu principal;
 - Menu de Fim de Jogo: Ao ser morto por um dos monstros, será aberto um menu onde o utilizador poderá escolher entre jogar novamente, ou voltar ao menu principal. 
 
 
@@ -41,7 +41,11 @@ Desde o início do projeto, visou-se desenvolver uma estrutura que fosse bem org
 Com estes problemas em mente, optou-se por aplicar o padrão arquitetural MVC (Model View Controller), que divide o programa em três camadas, View, Model e Controller. A camada Model contém apenas os dados, já a View é responsável pela interface com a qual o jogado vai interagir, tendo em conta os dados atuais e envia ações do utilizador para o Controller. Esta última camada envia os dados do Model para o View e interpreta os inputs recebidos pelo utilizador e fornecidos pelo View. 
 
 ### Implementação
-** UML PASSAR**
+A implantação deste padrão pode ser representada através do seguinte modelo U.M.L:
+
+<img src="resources/MVC.drawio%20(1).png" width="1100" height="550" />
+
+
 As 3 classes podem ser encontradas nos seguintes links:
 - Controller-(https://github.com/FEUP-LDTS-2023/project-l10gr08/tree/main/src/main/java/org/example/controller)
 - Model-(https://github.com/FEUP-LDTS-2023/project-l10gr08/tree/main/src/main/java/org/example/model)
