@@ -73,12 +73,12 @@ Neste jogo de _arcade_ poderás ajudar o Bad Ice Cream a roubar as suas frutas f
 Desde o início do projeto, visou-se desenvolver uma estrutura que fosse bem organizada, de modo ao código ser fácil de ler e de se tornar trivial a localização de snippets de código nos diversos ficheiros, permitindo ainda, que diversas pessoas consigam alterar o código, sem prejudicarem o trabalho dos outros.
 
 ### Padrão
-Com estes problemas em mente, optou-se por aplicar o padrão arquitetural MVC (Model View Controller), que divide o programa em três camadas, View, Model e Controller. A camada Model contém apenas os dados, já a View é responsável pela interface com a qual o jogado vai interagir, tendo em conta os dados atuais e envia ações do utilizador para o Controller. Esta última camada envia os dados do Model para o View e interpreta os inputs recebidos pelo utilizador e fornecidos pelo View. 
+Com estes problemas em mente, optou-se por aplicar o padrão arquitetural MVC (Model View Controller), que divide o programa em três camadas, View, Model e Controller. A camada Model contém apenas os dados, que caso sofram mudanças, informará a _View_ . Por sua vez a View é responsável pela interface com a qual o jogado vai interagir, tendo em conta os dados atuais e envia ações do utilizador para o Controller. Esta última camada interpreta os inputs recebidos pelo utilizador e fornecidos pelo View e atualiza o _model_ com base nessa informação. 
 
 ### Implementação
 A implantação deste padrão pode ser representada através do seguinte modelo U.M.L:
 
-<img src="resources/MVC.drawio%20(1).png" width="1100" height="550" />
+<img src="resources/MVC.drawio.png" width="1000" height="500" />
 
 
 As 3 classes podem ser encontradas nos seguintes links:
@@ -98,19 +98,25 @@ Vantagens
 Desvantagens
 - É necessário um melhor planeamento prévio e mais atenção na escrita do código, uma vez que as componentes estão separadas.
 
-## Padrão de Estado
+## _State Pattern_
 ### Contexto do Problema
 Ao longo do jogo, é possível que um objeto se encontre em diferentes estados, o que pode afetar o comportamento de todo o programa. Haveria então uma grande dependência em if ’s e switch cases’s, o que tornaria a interpretação do código mais complexa, uma vez que todos os comportamentos seriam executados por apenas uma classe, bem como dificultaria a extensão do código.
 
 ### Padrão
-O State Pattern permite resolver este problema facilmente, pegando no código que posteriormente estaria numa só classe e dividindo-o em várias classes, fazendo com que o objeto consiga mudar de comportamento quando o seu estado muda. Esta abordagem faz sentido quando um objeto atua de forma diferente consoante o seu estado interno. (Como por exemplo nos estados dos diversos Menus utilizados)
+O _State Pattern_ permite resolver este problema facilmente, pegando no código que posteriormente estaria numa só classe e dividindo-o em várias classes, fazendo com que o objeto consiga mudar de comportamento quando o seu estado muda. Esta abordagem faz sentido quando um objeto atua de forma diferente consoante o seu estado interno. (Como por exemplo nos estados dos diversos Menus utilizados)
 ### Implementação
-**UML TO BE DONE**
+
+A implantação deste  padrão é representada através do seguinte modelo U.M.L:
+
+# 
+<img src="resources/State.drawio.png" width="1100" height="550" />
+
+# 
 
 O código para as classes que estendem State ainda não está completo, mas a sua base encontra-se nos seguintes links:
-• GameState-(https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/org/example/states/GameState.java)
-• MainMenuState-(https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/org/example/states/MainMenuState.java)
-• PauseMenuState-(https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/org/example/states/PauseMenuState.java)
+- GameState-(https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/org/example/states/GameState.java);
+- MainMenuState-(https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/org/example/states/MainMenuState.java);
+- PauseMenuState-(https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/org/example/states/PauseMenuState.java).
 
 ### Consequências
 A escolha deste padrão trouxe várias vantagens:
@@ -121,9 +127,17 @@ Vantagens
 - Torna a correção do código e a criação de testes mais simples;
 - Ao introduzir novos estados deixa de ser necessário mudar estados já existentes.
 
+## _*** Pattern_
+### Contexto do Problema
+
+### Padrão
+
+### Implementação
+
+### Consequências
    
 ## _Code Smells_
-**TO BE DONE**
+**TO BE DONE**  
 
 ## Testes
 ### _Coverage Report_
