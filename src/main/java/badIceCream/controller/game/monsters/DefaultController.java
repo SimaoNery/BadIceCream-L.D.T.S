@@ -9,12 +9,10 @@ import badIceCream.model.Position;
 import java.io.IOException;
 import java.util.List;
 
-public class DefaultController implements MonsterController {
-    private final Arena arena;
-    private long lastMovement;
+public class DefaultController extends MonsterController {
 
     public DefaultController(Arena arena) {
-        this.arena = arena; this.lastMovement = 0;
+        super(arena);
     }
 
     @Override
@@ -40,7 +38,7 @@ public class DefaultController implements MonsterController {
     }
 
     @Override
-    public void moveMonster(Monster monster, Position position) {
+    protected void moveMonster(Monster monster, Position position) {
         monster.setPosition(position);
         if (arena.getIceCream().getPosition().equals(position))
             arena.getIceCream().changeAlive();

@@ -9,12 +9,10 @@ import badIceCream.model.Position;
 
 import java.io.IOException;
 
-public class WallBreakerController implements MonsterController {
-    private final Arena arena;
-    private long lastMovement;
+public class WallBreakerController extends MonsterController {
 
     public WallBreakerController(Arena arena) {
-        this.arena = arena; this.lastMovement = 0;
+        super(arena);
     }
     @Override
     public void step(Monster monster, GUI.ACTION action, long time) throws IOException {
@@ -25,7 +23,7 @@ public class WallBreakerController implements MonsterController {
     }
 
     @Override
-    public void moveMonster(Monster monster, Position position) {
+    protected void moveMonster(Monster monster, Position position) {
         if (arena.isEmpty(position)) {
             monster.setPosition(position);
             if (arena.getIceCream().getPosition().equals(position))

@@ -8,12 +8,10 @@ import badIceCream.model.Position;
 
 import java.io.IOException;
 
-public class RunnerController implements MonsterController {
-    private final Arena arena;
-    private long lastMovement;
+public class RunnerController extends MonsterController {
 
     public RunnerController(Arena arena) {
-        this.arena = arena; this.lastMovement = 0;
+        super(arena);
     }
 
     @Override
@@ -25,7 +23,7 @@ public class RunnerController implements MonsterController {
     }
 
     @Override
-    public void moveMonster(Monster monster, Position position) {
+    protected void moveMonster(Monster monster, Position position) {
         if (arena.isEmpty(position)) {
             monster.setPosition(position);
             if (arena.getIceCream().getPosition().equals(position))

@@ -142,19 +142,21 @@ class DefaultMonsterControllerTest {
 
     @Test
     void moveMonsterToIceCream() throws IOException {
-        DefaultMonster monster = new DefaultMonster(1, 2);
+        DefaultMonster monster = new DefaultMonster(3, 2);
 
         StoneWall stoneWallDown = new StoneWall(2,3);
         StoneWall stoneWallUpO = new StoneWall(2,1);
         StoneWall stoneWallUp = new StoneWall(3,1);
         StoneWall stoneWallDownO = new StoneWall(3,3);
-        StoneWall stoneWallRight = new StoneWall(3,2);
-        StoneWall stoneWallLeft = new StoneWall(1,2);
+        StoneWall stoneWallRight = new StoneWall(1,2);
+        StoneWall stoneWallLeft = new StoneWall(4,2);
 
         arena.setMonsters(List.of(monster));
         arena.setWalls(List.of(stoneWallDown,stoneWallUp,stoneWallRight, stoneWallLeft, stoneWallUpO, stoneWallDownO));
 
         controller.step(monster, GUI.ACTION.NONE, 1000);
+
+        System.out.println("Monster: " + monster.getPosition().getX() + " " + monster.getPosition().getY());
 
         assertFalse(iceCream.getAlive());
         assertEquals(new Position(2, 2), monster.getPosition());
