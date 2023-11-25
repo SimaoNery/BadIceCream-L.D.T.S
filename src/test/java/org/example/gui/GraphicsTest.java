@@ -109,8 +109,6 @@ public class GraphicsTest {
         Mockito.verify(tg, Mockito.times(1)).putString(1, 1, "S");
     }
 
-
-
     @Test
     void drawText() {
         gui.drawText(new Position(1, 1), "Hello World", "#00FF00");

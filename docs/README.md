@@ -1,56 +1,55 @@
 ﻿# LDTS 1008 - Bad Ice Cream
 
-Neste jogo de _arcade_ poderás ajudar o Bad Ice Cream a roubar as suas frutas favoritas. Mas cuidado, a fruta tem dono e os monstros que a protegem não gostam nada de ladrões. Utiliza o poder de criar e destruir paredes de gelo do Bad Ice Cream, para encurralar os monstros e encher a barriga à vontade.
+Neste jogo de _arcade_ poderás ajudar o Bad Ice Cream a roubar as suas frutas favoritas. Mas, cuidado, a fruta tem dono e os monstros que a protegem não gostam nada de ladrões. Utiliza o poder de criar e destruir paredes de gelo do Bad Ice Cream, para encurralar os monstros e encher a barriga à vontade.
 
 # _Features_ Implementadas
 - Movimento do Bad Ice Cream: O personagem irá mover-se para cima (seta para cima), para baixo (seta para baixo), para esquerda (seta para a esquerda) ou para a direita (seta para a direita), de acordo com o input do utilizador;
 
 ![](resources/IceCreamMovement.gif)
 
-- Movimento do DefaultMonster: O DefaultMonster irá mover-se aleatoriamente pelos espaços livres no mapa, é o monstro mais lento, aproveita!;
+- Movimento do DefaultMonster: O DefaultMonster irá mover-se aleatoriamente pelos espaços livres no mapa. É o monstro mais lento, aproveita!;
 
 ![](resources/DefaultMonster.gif)
 
-- Colisão Bad Ice Cream: O personagem morre quando colide com monstros e é proibido de avançar no caso de colidir com uma parede;
+- Colisão do Bad Ice Cream: O personagem morre quando colide com monstros e não consegue avançar caso colida com uma parede;
 
 <img src="resources/Collision.gif" width="250" height="250" />
 
-- Colisão Monstros: Os monstros nao podem avançar no caso de coliderem com outro monstro ou com uma parede;
+- Colisão dos Monstros: Os monstros não conseguem avançar caso colidam com outro monstro ou com uma parede;
 
-**SCREENSHOTS MISSING**
 
 
 # _Features_ Planeadas
 ## _In-Game Features_ 
-- Habilidade do Personagem: Quando a tecla de espaço for pressionada, o personagem irá construir uma parede de gelo até ao primeiro bloqueio que lhe aparecer (monstro, fruta, parede ou hot floor). No caso de já existir uma parede de gelo à sua frente, o personagem irá destruí-la em cascada (para até encontrar espaço vazio ou Stone Wall);
+- Habilidade do Personagem: Quando a tecla de espaço for pressionada, o personagem irá construir uma parede de gelo até ao primeiro bloqueio que lhe aparecer (monstro, fruta, parede ou hot floor). No caso de já existir uma parede de gelo à sua frente, o personagem irá destruí-la em cascada (a destruição é interrompida quando encontrar um espaço vazio ou Stone Wall);
 
 ![](resources/IceCreamAbility.gif)
 
-- Movimento do RunnerMonster: O RunnerMonster inicialmente irá ter o comportamento de um Defaultmonster, mas em intervalos de curto período de tempo, a sua velocidade será aumentada e este passará a conseguir localizar o personagem (cálculo da trajetória mais curta), por isso foge enquanto podes;
+- Movimento do RunnerMonster: O RunnerMonster inicialmente irá ter o comportamento de um Defaultmonster, mas em intervalos curtos de tempo, a sua velocidade será aumentada e este passará a conseguir localizar o personagem (cálculo da trajetória mais curta), por isso foge enquanto podes;
 
 ![](resources/Runner.gif)
 
-- Movimento do JumperMonster: O JumperMonster será capaz de saltar para cima de paredes de modo a conseguir percorrer sempre o caminho mais curto até à personagem principal;
+- Movimento do JumperMonster: O JumperMonster será capaz de saltar para cima de paredes e andar em cima das memsmas de modo a conseguir percorrer sempre o caminho mais curto até ao personagem principal;
 
 ![](resources/Jumper.gif)
 
-- Movimento do WallBreakerMonster: O WallBreakerMonster terá a habilidade de destruir paredes de gelo do mesmo modo que a personagem principal;
+- Movimento do WallBreakerMonster: O WallBreakerMonster terá a habilidade de destruir paredes de gelo do mesmo modo que o personagem principal;
 
 ![](resources/WallBreaker.gif)
 
-- PowerUp do Morango: O Morango é uma fruta rara que dará ao personagem um escudo (o IceCream fica azul), que o deixará imune ao toque de um monstro;
+- PowerUp do Morango: O Morango é uma fruta rara que dará ao personagem um escudo (o Bad Ice Cream fica azul), que o deixará imune ao toque de um monstro;
 
 ![](resources/StrawberryAbility.gif)
 
-- _Hot Floor_: No mapa irão existir zonas onde o IceCream não conseguirá criar paredes de gelo, apesar de ser possível caminhar por cima destas normalmente;
+- _Hot Floor_: No mapa irão existir zonas onde o IceCream não conseguirá criar paredes de gelo, apesar de ser possível caminhar por cima destas, normalmente;
 
 ![](resources/HotTile.gif)
 
-- Colisão Personagem - Fruta: Quando o personagem avança para uma zona onde já existe uma fruta, coleta a fruta e dependendo do tipo de fruta, terá diferentes PowerUp's;
+- Colisão Personagem - Fruta: Quando o personagem avança para uma zona onde já existe uma fruta, coleta a fruta e dependendo do tipo de fruta, poderá receber um _Power Up_;
 
 ![](resources/EatFruit.gif)
 
-- Sons no Jogo: Durante todo o jogo haverá música a passar em plano de fundo, sendo estas diferentes entre os menus, durante o jogo (quando destrói paredes, quanto colhe fruta, etc) e quando o jogador perde. 
+- Sons no Jogo: Os diferentes Menus e o próprio jogo terão música de fundo. Também as diferentes interações do utilizador com o jogo, terão sons correspondentes. 
 
 ## Menus
 - Menu Principal: Quando o jogo é iniciado, o "Main Menu" é aberto. Neste, o jogador poderá escolher entre começar a jogar, aceder às instruções ou sair do jogo;
