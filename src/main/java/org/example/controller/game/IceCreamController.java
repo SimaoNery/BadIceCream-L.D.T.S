@@ -32,7 +32,7 @@ public class IceCreamController extends GameController {
                 getModel().getIceCream().setPosition(position);
                 if (getModel().isMonster(position)) getModel().getIceCream().changeAlive();
             }
-        }
+        }   
 
         @Override
         public void step(Game game, GUI.ACTION action, long time) {
