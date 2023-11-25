@@ -127,7 +127,7 @@ Vantagens
 - Torna a correção do código e a criação de testes mais simples;
 - Ao introduzir novos estados deixa de ser necessário mudar estados já existentes.
 
-## _*** Pattern_
+## _Strategy Pattern_
 ### Contexto do Problema
 As classes RunnerController, DefaultController, JumperController e WallBreakerController difererem apenas na definição dos métodos step e moveMonster. Criando quatro classes completamente iguais na sua interface mas apenas diferentes nas implementações desses métodos trás redundância ao projeto (por estar a repetir alguns campos idênticos).
 
