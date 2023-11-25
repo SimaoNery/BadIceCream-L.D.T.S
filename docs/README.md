@@ -141,6 +141,21 @@ A implementação deste padrão é representada através do seguinte modelo UML:
 
 ### Consequências
 Desta forma, quando se pretende executar step de qualquer monstro, faz-se via MonsterControllerManager e este executa o respetivo MonsterController que irá processar e satisfazer o pedido.
+
+## _Game Loop Pattern_
+### Contexto do Problema
+Por se tratar de um jogo, existe um padrão de desenho evidente. O jogo funciona como um loop que vai iterando e fazendo alterações ao seu estado.
+
+### Padrão
+Este padrão consiste num loop onde é controlado o tempo de cada iteração, permitindo avançar mais rapidamente ou lentamente no jogo. O método "step" utilizado por várias classes, por exemplo para avançar os monstros.
+
+### Implementação
+A implementação deste padrão é representada através do seguinte modelo UML:
+
+<img src="resources/gameLoop.png" width="1500" height="400" />
+
+### Consequências
+Desta forma, consegue-se controlar a fluidez e a progressão do jogo ao longo do tempo.
    
 ## _Code Smells_
 **TO BE DONE**  
