@@ -76,7 +76,7 @@ Desde o início do projeto, visou-se desenvolver uma estrutura que fosse bem org
 Com estes problemas em mente, optou-se por aplicar o padrão arquitetural MVC (Model View Controller), que divide o programa em três camadas, _View_, _Model_ e _Controller_. A camada _Model_ contém apenas os dados, que caso sofram mudanças, informará a _View_ . Por sua vez a _View_ é responsável pela interface com a qual o jogado vai interagir, tendo em conta os dados atuais e envia ações do utilizador para o _Controller_. Esta última camada interpreta os inputs recebidos pelo utilizador e fornecidos pelo _View_ e atualiza o _Model_ com base nessa informação. 
 
 ### Implementação
-A implantação deste padrão pode ser representada através do seguinte modelo U.M.L:
+A implementação deste padrão pode ser representada através do seguinte modelo U.M.L:
 
 <img src="resources/MVC.drawio.png" width="1000" height="500" />
 
@@ -145,6 +145,7 @@ O código para as classes que utilizam este padrão encontra-se nos seguintes li
 - JumperController (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/monsters/JumperController.java)
 - RunnerController (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/monsters/RunnerController.java)
 - WallBreakerController (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/monsters/WallBreakerController.java)
+- 
 ### Consequências
 Desta forma, quando se pretende executar _step_ de qualquer monstro, faz-se via _MonsterControllerManager_ e este executa o respetivo _MonsterController_ que irá processar e satisfazer o pedido.
 
