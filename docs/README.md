@@ -5,7 +5,7 @@ Neste jogo de _arcade_ poderás ajudar o Bad Ice Cream a roubar as suas frutas f
 # _UML Diagram_
 O esquema e desenho de alto nível deste jogo foram pensados inicialmente e recorreu-se a Unified Modelling Language (UML) para o representar. O UML é o seguinte:
 
-<img src="resources/UML.drawio.png" width="2000" height="1100" />
+<img src="resources/UML.drawio.png" width="2000" height="1000" />
 
 # _Features_ Implementadas
 - Movimento do Bad Ice Cream: O personagem irá mover-se para cima (seta para cima), para baixo (seta para baixo), para esquerda (seta para a esquerda) ou para a direita (seta para a direita), de acordo com o input do utilizador;
