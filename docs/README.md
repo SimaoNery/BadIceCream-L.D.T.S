@@ -2,6 +2,11 @@
 
 Neste jogo de _arcade_ poderás ajudar o Bad Ice Cream a roubar as suas frutas favoritas. Mas, cuidado, a fruta tem dono e os monstros que a protegem não gostam nada de ladrões. Utiliza o poder de criar e destruir paredes de gelo do Bad Ice Cream, para encurralar os monstros e encher a barriga à vontade.
 
+# _UML Diagram_
+O esquema e desenho de alto nível deste jogo foram pensados inicialmente e recorreu-se a Unified Modelling Language (UML) para o representar. O UML é o seguinte:
+
+<img src="resources/UML.drawio.png" width="2000" height="1500" />
+
 # _Features_ Implementadas
 - Movimento do Bad Ice Cream: O personagem irá mover-se para cima (seta para cima), para baixo (seta para baixo), para esquerda (seta para a esquerda) ou para a direita (seta para a direita), de acordo com o input do utilizador;
 
@@ -76,7 +81,7 @@ Desde o início do projeto, visou-se desenvolver uma estrutura que fosse bem org
 Com estes problemas em mente, optou-se por aplicar o padrão arquitetural MVC (Model View Controller), que divide o programa em três camadas, _View_, _Model_ e _Controller_. A camada _Model_ contém apenas os dados, que caso sofram mudanças, informará a _View_ . Por sua vez a _View_ é responsável pela interface com a qual o jogado vai interagir, tendo em conta os dados atuais e envia ações do utilizador para o _Controller_. Esta última camada interpreta os inputs recebidos pelo utilizador e fornecidos pelo _View_ e atualiza o _Model_ com base nessa informação. 
 
 ### Implementação
-A implementação deste padrão pode ser representada através do seguinte modelo U.M.L:
+A implantação deste padrão pode ser representada através do seguinte modelo U.M.L:
 
 <img src="resources/MVC.drawio.png" width="1000" height="500" />
 
