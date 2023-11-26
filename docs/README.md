@@ -166,7 +166,7 @@ Por este motivo, recorreu-se ao _Factory Method Pattern_, que elimina a necessid
 
 ### Implementação
 A implementação deste padrão é representada através do seguinte modelo UML:
-<img src="resources/FactoryPattern.png" width="800" height="400" />
+<img src="resources/FactoryPattern.png" width="600" height="400" />
 
 O código para a implementação deste padrão encontra-se nos seguintes links:
 - State(https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/State.java)
