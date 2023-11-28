@@ -23,5 +23,7 @@
 ## Menu de Fim de Jogo:
 <img src="docs/resources/GameOver.png" width="500" height="500" />
 
+## Relatório Completo:
+https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/docs/README.md
 
 Este projeto foi realizado por Nelson Neto(up202108117@fe.up.pt), Paulo Fidalgo(up201806603@fe.up.pt) e Simão Neri(up202206370@fe.up.pt).
