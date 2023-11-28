@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'application'
     //id "org.kordamp.gradle.errorprone" version "0.47.0"
 }
 
@@ -10,6 +11,9 @@ repositories {
     mavenCentral()
 }
 
+application {
+    mainClass.set('badIceCream.Game')
+}
 dependencies {
     testImplementation platform("org.junit:junit-bom:5.9.1")
     testImplementation 'org.junit.jupiter:junit-jupiter'
