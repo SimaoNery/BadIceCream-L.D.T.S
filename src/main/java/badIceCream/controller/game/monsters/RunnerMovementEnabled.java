@@ -4,35 +4,30 @@ import badIceCream.controller.game.Step;
 import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.monsters.Monster;
-import badIceCream.utils.ShortestPathNextMove;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Queue;
 
 public class RunnerMovementEnabled implements Step {
     @Override
     public void step(Monster monster, Arena arena, long time, long lastMovement) throws IOException {
-        if (time - lastMovement >= 250) {
-            Position pos = getNextMove(monster, arena);
+        if (time - lastMovement >= 150) {
+            Position pos = getPossible(monster, arena);
             if (pos != null) moveMonster(monster, pos, arena);
         }
     }
-    private Position getNextMove(Monster monster, Arena arena) {
-        Position nextMove = ShortestPathNextMove.findShortestPath(monster, arena);
-        if (nextMove == null) {
-            List<Position> options = new java.util.ArrayList<>(List.of(new Position[]{monster.getPosition().getDown(), monster.getPosition().getLeft(), monster.getPosition().getUp(), monster.getPosition().getRight()}));
 
-            options.removeIf(pos -> !arena.isEmptyMonsters(pos));
+    private Position getPossible(Monster monster, Arena arena) {
+        List<Position> options = new java.util.ArrayList<>(List.of(new Position[]{monster.getPosition().getDown(), monster.getPosition().getLeft(), monster.getPosition().getUp(), monster.getPosition().getRight()}));
 
-            if (options.isEmpty()) return null;
+        options.removeIf(pos -> !arena.isEmptyMonsters(pos));
 
-            java.util.Random random = new java.util.Random();
-            int randomIndex = random.nextInt(options.size());
+        if (options.isEmpty()) return null;
 
-            return options.get(randomIndex);
-        }
-        return nextMove;
+        java.util.Random random = new java.util.Random();
+        int randomIndex = random.nextInt(options.size());
+
+        return options.get(randomIndex);
     }
     @Override
     public void moveMonster(Monster monster, Position position, Arena arena) {

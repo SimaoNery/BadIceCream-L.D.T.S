@@ -7,7 +7,8 @@ import badIceCream.controller.Controller;
 import badIceCream.viewer.game.ArenaViewer;
 
 public class GameState extends State<Arena> {
-    public GameState(Arena arena) {
+    protected int level;
+    public GameState(Arena arena, int level) {
         super(arena);
     }
 
@@ -18,6 +19,6 @@ public class GameState extends State<Arena> {
 
     @Override
     protected Controller<Arena> getController() {
-        return new ArenaController(getModel());
+        return new ArenaController(getModel(), level);
     }
 }

@@ -8,8 +8,8 @@ import badIceCream.viewer.menu.InstructionsMenuViewer;
 
 
 public class InstructionsMenuState extends MenuState<InstructionsMenu> {
-    public InstructionsMenuState(InstructionsMenu model) {
-        super(model);
+    public InstructionsMenuState(InstructionsMenu model, int level) {
+        super(model, level);
     }
 
     @Override
@@ -19,6 +19,6 @@ public class InstructionsMenuState extends MenuState<InstructionsMenu> {
 
     @Override
     protected Controller<InstructionsMenu> getController() {
-        return new InstructionsMenuController(getModel());
+        return new InstructionsMenuController(getModel(), level);
     }
 }

@@ -9,8 +9,9 @@ import badIceCream.states.MainMenuState;
 import java.io.IOException;
 
 public class GameOverMenuController extends MenuController<GameOverMenu> {
-    public GameOverMenuController(GameOverMenu menu) {
-        super(menu);
+
+    public GameOverMenuController(GameOverMenu menu, int level) {
+        super(menu, level);
     }
 
     @Override
@@ -23,7 +24,7 @@ public class GameOverMenuController extends MenuController<GameOverMenu> {
                 getModel().nextEntry();
                 break;
             case SELECT:
-                if (getModel().isSelectedQuitToMainMenu()) game.setState(new MainMenuState(new MainMenu()));
+                if (getModel().isSelectedQuitToMainMenu()) game.setState(new MainMenuState(new MainMenu(), level));
                 if (getModel().isSelectedPlayAgain()) game.setState(null);
         }
     }
