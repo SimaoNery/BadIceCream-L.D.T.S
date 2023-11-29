@@ -2,8 +2,6 @@ package badIceCream.controller.game;
 
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.monsters.Monster;
-import badIceCream.GUI.GUI;
-import badIceCream.model.Position;
 
 import java.io.IOException;
 

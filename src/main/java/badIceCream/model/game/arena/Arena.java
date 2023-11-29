@@ -4,6 +4,7 @@ import badIceCream.model.Position;
 
 import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.IceWall;
+import badIceCream.model.game.elements.StoneWall;
 import badIceCream.model.game.elements.fruits.Fruit;
 import badIceCream.model.game.elements.monsters.Monster;
 import badIceCream.model.game.elements.Wall;
@@ -66,6 +67,18 @@ public class Arena {
     public boolean isEmptyMonsters(Position position) {
         for (Wall wall : walls)
             if (wall.getPosition().equals(position))
+                return false;
+        for (Monster monster : monsters) {
+            if (monster.getPosition().equals(position)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean isEmptyJumper(Position position) {
+        for (Wall wall : walls)
+            if (wall instanceof StoneWall && wall.getPosition().equals(position))
                 return false;
         for (Monster monster : monsters) {
             if (monster.getPosition().equals(position)) {

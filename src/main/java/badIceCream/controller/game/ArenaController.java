@@ -2,6 +2,7 @@ package badIceCream.controller.game;
 
 import badIceCream.Game;
 import badIceCream.controller.game.monsters.DefaultMovement;
+import badIceCream.controller.game.monsters.JumperMovement;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.GUI.GUI;
 import badIceCream.model.game.elements.monsters.Monster;
@@ -10,21 +11,23 @@ import badIceCream.states.MainMenuState;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ArenaController extends GameController {
     private final IceCreamController iceCreamController;
-    private List<MonsterController> monsterController;
+    private final List<MonsterController> monsterController;
 
     public ArenaController(Arena arena) {
         super(arena);
         this.iceCreamController = new IceCreamController(arena);
+        monsterController = new ArrayList<>();
 
         for (Monster m : arena.getMonsters()) {
             switch (m.getType()) {
                 case 1: monsterController.add(new MonsterController(arena, new DefaultMovement(), m, 750));
                     break;
-                case 2: monsterController.add(new MonsterController(arena, new DefaultMovement(), m, 500));
+                case 2: monsterController.add(new MonsterController(arena, new JumperMovement(), m, 500));
                     break;
                 case 3: monsterController.add(new MonsterController(arena, new DefaultMovement(), m, 250));
                     break;

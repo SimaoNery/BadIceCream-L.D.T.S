@@ -8,7 +8,7 @@ import badIceCream.model.game.elements.monsters.Monster;
 import java.io.IOException;
 import java.util.List;
 
-public class DefaultMovement implements Step {
+public class JumperMovement implements Step {
     @Override
     public void step(Monster monster, Arena arena) throws IOException {
         Position pos = getPossible(monster, arena);
@@ -18,7 +18,7 @@ public class DefaultMovement implements Step {
     private Position getPossible(Monster monster, Arena arena) {
         List<Position> options = new java.util.ArrayList<>(List.of(new Position[]{monster.getPosition().getDown(), monster.getPosition().getLeft(), monster.getPosition().getUp(), monster.getPosition().getRight()}));
 
-        options.removeIf(pos -> !arena.isEmptyMonsters(pos));
+        options.removeIf(pos -> !arena.isEmptyJumper(pos));
 
         if (options.isEmpty()) return null;
 
@@ -27,11 +27,11 @@ public class DefaultMovement implements Step {
 
         return options.get(randomIndex);
     }
+
     @Override
     public void moveMonster(Monster monster, Position position, Arena arena) {
         monster.setPosition(position);
         if (arena.getIceCream().getPosition().equals(position))
             arena.getIceCream().changeAlive();
-
     }
 }
