@@ -22,6 +22,7 @@ public interface GUI {
     void drawPineappleFruit(Position position);
     void drawPepperFruit(Position position);
     void drawStrawberryFruit(Position position);
+    void drawHotFloor(Position position);
 
 
     void drawText(Position position, String text, String color);
