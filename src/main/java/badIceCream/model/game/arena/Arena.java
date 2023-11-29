@@ -136,6 +136,17 @@ public class Arena {
         return false;
     }
 
+    public int eatFruit(Position position) {
+        for (Fruit f : fruits) {
+            if (f.getPosition().equals(position)) {
+                int type = f.getType();
+                fruits.remove(f);
+                return type;
+            }
+        }
+        return -1;
+    }
+
     public void powerIceCream(GUI.ACTION lastMovement) {
         switch (lastMovement) {
             case UP: {
