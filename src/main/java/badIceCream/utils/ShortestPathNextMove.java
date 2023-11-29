@@ -14,6 +14,7 @@ public class ShortestPathNextMove {
         Position iceCreamPos = arena.getIceCream().getPosition();
 
         PriorityQueue<Node> pq = new PriorityQueue<>();
+
         pq.offer(new Node(monsterPos, 0, manhattanDistance(monsterPos, iceCreamPos), null));
 
         Set<String> visited = new HashSet<>();
@@ -22,8 +23,8 @@ public class ShortestPathNextMove {
             Node current = pq.poll();
 
             if (current.position.equals(iceCreamPos)) {
-                // Reconstruct the path
-                while (current.parent != null) {
+
+                while (current.parent.position != monsterPos) {
                     current = current.parent;
                 }
                 return current.position;
@@ -31,10 +32,9 @@ public class ShortestPathNextMove {
 
             if (!visited.contains(current.position.getX() + "," + current.position.getY())) {
                 visited.add(current.position.getX() + "," + current.position.getY());
-                List<Position> options = new java.util.ArrayList<>(List.of(new Position[]{current.position.getDown(), current.position.getLeft(), current.position.getUp(), current.position.getRight()}));
+                List<Position> options = new ArrayList<>(List.of(new Position[]{current.position.getDown(), current.position.getLeft(), current.position.getUp(), current.position.getRight()}));
                 for (Position pos : options) {
-
-                    if (pos.getY() >= 0 && pos.getY() < rows && pos.getX() >= 0 && pos.getX() < cols && arena.isEmpty(pos)) {
+                    if (pos.getY() >= 0 && pos.getY() < rows && pos.getX() >= 0 && pos.getX() < cols && arena.isEmpty(pos) && !arena.isMonster(pos)) {
                         int newCost = current.cost + 1;
                         int newHeuristic = manhattanDistance(pos, iceCreamPos);
                         pq.offer(new Node(pos, newCost, newHeuristic, current));
@@ -42,8 +42,7 @@ public class ShortestPathNextMove {
                 }
             }
         }
-
-        return null; // No path found
+        return new Position(-1,-1);
     }
     private static int manhattanDistance(Position pos1, Position pos2) {
         return Math.abs(pos1.getX() - pos2.getX()) + Math.abs(pos1.getY() - pos2.getY());
