@@ -4,12 +4,9 @@ import badIceCream.Exceptions.StoneWallDestroyedException;
 import badIceCream.GUI.GUI;
 import badIceCream.model.Position;
 
-import badIceCream.model.game.elements.IceCream;
-import badIceCream.model.game.elements.IceWall;
-import badIceCream.model.game.elements.StoneWall;
+import badIceCream.model.game.elements.*;
 import badIceCream.model.game.elements.fruits.Fruit;
 import badIceCream.model.game.elements.monsters.Monster;
-import badIceCream.model.game.elements.Wall;
 
 
 import java.util.List;
@@ -21,6 +18,7 @@ public class Arena {
     private List<Monster> monsters;
     private List<Wall> walls;
     private List<Fruit> fruits;
+    private List<HotFloor> hotFloors;
 
     public Arena(int width, int height) {
         this.width = width;
@@ -49,6 +47,10 @@ public class Arena {
         this.iceCream = iceCream;
     }
 
+    public List<HotFloor> getHotFloors() {
+        return hotFloors;
+    }
+
     public void setMonsters(List<Monster> monsters) {
         this.monsters = monsters;
     }
@@ -57,6 +59,9 @@ public class Arena {
     }
     public void setWalls(List<Wall> walls) {
         this.walls = walls;
+    }
+    public void setHotFloors(List<HotFloor> hotFloors) {
+        this.hotFloors = hotFloors;
     }
 
     public boolean isEmpty(Position position) {
@@ -88,6 +93,14 @@ public class Arena {
             }
         }
         return true;
+    }
+
+    public boolean isHotFloor(Position position) {
+        for(HotFloor hotFloor : hotFloors) {
+            if (position.equals(hotFloor.getPosition()))
+                return true;
+        }
+        return false;
     }
 
     public void iceWallDestroyed(Position position) throws StoneWallDestroyedException {
@@ -188,7 +201,7 @@ public class Arena {
     private void constroyIceWall(int deltaX, int deltaY) {
         Position pos = new Position(iceCream.getPosition().getX() + deltaX, iceCream.getPosition().getY() + deltaY);
 
-        while (isEmptyMonsters(pos)) {
+        while (isEmptyMonsters(pos) && !isHotFloor(pos)) {
             createIceWall(pos);
             pos.setX(pos.getX() + deltaX);
             pos.setY(pos.getY() + deltaY);
