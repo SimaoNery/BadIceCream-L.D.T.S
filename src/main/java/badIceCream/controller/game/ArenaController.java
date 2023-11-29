@@ -8,8 +8,14 @@ import badIceCream.controller.game.monsters.WallBreakerMovement;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.GUI.GUI;
 import badIceCream.model.game.elements.monsters.Monster;
+import badIceCream.model.menu.GameOverMenu;
+import badIceCream.model.menu.LevelCompletedMenu;
 import badIceCream.model.menu.MainMenu;
+import badIceCream.model.menu.PauseMenu;
+import badIceCream.states.GameOverMenuState;
+import badIceCream.states.LevelCompletedMenuState;
 import badIceCream.states.MainMenuState;
+import badIceCream.states.PauseMenuState;
 
 
 import java.io.IOException;
@@ -40,8 +46,15 @@ public class ArenaController extends GameController {
     }
 
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
-        if (action == GUI.ACTION.QUIT || getModel().getIceCream().getAlive())
-            game.setState(new MainMenuState(new MainMenu()));
+        if (getModel().getFruits().isEmpty()) {
+            game.setState(new LevelCompletedMenuState(new LevelCompletedMenu()));
+        }
+        else if (!getModel().getIceCream().getAlive()) {
+            game.setState(new GameOverMenuState(new GameOverMenu()));
+        }
+        else if (action == GUI.ACTION.PAUSE) {
+            game.setState(new PauseMenuState(new PauseMenu(), game.getState()));
+        }
         else {
             iceCreamController.step(game, action, time);
             for (MonsterController m : monsterController) {

@@ -2,20 +2,15 @@ package badIceCream.controller.menu;
 
 import badIceCream.GUI.GUI;
 import badIceCream.Game;
+import badIceCream.model.menu.GameOverMenu;
 import badIceCream.model.menu.MainMenu;
-import badIceCream.model.menu.PauseMenu;
-import badIceCream.states.GameState;
 import badIceCream.states.MainMenuState;
-import badIceCream.states.State;
 
 import java.io.IOException;
 
-public class PauseMenuController extends MenuController<PauseMenu> {
-    private final State lastState;
-
-    public PauseMenuController(PauseMenu menu, State lastState) {
+public class GameOverMenuController extends MenuController<GameOverMenu> {
+    public GameOverMenuController(GameOverMenu menu) {
         super(menu);
-        this.lastState = lastState;
     }
 
     @Override
@@ -28,8 +23,8 @@ public class PauseMenuController extends MenuController<PauseMenu> {
                 getModel().nextEntry();
                 break;
             case SELECT:
-                if (getModel().isSelectedResume()) game.setState(lastState);
-                if (getModel().isSelectedMenu()) game.setState(new MainMenuState(new MainMenu()));
+                if (getModel().isSelectedQuitToMainMenu()) game.setState(new MainMenuState(new MainMenu()));
+                if (getModel().isSelectedPlayAgain()) game.setState(null);
         }
     }
 }

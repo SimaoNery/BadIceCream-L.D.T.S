@@ -3,8 +3,13 @@ package badIceCream.controller.menu;
 import badIceCream.GUI.GUI;
 import badIceCream.Game;
 import badIceCream.model.game.arena.LoaderArenaBuilder;
+import badIceCream.model.menu.InstructionsMenu;
 import badIceCream.model.menu.MainMenu;
+import badIceCream.model.menu.SelectLevelMenu;
 import badIceCream.states.GameState;
+import badIceCream.states.InstructionsMenuState;
+import badIceCream.states.MenuState;
+import badIceCream.states.SelectLevelMenuState;
 
 import java.io.IOException;
 
@@ -24,7 +29,8 @@ public class MainMenuController extends MenuController<MainMenu> {
                 break;
             case SELECT:
                 if (getModel().isSelectedExit()) game.setState(null);
-                if (getModel().isSelectedStart()) game.setState(new GameState(new LoaderArenaBuilder(1).createArena()));
+                if (getModel().isSelectedInstructions()) game.setState(new InstructionsMenuState(new InstructionsMenu()));
+                if (getModel().isSelectedStart()) game.setState(new SelectLevelMenuState(new SelectLevelMenu()));
         }
     }
 }

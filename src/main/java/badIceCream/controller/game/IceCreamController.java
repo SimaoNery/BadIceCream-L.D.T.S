@@ -32,6 +32,10 @@ public class IceCreamController extends GameController {
         private void moveIceCream(Position position, GUI.ACTION last) {
             if (getModel().isEmpty(position)) {
                 getModel().getIceCream().setPosition(position);
+                int type = getModel().eatFruit(position);
+                if (type != -1) {
+                    // Type of fruit TO DO
+                }
                 lastMovement = last;
                 if (getModel().isMonster(position)) getModel().getIceCream().changeAlive();
             }
