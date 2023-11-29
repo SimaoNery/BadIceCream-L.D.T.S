@@ -1,6 +1,7 @@
 package badIceCream.model.game.arena;
 
 import badIceCream.Exceptions.StoneWallDestroyedException;
+import badIceCream.GUI.GUI;
 import badIceCream.model.Position;
 
 import badIceCream.model.game.elements.IceCream;
@@ -120,5 +121,77 @@ public class Arena {
                 return true;
         }
         return false;
+    }
+
+    public void powerIceCream(GUI.ACTION lastMovement) {
+        switch (lastMovement) {
+            case UP: {
+                if (isIceWall(iceCream.getPosition().getUp())) {
+                    destroyIceWall(0, -1);
+                }
+                else {
+                    constroyIceWall(0, -1);
+                }
+                break;
+            }
+            case DOWN: {
+                if (isIceWall(iceCream.getPosition().getDown())) {
+                    destroyIceWall(0, 1);
+                }
+                else {
+                    constroyIceWall(0, 1);
+                }
+                break;
+            }
+            case RIGHT: {
+                if (isIceWall(iceCream.getPosition().getRight())) {
+                    destroyIceWall(1, 0);
+                }
+                else {
+                    constroyIceWall(1, 0);
+                }
+                break;
+            }
+            case LEFT: {
+                if (isIceWall(iceCream.getPosition().getLeft())) {
+                    destroyIceWall(-1, 0);
+                }
+                else {
+                    constroyIceWall(-1, 0);
+                }
+                break;
+            }
+        }
+    }
+
+    private void destroyIceWall(int deltaX, int deltaY) {
+        Position pos = new Position(iceCream.getPosition().getX() + deltaX, iceCream.getPosition().getY() + deltaY);
+
+        while (isIceWall(pos)) {
+            try {
+            iceWallDestroyed(pos);
+            pos.setX(pos.getX() + deltaX);
+            pos.setY(pos.getY() + deltaY);
+            }
+            catch (StoneWallDestroyedException e) {
+                System.err.println("Error: " + e.getMessage());
+                break;
+            }
+        }
+    }
+
+    private void createIceWall(Position pos) {
+        IceWall newIceWall = new IceWall(pos.getX(), pos.getY());
+        walls.add(newIceWall);
+    }
+
+    private void constroyIceWall(int deltaX, int deltaY) {
+        Position pos = new Position(iceCream.getPosition().getX() + deltaX, iceCream.getPosition().getY() + deltaY);
+
+        while (isEmptyMonsters(pos)) {
+            createIceWall(pos);
+            pos.setX(pos.getX() + deltaX);
+            pos.setY(pos.getY() + deltaY);
+        }
     }
 }
