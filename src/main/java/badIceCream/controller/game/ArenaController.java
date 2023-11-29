@@ -24,11 +24,14 @@ import java.util.List;
 
 public class ArenaController extends GameController {
     private final IceCreamController iceCreamController;
-    private final List<MonsterController> monsterController;
+    private List<MonsterController> monsterController;
+
+    private int level;
 
     public ArenaController(Arena arena, int level) {
-        super(arena, level);
-        this.iceCreamController = new IceCreamController(arena, level);
+        super(arena);
+        this.level = level;
+        this.iceCreamController = new IceCreamController(arena);
         monsterController = new ArrayList<>();
 
         for (Monster m : arena.getMonsters()) {

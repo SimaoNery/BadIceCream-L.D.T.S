@@ -11,7 +11,7 @@ import java.util.List;
 public class JumperMovement implements Step {
     @Override
     public void step(Monster monster, Arena arena, long time, long lastMovement) throws IOException {
-        if (time - lastMovement >= 500) {
+        if (time - lastMovement >= 200) {
             Position pos = getPossible(monster, arena);
             if (pos != null) moveMonster(monster, pos, arena);
         }

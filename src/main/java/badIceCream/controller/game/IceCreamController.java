@@ -9,8 +9,8 @@ import badIceCream.GUI.GUI;
 public class IceCreamController extends GameController {
 
         private GUI.ACTION lastMovement;
-        public IceCreamController(Arena arena, int level) {
-            super(arena, level);
+        public IceCreamController(Arena arena) {
+            super(arena);
         }
 
         public void moveIceCreamLeft() {

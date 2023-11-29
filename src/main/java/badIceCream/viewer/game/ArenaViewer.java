@@ -15,7 +15,6 @@ public class ArenaViewer extends Viewer<Arena> {
     private <T extends Element> void drawElement(GUI gui, T element, ElementViewer<T> viewer) {
         viewer.draw(element, gui);
     }
-
     @Override
     public void drawElements(GUI gui) {
         for (Wall wall : getModel().getWalls()) {
