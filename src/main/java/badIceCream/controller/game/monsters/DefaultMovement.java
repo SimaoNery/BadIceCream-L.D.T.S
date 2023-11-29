@@ -1,23 +1,26 @@
 package badIceCream.controller.game.monsters;
 
-import badIceCream.controller.game.MonsterController;
+import badIceCream.GUI.GUI;
+import badIceCream.controller.game.Step;
+import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.monsters.Monster;
-import badIceCream.GUI.GUI;
-import badIceCream.model.Position;
 
 import java.io.IOException;
 import java.util.List;
 
-public class DefaultController extends MonsterController {
+public class DefaultMovement implements Step {
+    private long lastMovement;
+    private final Arena arena;
 
-    public DefaultController(Arena arena) {
-        super(arena);
+    public DefaultMovement(Arena arena) {
+        lastMovement = 0;
+        this.arena = arena;
     }
 
     @Override
-    public void step(Monster monster, GUI.ACTION action, long time) throws IOException {
-        if (time - lastMovement >= 750) {
+    public void step(Monster monster, GUI.ACTION action, long time, int TIME_CONST) throws IOException {
+        if (time - lastMovement >= TIME_CONST) {
             Position pos = getPossible(monster);
             if (pos != null) moveMonster(monster, pos);
             lastMovement = time;
@@ -37,8 +40,7 @@ public class DefaultController extends MonsterController {
         return options.get(randomIndex);
     }
 
-    @Override
-    protected void moveMonster(Monster monster, Position position) {
+    public void moveMonster(Monster monster, Position position) {
         monster.setPosition(position);
         if (arena.getIceCream().getPosition().equals(position))
             arena.getIceCream().changeAlive();

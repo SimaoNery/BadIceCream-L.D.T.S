@@ -7,14 +7,23 @@ import badIceCream.model.Position;
 
 import java.io.IOException;
 
-public abstract class MonsterController {
-    protected final Arena arena;
-    protected long lastMovement;
+public class MonsterController {
+    Monster monster;
+    private Step step;
+    private long lastMovement;
 
-    public MonsterController(Arena arena) {
-        this.arena = arena;
+    private final int TIME_CONST;
+
+    public MonsterController(Step step, Monster monster, int TIME_CONST) {
+        this.step = step;
+        this.monster = monster;
+        this.TIME_CONST = TIME_CONST;
         lastMovement = 0;
     }
-    public abstract void step(Monster monster, GUI.ACTION action, long time) throws IOException;
-    protected abstract void moveMonster(Monster monster, Position position);
+    public void step(GUI.ACTION action, long time) throws IOException {
+        this.step.step(monster, action, time, TIME_CONST);
+    }
+    public void moveMonster(Position position) {
+        this.step.moveMonster(monster, position);
+    }
 }
