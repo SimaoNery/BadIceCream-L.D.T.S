@@ -10,9 +10,11 @@ import java.util.List;
 
 public class JumperMovement implements Step {
     @Override
-    public void step(Monster monster, Arena arena) throws IOException {
-        Position pos = getPossible(monster, arena);
-        if (pos != null) moveMonster(monster, pos, arena);
+    public void step(Monster monster, Arena arena, long time, long lastMovement) throws IOException {
+        if (time - lastMovement >= 500) {
+            Position pos = getPossible(monster, arena);
+            if (pos != null) moveMonster(monster, pos, arena);
+        }
     }
 
     private Position getPossible(Monster monster, Arena arena) {

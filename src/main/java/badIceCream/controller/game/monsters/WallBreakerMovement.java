@@ -11,18 +11,20 @@ import java.util.List;
 
 public class WallBreakerMovement implements Step {
     @Override
-    public void step(Monster monster, Arena arena) throws IOException {
+    public void step(Monster monster, Arena arena, long time, long lastMovement) throws IOException {
+        if (time - lastMovement >= 500) {
         Position pos = getPossible(monster, arena);
-        if (pos != null) {
-            if (arena.isIceWall(pos)) {
-                try {
-                    arena.iceWallDestroyed(pos);
+            if (pos != null) {
+                if (arena.isIceWall(pos)) {
+                    try {
+                        arena.iceWallDestroyed(pos);
+                    }
+                    catch (StoneWallDestroyedException e) {
+                        System.err.println("Error: " + e.getMessage());
+                    }
                 }
-                catch (StoneWallDestroyedException e) {
-                    System.err.println("Error: " + e.getMessage());
-                }
+                moveMonster(monster, pos, arena);
             }
-            moveMonster(monster, pos, arena);
         }
     }
 

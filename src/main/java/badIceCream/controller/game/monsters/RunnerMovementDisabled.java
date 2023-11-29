@@ -1,5 +1,6 @@
 package badIceCream.controller.game.monsters;
 
+
 import badIceCream.controller.game.Step;
 import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
@@ -8,11 +9,13 @@ import badIceCream.model.game.elements.monsters.Monster;
 import java.io.IOException;
 import java.util.List;
 
-public class RunnerMovement implements Step {
+public class RunnerMovementDisabled implements Step {
     @Override
-    public void step(Monster monster, Arena arena) throws IOException {
-        Position pos = getPossible(monster, arena);
-        if (pos != null) moveMonster(monster, pos, arena);
+    public void step(Monster monster, Arena arena, long time, long lastMovement) throws IOException {
+        if (time - lastMovement >= 500) {
+            Position pos = getPossible(monster, arena);
+            if (pos != null) moveMonster(monster, pos, arena);
+        }
     }
 
     private Position getPossible(Monster monster, Arena arena) {

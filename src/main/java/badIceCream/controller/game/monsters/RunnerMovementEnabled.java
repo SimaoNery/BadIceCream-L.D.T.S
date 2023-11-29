@@ -8,10 +8,10 @@ import badIceCream.model.game.elements.monsters.Monster;
 import java.io.IOException;
 import java.util.List;
 
-public class DefaultMovement implements Step {
+public class RunnerMovementEnabled implements Step {
     @Override
     public void step(Monster monster, Arena arena, long time, long lastMovement) throws IOException {
-        if (time - lastMovement >= 750) {
+        if (time - lastMovement >= 250) {
             Position pos = getPossible(monster, arena);
             if (pos != null) moveMonster(monster, pos, arena);
         }

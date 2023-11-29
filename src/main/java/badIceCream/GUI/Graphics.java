@@ -53,6 +53,7 @@ public class Graphics implements GUI {
         if(keyStroke.getKeyType() == KeyType.ArrowUp) return ACTION.UP;
         if(keyStroke.getKeyType() == KeyType.ArrowRight) return ACTION.RIGHT;
         if(keyStroke.getKeyType() == KeyType.ArrowLeft) return ACTION.LEFT;
+        if(keyStroke.getKeyType() == KeyType.Backspace) return ACTION.SPACE;
 
         if(keyStroke.getKeyType() == KeyType.Enter) return ACTION.SELECT;
         if(keyStroke.getKeyType() == KeyType.Escape) return ACTION.PAUSE;

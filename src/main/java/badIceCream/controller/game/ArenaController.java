@@ -3,6 +3,7 @@ package badIceCream.controller.game;
 import badIceCream.Game;
 import badIceCream.controller.game.monsters.DefaultMovement;
 import badIceCream.controller.game.monsters.JumperMovement;
+import badIceCream.controller.game.monsters.RunnerMovementDisabled;
 import badIceCream.controller.game.monsters.WallBreakerMovement;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.GUI.GUI;
@@ -26,13 +27,13 @@ public class ArenaController extends GameController {
 
         for (Monster m : arena.getMonsters()) {
             switch (m.getType()) {
-                case 1: monsterController.add(new MonsterController(arena, new DefaultMovement(), m, 750));
+                case 1: monsterController.add(new MonsterController(arena, new DefaultMovement(), m));
                     break;
-                case 2: monsterController.add(new MonsterController(arena, new JumperMovement(), m, 500));
+                case 2: monsterController.add(new MonsterController(arena, new JumperMovement(), m));
                     break;
-                case 3: monsterController.add(new MonsterController(arena, new DefaultMovement(), m, 250));
+                case 3: monsterController.add(new MonsterController(arena, new RunnerMovementDisabled(), m));
                     break;
-                case 4: monsterController.add(new MonsterController(arena, new WallBreakerMovement(), m, 500));
+                case 4: monsterController.add(new MonsterController(arena, new WallBreakerMovement(), m));
                     break;
             }
         }

@@ -182,9 +182,9 @@ public class Arena {
 
         while (isIceWall(pos)) {
             try {
-            iceWallDestroyed(pos);
-            pos.setX(pos.getX() + deltaX);
-            pos.setY(pos.getY() + deltaY);
+                iceWallDestroyed(pos);
+                pos.setX(pos.getX() + deltaX);
+                pos.setY(pos.getY() + deltaY);
             }
             catch (StoneWallDestroyedException e) {
                 System.err.println("Error: " + e.getMessage());

@@ -7,6 +7,6 @@ import badIceCream.model.game.elements.monsters.Monster;
 import java.io.IOException;
 
 public interface Step {
-    void step(Monster monster, Arena arena) throws IOException;
+    void step(Monster monster, Arena arena, long time, long lastMovement) throws IOException;
     void moveMonster(Monster monster, Position position, Arena arena);
 }
