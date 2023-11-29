@@ -10,24 +10,13 @@ import java.io.IOException;
 import java.util.List;
 
 public class DefaultMovement implements Step {
-    private long lastMovement;
-    private final Arena arena;
-
-    public DefaultMovement(Arena arena) {
-        lastMovement = 0;
-        this.arena = arena;
-    }
-
     @Override
-    public void step(Monster monster, GUI.ACTION action, long time, int TIME_CONST) throws IOException {
-        if (time - lastMovement >= TIME_CONST) {
-            Position pos = getPossible(monster);
-            if (pos != null) moveMonster(monster, pos);
-            lastMovement = time;
-        }
+    public void step(Monster monster, Arena arena) throws IOException {
+        Position pos = getPossible(monster, arena);
+        if (pos != null) moveMonster(monster, pos, arena);
     }
 
-    private Position getPossible(Monster monster) {
+    private Position getPossible(Monster monster, Arena arena) {
         List<Position> options = new java.util.ArrayList<>(List.of(new Position[]{monster.getPosition().getDown(), monster.getPosition().getLeft(), monster.getPosition().getUp(), monster.getPosition().getRight()}));
 
         options.removeIf(pos -> !arena.isEmptyMonsters(pos));
@@ -40,7 +29,7 @@ public class DefaultMovement implements Step {
         return options.get(randomIndex);
     }
 
-    public void moveMonster(Monster monster, Position position) {
+    public void moveMonster(Monster monster, Position position, Arena arena) {
         monster.setPosition(position);
         if (arena.getIceCream().getPosition().equals(position))
             arena.getIceCream().changeAlive();

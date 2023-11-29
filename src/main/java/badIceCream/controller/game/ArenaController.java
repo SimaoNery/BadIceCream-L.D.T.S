@@ -22,13 +22,13 @@ public class ArenaController extends GameController {
 
         for (Monster m : arena.getMonsters()) {
             switch (m.getType()) {
-                case 1: monsterController.add(new MonsterController(new DefaultMovement(arena), m, 750));
+                case 1: monsterController.add(new MonsterController(arena, new DefaultMovement(), m, 750));
                     break;
-                case 2: monsterController.add(new MonsterController(new DefaultMovement(arena), m, 500));
+                case 2: monsterController.add(new MonsterController(arena, new DefaultMovement(), m, 500));
                     break;
-                case 3: monsterController.add(new MonsterController(new DefaultMovement(arena), m, 250));
+                case 3: monsterController.add(new MonsterController(arena, new DefaultMovement(), m, 250));
                     break;
-                case 4: monsterController.add(new MonsterController(new DefaultMovement(arena), m, 500));
+                case 4: monsterController.add(new MonsterController(arena, new DefaultMovement(), m, 500));
                     break;
             }
         }
@@ -40,7 +40,7 @@ public class ArenaController extends GameController {
         else {
             iceCreamController.step(game, action, time);
             for (MonsterController m : monsterController) {
-                m.step(action, time);
+                m.step(time);
             }
         }
     }

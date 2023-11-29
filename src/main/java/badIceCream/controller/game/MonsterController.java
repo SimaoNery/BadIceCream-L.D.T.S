@@ -11,19 +11,23 @@ public class MonsterController {
     Monster monster;
     private Step step;
     private long lastMovement;
-
+    private final Arena arena;
     private final int TIME_CONST;
 
-    public MonsterController(Step step, Monster monster, int TIME_CONST) {
+    public MonsterController(Arena arena, Step step, Monster monster, int TIME_CONST) {
+        this.arena = arena;
         this.step = step;
         this.monster = monster;
         this.TIME_CONST = TIME_CONST;
         lastMovement = 0;
     }
-    public void step(GUI.ACTION action, long time) throws IOException {
-        this.step.step(monster, action, time, TIME_CONST);
+    public void step(long time) throws IOException {
+        if (time - lastMovement >= TIME_CONST) {
+            this.step.step(monster, arena);
+            lastMovement = time;
+        }
     }
-    public void moveMonster(Position position) {
-        this.step.moveMonster(monster, position);
+    public void setStep(Step step) {
+        this.step = step;
     }
 }
