@@ -121,6 +121,11 @@ public class Graphics implements GUI {
     }
 
     @Override
+    public void drawHotFloor(Position position) {
+        drawCharacter(position.getX(), position.getY(), 'H', "#FF0000");
+    }
+
+    @Override
     public void clear(){
         screen.clear();
     }
