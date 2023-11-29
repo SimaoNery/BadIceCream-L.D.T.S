@@ -2,6 +2,7 @@ package badIceCream.model.game.arena;
 
 import badIceCream.model.Position;
 
+import badIceCream.model.game.elements.HotFloor;
 import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.IceWall;
 import badIceCream.model.game.elements.fruits.Fruit;
@@ -18,6 +19,7 @@ public class Arena {
     private List<Monster> monsters;
     private List<Wall> walls;
     private List<Fruit> fruits;
+    private List<HotFloor> hotFloors;
 
     public Arena(int width, int height) {
         this.width = width;
@@ -42,6 +44,9 @@ public class Arena {
         return walls;
     }
     public List<Fruit> getFruits(){return fruits;}
+
+    public List<HotFloor> getHotFloors() {return hotFloors;}
+
     public void setIceCream(IceCream iceCream) {
         this.iceCream = iceCream;
     }
@@ -55,6 +60,7 @@ public class Arena {
     public void setWalls(List<Wall> walls) {
         this.walls = walls;
     }
+    public void setHotFloors(List<HotFloor> hotFloors) {this.hotFloors = hotFloors;}
 
     public boolean isEmpty(Position position) {
         for (Wall wall : walls)
@@ -91,6 +97,13 @@ public class Arena {
     public boolean isFruit(Position position) {
         for (Fruit fruit : fruits) {
             if (fruit.getPosition().equals(position))
+                return true;
+        }
+        return false;
+    }
+    public boolean isHotFloor(Position position) {
+        for(HotFloor hotFloor : hotFloors) {
+            if (position.equals(hotFloor.getPosition()))
                 return true;
         }
         return false;

@@ -1,5 +1,6 @@
 package badIceCream.model.game.arena;
 
+import badIceCream.model.game.elements.HotFloor;
 import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.StoneWall;
 import badIceCream.model.game.elements.Wall;
@@ -97,5 +98,16 @@ public class LoaderArenaBuilder extends ArenaBuilder {
                 else if (line.charAt(x) == 'Q') fruits.add(new PineappleFruit(x,y));
         }
         return fruits;
+    }
+
+    @Override
+    protected List<HotFloor> createHotFloors() {
+        List<HotFloor> hotFloors = new ArrayList<>();
+        for (int y = 0; y < lines.size(); y++) {
+            String line = lines.get(y);
+            for (int x = 0; x < line.length(); x++)
+                if (line.charAt(x) == 'H') hotFloors.add(new HotFloor(x,y));
+        }
+        return hotFloors;
     }
 }
