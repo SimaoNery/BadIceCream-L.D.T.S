@@ -18,7 +18,7 @@ public class JumperMovement implements Step {
     private Position getPossible(Monster monster, Arena arena) {
         List<Position> options = new java.util.ArrayList<>(List.of(new Position[]{monster.getPosition().getDown(), monster.getPosition().getLeft(), monster.getPosition().getUp(), monster.getPosition().getRight()}));
 
-        options.removeIf(pos -> !arena.isEmptyJumper(pos));
+        options.removeIf(pos -> !arena.isEmptyNoStoneWall(pos));
 
         if (options.isEmpty()) return null;
 

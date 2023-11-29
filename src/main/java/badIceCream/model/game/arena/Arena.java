@@ -1,5 +1,6 @@
 package badIceCream.model.game.arena;
 
+import badIceCream.Exceptions.StoneWallDestroyedException;
 import badIceCream.model.Position;
 
 import badIceCream.model.game.elements.IceCream;
@@ -76,7 +77,7 @@ public class Arena {
         return true;
     }
 
-    public boolean isEmptyJumper(Position position) {
+    public boolean isEmptyNoStoneWall(Position position) {
         for (Wall wall : walls)
             if (wall instanceof StoneWall && wall.getPosition().equals(position))
                 return false;
@@ -86,6 +87,18 @@ public class Arena {
             }
         }
         return true;
+    }
+
+    public void iceWallDestroyed(Position position) throws StoneWallDestroyedException {
+        for (Wall wall : walls) {
+            if (wall.getPosition().equals(position) && wall instanceof StoneWall) {
+                throw new StoneWallDestroyedException();
+            }
+            if (wall.getPosition().equals(position)) {
+                walls.remove(wall);
+                return;
+            }
+        }
     }
     public boolean isIceWall(Position position) {
         for (Wall wall : walls) {

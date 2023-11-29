@@ -3,6 +3,7 @@ package badIceCream.controller.game;
 import badIceCream.Game;
 import badIceCream.controller.game.monsters.DefaultMovement;
 import badIceCream.controller.game.monsters.JumperMovement;
+import badIceCream.controller.game.monsters.WallBreakerMovement;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.GUI.GUI;
 import badIceCream.model.game.elements.monsters.Monster;
@@ -31,7 +32,7 @@ public class ArenaController extends GameController {
                     break;
                 case 3: monsterController.add(new MonsterController(arena, new DefaultMovement(), m, 250));
                     break;
-                case 4: monsterController.add(new MonsterController(arena, new DefaultMovement(), m, 500));
+                case 4: monsterController.add(new MonsterController(arena, new WallBreakerMovement(), m, 500));
                     break;
             }
         }
