@@ -14,13 +14,13 @@ public class RunnerMovementEnabled implements Step {
     @Override
     public void step(Monster monster, Arena arena, long time, long lastMovement) throws IOException {
         if (time - lastMovement >= 250) {
-            Position pos = getPossible(monster, arena);
+            Position pos = getNextMove(monster, arena);
             if (pos != null) moveMonster(monster, pos, arena);
         }
     }
-    private Position getPossible(Monster monster, Arena arena) {
-        Position nexMove = ShortestPathNextMove.findShortestPath(monster, arena);
-        if (nexMove.equals(new Position(-1, -1))) {
+    private Position getNextMove(Monster monster, Arena arena) {
+        Position nextMove = ShortestPathNextMove.findShortestPath(monster, arena);
+        if (nextMove == null) {
             List<Position> options = new java.util.ArrayList<>(List.of(new Position[]{monster.getPosition().getDown(), monster.getPosition().getLeft(), monster.getPosition().getUp(), monster.getPosition().getRight()}));
 
             options.removeIf(pos -> !arena.isEmptyMonsters(pos));
@@ -32,7 +32,7 @@ public class RunnerMovementEnabled implements Step {
 
             return options.get(randomIndex);
         }
-        return nexMove;
+        return nextMove;
     }
     @Override
     public void moveMonster(Monster monster, Position position, Arena arena) {
