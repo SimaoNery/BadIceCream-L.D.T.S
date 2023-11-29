@@ -26,9 +26,9 @@ public class ArenaController extends GameController {
     private final IceCreamController iceCreamController;
     private final List<MonsterController> monsterController;
 
-    public ArenaController(Arena arena) {
-        super(arena);
-        this.iceCreamController = new IceCreamController(arena);
+    public ArenaController(Arena arena, int level) {
+        super(arena, level);
+        this.iceCreamController = new IceCreamController(arena, level);
         monsterController = new ArrayList<>();
 
         for (Monster m : arena.getMonsters()) {
@@ -47,13 +47,13 @@ public class ArenaController extends GameController {
 
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
         if (getModel().getFruits().isEmpty()) {
-            game.setState(new LevelCompletedMenuState(new LevelCompletedMenu()));
+            game.setState(new LevelCompletedMenuState(new LevelCompletedMenu(), level + 1));
         }
         else if (!getModel().getIceCream().getAlive()) {
-            game.setState(new GameOverMenuState(new GameOverMenu()));
+            game.setState(new GameOverMenuState(new GameOverMenu(), level));
         }
         else if (action == GUI.ACTION.PAUSE) {
-            game.setState(new PauseMenuState(new PauseMenu(), game.getState()));
+            game.setState(new PauseMenuState(new PauseMenu(), game.getState(), level));
         }
         else {
             iceCreamController.step(game, action, time);

@@ -7,9 +7,10 @@ import badIceCream.controller.Controller;
 import java.io.IOException;
 
 public abstract class MenuController<T> extends Controller<T> {
-
-    public MenuController(T model) {
+    protected int level;
+    public MenuController(T model, int level) {
         super(model);
+        this.level = level;
     }
 
 }

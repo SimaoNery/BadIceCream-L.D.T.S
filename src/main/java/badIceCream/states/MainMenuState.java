@@ -7,8 +7,8 @@ import badIceCream.controller.menu.MainMenuController;
 import badIceCream.viewer.menu.MainMenuViewer;
 
 public class MainMenuState extends MenuState<MainMenu> {
-    public MainMenuState(MainMenu model) {
-        super(model);
+    public MainMenuState(MainMenu model, int level) {
+        super(model, level);
     }
 
     @Override
@@ -18,6 +18,6 @@ public class MainMenuState extends MenuState<MainMenu> {
 
     @Override
     protected Controller<MainMenu> getController() {
-        return new MainMenuController(getModel());
+        return new MainMenuController(getModel(), level);
     }
 }

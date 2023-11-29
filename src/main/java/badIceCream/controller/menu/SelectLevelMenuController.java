@@ -13,8 +13,8 @@ import badIceCream.states.SelectLevelMenuState;
 import java.io.IOException;
 
 public class SelectLevelMenuController extends MenuController<SelectLevelMenu> {
-    public SelectLevelMenuController(SelectLevelMenu menu) {
-        super(menu);
+    public SelectLevelMenuController(SelectLevelMenu menu, int level) {
+        super(menu, level);
     }
 
     @Override
@@ -27,11 +27,11 @@ public class SelectLevelMenuController extends MenuController<SelectLevelMenu> {
                 getModel().nextEntry();
                 break;
             case SELECT:
-                if (getModel().isSelectedLevel1()) game.setState(new GameState(new LoaderArenaBuilder(1).createArena()));
-                if (getModel().isSelectedLevel2()) game.setState(new GameState(new LoaderArenaBuilder(2).createArena()));
-                if (getModel().isSelectedLevel3()) game.setState(new GameState(new LoaderArenaBuilder(3).createArena()));
-                if (getModel().isSelectedLevel4()) game.setState(new GameState(new LoaderArenaBuilder(4).createArena()));
-                if (getModel().isSelectedLevel5()) game.setState(new GameState(new LoaderArenaBuilder(5).createArena()));
+                if (getModel().isSelectedLevel1()) game.setState(new GameState(new LoaderArenaBuilder(1).createArena(), level));
+                if (getModel().isSelectedLevel2()) game.setState(new GameState(new LoaderArenaBuilder(2).createArena(), level));
+                if (getModel().isSelectedLevel3()) game.setState(new GameState(new LoaderArenaBuilder(3).createArena(), level));
+                if (getModel().isSelectedLevel4()) game.setState(new GameState(new LoaderArenaBuilder(4).createArena(), level));
+                if (getModel().isSelectedLevel5()) game.setState(new GameState(new LoaderArenaBuilder(5).createArena(), level));
         }
     }
 }

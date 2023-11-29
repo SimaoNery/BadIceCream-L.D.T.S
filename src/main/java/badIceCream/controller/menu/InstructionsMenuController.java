@@ -11,13 +11,13 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class InstructionsMenuController extends MenuController<InstructionsMenu> {
-    public InstructionsMenuController(InstructionsMenu menu) {
-        super(menu);
+    public InstructionsMenuController(InstructionsMenu menu, int level) {
+        super(menu, level);
     }
     @Override
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
         if (action == GUI.ACTION.SELECT) {
-            game.setState(new MainMenuState(new MainMenu()));
+            game.setState(new MainMenuState(new MainMenu(), level));
         }
     }
 }

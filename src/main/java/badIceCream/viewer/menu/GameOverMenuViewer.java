@@ -3,7 +3,6 @@ package badIceCream.viewer.menu;
 import badIceCream.GUI.GUI;
 import badIceCream.model.Position;
 import badIceCream.model.menu.GameOverMenu;
-import badIceCream.model.menu.MainMenu;
 import badIceCream.viewer.Viewer;
 
 public class GameOverMenuViewer extends Viewer<GameOverMenu> {
