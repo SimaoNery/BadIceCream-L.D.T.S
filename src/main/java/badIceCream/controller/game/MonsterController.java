@@ -6,6 +6,7 @@ import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.monsters.Monster;
 
 import java.io.IOException;
+import java.util.Random;
 
 public class MonsterController {
     Monster monster;
@@ -23,8 +24,13 @@ public class MonsterController {
         lastChange = 0;
     }
     public void step(long time) throws IOException {
+        long minValue = 5000L;
+        long maxValue = 15000L;
 
-        if (monster.getType() == 3 && time - lastChange >= 10000) {
+        Random random = new Random();
+        long randomLong = minValue + (long) (random.nextDouble() * (maxValue - minValue + 1));
+
+        if (monster.getType() == 3 && time - lastChange >= randomLong) {
             runnerOn = !runnerOn;
 
             if (runnerOn) {
