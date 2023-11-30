@@ -10,18 +10,26 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import badIceCream.model.Position;
+import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 
 
 public class Graphics implements GUI {
     private final Screen screen;
-    private Terminal createTerminal(int width, int height) throws IOException {
-        TerminalSize terminalSize = new TerminalSize(width, height);
-        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
-        Terminal terminal = terminalFactory.createTerminal();
-        return terminal;
+
+    private Terminal createTerminal(int width, int height) throws IOException, FontFormatException {
+            Font font = Font.createFont(Font.TRUETYPE_FONT, new File("/home/simaonery/Desktop/2Ano/L.D.T.S/Project/project-l10gr08/src/main/resources/FontForge/Untitled1.otf"));
+            font = font.deriveFont(Font.PLAIN, 35);
+            AWTTerminalFontConfiguration cfg = new SwingTerminalFontConfiguration(true, AWTTerminalFontConfiguration.BoldMode.NOTHING, font);
+            Terminal terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height)).setTerminalEmulatorFontConfiguration(cfg).createTerminal();
+
+            return terminal;
     }
+
     private Screen createScreen(Terminal terminal) throws IOException{
         final Screen screen;
         screen = new TerminalScreen(terminal);
@@ -40,7 +48,7 @@ public class Graphics implements GUI {
     public Graphics(Screen screen){
         this.screen = screen;
     }
-    public Graphics(int width, int height) throws IOException {
+    public Graphics(int width, int height) throws IOException, FontFormatException {
         Terminal terminal = createTerminal(width, height);
         this.screen = createScreen(terminal);
     }
@@ -69,61 +77,61 @@ public class Graphics implements GUI {
     }
     @Override
     public void drawIceCream(Position position){
-        drawCharacter(position.getX(), position.getY(), 'I', "#FFFFFF");
+        drawCharacter(position.getX(), position.getY(), 'Z', "#FFFFFF");
     }
     @Override
     public void drawStoneWall(Position position){
-        drawCharacter(position.getX(), position.getY(), '#', "#696969");
+        drawCharacter(position.getX(), position.getY(), 'G', "#696969");
     }
     @Override
     public void drawIceWall(Position position){
-        drawCharacter(position.getX(), position.getY(), '+', "#87CEFA");
+        drawCharacter(position.getX(), position.getY(), 'F', "#87CEFA");
     }
     @Override
     public void drawDefaultMonster(Position position){
-        drawCharacter(position.getX(), position.getY(), 'D', "#00FF00");
+        drawCharacter(position.getX(), position.getY(), 'Y', "#00FF00");
     }
     @Override
     public void drawJumperMonster(Position position){
-        drawCharacter(position.getX(), position.getY(), 'J', "#FF3333");
+        drawCharacter(position.getX(), position.getY(), 'T', "#FF3333");
     }
     @Override
     public void drawRunnerMonster(Position position){
-        drawCharacter(position.getX(), position.getY(), 'R', "#FFFF66");
+        drawCharacter(position.getX(), position.getY(), 'X', "#FFFF66");
     }
     @Override
     public void drawWallBreakerMonster(Position position){
-        drawCharacter(position.getX(), position.getY(), 'W', "#FF99FF");
+        drawCharacter(position.getX(), position.getY(), 'U', "#FF99FF");
     }
 
     @Override
     public void drawAppleFruit(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'A', "#FF0000");
+        drawCharacter(position.getX(), position.getY(), 'L', "#FF0000");
     }
 
     @Override
     public void drawBananaFruit(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'B', "#FFFF00");
+        drawCharacter(position.getX(), position.getY(), 'M', "#FFFF00");
     }
 
     @Override
     public void drawPineappleFruit(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'N', "#FFFF66");
+        drawCharacter(position.getX(), position.getY(), 'O', "#FFFF66");
     }
 
     @Override
     public void drawPepperFruit(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'P', "#FF0000");
+        drawCharacter(position.getX(), position.getY(), 'K', "#FF0000");
     }
 
     @Override
     public void drawStrawberryFruit(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'S', "#FF0000");
+        drawCharacter(position.getX(), position.getY(), 'Q', "#FF0000");
     }
 
     @Override
     public void drawHotFloor(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'H', "#FF0000");
+        drawCharacter(position.getX(), position.getY(), 'E', "#FF0000");
     }
 
     @Override
