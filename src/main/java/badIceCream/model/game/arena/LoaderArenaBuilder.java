@@ -95,7 +95,7 @@ public class LoaderArenaBuilder extends ArenaBuilder {
                 else if (line.charAt(x) == 'S') fruits.add(new StrawberryFruit(x,y));
                 else if (line.charAt(x) == 'P') fruits.add(new PepperFruit(x,y));
                 else if (line.charAt(x) == 'N') fruits.add(new PineappleFruit(x,y));
-                else if (line.charAt(x) == 'Q') fruits.add(new PineappleFruit(x,y));
+                else if (line.charAt(x) == 'A') fruits.add(new AppleFruit(x,y));
         }
         return fruits;
     }
