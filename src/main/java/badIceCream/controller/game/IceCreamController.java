@@ -5,7 +5,8 @@ import badIceCream.model.game.arena.Arena;
 import badIceCream.model.Position;
 import badIceCream.GUI.GUI;
 
-;
+;import java.io.IOException;
+
 public class IceCreamController extends GameController {
 
         private GUI.ACTION lastMovement;
@@ -53,5 +54,10 @@ public class IceCreamController extends GameController {
             if (action == GUI.ACTION.LEFT) moveIceCreamLeft();
             if (action == GUI.ACTION.SPACE) powerIceCream();
         }
+
+    @Override
+    public void stepMonsters(long time) throws IOException {
+
+    }
 }
 

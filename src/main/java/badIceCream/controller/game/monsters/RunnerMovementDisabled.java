@@ -12,7 +12,7 @@ import java.util.List;
 public class RunnerMovementDisabled implements Step {
     @Override
     public void step(Monster monster, Arena arena, long time, long lastMovement) throws IOException {
-        if (time - lastMovement >= 200) {
+        if (time - lastMovement >= 150) {
             Position pos = getPossible(monster, arena);
             if (pos != null) moveMonster(monster, pos, arena);
         }

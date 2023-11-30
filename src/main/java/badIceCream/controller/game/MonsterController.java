@@ -24,7 +24,7 @@ public class MonsterController {
     }
     public void step(long time) throws IOException {
 
-        if (monster.getType() == 3 && time - lastChange >= 5000) {
+        if (monster.getType() == 3 && time - lastChange >= 10000) {
             runnerOn = !runnerOn;
 
             if (runnerOn) {

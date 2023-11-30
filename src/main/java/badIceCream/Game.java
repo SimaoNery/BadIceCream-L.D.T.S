@@ -30,6 +30,7 @@ public class Game {
         return this.state;
     }
 
+    /*
     public void start() throws IOException {
         int FPS = 4;
         int frameTime = 1000 / FPS;
@@ -49,5 +50,54 @@ public class Game {
         }
 
         gui.close();
+    }*/
+
+    public void start() throws IOException {
+        Thread normalThread = new Thread(() -> {
+            while (state != null) {
+                long startTime = System.currentTimeMillis();
+                try {
+                    state.step(this, gui, startTime);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                long elapsedTime = System.currentTimeMillis() - startTime;
+                long sleepTime = 1000 / 15 - elapsedTime;
+                try {
+                    if (sleepTime > 0) Thread.sleep(sleepTime);
+                } catch (InterruptedException ignored) {
+                }
+            }
+        });
+
+        Thread monsterThread = new Thread(() -> {
+            while (state != null) {
+                long startTime = System.currentTimeMillis();
+                try {
+                    state.stepMonsters(this.gui, startTime);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                long elapsedTime = System.currentTimeMillis() - startTime;
+                long sleepTime = 1000 / 2 - elapsedTime;
+                try {
+                    if (sleepTime > 0) Thread.sleep(sleepTime);
+                } catch (InterruptedException ignored) {
+                }
+            }
+        });
+
+        normalThread.start();
+        monsterThread.start();
+
+        try {
+            normalThread.join();
+            monsterThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        gui.close();
     }
+
 }

@@ -11,7 +11,7 @@ import java.util.List;
 public class DefaultMovement implements Step {
     @Override
     public void step(Monster monster, Arena arena, long time, long lastMovement) throws IOException {
-        if (time - lastMovement >= 250) {
+        if (time - lastMovement >= 225) {
             Position pos = getPossible(monster, arena);
             if (pos != null) moveMonster(monster, pos, arena);
         }

@@ -31,4 +31,10 @@ public abstract class State<T> {
         controller.step(game, action, time);
         viewer.draw(gui);
     }
+
+    public void stepMonsters(GUI gui, long time) throws IOException {
+        GUI.ACTION action = gui.getNextAction();
+        controller.stepMonsters(time);
+        viewer.draw(gui);
+    }
 }

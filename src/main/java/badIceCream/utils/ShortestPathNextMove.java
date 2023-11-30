@@ -42,7 +42,7 @@ public class ShortestPathNextMove {
                 }
             }
         }
-        return new Position(-1,-1);
+        return null;
     }
     private static int manhattanDistance(Position pos1, Position pos2) {
         return Math.abs(pos1.getX() - pos2.getX()) + Math.abs(pos1.getY() - pos2.getY());

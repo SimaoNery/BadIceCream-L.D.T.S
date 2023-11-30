@@ -60,9 +60,16 @@ public class ArenaController extends GameController {
         }
         else {
             iceCreamController.step(game, action, time);
+            /*
             for (MonsterController m : monsterController) {
                 m.step(time);
-            }
+            }*/
+        }
+    }
+    @Override
+    public void stepMonsters(long time) throws IOException {
+        for (MonsterController m : monsterController) {
+            m.step(time);
         }
     }
 }
