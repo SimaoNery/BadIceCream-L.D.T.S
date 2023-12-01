@@ -29,7 +29,7 @@ public class GameGraphics implements GUI{
             String rootPath = new File(System.getProperty("user.dir")).getPath();
             String mapLocation = rootPath + "/src/main/resources/FontForge/Untitled1.otf";
             Font font = Font.createFont(Font.TRUETYPE_FONT, new File(mapLocation));
-            font = font.deriveFont(Font.PLAIN, 40);
+            font = font.deriveFont(Font.PLAIN, 35);
             AWTTerminalFontConfiguration cfg = new SwingTerminalFontConfiguration(true, AWTTerminalFontConfiguration.BoldMode.NOTHING, font);
             Terminal gameTerminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height)).setTerminalEmulatorFontConfiguration(cfg).createTerminal();
 
