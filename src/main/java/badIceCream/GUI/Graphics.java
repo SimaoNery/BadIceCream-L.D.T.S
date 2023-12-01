@@ -19,15 +19,26 @@ import java.io.IOException;
 
 
 public class Graphics implements GUI {
-    private final Screen screen;
+    private Screen screen;
 
-    private Terminal createTerminal(int width, int height) throws IOException, FontFormatException {
+    private Terminal createMenuTerminal(int width, int height) throws IOException{
+        TerminalSize terminalSize = new TerminalSize(width, height);
+        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
+        Terminal menuTerminal = terminalFactory.createTerminal();
+        return menuTerminal;
+    }
+    private Terminal createGameTerminal(int width, int height) throws IOException {
+        try {
             Font font = Font.createFont(Font.TRUETYPE_FONT, new File("/home/simaonery/Desktop/2Ano/L.D.T.S/Project/project-l10gr08/src/main/resources/FontForge/Untitled1.otf"));
-            font = font.deriveFont(Font.PLAIN, 35);
+            font = font.deriveFont(Font.PLAIN, 40);
             AWTTerminalFontConfiguration cfg = new SwingTerminalFontConfiguration(true, AWTTerminalFontConfiguration.BoldMode.NOTHING, font);
-            Terminal terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height)).setTerminalEmulatorFontConfiguration(cfg).createTerminal();
+            Terminal gameTerminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height)).setTerminalEmulatorFontConfiguration(cfg).createTerminal();
 
-            return terminal;
+            return gameTerminal;
+        } catch (IOException | FontFormatException e) {
+            e.printStackTrace();
+            throw new IOException("Error creating terminal with custom font.", e);
+        }
     }
 
     private Screen createScreen(Terminal terminal) throws IOException{
@@ -44,12 +55,12 @@ public class Graphics implements GUI {
         textGraphics.putString(a, b, "" + c);
     }
 
-
-    public Graphics(Screen screen){
-        this.screen = screen;
+    public void MenuGraphics(int width, int height) throws IOException {
+        Terminal terminal = createMenuTerminal(width, height);
+        this.screen = createScreen(terminal);
     }
-    public Graphics(int width, int height) throws IOException, FontFormatException {
-        Terminal terminal = createTerminal(width, height);
+    public void GameGraphics(int width, int height) throws IOException{
+        Terminal terminal = createGameTerminal(width, height);
         this.screen = createScreen(terminal);
     }
 
