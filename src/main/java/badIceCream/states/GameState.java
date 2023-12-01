@@ -10,6 +10,7 @@ public class GameState extends State<Arena> {
     protected int level;
     public GameState(Arena arena, int level) {
         super(arena);
+        this.level = level;
     }
 
     @Override

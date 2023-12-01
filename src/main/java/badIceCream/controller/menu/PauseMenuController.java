@@ -14,10 +14,12 @@ import java.io.IOException;
 
 public class PauseMenuController extends MenuController<PauseMenu> {
     private final State lastState;
+    private final Graphics lastGui;
 
-    public PauseMenuController(PauseMenu menu, State lastState, int level) {
+    public PauseMenuController(PauseMenu menu, State lastState, int level, Graphics lastGui) {
         super(menu, level);
         this.lastState = lastState;
+        this.lastGui = lastGui;
     }
 
     @Override
@@ -30,7 +32,7 @@ public class PauseMenuController extends MenuController<PauseMenu> {
                 getModel().nextEntry();
                 break;
             case SELECT:
-                if (getModel().isSelectedResume()) game.setState(lastState, new GameGraphics(70,50));
+                if (getModel().isSelectedResume()) game.setState(lastState, lastGui.getGui());
                 if (getModel().isSelectedMenu()) game.setState(new MainMenuState(new MainMenu(), level), null);
         }
     }

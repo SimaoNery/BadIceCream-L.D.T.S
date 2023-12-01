@@ -32,7 +32,9 @@ public class Game {
             gui.refresh();
         }
     }
-
+    public Graphics getGui(){
+        return this.gui;
+    }
     public State getState() {
         return this.state;
     }

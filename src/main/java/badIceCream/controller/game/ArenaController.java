@@ -59,7 +59,8 @@ public class ArenaController extends GameController {
             game.setState(new GameOverMenuState(new GameOverMenu(), level), new MenuGraphics(70, 50));
         }
         else if (action == GUI.ACTION.PAUSE) {
-            game.setState(new PauseMenuState(new PauseMenu(), game.getState(), level), new MenuGraphics(70, 50));
+            Graphics nelson = game.getGui();
+            game.setState(new PauseMenuState(new PauseMenu(), game.getState(), level, nelson), new MenuGraphics(70, 50));
         }
         else {
             iceCreamController.step(game, action, time);

@@ -33,9 +33,7 @@ public abstract class State<T> {
         viewer.draw(graphics);
     }
 
-    public void stepMonsters(Graphics graphics, long time) throws IOException {
-        GUI.ACTION action = graphics.getNextAction();
+    public void stepMonsters(long time) throws IOException {
         controller.stepMonsters(time);
-        viewer.draw(graphics);
     }
 }

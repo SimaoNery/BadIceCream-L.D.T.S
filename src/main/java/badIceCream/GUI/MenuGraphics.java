@@ -52,7 +52,7 @@ public class MenuGraphics implements GUI {
     }
 
     @Override
-    public GUI.ACTION getNextAction() throws IOException{
+    public GUI.ACTION getNextAction() throws IOException{ //Meter na classe Graphics
         KeyStroke keyStroke = screen.pollInput();
         if(keyStroke == null) return GUI.ACTION.NONE;
 
