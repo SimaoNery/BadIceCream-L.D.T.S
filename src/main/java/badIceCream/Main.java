@@ -1,5 +1,8 @@
 package badIceCream;
 
+import badIceCream.GUI.GameGraphics;
+import badIceCream.GUI.Graphics;
+import badIceCream.GUI.MenuGraphics;
 import badIceCream.model.menu.GameOverMenu;
 import badIceCream.model.menu.PauseMenu;
 import badIceCream.model.menu.SelectLevelMenu;
@@ -19,7 +22,7 @@ public class Main {
         try {
             Game game = new Game();
             game.start();
-            game.setState(new SelectLevelMenuState(new SelectLevelMenu(),  1));
+            game.setState(new SelectLevelMenuState(new SelectLevelMenu(),  1), null);
         } catch (FontFormatException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {

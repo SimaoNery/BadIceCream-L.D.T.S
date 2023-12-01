@@ -1,5 +1,6 @@
 package badIceCream.GUI;
 
+import badIceCream.states.GameState;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -10,132 +11,102 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import badIceCream.model.Position;
+import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 
 
-public class Graphics implements GUI {
-    private final Screen screen;
-    private Terminal createTerminal(int width, int height) throws IOException {
-        TerminalSize terminalSize = new TerminalSize(width, height);
-        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
-        Terminal terminal = terminalFactory.createTerminal();
-        return terminal;
-    }
-    private Screen createScreen(Terminal terminal) throws IOException{
-        final Screen screen;
-        screen = new TerminalScreen(terminal);
-        screen.setCursorPosition(null);
-        screen.startScreen();
-        screen.doResizeIfNecessary();
-        return screen;
-    }
-    private void drawCharacter(int a, int b, char c, String color) {
-        TextGraphics textGraphics = screen.newTextGraphics();
-        textGraphics.setForegroundColor(TextColor.Factory.fromString(color));
-        textGraphics.putString(a, b, "" + c);
+public class Graphics {
+    private GUI gui;
+
+    public Graphics(GUI gui) throws IOException {
+        this.gui = gui;
     }
 
-
-    public Graphics(Screen screen){
-        this.screen = screen;
+    public void setGui(GUI gui) {
+        this.gui = gui;
     }
-    public Graphics(int width, int height) throws IOException {
-        Terminal terminal = createTerminal(width, height);
-        this.screen = createScreen(terminal);
+    public GUI.ACTION getNextAction() throws IOException{
+        return gui.getNextAction();
     }
-
-    public ACTION getNextAction() throws IOException{
-        KeyStroke keyStroke = screen.pollInput();
-        if(keyStroke == null) return ACTION.NONE;
-
-        if(keyStroke.getKeyType() == KeyType.ArrowDown) return ACTION.DOWN;
-        if(keyStroke.getKeyType() == KeyType.ArrowUp) return ACTION.UP;
-        if(keyStroke.getKeyType() == KeyType.ArrowRight) return ACTION.RIGHT;
-        if(keyStroke.getKeyType() == KeyType.ArrowLeft) return ACTION.LEFT;
-        if(keyStroke.getKeyType() == KeyType.Backspace) return ACTION.SPACE;
-
-        if(keyStroke.getKeyType() == KeyType.Enter) return ACTION.SELECT;
-        if(keyStroke.getKeyType() == KeyType.Escape) return ACTION.PAUSE;
-
-        return ACTION.NONE;
+    public GUI getGui(){
+        return gui;
     }
-
-    @Override
-    public void drawText(Position position, String text, String color){
-        TextGraphics textGraphics = screen.newTextGraphics();
-        textGraphics.setForegroundColor(TextColor.Factory.fromString(color));
-        textGraphics.putString(position.getX(), position.getY(), text);
-    }
-    @Override
-    public void drawIceCream(Position position){
-        drawCharacter(position.getX(), position.getY(), 'I', "#FFFFFF");
-    }
-    @Override
-    public void drawStoneWall(Position position){
-        drawCharacter(position.getX(), position.getY(), '#', "#696969");
-    }
-    @Override
-    public void drawIceWall(Position position){
-        drawCharacter(position.getX(), position.getY(), '+', "#87CEFA");
-    }
-    @Override
-    public void drawDefaultMonster(Position position){
-        drawCharacter(position.getX(), position.getY(), 'D', "#00FF00");
-    }
-    @Override
-    public void drawJumperMonster(Position position){
-        drawCharacter(position.getX(), position.getY(), 'J', "#FF3333");
-    }
-    @Override
-    public void drawRunnerMonster(Position position){
-        drawCharacter(position.getX(), position.getY(), 'R', "#FFFF66");
-    }
-    @Override
-    public void drawWallBreakerMonster(Position position){
-        drawCharacter(position.getX(), position.getY(), 'W', "#FF99FF");
-    }
-
-    @Override
-    public void drawAppleFruit(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'A', "#FF0000");
-    }
-
-    @Override
-    public void drawBananaFruit(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'B', "#FFFF00");
-    }
-
-    @Override
-    public void drawPineappleFruit(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'N', "#FFFF66");
-    }
-
-    @Override
-    public void drawPepperFruit(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'P', "#FF0000");
-    }
-
-    @Override
-    public void drawStrawberryFruit(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'S', "#FF0000");
-    }
-
-    @Override
-    public void drawHotFloor(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'H', "#FF0000");
-    }
-
-    @Override
     public void clear(){
-        screen.clear();
+        gui.clear();
     }
-    @Override
+
     public void refresh() throws IOException{
-        screen.refresh();
+        gui.refresh();
     }
-    @Override
+
     public void close() throws IOException{
-        screen.close();
+        gui.close();
     }
+
+    public void drawIceCream(Position position){
+        gui.drawCharacter(position.getX(), position.getY(), 'Z', "#FFFFFF");
+    }
+    public void drawStoneWall(Position position){
+        gui.drawCharacter(position.getX(), position.getY(), 'G', "#696969");
+    }
+    public void drawIceWall(Position position){
+        gui.drawCharacter(position.getX(), position.getY(), 'F', "#87CEFA");
+    }
+
+    public void drawDefaultMonster(Position position){
+        gui.drawCharacter(position.getX(), position.getY(), 'Y', "#00FF00");
+    }
+
+    public void drawJumperMonster(Position position){
+        gui.drawCharacter(position.getX(), position.getY(), 'T', "#FF3333");
+    }
+
+    public void drawRunnerMonster(Position position){
+        gui.drawCharacter(position.getX(), position.getY(), 'X', "#FFFF66");
+    }
+
+    public void drawWallBreakerMonster(Position position){
+        gui.drawCharacter(position.getX(), position.getY(), 'U', "#FF99FF");
+    }
+
+
+    public void drawAppleFruit(Position position) {
+        gui.drawCharacter(position.getX(), position.getY(), 'L', "#FF0000");
+    }
+
+
+    public void drawBananaFruit(Position position) {
+        gui.drawCharacter(position.getX(), position.getY(), 'M', "#FFFF00");
+    }
+
+
+    public void drawPineappleFruit(Position position) {
+        gui.drawCharacter(position.getX(), position.getY(), 'O', "#FFFF66");
+    }
+
+
+    public void drawPepperFruit(Position position) {
+        gui.drawCharacter(position.getX(), position.getY(), 'K', "#FF0000");
+    }
+
+
+    public void drawStrawberryFruit(Position position) {
+        gui.drawCharacter(position.getX(), position.getY(), 'Q', "#FF0000");
+    }
+
+
+    public void drawHotFloor(Position position) {
+        gui.drawCharacter(position.getX(), position.getY(), 'E', "#FF0000");
+    }
+
+
+    public void drawText(Position position, String text, String color){
+        gui.drawText(position, text, color);
+    }
+
+
 }

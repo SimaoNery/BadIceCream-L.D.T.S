@@ -55,8 +55,8 @@ public class LoaderArenaBuilder extends ArenaBuilder {
         for (int y = 0; y < lines.size(); y++) {
             String line = lines.get(y);
             for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == '#') walls.add(new StoneWall(x, y));
-                else if (line.charAt(x) == '+') walls.add(new IceWall(x,y));
+                if (line.charAt(x) == 'G') walls.add(new StoneWall(x, y));
+                else if (line.charAt(x) == 'F') walls.add(new IceWall(x,y));
         }
 
         return walls;
@@ -69,10 +69,10 @@ public class LoaderArenaBuilder extends ArenaBuilder {
         for (int y = 0; y < lines.size(); y++) {
             String line = lines.get(y);
             for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == 'D') monsters.add(new DefaultMonster(x, y));
-                else if (line.charAt(x) == 'J') monsters.add(new JumperMonster(x, y));
-                else if (line.charAt(x) == 'R') monsters.add(new RunnerMonster(x, y));
-                else if (line.charAt(x) == 'W') monsters.add(new WallBreakerMonster(x, y));
+                if (line.charAt(x) == 'Y') monsters.add(new DefaultMonster(x, y));
+                else if (line.charAt(x) == 'T') monsters.add(new JumperMonster(x, y));
+                else if (line.charAt(x) == 'X') monsters.add(new RunnerMonster(x, y));
+                else if (line.charAt(x) == 'U') monsters.add(new WallBreakerMonster(x, y));
         }
         return monsters;
     }
@@ -82,7 +82,7 @@ public class LoaderArenaBuilder extends ArenaBuilder {
         for (int y = 0; y < lines.size(); y++) {
             String line = lines.get(y);
             for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == 'I') return new IceCream(x, y);
+                if (line.charAt(x) == 'Z') return new IceCream(x, y);
         }
         return null;
     }
@@ -94,11 +94,11 @@ public class LoaderArenaBuilder extends ArenaBuilder {
         for (int y = 0; y < lines.size(); y++) {
             String line = lines.get(y);
             for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == 'B') fruits.add(new BananaFruit(x,y));
-                else if (line.charAt(x) == 'S') fruits.add(new StrawberryFruit(x,y));
-                else if (line.charAt(x) == 'P') fruits.add(new PepperFruit(x,y));
-                else if (line.charAt(x) == 'N') fruits.add(new PineappleFruit(x,y));
-                else if (line.charAt(x) == 'A') fruits.add(new AppleFruit(x,y));
+                if (line.charAt(x) == 'M') fruits.add(new BananaFruit(x,y));
+                else if (line.charAt(x) == 'Q') fruits.add(new StrawberryFruit(x,y));
+                else if (line.charAt(x) == 'K') fruits.add(new PepperFruit(x,y));
+                else if (line.charAt(x) == 'O') fruits.add(new PineappleFruit(x,y));
+                else if (line.charAt(x) == 'T') fruits.add(new AppleFruit(x,y));
         }
         return fruits;
     }
@@ -109,7 +109,7 @@ public class LoaderArenaBuilder extends ArenaBuilder {
         for (int y = 0; y < lines.size(); y++) {
             String line = lines.get(y);
             for (int x = 0; x < line.length(); x++)
-                if (line.charAt(x) == 'H') hotFloors.add(new HotFloor(x,y));
+                if (line.charAt(x) == 'E') hotFloors.add(new HotFloor(x,y));
         }
         return hotFloors;
     }

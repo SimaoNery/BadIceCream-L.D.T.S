@@ -1,6 +1,7 @@
 package badIceCream.states;
 
 import badIceCream.GUI.GUI;
+import badIceCream.GUI.Graphics;
 import badIceCream.Game;
 import badIceCream.viewer.Viewer;
 import badIceCream.controller.Controller;
@@ -26,10 +27,10 @@ public abstract class State<T> {
         return model;
     }
 
-    public void step(Game game, GUI gui, long time) throws IOException {
-        GUI.ACTION action = gui.getNextAction();
+    public void step(Game game, Graphics graphics, long time) throws IOException {
+        GUI.ACTION action = graphics.getNextAction();
         controller.step(game, action, time);
-        viewer.draw(gui);
+        viewer.draw(graphics);
     }
 
     public void stepMonsters(long time) throws IOException {
