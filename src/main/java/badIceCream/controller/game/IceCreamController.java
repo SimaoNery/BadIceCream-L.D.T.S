@@ -38,9 +38,9 @@ public class IceCreamController extends GameController {
                 if (type != -1) {
                     // Type of fruit TO DO
                 }
-                lastMovement = last;
                 if (getModel().isMonster(position)) getModel().getIceCream().changeAlive();
             }
+            lastMovement = last;
         }
 
         public void powerIceCream() {
