@@ -1,9 +1,6 @@
 package badIceCream.model.game.arena;
 
-import badIceCream.model.game.elements.HotFloor;
-import badIceCream.model.game.elements.IceCream;
-import badIceCream.model.game.elements.StoneWall;
-import badIceCream.model.game.elements.Wall;
+import badIceCream.model.game.elements.*;
 import badIceCream.model.game.elements.fruits.*;
 import badIceCream.model.game.elements.monsters.*;
 import java.io.BufferedReader;
@@ -59,7 +56,7 @@ public class LoaderArenaBuilder extends ArenaBuilder {
             String line = lines.get(y);
             for (int x = 0; x < line.length(); x++)
                 if (line.charAt(x) == '#') walls.add(new StoneWall(x, y));
-                else if (line.charAt(x) == '=') walls.add(new StoneWall(x,y));
+                else if (line.charAt(x) == '+') walls.add(new IceWall(x,y));
         }
 
         return walls;

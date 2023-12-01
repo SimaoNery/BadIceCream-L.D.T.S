@@ -3,6 +3,7 @@ package badIceCream.viewer.game;
 import badIceCream.GUI.GUI;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.Element;
+import badIceCream.model.game.elements.HotFloor;
 import badIceCream.model.game.elements.Wall;
 import badIceCream.model.game.elements.fruits.Fruit;
 import badIceCream.model.game.elements.monsters.Monster;
@@ -29,6 +30,9 @@ public class ArenaViewer extends Viewer<Arena> {
 
         for (Fruit fruit : getModel().getFruits()){
             drawElement(gui, fruit, new FruitViewer());
+        }
+        for (HotFloor hotFloor : getModel().getHotFloors()) {
+            drawElement(gui, hotFloor, new HotFloorViewer());
         }
     }
 }
