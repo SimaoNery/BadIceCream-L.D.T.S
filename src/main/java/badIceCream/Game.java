@@ -69,7 +69,7 @@ public class Game {
                     throw new RuntimeException(e);
                 }
                 long elapsedTime = System.currentTimeMillis() - startTime;
-                long sleepTime = 1000 / 15 - elapsedTime;
+                long sleepTime = 1000 / 60 - elapsedTime;
                 try {
                     if (sleepTime > 0) Thread.sleep(sleepTime);
                 } catch (InterruptedException ignored) {
@@ -81,7 +81,7 @@ public class Game {
             while (state != null) {
                 long startTime = System.currentTimeMillis();
                 try {
-                    state.stepMonsters(this.gui, startTime);
+                    state.stepMonsters(startTime);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

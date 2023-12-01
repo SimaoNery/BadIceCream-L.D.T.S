@@ -10,28 +10,29 @@ import badIceCream.GUI.GUI;
 public class IceCreamController extends GameController {
 
         private GUI.ACTION lastMovement;
+        long lastTime = 0;
         public IceCreamController(Arena arena) {
             super(arena);
         }
 
         public void moveIceCreamLeft() {
-            moveIceCream(getModel().getIceCream().getPosition().getLeft(), GUI.ACTION.LEFT);
+            moveIceCream(getModel().getIceCream().getPosition().getLeft(), GUI.ACTION.LEFT, System.currentTimeMillis());
         }
 
         public void moveIceCreamRight() {
-            moveIceCream(getModel().getIceCream().getPosition().getRight(), GUI.ACTION.RIGHT);
+            moveIceCream(getModel().getIceCream().getPosition().getRight(), GUI.ACTION.RIGHT, System.currentTimeMillis());
         }
 
         public void moveIceCreamUp() {
-            moveIceCream(getModel().getIceCream().getPosition().getUp(), GUI.ACTION.UP);
+            moveIceCream(getModel().getIceCream().getPosition().getUp(), GUI.ACTION.UP, System.currentTimeMillis());
         }
 
         public void moveIceCreamDown() {
-            moveIceCream(getModel().getIceCream().getPosition().getDown(), GUI.ACTION.DOWN);
+            moveIceCream(getModel().getIceCream().getPosition().getDown(), GUI.ACTION.DOWN, System.currentTimeMillis());
         }
 
-        private void moveIceCream(Position position, GUI.ACTION last) {
-            if (getModel().isEmpty(position)) {
+        private void moveIceCream(Position position, GUI.ACTION last, long time) {
+            if (getModel().isEmpty(position) && time - lastTime >= 15) {
                 getModel().getIceCream().setPosition(position);
                 int type = getModel().eatFruit(position);
                 if (type != -1) {
