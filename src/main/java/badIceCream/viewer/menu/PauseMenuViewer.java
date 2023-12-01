@@ -1,6 +1,7 @@
 package badIceCream.viewer.menu;
 
 import badIceCream.GUI.GUI;
+import badIceCream.GUI.Graphics;
 import badIceCream.model.Position;
 import badIceCream.model.menu.PauseMenu;
 import badIceCream.viewer.Viewer;
@@ -9,7 +10,7 @@ public class PauseMenuViewer extends Viewer<PauseMenu> {
     public PauseMenuViewer(PauseMenu menu) {super(menu);}
 
     @Override
-    public void drawElements(GUI gui) {
+    public void drawElements(Graphics gui) {
         gui.drawText(new Position(5, 5), "Pause", "#FFFFFF");
 
         for(int i = 0; i < getModel().getNumberEntries(); i++) {

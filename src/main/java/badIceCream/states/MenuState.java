@@ -8,6 +8,7 @@ public abstract class MenuState<T> extends State<T> {
 
     public MenuState(T menu, int level) {
         super(menu);
+        this.level = level;
     }
 
     @Override

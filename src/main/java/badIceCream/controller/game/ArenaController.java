@@ -1,5 +1,8 @@
 package badIceCream.controller.game;
 
+import badIceCream.GUI.GameGraphics;
+import badIceCream.GUI.Graphics;
+import badIceCream.GUI.MenuGraphics;
 import badIceCream.Game;
 import badIceCream.controller.game.monsters.DefaultMovement;
 import badIceCream.controller.game.monsters.JumperMovement;
@@ -50,13 +53,14 @@ public class ArenaController extends GameController {
 
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
         if (getModel().getFruits().isEmpty()) {
-            game.setState(new LevelCompletedMenuState(new LevelCompletedMenu(), level + 1));
+            game.setState(new LevelCompletedMenuState(new LevelCompletedMenu(), level + 1), new MenuGraphics(70, 50));
         }
         else if (!getModel().getIceCream().getAlive()) {
-            game.setState(new GameOverMenuState(new GameOverMenu(), level));
+            game.setState(new GameOverMenuState(new GameOverMenu(), level), new MenuGraphics(70, 50));
         }
         else if (action == GUI.ACTION.PAUSE) {
-            game.setState(new PauseMenuState(new PauseMenu(), game.getState(), level));
+            Graphics nelson = game.getGui();
+            game.setState(new PauseMenuState(new PauseMenu(), game.getState(), level, nelson), new MenuGraphics(70, 50));
         }
         else {
             iceCreamController.step(game, action, time);
