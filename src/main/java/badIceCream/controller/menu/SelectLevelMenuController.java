@@ -32,6 +32,7 @@ public class SelectLevelMenuController extends MenuController<SelectLevelMenu> {
                 if (getModel().isSelectedLevel3() && level >= 3) game.setState(new GameState(new LoaderArenaBuilder(3).createArena(), level));
                 if (getModel().isSelectedLevel4() && level >= 4) game.setState(new GameState(new LoaderArenaBuilder(4).createArena(), level));
                 if (getModel().isSelectedLevel5() && level >= 5) game.setState(new GameState(new LoaderArenaBuilder(5).createArena(), level));
+
         }
     }
 }

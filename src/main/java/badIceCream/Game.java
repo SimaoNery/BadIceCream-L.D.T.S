@@ -1,6 +1,7 @@
 package badIceCream;
 
 import badIceCream.GUI.Graphics;
+import badIceCream.GUI.MenuGraphics;
 import badIceCream.model.menu.MainMenu;
 import badIceCream.states.MainMenuState;
 import badIceCream.states.State;
@@ -14,8 +15,7 @@ public class Game {
     private State state;
 
     public Game() throws FontFormatException, IOException, URISyntaxException {
-        this.gui = new Graphics();
-        this.gui.MenuGraphics(70, 50);
+        this.gui = new Graphics(new MenuGraphics(70, 50));
         this.state = new MainMenuState(new MainMenu(), 1);
     }
 
