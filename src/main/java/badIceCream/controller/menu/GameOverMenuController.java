@@ -1,6 +1,8 @@
 package badIceCream.controller.menu;
 
 import badIceCream.GUI.GUI;
+import badIceCream.GUI.Graphics;
+import badIceCream.GUI.MenuGraphics;
 import badIceCream.Game;
 import badIceCream.model.menu.GameOverMenu;
 import badIceCream.model.menu.MainMenu;
@@ -24,8 +26,8 @@ public class GameOverMenuController extends MenuController<GameOverMenu> {
                 getModel().nextEntry();
                 break;
             case SELECT:
-                if (getModel().isSelectedQuitToMainMenu()) game.setState(new MainMenuState(new MainMenu(), level));
-                if (getModel().isSelectedPlayAgain()) game.setState(null);
+                if (getModel().isSelectedQuitToMainMenu()) game.setState(new MainMenuState(new MainMenu(), level), null);
+                if (getModel().isSelectedPlayAgain()) game.setState(null, null);
         }
     }
 }

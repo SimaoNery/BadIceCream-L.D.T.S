@@ -1,11 +1,13 @@
 package badIceCream.viewer.game;
 
 import badIceCream.GUI.GUI;
+import badIceCream.GUI.GameGraphics;
+import badIceCream.GUI.Graphics;
 import badIceCream.model.game.elements.monsters.Monster;
 
 public class MonsterViewer implements ElementViewer<Monster>{
     @Override
-    public void draw(Monster monster, GUI gui){
+    public void draw(Monster monster, Graphics gui){
         switch (monster.getType()) {
             case 1: gui.drawDefaultMonster(monster.getPosition());
                 break;

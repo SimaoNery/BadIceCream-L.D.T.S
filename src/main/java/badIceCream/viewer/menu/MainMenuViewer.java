@@ -1,6 +1,7 @@
 package badIceCream.viewer.menu;
 
 import badIceCream.GUI.GUI;
+import badIceCream.GUI.Graphics;
 import badIceCream.model.Position;
 import badIceCream.model.menu.MainMenu;
 import badIceCream.viewer.Viewer;
@@ -10,7 +11,7 @@ public class MainMenuViewer extends Viewer<MainMenu> {
         super(menu);
     }
     @Override
-    public void drawElements(GUI gui){
+    public void drawElements(Graphics gui){
         gui.drawText(new Position(5, 5), "Menu", "#FFFFFF");
 
         for(int i = 0; i < getModel().getNumberEntries(); i++){

@@ -1,5 +1,6 @@
 package badIceCream;
 
+import badIceCream.GUI.GUI;
 import badIceCream.GUI.Graphics;
 import badIceCream.GUI.MenuGraphics;
 import badIceCream.model.menu.MainMenu;
@@ -11,7 +12,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 public class Game {
-    private final badIceCream.GUI.Graphics gui;
+    private Graphics gui;
     private State state;
 
     public Game() throws FontFormatException, IOException, URISyntaxException {
@@ -23,8 +24,13 @@ public class Game {
         new Game().start();
     }
 
-    public void setState(State state) {
+    public void setState(State state, GUI gui) throws IOException {
         this.state = state;
+        if (gui != null) {
+            this.gui.close();
+            this.gui = new Graphics(gui);
+            gui.refresh();
+        }
     }
 
     public State getState() {

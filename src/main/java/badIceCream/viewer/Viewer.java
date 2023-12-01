@@ -1,6 +1,8 @@
 package badIceCream.viewer;
 
 import badIceCream.GUI.GUI;
+import badIceCream.GUI.GameGraphics;
+import badIceCream.GUI.Graphics;
 
 import java.io.IOException;
 
@@ -13,11 +15,11 @@ public abstract class Viewer<T> {
     public T getModel(){
         return model;
     }
-    public void draw(GUI gui) throws IOException{
+    public void draw(Graphics gui) throws IOException{
         gui.clear();
         drawElements(gui);
         gui.refresh();
     }
 
-    protected abstract void drawElements(GUI gui);
+    protected abstract void drawElements(Graphics gui);
 }

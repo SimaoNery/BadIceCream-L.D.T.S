@@ -1,6 +1,8 @@
 package badIceCream.controller.menu;
 
 import badIceCream.GUI.GUI;
+import badIceCream.GUI.Graphics;
+import badIceCream.GUI.MenuGraphics;
 import badIceCream.Game;
 import badIceCream.model.menu.LevelCompletedMenu;
 import badIceCream.model.menu.MainMenu;
@@ -23,8 +25,8 @@ public class LevelCompletedMenuController extends MenuController<LevelCompletedM
                 getModel().nextEntry();
                 break;
             case SELECT:
-                if (getModel().isSelectedNextLevel()) game.setState(null);
-                if (getModel().isSelectedQuitToMainMenu()) game.setState(new MainMenuState(new MainMenu(), level));
+                if (getModel().isSelectedNextLevel()) game.setState(null, null);
+                if (getModel().isSelectedQuitToMainMenu()) game.setState(new MainMenuState(new MainMenu(), level), null);
         }
     }
 }

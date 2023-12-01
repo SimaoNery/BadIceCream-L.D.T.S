@@ -30,12 +30,12 @@ public abstract class State<T> {
     public void step(Game game, Graphics graphics, long time) throws IOException {
         GUI.ACTION action = graphics.getNextAction();
         controller.step(game, action, time);
-        viewer.draw(graphics.getGui());
+        viewer.draw(graphics);
     }
 
     public void stepMonsters(Graphics graphics, long time) throws IOException {
         GUI.ACTION action = graphics.getNextAction();
         controller.stepMonsters(time);
-        viewer.draw(graphics.getGui());
+        viewer.draw(graphics);
     }
 }

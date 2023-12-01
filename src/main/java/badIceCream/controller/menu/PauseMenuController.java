@@ -1,6 +1,8 @@
 package badIceCream.controller.menu;
 
 import badIceCream.GUI.GUI;
+import badIceCream.GUI.GameGraphics;
+import badIceCream.GUI.Graphics;
 import badIceCream.Game;
 import badIceCream.model.menu.MainMenu;
 import badIceCream.model.menu.PauseMenu;
@@ -28,8 +30,8 @@ public class PauseMenuController extends MenuController<PauseMenu> {
                 getModel().nextEntry();
                 break;
             case SELECT:
-                if (getModel().isSelectedResume()) game.setState(lastState);
-                if (getModel().isSelectedMenu()) game.setState(new MainMenuState(new MainMenu(), level));
+                if (getModel().isSelectedResume()) game.setState(lastState, new GameGraphics(70,50));
+                if (getModel().isSelectedMenu()) game.setState(new MainMenuState(new MainMenu(), level), null);
         }
     }
 }

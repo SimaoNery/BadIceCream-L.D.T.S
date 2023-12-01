@@ -13,7 +13,7 @@ import com.googlecode.lanterna.terminal.Terminal;
 
 import java.io.IOException;
 
-public class MenuGraphics implements GUI{
+public class MenuGraphics implements GUI {
     private Screen screen;
 
     public MenuGraphics(int width, int height) throws IOException {
@@ -37,10 +37,18 @@ public class MenuGraphics implements GUI{
         return screen;
     }
 
-    private void drawCharacter(int a, int b, char c, String color) {
+    @Override
+    public void drawCharacter(int a, int b, char c, String color) {
         TextGraphics textGraphics = screen.newTextGraphics();
         textGraphics.setForegroundColor(TextColor.Factory.fromString(color));
         textGraphics.putString(a, b, "" + c);
+    }
+
+    @Override
+    public void drawText(Position position, String text, String color){
+        TextGraphics textGraphics = screen.newTextGraphics();
+        textGraphics.setForegroundColor(TextColor.Factory.fromString(color));
+        textGraphics.putString(position.getX(), position.getY(), text);
     }
 
     @Override
@@ -60,12 +68,6 @@ public class MenuGraphics implements GUI{
         return GUI.ACTION.NONE;
     }
 
-    @Override
-    public void drawText(Position position, String text, String color){
-        TextGraphics textGraphics = screen.newTextGraphics();
-        textGraphics.setForegroundColor(TextColor.Factory.fromString(color));
-        textGraphics.putString(position.getX(), position.getY(), text);
-    }
     @Override
     public void clear(){
         screen.clear();

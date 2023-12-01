@@ -25,6 +25,10 @@ public class Graphics {
     public Graphics(GUI gui) throws IOException {
         this.gui = gui;
     }
+
+    public void setGui(GUI gui) {
+        this.gui = gui;
+    }
     public GUI.ACTION getNextAction() throws IOException{
         return gui.getNextAction();
     }
@@ -42,4 +46,67 @@ public class Graphics {
     public void close() throws IOException{
         gui.close();
     }
+
+    public void drawIceCream(Position position){
+        gui.drawCharacter(position.getX(), position.getY(), 'Z', "#FFFFFF");
+    }
+    public void drawStoneWall(Position position){
+        gui.drawCharacter(position.getX(), position.getY(), 'G', "#696969");
+    }
+    public void drawIceWall(Position position){
+        gui.drawCharacter(position.getX(), position.getY(), 'F', "#87CEFA");
+    }
+
+    public void drawDefaultMonster(Position position){
+        gui.drawCharacter(position.getX(), position.getY(), 'Y', "#00FF00");
+    }
+
+    public void drawJumperMonster(Position position){
+        gui.drawCharacter(position.getX(), position.getY(), 'T', "#FF3333");
+    }
+
+    public void drawRunnerMonster(Position position){
+        gui.drawCharacter(position.getX(), position.getY(), 'X', "#FFFF66");
+    }
+
+    public void drawWallBreakerMonster(Position position){
+        gui.drawCharacter(position.getX(), position.getY(), 'U', "#FF99FF");
+    }
+
+
+    public void drawAppleFruit(Position position) {
+        gui.drawCharacter(position.getX(), position.getY(), 'L', "#FF0000");
+    }
+
+
+    public void drawBananaFruit(Position position) {
+        gui.drawCharacter(position.getX(), position.getY(), 'M', "#FFFF00");
+    }
+
+
+    public void drawPineappleFruit(Position position) {
+        gui.drawCharacter(position.getX(), position.getY(), 'O', "#FFFF66");
+    }
+
+
+    public void drawPepperFruit(Position position) {
+        gui.drawCharacter(position.getX(), position.getY(), 'K', "#FF0000");
+    }
+
+
+    public void drawStrawberryFruit(Position position) {
+        gui.drawCharacter(position.getX(), position.getY(), 'Q', "#FF0000");
+    }
+
+
+    public void drawHotFloor(Position position) {
+        gui.drawCharacter(position.getX(), position.getY(), 'E', "#FF0000");
+    }
+
+
+    public void drawText(Position position, String text, String color){
+        gui.drawText(position, text, color);
+    }
+
+
 }

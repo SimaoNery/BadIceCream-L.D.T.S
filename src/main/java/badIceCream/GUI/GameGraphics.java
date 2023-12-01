@@ -26,7 +26,9 @@ public class GameGraphics implements GUI{
 
     private Terminal createGameTerminal(int width, int height) throws IOException {
         try {
-            Font font = Font.createFont(Font.TRUETYPE_FONT, new File("/home/simaonery/Desktop/2Ano/L.D.T.S/Project/project-l10gr08/src/main/resources/FontForge/Untitled1.otf"));
+            String rootPath = new File(System.getProperty("user.dir")).getPath();
+            String mapLocation = rootPath + "/src/main/resources/FontForge/Untitled1.otf";
+            Font font = Font.createFont(Font.TRUETYPE_FONT, new File(mapLocation));
             font = font.deriveFont(Font.PLAIN, 40);
             AWTTerminalFontConfiguration cfg = new SwingTerminalFontConfiguration(true, AWTTerminalFontConfiguration.BoldMode.NOTHING, font);
             Terminal gameTerminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height)).setTerminalEmulatorFontConfiguration(cfg).createTerminal();
@@ -37,6 +39,12 @@ public class GameGraphics implements GUI{
             throw new IOException("Error creating terminal with custom font.", e);
         }
     }
+    @Override
+    public void drawCharacter(int a, int b, char c, String color) {
+        TextGraphics textGraphics = screen.newTextGraphics();
+        textGraphics.setForegroundColor(TextColor.Factory.fromString(color));
+        textGraphics.putString(a, b, "" + c);
+    }
 
     private Screen createScreen(Terminal terminal) throws IOException{
         final Screen screen;
@@ -45,12 +53,6 @@ public class GameGraphics implements GUI{
         screen.startScreen();
         screen.doResizeIfNecessary();
         return screen;
-    }
-
-    private void drawCharacter(int a, int b, char c, String color) {
-        TextGraphics textGraphics = screen.newTextGraphics();
-        textGraphics.setForegroundColor(TextColor.Factory.fromString(color));
-        textGraphics.putString(a, b, "" + c);
     }
 
     @Override
@@ -76,62 +78,6 @@ public class GameGraphics implements GUI{
         textGraphics.setForegroundColor(TextColor.Factory.fromString(color));
         textGraphics.putString(position.getX(), position.getY(), text);
     }
-    public void drawIceCream(Position position){
-        drawCharacter(position.getX(), position.getY(), 'Z', "#FFFFFF");
-    }
-    public void drawStoneWall(Position position){
-        drawCharacter(position.getX(), position.getY(), 'G', "#696969");
-    }
-    public void drawIceWall(Position position){
-        drawCharacter(position.getX(), position.getY(), 'F', "#87CEFA");
-    }
-
-    public void drawDefaultMonster(Position position){
-        drawCharacter(position.getX(), position.getY(), 'Y', "#00FF00");
-    }
-
-    public void drawJumperMonster(Position position){
-        drawCharacter(position.getX(), position.getY(), 'T', "#FF3333");
-    }
-
-    public void drawRunnerMonster(Position position){
-        drawCharacter(position.getX(), position.getY(), 'X', "#FFFF66");
-    }
-
-    public void drawWallBreakerMonster(Position position){
-        drawCharacter(position.getX(), position.getY(), 'U', "#FF99FF");
-    }
-
-
-    public void drawAppleFruit(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'L', "#FF0000");
-    }
-
-
-    public void drawBananaFruit(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'M', "#FFFF00");
-    }
-
-
-    public void drawPineappleFruit(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'O', "#FFFF66");
-    }
-
-
-    public void drawPepperFruit(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'K', "#FF0000");
-    }
-
-
-    public void drawStrawberryFruit(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'Q', "#FF0000");
-    }
-
-
-    public void drawHotFloor(Position position) {
-        drawCharacter(position.getX(), position.getY(), 'E', "#FF0000");
-    }
-
 
     public void clear(){
         screen.clear();
