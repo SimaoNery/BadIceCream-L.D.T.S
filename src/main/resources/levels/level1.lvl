@@ -1,21 +1,20 @@
-GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
-GY               QQQQQQ               YG
-G  FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF  G
-G  FY             OOOO             YF  G
-G  F  FFFFFFFFFFFFF  FFFFFFFFFFFFF  F  G
-G  F  FY           KK            F  F  G
-G  F  F  FFFFFFFFFFFFFFFFFFFFFF  F  F  G
-G  F  F  FY                  YF  F  F  G
-G  FK F  F        MMMM        F  F KF LG
-G  FK F  F                    F  F KF LG
-GZ    F           TTTT           F    LG
-G  FK F  F                    F  F KF LG
-G  FK F  F        MMMM        F  F KF LG
-G  F  F  FY                  YF  F  F  G
-G  F  F  FFFFFFFFFFFFFFFFFFFFFF  F  F  G
-G  F  FY           KK            F  F  G
-G  F  FFFFFFFFFFFFF  FFFFFFFFFFFFF  F  G
-G  FY             OOOO             YF  G
-G  FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF  G
-GY               QQQQQQ               YG
-GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+GGGGGGGGGGGGGGGGGGGG
+GY     QQQQQQ     YG
+G FFFFFFFFFFFFFFFF G
+G FY    OOOO    YF G
+G F FFFFF  FFFFF F G
+G F FY   KK   YF F G
+G F F FFFFFFFF F F G
+G F FYF      FYF F G
+G FKF F  MM  F FKF G
+G FKF F  MM  F FKFLG
+GZ  F    TT    F  LG
+G   F          F  LG
+G FKF F  MM  F FKFLG
+G FKF F  MM  F FKF G
+G F FYF      FYF F G
+G F FFFFF  FFFFF F G
+G FY    OOOO    YF G
+G FFFFFFFFFFFFFFFF G
+GY     QQQQQQ     YG
+GGGGGGGGGGGGGGGGGGGG
