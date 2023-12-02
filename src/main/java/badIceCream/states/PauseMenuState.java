@@ -1,6 +1,7 @@
 package badIceCream.states;
 
 import badIceCream.GUI.Graphics;
+import badIceCream.model.game.arena.Arena;
 import badIceCream.viewer.Viewer;
 import badIceCream.controller.Controller;
 import badIceCream.controller.menu.PauseMenuController;
@@ -9,12 +10,10 @@ import badIceCream.viewer.menu.PauseMenuViewer;
 
 
 public class PauseMenuState extends MenuState<PauseMenu> {
-    private final State state;
-    private final Graphics graphics;
-    public PauseMenuState(PauseMenu model, State state, int level, Graphics graphics) {
+    private final GameState previous;
+    public PauseMenuState(PauseMenu model, int level, GameState previous) {
         super(model, level);
-        this.state = state;
-        this.graphics = graphics;
+        this.previous = previous;
     }
 
     @Override
@@ -24,6 +23,6 @@ public class PauseMenuState extends MenuState<PauseMenu> {
 
     @Override
     protected Controller<PauseMenu> getController() {
-        return new PauseMenuController(getModel(), state, level, graphics);
+        return new PauseMenuController(getModel(), level, previous);
     }
 }

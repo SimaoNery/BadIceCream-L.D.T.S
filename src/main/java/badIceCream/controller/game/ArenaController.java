@@ -15,10 +15,7 @@ import badIceCream.model.menu.GameOverMenu;
 import badIceCream.model.menu.LevelCompletedMenu;
 import badIceCream.model.menu.MainMenu;
 import badIceCream.model.menu.PauseMenu;
-import badIceCream.states.GameOverMenuState;
-import badIceCream.states.LevelCompletedMenuState;
-import badIceCream.states.MainMenuState;
-import badIceCream.states.PauseMenuState;
+import badIceCream.states.*;
 
 
 import java.io.IOException;
@@ -28,11 +25,12 @@ import java.util.List;
 public class ArenaController extends GameController {
     private final IceCreamController iceCreamController;
     private List<MonsterController> monsterController;
-
+    private Arena arena;
     private int level;
 
     public ArenaController(Arena arena, int level) {
         super(arena);
+        this.arena = arena;
         this.level = level;
         this.iceCreamController = new IceCreamController(arena);
         monsterController = new ArrayList<>();
@@ -59,15 +57,11 @@ public class ArenaController extends GameController {
             game.setState(new GameOverMenuState(new GameOverMenu(), level), new MenuGraphics(70, 50));
         }
         else if (action == GUI.ACTION.PAUSE) {
-            Graphics nelson = game.getGui();
-            game.setState(new PauseMenuState(new PauseMenu(), game.getState(), level, nelson), new MenuGraphics(70, 50));
+            GameState previous = new GameState(arena, level);
+            game.setState(new PauseMenuState(new PauseMenu(), level, previous), new MenuGraphics(70, 50));
         }
         else {
             iceCreamController.step(game, action, time);
-            /*
-            for (MonsterController m : monsterController) {
-                m.step(time);
-            }*/
         }
     }
     @Override

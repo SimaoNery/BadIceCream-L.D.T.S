@@ -19,7 +19,7 @@ import java.io.File;
 import java.io.IOException;
 
 
-public class Graphics {
+public class Graphics implements Cloneable {
     private GUI gui;
 
     public Graphics(GUI gui) throws IOException {
@@ -109,4 +109,12 @@ public class Graphics {
     }
 
 
+    @Override
+    public Graphics clone() {
+        try {
+            return (Graphics) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
 }

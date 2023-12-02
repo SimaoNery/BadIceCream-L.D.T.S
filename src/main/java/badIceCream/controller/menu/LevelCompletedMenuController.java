@@ -1,8 +1,6 @@
 package badIceCream.controller.menu;
 
 import badIceCream.GUI.GUI;
-import badIceCream.GUI.Graphics;
-import badIceCream.GUI.MenuGraphics;
 import badIceCream.Game;
 import badIceCream.model.menu.LevelCompletedMenu;
 import badIceCream.model.menu.MainMenu;

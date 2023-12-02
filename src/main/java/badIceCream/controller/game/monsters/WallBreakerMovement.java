@@ -43,7 +43,7 @@ public class WallBreakerMovement implements Step {
     @Override
     public void moveMonster(Monster monster, Position position, Arena arena) {
         monster.setPosition(position);
-        if (arena.getIceCream().getPosition().equals(position))
+        if (!arena.getIceCream().isStrawberryActive() && arena.getIceCream().getPosition().equals(position))
             arena.getIceCream().changeAlive();
     }
 }

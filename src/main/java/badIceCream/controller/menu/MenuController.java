@@ -1,7 +1,5 @@
 package badIceCream.controller.menu;
 
-import badIceCream.GUI.GUI;
-import badIceCream.Game;
 import badIceCream.controller.Controller;
 
 import java.io.IOException;

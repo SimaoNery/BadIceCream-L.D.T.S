@@ -10,6 +10,7 @@ import badIceCream.GUI.GUI;
 public class IceCreamController extends GameController {
 
         private GUI.ACTION lastMovement;
+        long stawberryTime;
         long lastTime = 0;
         public IceCreamController(Arena arena) {
             super(arena);
@@ -32,11 +33,19 @@ public class IceCreamController extends GameController {
         }
 
         private void moveIceCream(Position position, GUI.ACTION last, long time) {
+
+            if (getModel().getIceCream().isStrawberryActive() && stawberryTime - time >= 30000) {
+                // Strawberry active for 30 s
+                getModel().getIceCream().setStrawberry(false);
+            }
+
             if (getModel().isEmpty(position) && time - lastTime >= 15) {
                 getModel().getIceCream().setPosition(position);
                 int type = getModel().eatFruit(position);
-                if (type != -1) {
-                    // Type of fruit TO DO
+                if (type != 5) {
+                    // Strawberry Active
+                    getModel().getIceCream().setStrawberry(true);
+                    stawberryTime = time;
                 }
                 if (getModel().isMonster(position)) getModel().getIceCream().changeAlive();
             }

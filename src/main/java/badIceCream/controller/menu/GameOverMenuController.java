@@ -2,15 +2,12 @@ package badIceCream.controller.menu;
 
 import badIceCream.GUI.GUI;
 import badIceCream.GUI.GameGraphics;
-import badIceCream.GUI.Graphics;
-import badIceCream.GUI.MenuGraphics;
 import badIceCream.Game;
 import badIceCream.model.game.arena.LoaderArenaBuilder;
 import badIceCream.model.menu.GameOverMenu;
 import badIceCream.model.menu.MainMenu;
 import badIceCream.states.GameState;
 import badIceCream.states.MainMenuState;
-import badIceCream.states.State;
 
 import java.io.IOException;
 
