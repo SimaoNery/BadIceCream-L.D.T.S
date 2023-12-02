@@ -13,7 +13,7 @@ public class Main {
         try {
             Game game = new Game();
             game.start();
-            game.setState(new SelectLevelMenuState(new SelectLevelMenu(),  1), null);
+            game.setState(new SelectLevelMenuState(new SelectLevelMenu(), game.getState().getLevel()), null);
         } catch (FontFormatException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {

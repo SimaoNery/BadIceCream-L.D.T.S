@@ -16,8 +16,8 @@ import java.io.IOException;
 public class PauseMenuController extends MenuController<PauseMenu> {
     private final GameState previous;
 
-    public PauseMenuController(PauseMenu menu, int level, GameState previous) {
-        super(menu, level);
+    public PauseMenuController(PauseMenu menu, GameState previous) {
+        super(menu);
         this.previous = previous;
     }
 
@@ -32,7 +32,7 @@ public class PauseMenuController extends MenuController<PauseMenu> {
                 break;
             case SELECT:
                 if (getModel().isSelectedResume()) game.setState(previous, new GameGraphics(70, 50));
-                if (getModel().isSelectedMenu()) game.setState(new MainMenuState(new MainMenu(), level), null);
+                if (getModel().isSelectedMenu()) game.setState(new MainMenuState(new MainMenu(), game.getState().getLevel()), null);
         }
     }
 }

@@ -19,6 +19,6 @@ public class InstructionsMenuState extends MenuState<InstructionsMenu> {
 
     @Override
     protected Controller<InstructionsMenu> getController() {
-        return new InstructionsMenuController(getModel(), level);
+        return new InstructionsMenuController(getModel());
     }
 }

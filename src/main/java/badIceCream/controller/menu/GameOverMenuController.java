@@ -13,8 +13,8 @@ import java.io.IOException;
 
 public class GameOverMenuController extends MenuController<GameOverMenu> {
 
-    public GameOverMenuController(GameOverMenu menu, int level) {
-        super(menu, level);
+    public GameOverMenuController(GameOverMenu menu) {
+        super(menu);
     }
 
     @Override
@@ -27,8 +27,8 @@ public class GameOverMenuController extends MenuController<GameOverMenu> {
                 getModel().nextEntry();
                 break;
             case SELECT:
-                if (getModel().isSelectedQuitToMainMenu()) game.setState(new MainMenuState(new MainMenu(), level), null);
-                if (getModel().isSelectedPlayAgain()) game.setState(new GameState(new LoaderArenaBuilder(level).createArena(), level), new GameGraphics(70, 50));
+                if (getModel().isSelectedQuitToMainMenu()) game.setState(new MainMenuState(new MainMenu(), game.getState().getLevel()), null);
+                if (getModel().isSelectedPlayAgain()) game.setState(new GameState(new LoaderArenaBuilder(game.getState().getLevel()).createArena(), game.getState().getLevel()), new GameGraphics(70, 50));
         }
     }
 }

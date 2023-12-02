@@ -18,6 +18,6 @@ public class GameOverMenuState extends MenuState<GameOverMenu> {
 
     @Override
     protected Controller<GameOverMenu> getController() {
-        return new GameOverMenuController(getModel(), level);
+        return new GameOverMenuController(getModel());
     }
 }
