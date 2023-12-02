@@ -30,11 +30,11 @@ public class SelectLevelMenuController extends MenuController<SelectLevelMenu> {
                 getModel().nextEntry();
                 break;
             case SELECT:
-                if (getModel().isSelectedLevel1()) game.setState(new GameState(new LoaderArenaBuilder(1).createArena(), level), new GameGraphics(70, 50));
-                if (getModel().isSelectedLevel2() && level >= 2) game.setState(new GameState(new LoaderArenaBuilder(2).createArena(), level), new GameGraphics(70, 50));
-                if (getModel().isSelectedLevel3() && level >= 3) game.setState(new GameState(new LoaderArenaBuilder(3).createArena(), level), new GameGraphics(70, 50));
-                if (getModel().isSelectedLevel4() && level >= 4) game.setState(new GameState(new LoaderArenaBuilder(4).createArena(), level), new GameGraphics(70, 50));
-                if (getModel().isSelectedLevel5() && level >= 5) game.setState(new GameState(new LoaderArenaBuilder(5).createArena(), level), new GameGraphics(70, 50));
+                if (getModel().isSelectedLevel1()) game.setState(new GameState(new LoaderArenaBuilder(1).createArena(), level), new GameGraphics(250, 100));
+                if (getModel().isSelectedLevel2() && level >= 2) game.setState(new GameState(new LoaderArenaBuilder(2).createArena(), level), new GameGraphics(250, 100));
+                if (getModel().isSelectedLevel3() && level >= 3) game.setState(new GameState(new LoaderArenaBuilder(3).createArena(), level), new GameGraphics(250, 100));
+                if (getModel().isSelectedLevel4() && level >= 4) game.setState(new GameState(new LoaderArenaBuilder(4).createArena(), level), new GameGraphics(250, 100));
+                if (getModel().isSelectedLevel5() && level >= 5) game.setState(new GameState(new LoaderArenaBuilder(5).createArena(), level), new GameGraphics(250, 100));
 
         }
     }

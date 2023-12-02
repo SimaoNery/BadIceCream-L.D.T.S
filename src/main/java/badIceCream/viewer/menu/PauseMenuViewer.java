@@ -5,6 +5,7 @@ import badIceCream.GUI.Graphics;
 import badIceCream.model.Position;
 import badIceCream.model.menu.PauseMenu;
 import badIceCream.viewer.Viewer;
+import com.googlecode.lanterna.screen.Screen;
 
 public class PauseMenuViewer extends Viewer<PauseMenu> {
     public PauseMenuViewer(PauseMenu menu) {super(menu);}

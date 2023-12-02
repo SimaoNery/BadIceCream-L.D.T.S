@@ -39,12 +39,6 @@ public class GameGraphics implements GUI{
             throw new IOException("Error creating terminal with custom font.", e);
         }
     }
-    @Override
-    public void drawCharacter(int a, int b, char c, String color) {
-        TextGraphics textGraphics = screen.newTextGraphics();
-        textGraphics.setForegroundColor(TextColor.Factory.fromString(color));
-        textGraphics.putString(a, b, "" + c);
-    }
 
     private Screen createScreen(Terminal terminal) throws IOException{
         final Screen screen;
@@ -55,6 +49,12 @@ public class GameGraphics implements GUI{
         return screen;
     }
 
+    @Override
+    public void drawCharacter(int a, int b, char c, String color) {
+        TextGraphics textGraphics = screen.newTextGraphics();
+        textGraphics.setForegroundColor(TextColor.Factory.fromString(color));
+        textGraphics.putString(a, b, "" + c);
+    }
     @Override
     public ACTION getNextAction() throws IOException{
         KeyStroke keyStroke = screen.pollInput();

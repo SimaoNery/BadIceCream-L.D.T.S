@@ -53,14 +53,14 @@ public class ArenaController extends GameController {
 
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
         if (getModel().getFruits().isEmpty()) {
-            game.setState(new LevelCompletedMenuState(new LevelCompletedMenu(), level + 1), new MenuGraphics(70, 50));
+            game.setState(new LevelCompletedMenuState(new LevelCompletedMenu(), level + 1), new MenuGraphics(100, 70));
         }
         else if (!getModel().getIceCream().getAlive()) {
-            game.setState(new GameOverMenuState(new GameOverMenu(), level), new MenuGraphics(70, 50));
+            game.setState(new GameOverMenuState(new GameOverMenu(), level), new MenuGraphics(100, 70));
         }
         else if (action == GUI.ACTION.PAUSE) {
             Graphics nelson = game.getGui();
-            game.setState(new PauseMenuState(new PauseMenu(), game.getState(), level, nelson), new MenuGraphics(70, 50));
+            game.setState(new PauseMenuState(new PauseMenu(), game.getState(), level, nelson), new MenuGraphics(100, 70));
         }
         else {
             iceCreamController.step(game, action, time);

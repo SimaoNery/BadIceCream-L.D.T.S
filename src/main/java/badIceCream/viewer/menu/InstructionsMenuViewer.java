@@ -5,6 +5,7 @@ import badIceCream.GUI.Graphics;
 import badIceCream.model.Position;
 import badIceCream.model.menu.InstructionsMenu;
 import badIceCream.viewer.Viewer;
+import com.googlecode.lanterna.screen.Screen;
 
 public class InstructionsMenuViewer extends Viewer<InstructionsMenu> {
 
