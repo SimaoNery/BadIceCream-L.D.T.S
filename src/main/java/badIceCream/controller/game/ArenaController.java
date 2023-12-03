@@ -27,6 +27,7 @@ public class ArenaController extends GameController {
     private List<MonsterController> monsterController;
     private Arena arena;
     private boolean first;
+    private long strawberry;
 
     public ArenaController(Arena arena) {
         super(arena);
@@ -50,6 +51,15 @@ public class ArenaController extends GameController {
     }
 
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
+        if (iceCreamController.eatFruit() == 5) {
+            getModel().getIceCream().setStrawberry(true);
+            strawberry = time;
+        }
+
+        if (getModel().getIceCream().isStrawberryActive() && time - strawberry >= 20000) {
+            getModel().getIceCream().setStrawberry(false);
+        }
+
         if (getModel().getFruits().isEmpty()) {
             if (first) {
                 first = false;
