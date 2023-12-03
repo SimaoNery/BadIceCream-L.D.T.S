@@ -15,10 +15,7 @@ import badIceCream.model.menu.GameOverMenu;
 import badIceCream.model.menu.LevelCompletedMenu;
 import badIceCream.model.menu.MainMenu;
 import badIceCream.model.menu.PauseMenu;
-import badIceCream.states.GameOverMenuState;
-import badIceCream.states.LevelCompletedMenuState;
-import badIceCream.states.MainMenuState;
-import badIceCream.states.PauseMenuState;
+import badIceCream.states.*;
 
 
 import java.io.IOException;
@@ -28,14 +25,16 @@ import java.util.List;
 public class ArenaController extends GameController {
     private final IceCreamController iceCreamController;
     private List<MonsterController> monsterController;
+    private Arena arena;
+    private boolean first;
+    private long strawberry;
 
-    private int level;
-
-    public ArenaController(Arena arena, int level) {
+    public ArenaController(Arena arena) {
         super(arena);
-        this.level = level;
+        this.arena = arena;
         this.iceCreamController = new IceCreamController(arena);
         monsterController = new ArrayList<>();
+        this.first = true;
 
         for (Monster m : arena.getMonsters()) {
             switch (m.getType()) {
@@ -52,22 +51,34 @@ public class ArenaController extends GameController {
     }
 
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
+        if (iceCreamController.eatFruit() == 5) {
+            getModel().getIceCream().setStrawberry(true);
+            strawberry = time;
+        }
+
+        if (getModel().getIceCream().isStrawberryActive() && time - strawberry >= 20000) {
+            getModel().getIceCream().setStrawberry(false);
+        }
+
         if (getModel().getFruits().isEmpty()) {
-            game.setState(new LevelCompletedMenuState(new LevelCompletedMenu(), level + 1), new MenuGraphics(100, 70));
+            if (first) {
+                first = false;
+                getModel().generateNewFruits(game.getState().getLevel());
+            }
+            else {
+                game.getState().increaseLevel();
+                game.setState(new LevelCompletedMenuState(new LevelCompletedMenu(), game.getState().getLevel()), new MenuGraphics(70, 50));
+            }
         }
         else if (!getModel().getIceCream().getAlive()) {
-            game.setState(new GameOverMenuState(new GameOverMenu(), level), new MenuGraphics(100, 70));
+            game.setState(new GameOverMenuState(new GameOverMenu(), game.getState().getLevel()), new MenuGraphics(70, 50));
         }
         else if (action == GUI.ACTION.PAUSE) {
-            Graphics nelson = game.getGui();
-            game.setState(new PauseMenuState(new PauseMenu(), game.getState(), level, nelson), new MenuGraphics(100, 70));
+            GameState previous = new GameState(arena, game.getState().getLevel());
+            game.setState(new PauseMenuState(new PauseMenu(), previous, game.getState().getLevel()), new MenuGraphics(70, 50));
         }
         else {
             iceCreamController.step(game, action, time);
-            /*
-            for (MonsterController m : monsterController) {
-                m.step(time);
-            }*/
         }
     }
     @Override

@@ -13,6 +13,8 @@ public class ShortestPathNextMove {
         Position monsterPos = monster.getPosition();
         Position iceCreamPos = arena.getIceCream().getPosition();
 
+        if (monsterPos.equals(iceCreamPos)) return null;
+
         PriorityQueue<Node> pq = new PriorityQueue<>();
 
         pq.offer(new Node(monsterPos, 0, manhattanDistance(monsterPos, iceCreamPos), null));

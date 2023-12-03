@@ -18,6 +18,6 @@ public class MainMenuState extends MenuState<MainMenu> {
 
     @Override
     protected Controller<MainMenu> getController() {
-        return new MainMenuController(getModel(), level);
+        return new MainMenuController(getModel());
     }
 }

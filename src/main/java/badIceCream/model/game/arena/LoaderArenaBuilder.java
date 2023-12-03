@@ -15,14 +15,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LoaderArenaBuilder extends ArenaBuilder {
-    private final int level;
     private final List<String> lines;
 
     public LoaderArenaBuilder(int level) throws IOException {
-        this.level = level;
 
         String rootPath = new File(System.getProperty("user.dir")).getPath();
-        String mapLocation = rootPath + "/src/main/resources/levels/level1.lvl";
+        String mapLocation = rootPath + "/src/main/resources/levels/level" + level + ".lvl";
 
         BufferedReader br = Files.newBufferedReader(Paths.get(mapLocation), Charset.defaultCharset());
 

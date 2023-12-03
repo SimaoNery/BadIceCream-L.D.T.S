@@ -31,14 +31,16 @@ public class IceCreamController extends GameController {
             moveIceCream(getModel().getIceCream().getPosition().getDown(), GUI.ACTION.DOWN, System.currentTimeMillis());
         }
 
+        public int eatFruit() {
+            return getModel().eatFruit(getModel().getIceCream().getPosition());
+        }
+
         private void moveIceCream(Position position, GUI.ACTION last, long time) {
+
             if (getModel().isEmpty(position) && time - lastTime >= 15) {
                 getModel().getIceCream().setPosition(position);
-                int type = getModel().eatFruit(position);
-                if (type != -1) {
-                    // Type of fruit TO DO
-                }
-                if (getModel().isMonster(position)) getModel().getIceCream().changeAlive();
+
+                if (!getModel().getIceCream().isStrawberryActive() && getModel().isMonster(position)) getModel().getIceCream().changeAlive();
             }
             lastMovement = last;
         }

@@ -4,11 +4,9 @@ import badIceCream.viewer.Viewer;
 import badIceCream.controller.Controller;
 
 public abstract class MenuState<T> extends State<T> {
-    protected int level;
 
     public MenuState(T menu, int level) {
-        super(menu);
-        this.level = level;
+        super(menu, level);
     }
 
     @Override

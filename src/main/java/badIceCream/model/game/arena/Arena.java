@@ -5,11 +5,12 @@ import badIceCream.GUI.GUI;
 import badIceCream.model.Position;
 
 import badIceCream.model.game.elements.*;
-import badIceCream.model.game.elements.fruits.Fruit;
+import badIceCream.model.game.elements.fruits.*;
 import badIceCream.model.game.elements.monsters.Monster;
 
 
 import java.util.List;
+import java.util.Random;
 
 public class Arena {
     private final int width;
@@ -95,6 +96,18 @@ public class Arena {
         return true;
     }
 
+    public boolean isEmptySpawnFruit(Position position) {
+        for (Wall wall : walls) {
+            if (wall instanceof StoneWall && wall.getPosition().equals(position))
+                return false;
+        }
+
+        for (Fruit fruit : fruits) {
+            if (fruit.getPosition().equals(position)) {return false;}
+        }
+        return true;
+    }
+
     public boolean isHotFloor(Position position) {
         for(HotFloor hotFloor : hotFloors) {
             if (position.equals(hotFloor.getPosition()))
@@ -128,12 +141,12 @@ public class Arena {
                 return true;
         return false;
     }
-    public boolean isFruit(Position position) {
+    public int isFruit(Position position) {
         for (Fruit fruit : fruits) {
             if (fruit.getPosition().equals(position))
-                return true;
+                return fruit.getType();
         }
-        return false;
+        return -1;
     }
 
     public int eatFruit(Position position) {
@@ -216,6 +229,57 @@ public class Arena {
             createIceWall(pos);
             pos.setX(pos.getX() + deltaX);
             pos.setY(pos.getY() + deltaY);
+        }
+    }
+
+    private Position generateRandomPosition() {
+        Random rand = new Random();
+        int upperWidth = width;
+        int upperHeight = height;
+
+        Position pos = new Position(rand.nextInt(upperWidth), rand.nextInt(upperHeight));
+        while (!isEmptySpawnFruit(pos)) {
+            pos.setX(rand.nextInt(upperWidth - 1));
+            pos.setY(rand.nextInt(upperHeight - 1));
+        }
+        return pos;
+    }
+    public void generateNewFruits(int level) {
+        switch (level) {
+            case 1:
+                for (int i = 0; i < 6; i++) {
+                    Position nextPos = generateRandomPosition();
+                    fruits.add(new AppleFruit(nextPos.getX(), nextPos.getY()));
+                }
+
+                break;
+
+            case 2:
+                for (int i = 0; i < 8; i++) {
+                    Position nextPos = generateRandomPosition();
+                    fruits.add(new PepperFruit(nextPos.getX(), nextPos.getY()));
+                }
+                break;
+
+            case 3:
+                for (int i = 0; i < 10; i++) {
+                    Position nextPos = generateRandomPosition();
+                    fruits.add(new PineappleFruit(nextPos.getX(), nextPos.getY()));
+                }
+                break;
+
+            case 4:
+                for (int i = 0; i < 12; i++) {
+                    Position nextPos = generateRandomPosition();
+                    fruits.add(new BananaFruit(nextPos.getX(), nextPos.getY()));
+                }
+                break;
+            case 5:
+                for (int i = 0; i < 14; i++) {
+                    Position nextPos = generateRandomPosition();
+                    fruits.add(new AppleFruit(nextPos.getX(), nextPos.getY()));
+                }
+                break;
         }
     }
 }

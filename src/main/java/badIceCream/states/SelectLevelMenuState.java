@@ -18,6 +18,6 @@ public class SelectLevelMenuState extends MenuState<SelectLevelMenu> {
 
     @Override
     protected Controller<SelectLevelMenu> getController() {
-        return new SelectLevelMenuController(getModel(), level);
+        return new SelectLevelMenuController(getModel());
     }
 }

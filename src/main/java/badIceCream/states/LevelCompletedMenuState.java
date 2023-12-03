@@ -19,6 +19,6 @@ public class LevelCompletedMenuState extends MenuState<LevelCompletedMenu> {
     @Override
     protected Controller<LevelCompletedMenu> getController() {
 
-        return new LevelCompletedMenuController(getModel(), level);
+        return new LevelCompletedMenuController(getModel());
     }
 }
