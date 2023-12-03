@@ -98,7 +98,7 @@ public class InstructionsMenuViewer extends Viewer<InstructionsMenu> {
         gui.drawText(new Position(96, 31), "|_____|", "#FFFFFF");
 
 
-        int height = 50;
+        int height = 35 ;
 
         for(int i = 0; i < getModel().getNumberEntries(); i++) {
             gui.drawText(new Position(63, height + i), getModel().getEntry(i), getModel().isSelected(i) ? "#D1D100" : "#FFFFFF" );
