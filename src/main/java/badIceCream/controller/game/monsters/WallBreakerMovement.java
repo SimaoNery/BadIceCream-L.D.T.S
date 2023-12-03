@@ -1,6 +1,7 @@
 package badIceCream.controller.game.monsters;
 
 import badIceCream.Exceptions.StoneWallDestroyedException;
+import badIceCream.GUI.GUI;
 import badIceCream.controller.game.Step;
 import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
@@ -15,6 +16,9 @@ public class WallBreakerMovement implements Step {
         if (time - lastMovement >= 200) {
         Position pos = getPossible(monster, arena);
             if (pos != null) {
+
+                monster.setLastAction(lastMove(monster.getPosition(), pos));
+
                 if (arena.isIceWall(pos)) {
                     try {
                         arena.iceWallDestroyed(pos);
@@ -45,5 +49,21 @@ public class WallBreakerMovement implements Step {
         monster.setPosition(position);
         if (!arena.getIceCream().isStrawberryActive() && arena.getIceCream().getPosition().equals(position))
             arena.getIceCream().changeAlive();
+    }
+
+    private GUI.ACTION lastMove(Position previous, Position after) {
+        if (previous.getY() == after.getY()) {
+            if (previous.getX() > after.getX()) {
+                return GUI.ACTION.LEFT;
+            }
+            else return GUI.ACTION.RIGHT;
+        }
+
+        if (previous.getX() == after.getX()) {
+            if (previous.getY() > after.getY()) {
+                return GUI.ACTION.UP;
+            }
+        }
+        return GUI.ACTION.DOWN;
     }
 }

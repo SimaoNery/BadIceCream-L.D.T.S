@@ -50,27 +50,60 @@ public class Graphics implements Cloneable {
     public void drawIceCream(Position position){
         gui.drawCharacter(position.getX(), position.getY(), 'Z', "#FFFFFF");
     }
-    public void drawStoneWall(Position position){
+    public void drawStoneWall(Position position) {
         gui.drawCharacter(position.getX(), position.getY(), 'G', "#696969");
     }
     public void drawIceWall(Position position){
         gui.drawCharacter(position.getX(), position.getY(), 'F', "#87CEFA");
     }
 
-    public void drawDefaultMonster(Position position){
-        gui.drawCharacter(position.getX(), position.getY(), 'Y', "#00FF00");
+    public void drawDefaultMonster(Position position, GUI.ACTION action){
+        char c;
+        switch (action) {
+            case UP: { c = '4'; break;}
+            case LEFT: {c = '~'; break;}
+            case RIGHT: {c = 'È'; break;}
+            default: c = 'Y';
+
+        }
+        gui.drawCharacter(position.getX(), position.getY(), c, "#00FF00");
     }
 
-    public void drawJumperMonster(Position position){
-        gui.drawCharacter(position.getX(), position.getY(), 'T', "#FF3333");
+    public void drawJumperMonster(Position position, GUI.ACTION action) {
+        char c;
+        switch (action) {
+            case UP: { c = '/'; break;}
+            case LEFT: {c = 'y'; break;}
+            case RIGHT: {c = 'è'; break;}
+            default: c = 'T';
+
+        }
+        gui.drawCharacter(position.getX(), position.getY(), c, "#FF3333");
     }
 
-    public void drawRunnerMonster(Position position){
-        gui.drawCharacter(position.getX(), position.getY(), 'X', "#FFFF66");
+    public void drawRunnerMonster(Position position, GUI.ACTION action, boolean runner) {
+        char c;
+        switch (action) {
+            case UP: { c = runner ? '3' : '1'; break;}
+            case LEFT: {c = runner ? 'X' : 'W'; break;}
+            case RIGHT: {c = runner ? '}' : '2'; break;}
+            default: c = runner ? '|' : 'V';
+
+        }
+        String color = runner ? "#FF0000" : "#FFFF66";
+        gui.drawCharacter(position.getX(), position.getY(), c, color);
     }
 
-    public void drawWallBreakerMonster(Position position){
-        gui.drawCharacter(position.getX(), position.getY(), 'U', "#FF99FF");
+    public void drawWallBreakerMonster(Position position, GUI.ACTION action) {
+        char c;
+        switch (action) {
+            case UP: { c = '0'; break;}
+            case LEFT: {c = 'é'; break;}
+            case RIGHT: {c = 'z'; break;}
+            default: c = 'U';
+
+        }
+        gui.drawCharacter(position.getX(), position.getY(), c, "#FF99FF");
     }
 
 
