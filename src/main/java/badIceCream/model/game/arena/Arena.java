@@ -141,12 +141,12 @@ public class Arena {
                 return true;
         return false;
     }
-    public boolean isFruit(Position position) {
+    public int isFruit(Position position) {
         for (Fruit fruit : fruits) {
             if (fruit.getPosition().equals(position))
-                return true;
+                return fruit.getType();
         }
-        return false;
+        return -1;
     }
 
     public int eatFruit(Position position) {
