@@ -20,7 +20,8 @@ public class LoaderArenaBuilder extends ArenaBuilder {
     public LoaderArenaBuilder(int level) throws IOException {
 
         String rootPath = new File(System.getProperty("user.dir")).getPath();
-       String mapLocation = rootPath + "/src/main/resources/levels/level" + level + ".lvl";
+        String mapLocation = rootPath + "/src/main/resources/levels/level"  + ".lvl";
+
         BufferedReader br = Files.newBufferedReader(Paths.get(mapLocation), Charset.defaultCharset());
 
         lines = readLines(br);
@@ -68,7 +69,7 @@ public class LoaderArenaBuilder extends ArenaBuilder {
             for (int x = 0; x < line.length(); x++)
                 if (line.charAt(x) == 'Y') monsters.add(new DefaultMonster(x, y));
                 else if (line.charAt(x) == 'T') monsters.add(new JumperMonster(x, y));
-                else if (line.charAt(x) == 'X') monsters.add(new RunnerMonster(x, y));
+                else if (line.charAt(x) == 'V') monsters.add(new RunnerMonster(x, y));
                 else if (line.charAt(x) == 'U') monsters.add(new WallBreakerMonster(x, y));
         }
         return monsters;

@@ -42,6 +42,7 @@ public class IceCreamController extends GameController {
 
                 if (!getModel().getIceCream().isStrawberryActive() && getModel().isMonster(position)) getModel().getIceCream().changeAlive();
             }
+            getModel().getIceCream().setLastMovement(last);
             lastMovement = last;
         }
 
@@ -61,6 +62,22 @@ public class IceCreamController extends GameController {
     @Override // Ver com o stor
     public void stepMonsters(long time) throws IOException {
 
+    }
+
+    private GUI.ACTION lastMove(Position previous, Position after) {
+        if (previous.getY() == after.getY()) {
+            if (previous.getX() > after.getX()) {
+                return GUI.ACTION.LEFT;
+            }
+            else return GUI.ACTION.RIGHT;
+        }
+
+        if (previous.getX() == after.getX()) {
+            if (previous.getY() > after.getY()) {
+                return GUI.ACTION.UP;
+            }
+        }
+        return GUI.ACTION.DOWN;
     }
 }
 

@@ -34,9 +34,11 @@ public class MonsterController {
             runnerOn = !runnerOn;
 
             if (runnerOn) {
+                monster.startRunning();
                 this.step = new RunnerMovementEnabled();
             }
             else {
+                monster.stopRunning();
                 this.step = new RunnerMovementDisabled();
             }
             lastChange = time;
