@@ -1,8 +1,10 @@
 package badIceCream.model.game.elements;
 
+import badIceCream.GUI.GUI;
+
 public class IceCream extends Element {
     private boolean alive;
-
+    private GUI.ACTION lastMovement = GUI.ACTION.DOWN;
     private boolean strawberry;
     public IceCream(int x, int y) {
         super(x, y);
@@ -24,5 +26,12 @@ public class IceCream extends Element {
 
     public void setStrawberry(boolean bool) {
         this.strawberry = bool;
+    }
+
+    public void setLastMovement(GUI.ACTION lastMovement) {
+        this.lastMovement = lastMovement;
+    }
+    public GUI.ACTION getLastMovement() {
+        return this.lastMovement;
     }
 }

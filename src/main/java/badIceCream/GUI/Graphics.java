@@ -47,8 +47,16 @@ public class Graphics implements Cloneable {
         gui.close();
     }
 
-    public void drawIceCream(Position position){
-        gui.drawCharacter(position.getX(), position.getY(), 'Z', "#FFFFFF");
+    public void drawIceCream(Position position, GUI.ACTION action, boolean strawberry) {
+        char c;
+        switch (action) {
+            case UP: {c = '5'; break;}
+            case LEFT: {c = '['; break;}
+            case RIGHT: {c = '6'; break;}
+            default: c = 'Z';
+
+        }
+        gui.drawCharacter(position.getX(), position.getY(), c , "#FFFFFF");
     }
     public void drawStoneWall(Position position) {
         gui.drawCharacter(position.getX(), position.getY(), 'G', "#696969");
