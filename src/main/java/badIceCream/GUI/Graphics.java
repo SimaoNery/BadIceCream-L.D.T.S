@@ -1,5 +1,7 @@
 package badIceCream.GUI;
 
+import badIceCream.Game;
+import badIceCream.model.game.arena.Arena;
 import badIceCream.states.GameState;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
@@ -48,7 +50,8 @@ public class Graphics implements Cloneable {
     }
 
     public void drawIceCream(Position position){
-        gui.drawCharacter(position.getX(), position.getY(), 'Z', "#FFFFFF");
+        String color = gui.getArena().getIceCream().isStrawberryActive() ? "#6fabf7" : "#FFFFFF";
+        gui.drawCharacter(position.getX(), position.getY(), 'Z', color);
     }
     public void drawStoneWall(Position position){
         gui.drawCharacter(position.getX(), position.getY(), 'G', "#696969");

@@ -106,9 +106,11 @@ public class MainMenuViewer extends Viewer<MainMenu> {
     public void drawElements(Graphics gui) {
         drawTitle(gui);
         drawSnowflake(gui);
+
         int heigth = 20;
+
         for(int i = 0; i < getModel().getNumberEntries(); i++){
-            gui.drawText(new Position(50, heigth + i), getModel().getEntry(i), getModel().isSelected(i) ? "#D1D100" : "#FFFFFF" );
+            gui.drawText(new Position(63, heigth + i), getModel().getEntry(i), getModel().isSelected(i) ? "#D1D100" : "#FFFFFF" );
             heigth += 3;
         }
     }

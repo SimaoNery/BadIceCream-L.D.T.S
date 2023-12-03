@@ -1,6 +1,7 @@
 package badIceCream.GUI;
 
 import badIceCream.model.Position;
+import badIceCream.model.game.arena.Arena;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -19,9 +20,11 @@ import java.io.IOException;
 
 public class GameGraphics implements GUI{
     private Screen screen;
-    public GameGraphics(int width, int height) throws IOException{
+    private Arena arena;
+    public GameGraphics(int width, int height, Arena arena) throws IOException{
         Terminal terminal = createGameTerminal(width, height);
         this.screen = createScreen(terminal);
+        this.arena = arena;
     }
 
     private Terminal createGameTerminal(int width, int height) throws IOException {
@@ -40,6 +43,7 @@ public class GameGraphics implements GUI{
         }
     }
 
+
     private Screen createScreen(Terminal terminal) throws IOException{
         final Screen screen;
         screen = new TerminalScreen(terminal);
@@ -49,6 +53,10 @@ public class GameGraphics implements GUI{
         return screen;
     }
 
+    @Override
+    public Arena getArena(){
+        return arena;
+    }
     @Override
     public void drawCharacter(int a, int b, char c, String color) {
         TextGraphics textGraphics = screen.newTextGraphics();
