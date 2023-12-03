@@ -25,7 +25,7 @@ public class MenuGraphics implements GUI {
     }
 
     private Terminal createMenuTerminal(int width, int height) throws IOException{
-        Font font = new Font(Font.MONOSPACED, Font.PLAIN, 20);
+        Font font = new Font(Font.MONOSPACED, Font.PLAIN, 21);
         AWTTerminalFontConfiguration cfg = new SwingTerminalFontConfiguration(true, AWTTerminalFontConfiguration.BoldMode.NOTHING, font);
         Terminal menuTerminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height)).setTerminalEmulatorFontConfiguration(cfg).createTerminal();
         return menuTerminal;
