@@ -3,6 +3,7 @@ package badIceCream.controller.menu;
 import badIceCream.GUI.GUI;
 import badIceCream.GUI.GameGraphics;
 import badIceCream.Game;
+import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.arena.LoaderArenaBuilder;
 import badIceCream.model.menu.LevelCompletedMenu;
 import badIceCream.model.menu.MainMenu;
@@ -26,7 +27,10 @@ public class LevelCompletedMenuController extends MenuController<LevelCompletedM
                 getModel().nextEntry();
                 break;
             case SELECT:
-                if (getModel().isSelectedNextLevel()) game.setState(new GameState(new LoaderArenaBuilder(game.getState().getLevel()).createArena(), game.getState().getLevel()), new GameGraphics(70, 50));
+                if (getModel().isSelectedNextLevel()){
+                    Arena arena = new LoaderArenaBuilder(game.getState().getLevel()).createArena();
+                    game.setState(new GameState(arena, game.getState().getLevel()), new GameGraphics(arena.getWidth(), arena.getHeight(), arena));
+                }
                 if (getModel().isSelectedQuitToMainMenu()) game.setState(new MainMenuState(new MainMenu(), game.getState().getLevel()), null);
         }
     }

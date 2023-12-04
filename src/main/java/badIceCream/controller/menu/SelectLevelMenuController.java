@@ -3,6 +3,7 @@ package badIceCream.controller.menu;
 import badIceCream.GUI.GUI;
 import badIceCream.GUI.GameGraphics;
 import badIceCream.Game;
+import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.arena.LoaderArenaBuilder;
 import badIceCream.model.menu.SelectLevelMenu;
 import badIceCream.states.GameState;
@@ -24,11 +25,26 @@ public class SelectLevelMenuController extends MenuController<SelectLevelMenu> {
                 getModel().nextEntry();
                 break;
             case SELECT:
-                if (getModel().isSelectedLevel1()) game.setState(new GameState(new LoaderArenaBuilder(1).createArena(), game.getState().getLevel()), new GameGraphics(70, 50));
-                if (getModel().isSelectedLevel2() && game.getState().getLevel() >= 2) game.setState(new GameState(new LoaderArenaBuilder(2).createArena(), game.getState().getLevel()), new GameGraphics(70, 50));
-                if (getModel().isSelectedLevel3() && game.getState().getLevel() >= 3) game.setState(new GameState(new LoaderArenaBuilder(3).createArena(), game.getState().getLevel()), new GameGraphics(70, 50));
-                if (getModel().isSelectedLevel4() && game.getState().getLevel() >= 4) game.setState(new GameState(new LoaderArenaBuilder(4).createArena(), game.getState().getLevel()), new GameGraphics(70, 50));
-                if (getModel().isSelectedLevel5() && game.getState().getLevel() >= 5) game.setState(new GameState(new LoaderArenaBuilder(5).createArena(), game.getState().getLevel()), new GameGraphics(70, 50));
+                if (getModel().isSelectedLevel1()){
+                    Arena arena = new LoaderArenaBuilder(1).createArena();
+                    game.setState(new GameState(arena, game.getState().getLevel()), new GameGraphics(arena.getWidth(), arena.getHeight(), arena));
+                }
+                if (getModel().isSelectedLevel2() && game.getState().getLevel() >= 2){
+                    Arena arena = new LoaderArenaBuilder(2).createArena();
+                    game.setState(new GameState(arena, game.getState().getLevel()), new GameGraphics(arena.getWidth(), arena.getHeight(), arena));
+                }
+                if (getModel().isSelectedLevel3() && game.getState().getLevel() >= 3){
+                    Arena arena = new LoaderArenaBuilder(3).createArena();
+                    game.setState(new GameState(arena, game.getState().getLevel()), new GameGraphics(arena.getWidth(), arena.getHeight(), arena));
+                }
+                if (getModel().isSelectedLevel4() && game.getState().getLevel() >= 4){
+                    Arena arena = new LoaderArenaBuilder(4).createArena();
+                    game.setState(new GameState(arena, game.getState().getLevel()), new GameGraphics(arena.getWidth(), arena.getHeight(), arena));
+                }
+                if (getModel().isSelectedLevel5() && game.getState().getLevel() >= 5){
+                    Arena arena = new LoaderArenaBuilder(5).createArena();
+                    game.setState(new GameState(arena, game.getState().getLevel()), new GameGraphics(arena.getWidth(), arena.getHeight(), arena));
+                }
 
         }
     }

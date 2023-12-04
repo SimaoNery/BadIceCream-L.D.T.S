@@ -5,7 +5,7 @@ import java.util.List;
 
 public class LevelCompletedMenu extends Menu {
     public LevelCompletedMenu() {
-        super(Arrays.asList("Next Level", "Quit to Main Menu"));
+        super(Arrays.asList("NEXT LEVEL", "   MENU"));
     }
     public boolean isSelectedNextLevel() {
         return isSelected(0);

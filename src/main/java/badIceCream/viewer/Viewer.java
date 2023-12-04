@@ -8,7 +8,6 @@ import java.io.IOException;
 
 public abstract class Viewer<T> {
     private final T model;
-
     public Viewer(T model){
         this.model = model;
     }
@@ -20,6 +19,5 @@ public abstract class Viewer<T> {
         drawElements(gui);
         gui.refresh();
     }
-
-    protected abstract void drawElements(Graphics gui);
+    protected abstract void drawElements(Graphics gui) throws IOException;
 }
