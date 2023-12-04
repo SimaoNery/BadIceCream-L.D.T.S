@@ -20,7 +20,7 @@ public class LoaderArenaBuilder extends ArenaBuilder {
     public LoaderArenaBuilder(int level) throws IOException {
 
         String rootPath = new File(System.getProperty("user.dir")).getPath();
-        String mapLocation = rootPath + "/src/main/resources/levels/level"  + ".lvl";
+        String mapLocation = rootPath + "/src/main/resources/levels/level"  + level + ".lvl";
 
         BufferedReader br = Files.newBufferedReader(Paths.get(mapLocation), Charset.defaultCharset());
 
