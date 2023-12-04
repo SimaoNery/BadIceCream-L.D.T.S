@@ -2,7 +2,8 @@ package badIceCream.model.game.elements;
 
 import badIceCream.model.Position;
 
-public class Element {
+public abstract class Element {
+    private int type;
     private Position position;
     public Element(int x, int y) {
         this.position = new Position(x, y);
@@ -15,5 +16,7 @@ public class Element {
     public void setPosition(Position position) {
         this.position = position;
     }
+
+    public abstract int getType();
 
 }

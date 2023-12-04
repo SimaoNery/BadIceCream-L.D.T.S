@@ -30,7 +30,7 @@ public class GameGraphics implements GUI{
     private Terminal createGameTerminal(int width, int height) throws IOException {
         try {
             String rootPath = new File(System.getProperty("user.dir")).getPath();
-            String mapLocation = rootPath + "/src/main/resources/FontForge/Untitled1.otf";
+            String mapLocation = rootPath + "/src/main/resources/FontForge/Untitled3.otf";
             Font font = Font.createFont(Font.TRUETYPE_FONT, new File(mapLocation));
             font = font.deriveFont(Font.PLAIN, 35);
             AWTTerminalFontConfiguration cfg = new SwingTerminalFontConfiguration(true, AWTTerminalFontConfiguration.BoldMode.NOTHING, font);

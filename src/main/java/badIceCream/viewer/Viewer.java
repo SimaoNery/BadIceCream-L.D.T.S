@@ -7,7 +7,7 @@ import badIceCream.GUI.Graphics;
 import java.io.IOException;
 
 public abstract class Viewer<T> {
-    private final T model;
+    protected final T model;
     public Viewer(T model){
         this.model = model;
     }

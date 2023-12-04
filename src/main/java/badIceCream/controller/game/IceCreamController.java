@@ -63,21 +63,5 @@ public class IceCreamController extends GameController {
     public void stepMonsters(long time) throws IOException {
 
     }
-
-    private GUI.ACTION lastMove(Position previous, Position after) {
-        if (previous.getY() == after.getY()) {
-            if (previous.getX() > after.getX()) {
-                return GUI.ACTION.LEFT;
-            }
-            else return GUI.ACTION.RIGHT;
-        }
-
-        if (previous.getX() == after.getX()) {
-            if (previous.getY() > after.getY()) {
-                return GUI.ACTION.UP;
-            }
-        }
-        return GUI.ACTION.DOWN;
-    }
 }
 

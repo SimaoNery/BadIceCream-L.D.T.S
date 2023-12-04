@@ -12,6 +12,11 @@ public class IceCream extends Element {
         strawberry = false;
     }
 
+    @Override
+    public int getType() {
+        return 1;
+    }
+
     public boolean getAlive() {
         return alive;
     }

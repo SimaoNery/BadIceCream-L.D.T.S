@@ -7,8 +7,8 @@ import badIceCream.model.game.elements.monsters.Monster;
 
 public class MonsterViewer implements ElementViewer<Monster>{
     @Override
-    public void draw(Monster monster, Graphics gui){
-        switch (monster.getType()) {
+    public void draw(Monster monster, Graphics gui, int type){
+        switch (type) {
             case 1: gui.drawDefaultMonster(monster.getPosition(), monster.getLastAction());
                 break;
             case 2: gui.drawJumperMonster(monster.getPosition(), monster.getLastAction());
