@@ -58,10 +58,5 @@ public class IceCreamController extends GameController {
             if (action == GUI.ACTION.LEFT) moveIceCreamLeft();
             if (action == GUI.ACTION.SPACE) powerIceCream();
         }
-
-    @Override // Ver com o stor
-    public void stepMonsters(long time) throws IOException {
-
-    }
 }
 

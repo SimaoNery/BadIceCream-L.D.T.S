@@ -2,6 +2,7 @@ package badIceCream.controller.game.monsters;
 
 import badIceCream.GUI.GUI;
 import badIceCream.controller.game.Step;
+import badIceCream.controller.game.StepMonsters;
 import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.monsters.Monster;
@@ -10,7 +11,7 @@ import badIceCream.utils.ShortestPathNextMove;
 import java.io.IOException;
 import java.util.List;
 
-public class RunnerMovementEnabled implements Step {
+public class RunnerMovementEnabled implements StepMonsters {
     @Override
     public void step(Monster monster, Arena arena, long time, long lastMovement) throws IOException {
         if (time - lastMovement >= 30) {
