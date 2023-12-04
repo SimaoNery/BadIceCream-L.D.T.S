@@ -35,7 +35,7 @@ public class GameOverMenuController extends MenuController<GameOverMenu> {
                 if (getModel().isSelectedPlayAgain()){
                     game.setAudioController("LevelMusic.wav");
                     Arena arena = new LoaderArenaBuilder(game.getState().getLevel()).createArena();
-                    game.setState(new GameState(arena, game.getState().getLevel()), new GameGraphics(arena.getWidth(), arena.getHeight(), arena));
+                    game.setState(new GameState(arena, game.getState().getLevel()), new GameGraphics(arena.getWidth(), arena.getHeight()));
                 }
         }
     }

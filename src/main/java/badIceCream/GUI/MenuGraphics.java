@@ -43,10 +43,6 @@ public class MenuGraphics implements GUI {
     }
 
     @Override
-    public Arena getArena(){
-        return null;
-    }
-    @Override
     public void drawCharacter(int a, int b, char c, String color) {
         TextGraphics textGraphics = screen.newTextGraphics();
         textGraphics.setForegroundColor(TextColor.Factory.fromString(color));
@@ -69,8 +65,6 @@ public class MenuGraphics implements GUI {
         if(keyStroke.getKeyType() == KeyType.ArrowUp) return GUI.ACTION.UP;
         if(keyStroke.getKeyType() == KeyType.ArrowRight) return GUI.ACTION.RIGHT;
         if(keyStroke.getKeyType() == KeyType.ArrowLeft) return GUI.ACTION.LEFT;
-        if(keyStroke.getKeyType() == KeyType.Backspace) return GUI.ACTION.SPACE;
-
         if(keyStroke.getKeyType() == KeyType.Enter) return GUI.ACTION.SELECT;
         if(keyStroke.getKeyType() == KeyType.Escape) return GUI.ACTION.PAUSE;
 

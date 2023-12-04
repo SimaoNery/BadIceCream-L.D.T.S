@@ -11,13 +11,13 @@ import java.util.Random;
 
 public class MonsterController {
     Monster monster;
-    private Step step;
+    private StepMonsters step;
     private long lastMovement;
     private long lastChange;
     private final Arena arena;
     boolean runnerOn;
 
-    public MonsterController(Arena arena, Step step, Monster monster) {
+    public MonsterController(Arena arena, StepMonsters step, Monster monster) {
         this.arena = arena;
         this.step = step;
         this.monster = monster;

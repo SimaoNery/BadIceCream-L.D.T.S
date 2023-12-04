@@ -1,7 +1,5 @@
 package badIceCream.controller.game;
 
-import badIceCream.GUI.GameGraphics;
-import badIceCream.GUI.Graphics;
 import badIceCream.GUI.MenuGraphics;
 import badIceCream.Game;
 import badIceCream.controller.game.monsters.DefaultMovement;
@@ -13,7 +11,6 @@ import badIceCream.GUI.GUI;
 import badIceCream.model.game.elements.monsters.Monster;
 import badIceCream.model.menu.GameOverMenu;
 import badIceCream.model.menu.LevelCompletedMenu;
-import badIceCream.model.menu.MainMenu;
 import badIceCream.model.menu.PauseMenu;
 import badIceCream.states.*;
 import badIceCream.utils.Audio;
@@ -26,13 +23,11 @@ import java.util.List;
 public class ArenaController extends GameController {
     private final IceCreamController iceCreamController;
     private List<MonsterController> monsterController;
-    private Arena arena;
     private boolean first;
     private long strawberry;
 
     public ArenaController(Arena arena) {
         super(arena);
-        this.arena = arena;
         this.iceCreamController = new IceCreamController(arena);
         monsterController = new ArrayList<>();
         this.first = true;
@@ -85,8 +80,7 @@ public class ArenaController extends GameController {
         }
         else if (action == GUI.ACTION.PAUSE) {
             game.setAudioController("GameOverMenuSound.wav");
-            GameState previous = new GameState(arena, game.getState().getLevel());
-            game.setState(new PauseMenuState(new PauseMenu(), previous, game.getState().getLevel()), new MenuGraphics(250, 100));
+            game.setState(new PauseMenuState(new PauseMenu(), getModel() ,game.getState().getLevel()), new MenuGraphics(250, 100));
         }
         else {
             iceCreamController.step(game, action, time);

@@ -20,11 +20,10 @@ import java.io.IOException;
 
 public class GameGraphics implements GUI{
     private Screen screen;
-    private Arena arena;
-    public GameGraphics(int width, int height, Arena arena) throws IOException{
+    public GameGraphics(int width, int height) throws IOException{
         Terminal terminal = createGameTerminal(width, height);
         this.screen = createScreen(terminal);
-        this.arena = arena;
+
     }
 
     private Terminal createGameTerminal(int width, int height) throws IOException {
@@ -54,10 +53,6 @@ public class GameGraphics implements GUI{
     }
 
     @Override
-    public Arena getArena(){
-        return arena;
-    }
-    @Override
     public void drawCharacter(int a, int b, char c, String color) {
         TextGraphics textGraphics = screen.newTextGraphics();
         textGraphics.setForegroundColor(TextColor.Factory.fromString(color));
@@ -66,16 +61,14 @@ public class GameGraphics implements GUI{
     @Override
     public ACTION getNextAction() throws IOException{
         KeyStroke keyStroke = screen.pollInput();
-        if(keyStroke == null) return ACTION.NONE;
 
+        if(keyStroke == null) return ACTION.NONE;
         if(keyStroke.getKeyType() == KeyType.ArrowDown) return ACTION.DOWN;
         if(keyStroke.getKeyType() == KeyType.ArrowUp) return ACTION.UP;
         if(keyStroke.getKeyType() == KeyType.ArrowRight) return ACTION.RIGHT;
         if(keyStroke.getKeyType() == KeyType.ArrowLeft) return ACTION.LEFT;
-        if(keyStroke.getKeyType() == KeyType.Backspace) return ACTION.SPACE;
-
-        if(keyStroke.getKeyType() == KeyType.Enter) return ACTION.SELECT;
         if(keyStroke.getKeyType() == KeyType.Escape) return ACTION.PAUSE;
+        if(keyStroke.getCharacter() == ' ') return ACTION.SPACE;
 
         return ACTION.NONE;
     }
