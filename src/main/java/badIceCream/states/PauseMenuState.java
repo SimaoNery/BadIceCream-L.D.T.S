@@ -10,10 +10,10 @@ import badIceCream.viewer.menu.PauseMenuViewer;
 
 
 public class PauseMenuState extends MenuState<PauseMenu> {
-    private final GameState previous;
-    public PauseMenuState(PauseMenu model, GameState previous, int level) {
+    private Arena arena;
+    public PauseMenuState(PauseMenu model, Arena arena, int level) {
         super(model, level);
-        this.previous = previous;
+        this.arena = arena;
     }
 
     @Override
@@ -23,6 +23,6 @@ public class PauseMenuState extends MenuState<PauseMenu> {
 
     @Override
     protected Controller<PauseMenu> getController() {
-        return new PauseMenuController(getModel(), previous);
+        return new PauseMenuController(getModel(), arena);
     }
 }

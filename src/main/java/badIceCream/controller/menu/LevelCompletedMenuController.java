@@ -29,7 +29,7 @@ public class LevelCompletedMenuController extends MenuController<LevelCompletedM
             case SELECT:
                 if (getModel().isSelectedNextLevel()){
                     Arena arena = new LoaderArenaBuilder(game.getState().getLevel()).createArena();
-                    game.setState(new GameState(arena, game.getState().getLevel()), new GameGraphics(arena.getWidth(), arena.getHeight(), arena));
+                    game.setState(new GameState(arena, game.getState().getLevel()), new GameGraphics(arena.getWidth(), arena.getHeight()));
                 }
                 if (getModel().isSelectedQuitToMainMenu()) game.setState(new MainMenuState(new MainMenu(), game.getState().getLevel()), null);
         }

@@ -22,13 +22,11 @@ import java.util.List;
 public class ArenaController extends GameController {
     private final IceCreamController iceCreamController;
     private List<MonsterController> monsterController;
-    private Arena arena;
     private boolean first;
     private long strawberry;
 
     public ArenaController(Arena arena) {
         super(arena);
-        this.arena = arena;
         this.iceCreamController = new IceCreamController(arena);
         monsterController = new ArrayList<>();
         this.first = true;
@@ -71,8 +69,7 @@ public class ArenaController extends GameController {
             game.setState(new GameOverMenuState(new GameOverMenu(), game.getState().getLevel()), new MenuGraphics(250, 100));
         }
         else if (action == GUI.ACTION.PAUSE) {
-            GameState previous = new GameState(arena, game.getState().getLevel());
-            game.setState(new PauseMenuState(new PauseMenu(), previous, game.getState().getLevel()), new MenuGraphics(250, 100));
+            game.setState(new PauseMenuState(new PauseMenu(), getModel() ,game.getState().getLevel()), new MenuGraphics(250, 100));
         }
         else {
             iceCreamController.step(game, action, time);

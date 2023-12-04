@@ -14,11 +14,11 @@ import badIceCream.states.State;
 import java.io.IOException;
 
 public class PauseMenuController extends MenuController<PauseMenu> {
-    private final GameState previous;
+    private Arena arena;
 
-    public PauseMenuController(PauseMenu menu, GameState previous) {
+    public PauseMenuController(PauseMenu menu, Arena arena) {
         super(menu);
-        this.previous = previous;
+        this.arena = arena;
     }
 
     @Override
@@ -31,7 +31,7 @@ public class PauseMenuController extends MenuController<PauseMenu> {
                 getModel().nextEntry();
                 break;
             case SELECT:
-                if (getModel().isSelectedResume()) game.setState(previous, new GameGraphics(70, 50, null));
+                if (getModel().isSelectedResume()) game.setState(new GameState(arena, game.getState().getLevel()), new GameGraphics(arena.getWidth(), arena.getHeight()));
                 if (getModel().isSelectedMenu()) game.setState(new MainMenuState(new MainMenu(), game.getState().getLevel()), null);
         }
     }
