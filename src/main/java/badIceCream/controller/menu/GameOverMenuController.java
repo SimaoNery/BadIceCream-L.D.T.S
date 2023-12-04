@@ -28,8 +28,12 @@ public class GameOverMenuController extends MenuController<GameOverMenu> {
                 getModel().nextEntry();
                 break;
             case SELECT:
-                if (getModel().isSelectedQuitToMainMenu()) game.setState(new MainMenuState(new MainMenu(), game.getState().getLevel()), null);
+                if (getModel().isSelectedQuitToMainMenu()) {
+                    game.setAudioController("MainMenuMusic.wav");
+                    game.setState(new MainMenuState(new MainMenu(), game.getState().getLevel()), null);
+                }
                 if (getModel().isSelectedPlayAgain()){
+                    game.setAudioController("LevelMusic.wav");
                     Arena arena = new LoaderArenaBuilder(game.getState().getLevel()).createArena();
                     game.setState(new GameState(arena, game.getState().getLevel()), new GameGraphics(arena.getWidth(), arena.getHeight(), arena));
                 }

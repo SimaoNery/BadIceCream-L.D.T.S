@@ -21,7 +21,7 @@ public class Audio {
     public Clip loadMusic(String sound) throws NullPointerException{
         try {
             String rootPath = new File(System.getProperty("user.dir")).getPath();
-            String soundPath = rootPath + "/src/main/resources/" + sound;
+            String soundPath = rootPath + "/src/main/resources/Music/" + sound;
             File soundFile = new File(soundPath);
             AudioInputStream input = AudioSystem.getAudioInputStream(soundFile);
             Clip soundClip = AudioSystem.getClip();
@@ -45,6 +45,10 @@ public class Audio {
         sound.setMicrosecondPosition(0);
         sound.start();
         sound.loop(Clip.LOOP_CONTINUOUSLY);
+    }
+    public void playOnce() {
+        sound.setMicrosecondPosition(0);
+        sound.start();
     }
 
     public void stop() {

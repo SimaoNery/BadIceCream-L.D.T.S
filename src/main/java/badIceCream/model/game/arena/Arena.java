@@ -7,6 +7,7 @@ import badIceCream.model.Position;
 import badIceCream.model.game.elements.*;
 import badIceCream.model.game.elements.fruits.*;
 import badIceCream.model.game.elements.monsters.Monster;
+import badIceCream.utils.Audio;
 
 
 import java.util.List;
@@ -154,6 +155,7 @@ public class Arena {
             if (f.getPosition().equals(position)) {
                 int type = f.getType();
                 fruits.remove(f);
+                new Audio("EatFruitSound.wav").playOnce();
                 return type;
             }
         }

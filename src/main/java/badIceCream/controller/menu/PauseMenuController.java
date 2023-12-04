@@ -31,7 +31,10 @@ public class PauseMenuController extends MenuController<PauseMenu> {
                 getModel().nextEntry();
                 break;
             case SELECT:
-                if (getModel().isSelectedResume()) game.setState(previous, new GameGraphics(70, 50, null));
+                if (getModel().isSelectedResume()) {
+                    game.setAudioController("LevelMusic.wav");
+                    game.setState(previous, new GameGraphics(70, 50, null));
+                }
                 if (getModel().isSelectedMenu()) game.setState(new MainMenuState(new MainMenu(), game.getState().getLevel()), null);
         }
     }

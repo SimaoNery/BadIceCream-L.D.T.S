@@ -4,6 +4,7 @@ import badIceCream.controller.game.monsters.RunnerMovementEnabled;
 import badIceCream.controller.game.monsters.RunnerMovementDisabled;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.monsters.Monster;
+import badIceCream.utils.Audio;
 
 import java.io.IOException;
 import java.util.Random;
@@ -34,6 +35,7 @@ public class MonsterController {
             runnerOn = !runnerOn;
 
             if (runnerOn) {
+                new Audio("RunnerMonsterSound.wav").playOnce();
                 monster.startRunning();
                 this.step = new RunnerMovementEnabled();
             }

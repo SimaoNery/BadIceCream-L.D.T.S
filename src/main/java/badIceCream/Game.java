@@ -6,6 +6,8 @@ import badIceCream.GUI.MenuGraphics;
 import badIceCream.model.menu.MainMenu;
 import badIceCream.states.MainMenuState;
 import badIceCream.states.State;
+import badIceCream.utils.Audio;
+import badIceCream.utils.AudioController;
 
 import java.awt.*;
 import java.io.IOException;
@@ -14,14 +16,25 @@ import java.net.URISyntaxException;
 public class Game {
     private Graphics gui;
     private State state;
+    private AudioController audioController;
 
     public Game() throws FontFormatException, IOException, URISyntaxException {
         this.gui = new Graphics(new MenuGraphics(250, 100));
         this.state = new MainMenuState(new MainMenu(), 1);
+        this.audioController = new AudioController(new Audio("MainMenuMusic.wav"));
+        audioController.play();
     }
 
     public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException {
         new Game().start();
+    }
+    public void setAudioController(String audio) {
+        audioController.stop();
+        audioController = new AudioController(new Audio(audio));
+        audioController.play();
+    }
+    public void stopAudio() {
+        audioController.stop();
     }
 
     public void setState(State state, GUI gui) throws IOException {

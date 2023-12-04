@@ -16,6 +16,7 @@ import badIceCream.model.menu.LevelCompletedMenu;
 import badIceCream.model.menu.MainMenu;
 import badIceCream.model.menu.PauseMenu;
 import badIceCream.states.*;
+import badIceCream.utils.Audio;
 
 
 import java.io.IOException;
@@ -51,9 +52,14 @@ public class ArenaController extends GameController {
     }
 
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
-        if (iceCreamController.eatFruit() == 5) {
-            getModel().getIceCream().setStrawberry(true);
-            strawberry = time;
+        int fruit = iceCreamController.eatFruit();
+        if (fruit != -1) {
+            //new Audio("EatFruitSound.wav").playOnce();
+            if (fruit == 5) {
+                getModel().getIceCream().setStrawberry(true);
+                strawberry = time;
+            }
+
         }
 
         if (getModel().getIceCream().isStrawberryActive() && time - strawberry >= 10000) {
@@ -66,14 +72,19 @@ public class ArenaController extends GameController {
                 getModel().generateNewFruits(game.getState().getLevel());
             }
             else {
+                game.stopAudio();
+                new Audio("LevelCompleteMenuSound.wav").playOnce();
                 game.getState().increaseLevel();
                 game.setState(new LevelCompletedMenuState(new LevelCompletedMenu(), game.getState().getLevel()), new MenuGraphics(250, 100));
             }
         }
         else if (!getModel().getIceCream().getAlive()) {
+            game.stopAudio();
+            new Audio("GameOverMenuSound.wav").playOnce();
             game.setState(new GameOverMenuState(new GameOverMenu(), game.getState().getLevel()), new MenuGraphics(250, 100));
         }
         else if (action == GUI.ACTION.PAUSE) {
+            game.setAudioController("GameOverMenuSound.wav");
             GameState previous = new GameState(arena, game.getState().getLevel());
             game.setState(new PauseMenuState(new PauseMenu(), previous, game.getState().getLevel()), new MenuGraphics(250, 100));
         }

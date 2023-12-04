@@ -25,6 +25,7 @@ public class SelectLevelMenuController extends MenuController<SelectLevelMenu> {
                 getModel().nextEntry();
                 break;
             case SELECT:
+                game.setAudioController("LevelMusic.wav");
                 if (getModel().isSelectedLevel1()){
                     Arena arena = new LoaderArenaBuilder(1).createArena();
                     game.setState(new GameState(arena, game.getState().getLevel()), new GameGraphics(arena.getWidth(), arena.getHeight(), arena));
