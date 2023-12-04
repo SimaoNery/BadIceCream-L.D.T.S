@@ -5,7 +5,6 @@ import badIceCream.model.game.arena.Arena;
 import badIceCream.model.Position;
 import badIceCream.GUI.GUI;
 
-;import java.io.IOException;
 
 public class IceCreamController extends GameController {
 

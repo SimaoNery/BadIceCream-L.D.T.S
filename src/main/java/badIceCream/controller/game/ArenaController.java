@@ -1,7 +1,5 @@
 package badIceCream.controller.game;
 
-import badIceCream.GUI.GameGraphics;
-import badIceCream.GUI.Graphics;
 import badIceCream.GUI.MenuGraphics;
 import badIceCream.Game;
 import badIceCream.controller.game.monsters.DefaultMovement;
@@ -13,7 +11,6 @@ import badIceCream.GUI.GUI;
 import badIceCream.model.game.elements.monsters.Monster;
 import badIceCream.model.menu.GameOverMenu;
 import badIceCream.model.menu.LevelCompletedMenu;
-import badIceCream.model.menu.MainMenu;
 import badIceCream.model.menu.PauseMenu;
 import badIceCream.states.*;
 
