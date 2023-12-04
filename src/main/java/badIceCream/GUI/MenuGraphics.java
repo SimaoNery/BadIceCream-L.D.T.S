@@ -1,6 +1,7 @@
 package badIceCream.GUI;
 
 import badIceCream.model.Position;
+import badIceCream.model.game.arena.Arena;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -10,7 +11,11 @@ import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
+import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
+import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
+import com.googlecode.lanterna.terminal.swing.TerminalScrollController;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class MenuGraphics implements GUI {
@@ -22,9 +27,9 @@ public class MenuGraphics implements GUI {
     }
 
     private Terminal createMenuTerminal(int width, int height) throws IOException{
-        TerminalSize terminalSize = new TerminalSize(width, height);
-        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
-        Terminal menuTerminal = terminalFactory.createTerminal();
+        Font font = new Font(Font.MONOSPACED, Font.BOLD, 21);
+        AWTTerminalFontConfiguration cfg = new SwingTerminalFontConfiguration(true, AWTTerminalFontConfiguration.BoldMode.NOTHING, font);
+        Terminal menuTerminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height)).setTerminalEmulatorFontConfiguration(cfg).createTerminal();
         return menuTerminal;
     }
 
@@ -37,6 +42,10 @@ public class MenuGraphics implements GUI {
         return screen;
     }
 
+    @Override
+    public Arena getArena(){
+        return null;
+    }
     @Override
     public void drawCharacter(int a, int b, char c, String color) {
         TextGraphics textGraphics = screen.newTextGraphics();

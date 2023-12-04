@@ -1,6 +1,7 @@
 package badIceCream.GUI;
 
 import badIceCream.model.Position;
+import badIceCream.model.game.arena.Arena;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
@@ -11,6 +12,7 @@ public interface GUI {
     ACTION getNextAction() throws IOException;
 
     void drawText(Position position, String text, String color);
+    Arena getArena();
 
     void clear();
 

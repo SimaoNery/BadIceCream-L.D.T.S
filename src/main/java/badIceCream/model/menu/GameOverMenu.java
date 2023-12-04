@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class GameOverMenu extends Menu {
     public GameOverMenu() {
-        super(Arrays.asList("Play Again", "Quit to Main Menu"));
+        super(Arrays.asList("PLAY AGAIN", "   MENU"));
     }
     public boolean isSelectedPlayAgain() {
         return isSelected(0);

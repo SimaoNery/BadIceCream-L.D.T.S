@@ -56,7 +56,7 @@ public class ArenaController extends GameController {
             strawberry = time;
         }
 
-        if (getModel().getIceCream().isStrawberryActive() && time - strawberry >= 20000) {
+        if (getModel().getIceCream().isStrawberryActive() && time - strawberry >= 10000) {
             getModel().getIceCream().setStrawberry(false);
         }
 
@@ -67,15 +67,15 @@ public class ArenaController extends GameController {
             }
             else {
                 game.getState().increaseLevel();
-                game.setState(new LevelCompletedMenuState(new LevelCompletedMenu(), game.getState().getLevel()), new MenuGraphics(70, 50));
+                game.setState(new LevelCompletedMenuState(new LevelCompletedMenu(), game.getState().getLevel()), new MenuGraphics(250, 100));
             }
         }
         else if (!getModel().getIceCream().getAlive()) {
-            game.setState(new GameOverMenuState(new GameOverMenu(), game.getState().getLevel()), new MenuGraphics(70, 50));
+            game.setState(new GameOverMenuState(new GameOverMenu(), game.getState().getLevel()), new MenuGraphics(250, 100));
         }
         else if (action == GUI.ACTION.PAUSE) {
             GameState previous = new GameState(arena, game.getState().getLevel());
-            game.setState(new PauseMenuState(new PauseMenu(), previous, game.getState().getLevel()), new MenuGraphics(70, 50));
+            game.setState(new PauseMenuState(new PauseMenu(), previous, game.getState().getLevel()), new MenuGraphics(250, 100));
         }
         else {
             iceCreamController.step(game, action, time);

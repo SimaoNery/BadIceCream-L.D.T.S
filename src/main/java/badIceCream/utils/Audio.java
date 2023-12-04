@@ -32,7 +32,7 @@ public class Audio {
 
             return soundClip;
         } catch (Exception e) {
-            System.out.println("Could't get the sound");
+            System.out.println("Couldn't get the sound");
         }
         return null;
     }
