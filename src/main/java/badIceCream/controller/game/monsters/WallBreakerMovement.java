@@ -6,6 +6,7 @@ import badIceCream.controller.game.StepMonsters;
 import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.monsters.Monster;
+import badIceCream.utils.Audio;
 
 import java.io.IOException;
 import java.util.List;
@@ -21,6 +22,7 @@ public class WallBreakerMovement implements StepMonsters {
 
                 if (arena.isIceWall(pos)) {
                     try {
+                        new Audio("BreakWallSound.wav").playOnce();
                         arena.iceWallDestroyed(pos);
                     }
                     catch (StoneWallDestroyedException e) {

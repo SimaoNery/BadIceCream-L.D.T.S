@@ -204,9 +204,14 @@ public class Arena {
     }
 
     private void destroyIceWall(int deltaX, int deltaY) {
+        boolean first = true;
         Position pos = new Position(iceCream.getPosition().getX() + deltaX, iceCream.getPosition().getY() + deltaY);
 
         while (isIceWall(pos)) {
+            if (first) {
+                new Audio("BreakWallSound.wav").playOnce();
+                first = false;
+            }
             try {
                 iceWallDestroyed(pos);
                 pos.setX(pos.getX() + deltaX);
@@ -225,9 +230,14 @@ public class Arena {
     }
 
     private void constroyIceWall(int deltaX, int deltaY) {
+        boolean first = true;
         Position pos = new Position(iceCream.getPosition().getX() + deltaX, iceCream.getPosition().getY() + deltaY);
 
         while (isEmptyMonsters(pos) && !isHotFloor(pos)) {
+            if (first) {
+                new Audio("BuildWallSound.wav").playOnce();
+                first = false;
+            }
             createIceWall(pos);
             pos.setX(pos.getX() + deltaX);
             pos.setY(pos.getY() + deltaY);

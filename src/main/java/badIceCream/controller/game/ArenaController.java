@@ -79,7 +79,7 @@ public class ArenaController extends GameController {
             game.setState(new GameOverMenuState(new GameOverMenu(), game.getState().getLevel()), new MenuGraphics(250, 100));
         }
         else if (action == GUI.ACTION.PAUSE) {
-            game.setAudioController("GameOverMenuSound.wav");
+            game.setAudioController("MainMenuMusic.wav");
             game.setState(new PauseMenuState(new PauseMenu(), getModel() ,game.getState().getLevel()), new MenuGraphics(250, 100));
         }
         else {
