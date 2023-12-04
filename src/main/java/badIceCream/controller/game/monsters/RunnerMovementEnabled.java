@@ -1,7 +1,6 @@
 package badIceCream.controller.game.monsters;
 
 import badIceCream.GUI.GUI;
-import badIceCream.controller.game.Step;
 import badIceCream.controller.game.StepMonsters;
 import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
