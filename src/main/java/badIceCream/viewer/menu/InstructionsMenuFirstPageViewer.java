@@ -1,15 +1,13 @@
 package badIceCream.viewer.menu;
 
-import badIceCream.GUI.GUI;
 import badIceCream.GUI.Graphics;
 import badIceCream.model.Position;
-import badIceCream.model.menu.InstructionsMenu;
+import badIceCream.model.menu.InstructionsMenuFirstPage;
 import badIceCream.viewer.Viewer;
-import com.googlecode.lanterna.screen.Screen;
 
-public class InstructionsMenuViewer extends Viewer<InstructionsMenu> {
+public class InstructionsMenuFirstPageViewer extends Viewer<InstructionsMenuFirstPage> {
 
-    public InstructionsMenuViewer(InstructionsMenu menu) {
+    public InstructionsMenuFirstPageViewer(InstructionsMenuFirstPage menu) {
         super(menu);
     }
 

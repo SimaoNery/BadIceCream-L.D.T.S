@@ -1,11 +1,10 @@
 package badIceCream.model.menu;
 
 import java.util.Arrays;
-import java.util.List;
 
-public class InstructionsMenu extends Menu {
+public class InstructionsMenuFirstPage extends Menu {
 
-    public InstructionsMenu() {
+    public InstructionsMenuFirstPage() {
         super(Arrays.asList("Quit to Main Menu"));
     }
     public boolean isSelectedQuitToMainMenu() {
