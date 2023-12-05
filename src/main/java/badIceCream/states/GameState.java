@@ -8,7 +8,7 @@ import badIceCream.viewer.game.ArenaViewer;
 
 public class GameState extends State<Arena> {
     public GameState(Arena arena, int level) {
-        super(arena, level);
+        super(arena, new ArenaController(arena), new ArenaViewer(arena), level);
     }
 
     @Override

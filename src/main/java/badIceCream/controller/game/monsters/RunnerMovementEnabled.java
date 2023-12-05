@@ -13,7 +13,7 @@ import java.util.List;
 public class RunnerMovementEnabled implements StepMonsters {
     @Override
     public void step(Monster monster, Arena arena, long time, long lastMovement) throws IOException {
-        if (time - lastMovement >= 30) {
+        if (time - lastMovement >= 5) {
             Position pos = getNextMove(monster, arena);
             if (pos != null) {
                 monster.setLastAction(lastMove(monster.getPosition(), pos));

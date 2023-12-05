@@ -5,8 +5,8 @@ import badIceCream.controller.Controller;
 
 public abstract class MenuState<T> extends State<T> {
 
-    public MenuState(T menu, int level) {
-        super(menu, level);
+    public MenuState(T menu, Controller controller, Viewer viewer, int level) {
+        super(menu, controller, viewer, level);
     }
 
     @Override
