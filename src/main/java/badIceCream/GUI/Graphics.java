@@ -50,13 +50,13 @@ public class Graphics implements Cloneable {
     public void drawIceCream(Position position, GUI.ACTION action, boolean strawberry) {
         char c;
         switch (action) {
-            case UP: {c = '5'; break;}
-            case LEFT: {c = '['; break;}
-            case RIGHT: {c = '6'; break;}
-            default: c = 'Z';
+            case UP: {c = '7'; break;}
+            case LEFT: {c = ':'; break;}
+            case RIGHT: {c = '9'; break;}
+            default: c = '8';
 
         }
-        gui.drawCharacter(position.getX(), position.getY(), '{' , "#FFFFFF");
+        gui.drawCharacter(position.getX(), position.getY(), c , "#FFFFFF");
     }
     public void drawStoneWall(Position position) {
         gui.drawCharacter(position.getX(), position.getY(), 'G', "#696969");
@@ -67,9 +67,9 @@ public class Graphics implements Cloneable {
             break;
             case 3: gui.drawCharacter(position.getX(), position.getY(), 'f', "#87CEFA");
             break;
-            case 4: gui.drawCharacter(position.getX(), position.getY(), 'F', "#87CEFA");
+            case 4: gui.drawCharacter(position.getX(), position.getY(), 'g', "#87CEFA");
             break;
-            case 5: gui.drawCharacter(position.getX(), position.getY(), 'g', "#87CEFA");
+            case 5: gui.drawCharacter(position.getX(), position.getY(), 'h', "#87CEFA");
             break;
             case 6: gui.drawCharacter(position.getX(), position.getY(), 'i', "#87CEFA");
             break;
@@ -128,38 +128,33 @@ public class Graphics implements Cloneable {
 
 
     public void drawAppleFruit(Position position) {
-        //gui.drawCharacter(position.getX(), position.getY(), 'L', "#FF0000");
         gui.drawCharacter(position.getX(), position.getY(), ']', "#FF0000");
     }
 
 
     public void drawBananaFruit(Position position) {
-        gui.drawCharacter(position.getX(), position.getY(), 'M', "#FFFF00");
-        //gui.drawCharacter(position.getX(), position.getY(), '@', "#FFFF00"); Ainda não tenho
+        gui.drawCharacter(position.getX(), position.getY(), '@', "#FFFF00");
     }
 
 
     public void drawPineappleFruit(Position position) {
-        //gui.drawCharacter(position.getX(), position.getY(), 'O', "#FFFF66");
         gui.drawCharacter(position.getX(), position.getY(), '^', "#FFFF66");
 
     }
 
 
     public void drawPepperFruit(Position position) {
-        //gui.drawCharacter(position.getX(), position.getY(), 'K', "#FF0000");
         gui.drawCharacter(position.getX(), position.getY(), '\\', "#FF0000");
     }
 
 
     public void drawStrawberryFruit(Position position) {
-        //gui.drawCharacter(position.getX(), position.getY(), 'Q', "#FF0000");
         gui.drawCharacter(position.getX(), position.getY(), '_', "#FF0000");
     }
 
 
     public void drawHotFloor(Position position) {
-        gui.drawCharacter(position.getX(), position.getY(), 'E', "#FF0000");
+        gui.drawCharacter(position.getX(), position.getY(), 'b', "#FF0000");
     }
 
 

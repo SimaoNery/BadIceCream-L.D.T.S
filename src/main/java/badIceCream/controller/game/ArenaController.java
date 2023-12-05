@@ -70,17 +70,17 @@ public class ArenaController extends GameController {
                 game.stopAudio();
                 new Audio("LevelCompleteMenuSound.wav").playOnce();
                 game.getState().increaseLevel();
-                game.setState(new LevelCompletedMenuState(new LevelCompletedMenu(), game.getState().getLevel()), new MenuGraphics(250, 100));
+                game.setState(new LevelCompletedMenuState(new LevelCompletedMenu(), game.getState().getLevel()), new MenuGraphics(135, 50));
             }
         }
         else if (!getModel().getIceCream().getAlive()) {
             game.stopAudio();
             new Audio("GameOverMenuSound.wav").playOnce();
-            game.setState(new GameOverMenuState(new GameOverMenu(), game.getState().getLevel()), new MenuGraphics(250, 100));
+            game.setState(new GameOverMenuState(new GameOverMenu(), game.getState().getLevel()), new MenuGraphics(135, 50));
         }
         else if (action == GUI.ACTION.PAUSE) {
             game.setAudioController("MainMenuMusic.wav");
-            game.setState(new PauseMenuState(new PauseMenu(), getModel() ,game.getState().getLevel()), new MenuGraphics(250, 100));
+            game.setState(new PauseMenuState(new PauseMenu(), getModel() ,game.getState().getLevel()), new MenuGraphics(135, 50));
         }
         else {
             iceCreamController.step(game, action, time);
