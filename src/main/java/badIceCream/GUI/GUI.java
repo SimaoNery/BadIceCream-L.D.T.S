@@ -1,29 +1,15 @@
 package badIceCream.GUI;
 
 import badIceCream.model.Position;
+import badIceCream.model.game.arena.Arena;
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.TextGraphics;
 
 import java.io.IOException;
 
 
 public interface GUI {
     ACTION getNextAction() throws IOException;
-
-    void drawIceCream(Position position);
-
-    void drawStoneWall(Position position);
-    void drawIceWall(Position position);
-
-    void drawDefaultMonster(Position position);
-    void drawRunnerMonster(Position position);
-    void drawJumperMonster(Position position);
-    void drawWallBreakerMonster(Position position);
-    void drawAppleFruit(Position position);
-    void drawBananaFruit(Position position);
-    void drawPineappleFruit(Position position);
-    void drawPepperFruit(Position position);
-    void drawStrawberryFruit(Position position);
-    void drawHotFloor(Position position);
-
 
     void drawText(Position position, String text, String color);
 
@@ -32,6 +18,7 @@ public interface GUI {
     void refresh() throws IOException;
 
     void close() throws IOException;
+    void drawCharacter(int a, int b, char c, String color);
 
-    enum ACTION {UP, RIGHT, DOWN, LEFT, NONE, QUIT, SELECT, RESUME, PAUSE}
+    enum ACTION {UP, RIGHT, DOWN, LEFT, SPACE, NONE, QUIT, SELECT, RESUME, PAUSE}
 }

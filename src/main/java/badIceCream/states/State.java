@@ -1,6 +1,7 @@
 package badIceCream.states;
 
 import badIceCream.GUI.GUI;
+import badIceCream.GUI.Graphics;
 import badIceCream.Game;
 import badIceCream.viewer.Viewer;
 import badIceCream.controller.Controller;
@@ -11,24 +12,39 @@ public abstract class State<T> {
     private final T model;
     private final Controller<T> controller;
     private final Viewer<T> viewer;
+    private int level;
 
-    public State(T model) {
+    public State(T model, Controller controller, Viewer viewer, int level) {
         this.model = model;
-        this.viewer = getViewer();
-        this.controller = getController();
+        this.viewer = viewer;
+        this.controller = controller;
+        this.level = level;
     }
 
-    protected abstract Viewer<T> getViewer();
+    protected Viewer<T> getViewer() {return viewer;}
 
-    protected abstract Controller<T> getController();
+    protected Controller<T> getController() {return controller;}
 
     public T getModel() {
         return model;
     }
 
-    public void step(Game game, GUI gui, long time) throws IOException {
-        GUI.ACTION action = gui.getNextAction();
+    public void step(Game game, Graphics graphics, long time) throws IOException {
+        GUI.ACTION action = graphics.getNextAction();
         controller.step(game, action, time);
-        viewer.draw(gui);
+        viewer.draw(graphics);
+    }
+
+    public void stepMonsters(long time) throws IOException {
+        controller.stepMonsters(time);
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public int increaseLevel() {
+        this.level++;
+        return this.level;
     }
 }

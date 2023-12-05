@@ -1,20 +1,25 @@
 package badIceCream;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import badIceCream.model.menu.SelectLevelMenu;
+import badIceCream.states.SelectLevelMenuState;
+
+import java.awt.*;
+import java.io.IOException;
+import java.net.URISyntaxException;
+
+
 public class Main {
-    public static void main(String[] args) {
-        // Press Opt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
-
-        // Press Ctrl+R or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
-            System.out.println("teste");
-
-            // Press Ctrl+D to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Cmd+F8.
-            System.out.println("i = " + i);
+    public static void main(String[] args) throws IOException, URISyntaxException, FontFormatException {
+        try {
+            Game game = new Game();
+            game.start();
+            game.setState(new SelectLevelMenuState(new SelectLevelMenu(), game.getState().getLevel()), null);
+        } catch (FontFormatException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
         }
     }
 }

@@ -2,7 +2,6 @@ package badIceCream.controller;
 
 import badIceCream.model.game.arena.Arena;
 import badIceCream.GUI.GUI;
-import badIceCream.controller.game.monsters.DefaultController;
 import badIceCream.model.Position;
 import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.StoneWall;
