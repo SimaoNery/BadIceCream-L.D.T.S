@@ -10,14 +10,4 @@ public class MainMenuState extends MenuState<MainMenu> {
     public MainMenuState(MainMenu model, int level) {
         super(model, new MainMenuController(model), new MainMenuViewer(model), level);
     }
-
-    @Override
-    protected Viewer<MainMenu> getViewer() {
-        return new MainMenuViewer(getModel());
-    }
-
-    @Override
-    protected Controller<MainMenu> getController() {
-        return new MainMenuController(getModel());
-    }
 }

@@ -1,5 +1,7 @@
 package badIceCream.model;
 
+import net.jqwik.api.ForAll;
+import net.jqwik.api.Property;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,37 +11,27 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PositionTest {
     private Position position;
 
-    @BeforeEach
-    void setUp() {
-        position = new Position(0,0);
+    @Property
+    void getLeft(@ForAll int x, @ForAll int y) {
+        assertEquals(x - 1, new Position(x, y).getLeft().getX());
+        assertEquals(y, new Position(x, y).getLeft().getY());
     }
 
-    @Test
-    public void testGetLeft() {
-        Position newpos = position.getLeft();
-        Position expected = new Position(-1, 0);
-        assertEquals(expected.getX(), newpos.getX());
-        assertEquals(expected.getY(), newpos.getY());
+    @Property
+    void getRight(@ForAll int x, @ForAll int y) {
+        assertEquals(x + 1, new Position(x, y).getRight().getX());
+        assertEquals(y, new Position(x, y).getRight().getY());
     }
-    @Test
-    public void testGetRight() {
-        Position newpos = position.getRight();
-        Position expected = new Position(1, 0);
-        assertEquals(expected.getX(), newpos.getX());
-        assertEquals(expected.getY(), newpos.getY());
+
+    @Property
+    void getUp(@ForAll int x, @ForAll int y) {
+        assertEquals(x, new Position(x, y).getUp().getX());
+        assertEquals(y - 1, new Position(x, y).getUp().getY());
     }
-    @Test
-    public void testGetUp() {
-        Position newpos = position.getUp();
-        Position expected = new Position(0, -1);
-        assertEquals(expected.getX(), newpos.getX());
-        assertEquals(expected.getY(), newpos.getY());
-    }
-    @Test
-    public void testGetDown() {
-        Position newpos = position.getDown();
-        Position expected = new Position(0, 1);
-        assertEquals(expected.getX(), newpos.getX());
-        assertEquals(expected.getY(), newpos.getY());
+
+    @Property
+    void getDown(@ForAll int x, @ForAll int y) {
+        assertEquals(x, new Position(x, y).getDown().getX());
+        assertEquals(y + 1, new Position(x, y).getDown().getY());
     }
 }

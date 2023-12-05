@@ -21,9 +21,9 @@ public abstract class State<T> {
         this.level = level;
     }
 
-    protected abstract Viewer<T> getViewer();
+    protected Viewer<T> getViewer() {return viewer;}
 
-    protected abstract Controller<T> getController();
+    protected Controller<T> getController() {return controller;}
 
     public T getModel() {
         return model;

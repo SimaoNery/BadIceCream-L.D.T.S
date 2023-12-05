@@ -68,15 +68,17 @@ public class ArenaController extends GameController {
             }
             else {
                 game.stopAudio();
-                new Audio("LevelCompleteMenuSound.wav").playOnce();
+                Audio levelCompletedAudio = new Audio("LevelCompleteMenuSound.wav");
+                levelCompletedAudio.playOnce();
                 game.getState().increaseLevel();
-                game.setState(new LevelCompletedMenuState(new LevelCompletedMenu(), game.getState().getLevel()), new MenuGraphics(135, 50));
+                game.setState(new LevelCompletedMenuState(new LevelCompletedMenu(), game.getState().getLevel(), levelCompletedAudio), new MenuGraphics(135, 50));
             }
         }
         else if (!getModel().getIceCream().getAlive()) {
             game.stopAudio();
-            new Audio("GameOverMenuSound.wav").playOnce();
-            game.setState(new GameOverMenuState(new GameOverMenu(), game.getState().getLevel()), new MenuGraphics(135, 50));
+            Audio gameOverSound = new Audio("GameOverMenuSound.wav");
+            gameOverSound.playOnce();
+            game.setState(new GameOverMenuState(new GameOverMenu(), game.getState().getLevel(), gameOverSound), new MenuGraphics(135, 50));
         }
         else if (action == GUI.ACTION.PAUSE) {
             game.setAudioController("MainMenuMusic.wav");
