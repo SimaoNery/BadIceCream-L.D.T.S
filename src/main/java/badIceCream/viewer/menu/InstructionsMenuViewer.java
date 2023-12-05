@@ -97,6 +97,12 @@ public class InstructionsMenuViewer extends Viewer<InstructionsMenu> {
         gui.drawText(new Position(96, 30), "| ESC |", "#FFFFFF");
         gui.drawText(new Position(96, 31), "|_____|", "#FFFFFF");
 
+        gui.drawText(new Position(110, 40), "Next Page", "#FFFFFF");
+        gui.drawText(new Position(120, 39), " ___", "#FFFFFF");
+        gui.drawText(new Position(120, 40), "| ->|", "#FFFFFF");
+        gui.drawText(new Position(120, 41), "|___|", "#FFFFFF");
+
+
 
         int height = 35 ;
 
