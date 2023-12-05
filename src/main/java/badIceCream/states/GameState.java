@@ -10,14 +10,4 @@ public class GameState extends State<Arena> {
     public GameState(Arena arena, int level) {
         super(arena, new ArenaController(arena), new ArenaViewer(arena), level);
     }
-
-    @Override
-    protected Viewer<Arena> getViewer() {
-        return new ArenaViewer(getModel());
-    }
-
-    @Override
-    protected Controller<Arena> getController() {
-        return new ArenaController(getModel());
-    }
 }

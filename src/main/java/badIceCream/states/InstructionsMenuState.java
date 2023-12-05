@@ -14,13 +14,4 @@ public class InstructionsMenuState extends MenuState<InstructionsMenu> {
         super(model, new InstructionsMenuController(model), new InstructionsMenuViewer(model), level);
     }
 
-    @Override
-    protected Viewer<InstructionsMenu> getViewer() {
-        return new InstructionsMenuViewer(getModel());
-    }
-
-    @Override
-    protected Controller<InstructionsMenu> getController() {
-        return new InstructionsMenuController(getModel());
-    }
 }
