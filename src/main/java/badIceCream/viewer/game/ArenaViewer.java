@@ -21,21 +21,25 @@ public class ArenaViewer extends Viewer<Arena> {
     @Override
     public void drawElements(Graphics gui) {
 
-        for(HotFloor hotFloor : getModel().getHotFloors()){
+        for(HotFloor hotFloor : model.getHotFloors()){
             drawElement(gui, hotFloor, new HotFloorViewer(), hotFloor.getType());
         }
 
-        for (Fruit fruit : getModel().getFruits()){
+        for (Fruit fruit : model.getFruits()){
             drawElement(gui, fruit, new FruitViewer(), fruit.getType());
         }
 
-        for (Wall wall : getModel().getWalls()) {
+        for(Monster monster : model.getMonsters()){
+            drawElement(gui, monster, new MonsterViewer(), monster.getType());
+        }
+
+        for (Wall wall : model.getWalls()) {
             int type = wall.getType();
             if (type == 2) {
                 drawElement(gui, wall, new WallViewer(), type);
             }
             else {
-                int fruit = getModel().isFruit(wall.getPosition());
+                int fruit = model.isFruit(wall.getPosition());
                 switch (fruit) {
                     case 1: drawElement(gui, wall, new WallViewer(), 3);
                         break;
@@ -49,12 +53,24 @@ public class ArenaViewer extends Viewer<Arena> {
                         break;
                     default: drawElement(gui, wall, new WallViewer(), 1);
                 }
+
+                Monster monster = model.hasMonster(wall.getPosition());
+                if (monster != null) {
+                    if (monster.getType() == 2) {
+                        switch (monster.getLastAction()) {
+                            case UP: drawElement(gui, wall, new WallViewer(), 9);
+                                break;
+                            case RIGHT: drawElement(gui, wall, new WallViewer(), 10);
+                                break;
+                            case LEFT: drawElement(gui, wall, new WallViewer(), 11);
+                                break;
+                            default: drawElement(gui, wall, new WallViewer(), 8);
+                        }
+                    }
+                }
             }
         }
 
-        for(Monster monster : getModel().getMonsters()){
-            drawElement(gui, monster, new MonsterViewer(), monster.getType());
-        }
 
         drawElement(gui, getModel().getIceCream(), new IceCreamViewer(), 1);
     }

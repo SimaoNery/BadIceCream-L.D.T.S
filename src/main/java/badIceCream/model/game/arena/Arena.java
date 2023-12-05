@@ -136,12 +136,13 @@ public class Arena {
         }
         return false;
     }
-    public boolean isMonster(Position position) {
+    public Monster hasMonster(Position position) {
         for (Monster monster : monsters)
             if (monster.getPosition().equals(position))
-                return true;
-        return false;
+                return monster;
+        return null;
     }
+
     public int isFruit(Position position) {
         for (Fruit fruit : fruits) {
             if (fruit.getPosition().equals(position))
