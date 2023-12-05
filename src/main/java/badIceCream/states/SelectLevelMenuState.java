@@ -8,7 +8,7 @@ import badIceCream.viewer.menu.SelectLevelMenuViewer;
 
 public class SelectLevelMenuState extends MenuState<SelectLevelMenu> {
     public SelectLevelMenuState(SelectLevelMenu model, int level) {
-        super(model, level);
+        super(model, new SelectLevelMenuController(model), new SelectLevelMenuViewer(model), level);
     }
 
     @Override

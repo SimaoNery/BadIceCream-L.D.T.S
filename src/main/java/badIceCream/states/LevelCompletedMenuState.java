@@ -9,7 +9,7 @@ import badIceCream.viewer.menu.LevelCompletedMenuViewer;
 public class LevelCompletedMenuState extends MenuState<LevelCompletedMenu> {
 
     public LevelCompletedMenuState(LevelCompletedMenu model, int level) {
-        super(model, level);
+        super(model, new LevelCompletedMenuController(model), new LevelCompletedMenuViewer(model), level);
     }
     @Override
     protected Viewer<LevelCompletedMenu> getViewer() {

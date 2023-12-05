@@ -14,10 +14,10 @@ public abstract class State<T> {
     private final Viewer<T> viewer;
     private int level;
 
-    public State(T model, int level) {
+    public State(T model, Controller controller, Viewer viewer, int level) {
         this.model = model;
-        this.viewer = getViewer();
-        this.controller = getController();
+        this.viewer = viewer;
+        this.controller = controller;
         this.level = level;
     }
 

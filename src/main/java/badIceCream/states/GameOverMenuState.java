@@ -9,7 +9,7 @@ import badIceCream.viewer.menu.GameOverMenuViewer;
 public class GameOverMenuState extends MenuState<GameOverMenu> {
 
     public GameOverMenuState(GameOverMenu model, int level) {
-        super(model, level);
+        super(model, new GameOverMenuController(model), new GameOverMenuViewer(model), level);
     }
     @Override
     protected Viewer<GameOverMenu> getViewer() {
