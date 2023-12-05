@@ -26,10 +26,10 @@ public class ArenaController extends GameController {
     private boolean first;
     private long strawberry;
 
-    public ArenaController(Arena arena) {
+    public ArenaController(Arena arena, IceCreamController iceCreamController, List<MonsterController> monsterController) {
         super(arena);
-        this.iceCreamController = new IceCreamController(arena);
-        monsterController = new ArrayList<>();
+        this.iceCreamController = iceCreamController;
+        this.monsterController = monsterController;
         this.first = true;
 
         for (Monster m : arena.getMonsters()) {
