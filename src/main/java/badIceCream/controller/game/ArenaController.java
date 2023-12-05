@@ -80,7 +80,7 @@ public class ArenaController extends GameController {
         }
         else if (action == GUI.ACTION.PAUSE) {
             game.setAudioController("MainMenuMusic.wav");
-            game.setState(new PauseMenuState(new PauseMenu(), getModel() ,game.getState().getLevel()), new MenuGraphics(135, 50));
+            game.setState(new PauseMenuState(new PauseMenu(), game.getState() ,game.getState().getLevel()), new MenuGraphics(135, 50));
         }
         else {
             iceCreamController.step(game, action, time);
