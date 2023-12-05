@@ -142,7 +142,7 @@ public class Graphics implements Cloneable {
 
 
     public void drawBananaFruit(Position position) {
-        gui.drawCharacter(position.getX(), position.getY(), '@', "#FFFF00");
+        gui.drawCharacter(position.getX(), position.getY(), 'a', "#FFFF00");
     }
 
 
@@ -162,8 +162,68 @@ public class Graphics implements Cloneable {
     }
 
 
-    public void drawHotFloor(Position position) {
-        gui.drawCharacter(position.getX(), position.getY(), 'b', "#FF0000");
+    public void drawHotFloor(Position position, int type) {
+        switch (type) {
+            case 1: gui.drawCharacter(position.getX(), position.getY(), 'w', "#FF0000");
+                break;
+            case 2: gui.drawCharacter(position.getX(), position.getY(), 'd', "#FF0000");
+                break;
+            case 3: gui.drawCharacter(position.getX(), position.getY(), 'c', "#FF0000");
+                break;
+            case 4: gui.drawCharacter(position.getX(), position.getY(), 'x', "#FF0000");
+                break;
+            case 5: gui.drawCharacter(position.getX(), position.getY(), '%', "#FF0000");
+                break;
+            case 6: gui.drawCharacter(position.getX(), position.getY(), '(', "#FF0000");
+                break;
+            case 7: gui.drawCharacter(position.getX(), position.getY(), '\'', "#FF0000");
+                break;
+            case 8: gui.drawCharacter(position.getX(), position.getY(), '&', "#FF0000");
+                break;
+            case 9: gui.drawCharacter(position.getX(), position.getY(), ')', "#FF0000");
+                break;
+            case 10: gui.drawCharacter(position.getX(), position.getY(), '+', "#FF0000");
+                break;
+            case 11: gui.drawCharacter(position.getX(), position.getY(), ',', "#FF0000");
+                break;
+            case 12: gui.drawCharacter(position.getX(), position.getY(), '*', "#FF0000");
+                break;
+            case 13: gui.drawCharacter(position.getX(), position.getY(), '-', "#FF0000");
+                break;
+            case 14: gui.drawCharacter(position.getX(), position.getY(), '.', "#FF0000");
+                break;
+            case 15: gui.drawCharacter(position.getX(), position.getY(), 'S', "#FF0000");
+                break;
+            case 16: gui.drawCharacter(position.getX(), position.getY(), 'R', "#FF0000");
+                break;
+            case 17: gui.drawCharacter(position.getX(), position.getY(), '!', "#FF0000");
+                break;
+            case 18: gui.drawCharacter(position.getX(), position.getY(), '#', "#FF0000");
+                break;
+            case 19: gui.drawCharacter(position.getX(), position.getY(), '"', "#FF0000");
+                break;
+            case 20: gui.drawCharacter(position.getX(), position.getY(), '$', "#FF0000");
+                break;
+            case 21: gui.drawCharacter(position.getX(), position.getY(), 'C', "#FF0000");
+                break;
+            case 22: gui.drawCharacter(position.getX(), position.getY(), '@', "#FF0000");
+                break;
+            case 23: gui.drawCharacter(position.getX(), position.getY(), 'D', "#FF0000");
+                break;
+            case 24: gui.drawCharacter(position.getX(), position.getY(), 'B', "#FF0000");
+                break;
+            case 25: gui.drawCharacter(position.getX(), position.getY(), 'A', "#FF0000");
+                break;
+            case 26: gui.drawCharacter(position.getX(), position.getY(), ';', "#FF0000");
+                break;
+            case 27: gui.drawCharacter(position.getX(), position.getY(), '=', "#FF0000");
+                break;
+            case 28: gui.drawCharacter(position.getX(), position.getY(), '>', "#FF0000");
+                break;
+            case 29: gui.drawCharacter(position.getX(), position.getY(), '<', "#FF0000");
+                break;
+            default: gui.drawCharacter(position.getX(), position.getY(), 'b', "#FF0000");
+        }
     }
 
 
