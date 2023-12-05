@@ -39,7 +39,7 @@ public class IceCreamController extends GameController {
             if (getModel().isEmpty(position) && time - lastTime >= 15) {
                 getModel().getIceCream().setPosition(position);
 
-                if (!getModel().getIceCream().isStrawberryActive() && getModel().isMonster(position)) getModel().getIceCream().changeAlive();
+                if (!getModel().getIceCream().isStrawberryActive() && getModel().isMonster(position) != -1) getModel().getIceCream().changeAlive();
             }
             getModel().getIceCream().setLastMovement(last);
             lastMovement = last;

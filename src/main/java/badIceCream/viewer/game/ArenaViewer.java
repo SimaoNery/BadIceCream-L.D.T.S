@@ -29,6 +29,10 @@ public class ArenaViewer extends Viewer<Arena> {
             drawElement(gui, fruit, new FruitViewer(), fruit.getType());
         }
 
+        for(Monster monster : getModel().getMonsters()){
+            drawElement(gui, monster, new MonsterViewer(), monster.getType());
+        }
+
         for (Wall wall : getModel().getWalls()) {
             int type = wall.getType();
             if (type == 2) {
@@ -52,9 +56,6 @@ public class ArenaViewer extends Viewer<Arena> {
             }
         }
 
-        for(Monster monster : getModel().getMonsters()){
-            drawElement(gui, monster, new MonsterViewer(), monster.getType());
-        }
 
         drawElement(gui, getModel().getIceCream(), new IceCreamViewer(), 1);
     }
