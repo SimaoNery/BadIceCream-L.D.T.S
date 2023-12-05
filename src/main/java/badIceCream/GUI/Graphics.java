@@ -214,6 +214,14 @@ public class Graphics implements Cloneable {
                 break;
             case 25: gui.drawCharacter(position.getX(), position.getY(), 'A', "#FF0000");
                 break;
+            case 26: gui.drawCharacter(position.getX(), position.getY(), ';', "#FF0000");
+                break;
+            case 27: gui.drawCharacter(position.getX(), position.getY(), '=', "#FF0000");
+                break;
+            case 28: gui.drawCharacter(position.getX(), position.getY(), '>', "#FF0000");
+                break;
+            case 29: gui.drawCharacter(position.getX(), position.getY(), '<', "#FF0000");
+                break;
             default: gui.drawCharacter(position.getX(), position.getY(), 'b', "#FF0000");
         }
     }
