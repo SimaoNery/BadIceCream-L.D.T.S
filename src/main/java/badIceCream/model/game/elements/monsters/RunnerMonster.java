@@ -1,8 +1,6 @@
 package badIceCream.model.game.elements.monsters;
 
 
-import badIceCream.GUI.GUI;
-
 public class RunnerMonster extends Monster {
     public RunnerMonster(int x, int y) {
         super(x, y);

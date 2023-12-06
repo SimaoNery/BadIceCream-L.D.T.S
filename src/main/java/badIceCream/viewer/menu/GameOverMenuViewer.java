@@ -1,11 +1,9 @@
 package badIceCream.viewer.menu;
 
-import badIceCream.GUI.GUI;
 import badIceCream.GUI.Graphics;
 import badIceCream.model.Position;
 import badIceCream.model.menu.GameOverMenu;
 import badIceCream.viewer.Viewer;
-import com.googlecode.lanterna.screen.Screen;
 
 public class GameOverMenuViewer extends Viewer<GameOverMenu> {
     public GameOverMenuViewer(GameOverMenu menu) {

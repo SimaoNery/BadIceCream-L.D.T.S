@@ -1,6 +1,5 @@
 package badIceCream.viewer.menu;
 
-import badIceCream.GUI.GUI;
 import badIceCream.GUI.Graphics;
 import badIceCream.model.Position;
 import badIceCream.model.menu.InstructionsMenuSecondPage;
