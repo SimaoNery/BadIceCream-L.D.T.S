@@ -22,6 +22,8 @@ public class MonsterControllerTest {
 
     private Arena arena;
     private Game game;
+
+    private IceCream iceCream;
     private StepMonsters step;
     private Monster monster;
     private MonsterController monsterController;
@@ -29,76 +31,58 @@ public class MonsterControllerTest {
     @BeforeEach
     void setUp() {
         arena = mock(Arena.class);
+        iceCream = mock(IceCream.class);
         step = mock(StepMonsters.class);
         monster = mock(Monster.class);
-        when(monster.getPosition()).thenReturn(new Position(1,1));
+        when(iceCream.getPosition()).thenReturn(new Position(5, 5));
+        when(monster.getPosition()).thenReturn(new Position(1, 2));
+        when(arena.getIceCream()).thenReturn(iceCream);
         monsterController = new MonsterController(arena, step, monster);
-    }
 
+        State state = mock(State.class);
+        game = mock(Game.class);
+        when(game.getState()).thenReturn(state);
+    }
 
     @Test
     void testRunnerMonsterSwitchesMovement() throws IOException {
         when(monster.getType()).thenReturn(3);
-        IceCream mockedIceCream = mock(IceCream.class);
-        when(mockedIceCream.getPosition()).thenReturn(new Position(5,5));
 
-        when(arena.getIceCream()).thenReturn(mockedIceCream);
+        long time = System.currentTimeMillis();
+        monsterController.step(time);
 
-        monsterController = new MonsterController(arena, step, monster);
-
-        Field lastChange = null;
-        Field runnerOn = null;
-        try {
-            lastChange = MonsterController.class.getDeclaredField("lastChange");
-            runnerOn = MonsterController.class.getDeclaredField("runnerOn");
-        } catch (NoSuchFieldException e) {
-            throw new RuntimeException(e);
-        }
-        lastChange.setAccessible(true);
-        runnerOn.setAccessible(true);
-        try {
-            lastChange.set(monsterController, System.currentTimeMillis());
-            runnerOn.set(monsterController, false);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
-
-
-        monsterController.step(System.currentTimeMillis() + 30000);
-
-        verify(monster, times(1)).startRunning();
+        verify(monster).startRunning();
     }
 
     @Test
     void testRunnerMonsterSwitchesMovementOff() throws IOException {
         when(monster.getType()).thenReturn(3);
-        IceCream mockedIceCream = mock(IceCream.class);
-        when(mockedIceCream.getPosition()).thenReturn(new Position(5, 5));
 
-        when(arena.getIceCream()).thenReturn(mockedIceCream);
 
-        monsterController = new MonsterController(arena, step, monster);
-
-        Field lastChange = null;
         Field runnerOn = null;
         try {
-            lastChange = MonsterController.class.getDeclaredField("lastChange");
             runnerOn = MonsterController.class.getDeclaredField("runnerOn");
         } catch (NoSuchFieldException e) {
             throw new RuntimeException(e);
         }
-        lastChange.setAccessible(true);
         runnerOn.setAccessible(true);
         try {
-            lastChange.set(monsterController, System.currentTimeMillis());
             runnerOn.set(monsterController, true);
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
 
 
-        monsterController.step(System.currentTimeMillis() + 30000);
+        monsterController.step(System.currentTimeMillis());
 
         verify(monster, times(1)).stopRunning();
+    }
+
+    @Test
+    void testStepMonster() throws IOException {
+        long time = System.currentTimeMillis();
+        monsterController.step(time);
+
+        verify(step).step(monster, arena, time, 0);
     }
 }
