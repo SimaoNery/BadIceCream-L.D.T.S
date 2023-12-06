@@ -8,7 +8,6 @@ import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.IceWall;
 import badIceCream.model.game.elements.StoneWall;
-import badIceCream.model.game.elements.fruits.BananaFruit;
 import badIceCream.model.game.elements.monsters.DefaultMonster;
 import badIceCream.states.State;
 import org.junit.jupiter.api.Assertions;
