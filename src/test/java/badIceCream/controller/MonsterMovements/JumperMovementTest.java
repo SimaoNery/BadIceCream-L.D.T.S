@@ -1,4 +1,4 @@
-package badIceCream.controller;
+package badIceCream.controller.MonsterMovements;
 
 import badIceCream.GUI.GUI;
 import badIceCream.controller.game.monsters.JumperMovement;

@@ -1,4 +1,4 @@
-package badIceCream.controller;
+package badIceCream.controller.MonsterMovements;
 
 import badIceCream.Exceptions.StoneWallDestroyedException;
 import badIceCream.GUI.GUI;

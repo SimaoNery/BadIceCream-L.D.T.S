@@ -1,4 +1,4 @@
-package badIceCream.controller;
+package badIceCream.controller.Menu;
 
 import badIceCream.GUI.GUI;
 import badIceCream.GUI.GameGraphics;

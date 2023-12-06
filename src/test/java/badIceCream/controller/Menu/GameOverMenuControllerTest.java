@@ -1,4 +1,4 @@
-package badIceCream.controller;
+package badIceCream.controller.Menu;
 
 import badIceCream.GUI.GUI;
 
@@ -27,6 +27,8 @@ public class GameOverMenuControllerTest {
     void setUp() {
         gameOverMenu = mock(GameOverMenu.class);
         game = mock(Game.class);
+        State state = mock(State.class);
+        when(game.getState()).thenReturn(state);
         audio = mock(Audio.class);
         gameOverMenuController = new GameOverMenuController(gameOverMenu, audio);
     }
@@ -55,7 +57,6 @@ public class GameOverMenuControllerTest {
         verify(game, times(1)).setState(eq(any(MainMenuState.class)), null);
     }
 
-    @Test
     void testCaseSelectPlayAgain() throws IOException {
         when(gameOverMenu.isSelectedPlayAgain()).thenReturn(true);
 

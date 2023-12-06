@@ -6,20 +6,14 @@ import badIceCream.controller.game.IceCreamController;
 import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.IceCream;
-import badIceCream.model.game.elements.IceWall;
-import badIceCream.model.game.elements.StoneWall;
-import badIceCream.model.game.elements.monsters.DefaultMonster;
 import badIceCream.model.game.elements.monsters.Monster;
 import badIceCream.states.State;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 class IceCreamControllerTest {
@@ -28,6 +22,8 @@ class IceCreamControllerTest {
     private IceCream iceCream;
     private State state;
     private Arena arena;
+    private Position position;
+    private Position positionNew;
 
     @BeforeEach
     void setUp() {
@@ -42,19 +38,21 @@ class IceCreamControllerTest {
         when(arena.getWalls()).thenReturn(new ArrayList<>());
         when(arena.getFruits()).thenReturn(new ArrayList<>());
         when(arena.getMonsters()).thenReturn(new ArrayList<>());
+
+        position = mock(Position.class);
+        positionNew = mock(Position.class);
+        when(position.getRight()).thenReturn(position);
+        when(position.getUp()).thenReturn(position);
+        when(position.getLeft()).thenReturn(position);
+        when(position.getDown()).thenReturn(position);
+        when(iceCream.getPosition()).thenReturn(position);
+
         controller = new IceCreamController(arena);
     }
 
     @Test
     void testMoveIceCreamUpNoMonsterNoStrawberry() {
-        Position position = mock(Position.class);
-        Position previous = mock(Position.class);
-        when(iceCream.getPosition()).thenReturn(previous);
-
-        when(iceCream.getPosition().getDown()).thenReturn(position);
-        when(iceCream.getPosition().getUp()).thenReturn(position);
-        when(iceCream.getPosition().getLeft()).thenReturn(position);
-        when(iceCream.getPosition().getRight()).thenReturn(position);
+        when(iceCream.getPosition()).thenReturn(position);
 
         when(arena.isEmpty(position)).thenReturn(true);
         when(arena.hasMonster(position)).thenReturn(null);
@@ -105,14 +103,7 @@ class IceCreamControllerTest {
 
     @Test
     void testMoveIceCreamMonsterNoStrawberry() {
-        Position position = mock(Position.class);
-        Position previous = mock(Position.class);
-        when(iceCream.getPosition()).thenReturn(previous);
-
-        when(iceCream.getPosition().getDown()).thenReturn(position);
-        when(iceCream.getPosition().getUp()).thenReturn(position);
-        when(iceCream.getPosition().getLeft()).thenReturn(position);
-        when(iceCream.getPosition().getRight()).thenReturn(position);
+        when(iceCream.getPosition()).thenReturn(position);
 
         when(arena.isEmpty(position)).thenReturn(true);
 
@@ -135,14 +126,6 @@ class IceCreamControllerTest {
 
     @Test
     void testMoveIceCreamMonsterStrawberry() {
-        Position position = mock(Position.class);
-        Position previous = mock(Position.class);
-        when(iceCream.getPosition()).thenReturn(previous);
-
-        when(iceCream.getPosition().getDown()).thenReturn(position);
-        when(iceCream.getPosition().getUp()).thenReturn(position);
-        when(iceCream.getPosition().getLeft()).thenReturn(position);
-        when(iceCream.getPosition().getRight()).thenReturn(position);
 
         when(arena.isEmpty(position)).thenReturn(true);
 
@@ -161,6 +144,21 @@ class IceCreamControllerTest {
         verify(iceCream, times(1)).setLastMovement(GUI.ACTION.LEFT);
         verify(iceCream, times(1)).setLastMovement(GUI.ACTION.RIGHT);
         verify(iceCream, never()).changeAlive();
+    }
+
+    @Test
+    void eatFruitTest() {
+        when(arena.eatFruit(iceCream.getPosition())).thenReturn(1);
+
+        assertEquals(controller.eatFruit(), 1);
+    }
+
+    @Test
+    void powerIceCreamTest() {
+        controller.step(game, GUI.ACTION.UP, System.currentTimeMillis());
+        controller.step(game, GUI.ACTION.SPACE, System.currentTimeMillis());
+
+        verify(arena).powerIceCream(GUI.ACTION.UP);
     }
 
 }
