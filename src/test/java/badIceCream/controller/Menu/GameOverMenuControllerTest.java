@@ -57,7 +57,9 @@ public class GameOverMenuControllerTest {
         verify(game, times(1)).setState(eq(any(MainMenuState.class)), null);
     }
 
+    @Test
     void testCaseSelectPlayAgain() throws IOException {
+        when(game.getState().getLevel()).thenReturn(1);
         when(gameOverMenu.isSelectedPlayAgain()).thenReturn(true);
 
         gameOverMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
