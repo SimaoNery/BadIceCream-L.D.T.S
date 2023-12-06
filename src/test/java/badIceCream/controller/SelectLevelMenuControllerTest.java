@@ -4,7 +4,6 @@ import badIceCream.GUI.GUI;
 import badIceCream.GUI.GameGraphics;
 import badIceCream.Game;
 import badIceCream.controller.menu.SelectLevelMenuController;
-import badIceCream.model.menu.InstructionsMenu;
 import badIceCream.model.menu.SelectLevelMenu;
 import badIceCream.states.*;
 import org.junit.jupiter.api.BeforeEach;

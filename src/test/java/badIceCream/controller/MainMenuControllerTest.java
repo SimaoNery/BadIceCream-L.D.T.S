@@ -3,9 +3,9 @@ package badIceCream.controller;
 import badIceCream.GUI.GUI;
 import badIceCream.Game;
 import badIceCream.controller.menu.MainMenuController;
-import badIceCream.model.menu.InstructionsMenu;
+import badIceCream.model.menu.InstructionsMenuFirstPage;
 import badIceCream.model.menu.MainMenu;
-import badIceCream.states.InstructionsMenuState;
+import badIceCream.states.InstructionsMenuFirstPageState;
 import badIceCream.states.SelectLevelMenuState;
 import badIceCream.states.State;
 import org.junit.jupiter.api.BeforeEach;
@@ -59,9 +59,9 @@ public class MainMenuControllerTest {
 
         mainMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
 
-        InstructionsMenu instructionsMenu = mock(InstructionsMenu.class);
+        InstructionsMenuFirstPage instructionsMenu = mock(InstructionsMenuFirstPage.class);
 
-        verify(game, times(1)).setState(eq(any(InstructionsMenuState.class)), null);
+        verify(game, times(1)).setState(eq(any(InstructionsMenuFirstPageState.class)), null);
     }
 
     @Test
@@ -71,7 +71,7 @@ public class MainMenuControllerTest {
 
         mainMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
 
-        InstructionsMenu instructionsMenu = mock(InstructionsMenu.class);
+        InstructionsMenuFirstPage instructionsMenu = mock(InstructionsMenuFirstPage.class);
 
         verify(game, times(1)).setState(eq(any(SelectLevelMenuState.class)), null);
     }

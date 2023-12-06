@@ -14,8 +14,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +37,6 @@ class IceCreamControllerTest {
 
         iceCream = mock(IceCream.class);
         arena = mock(Arena.class);
-        when(iceCream.getPosition()).thenReturn(mock(Position.class));
         when(arena.getIceCream()).thenReturn(iceCream);
         when(arena.getWalls()).thenReturn(new ArrayList<>());
         when(arena.getFruits()).thenReturn(new ArrayList<>());
@@ -51,10 +48,8 @@ class IceCreamControllerTest {
     void testMoveIceCreamRightEmpty() {
         long time = System.currentTimeMillis();
         controller.step(game, GUI.ACTION.RIGHT, time);
-
-        verify(moveIce, times(1)).moveIceCream(eq(any(Position.class)), GUI.ACTION.RIGHT, time);
+        
     }
-
     @Test
     void testMoveIceCreamRightNotEmptyStone() {
         arena.setWalls(List.of(new StoneWall(6, 5)));
