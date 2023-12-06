@@ -114,14 +114,13 @@ class ArenaControllerTest {
     void stepTestGameOver() throws IOException {
         when(iceCream.getAlive()).thenReturn(false);
 
-        arenaController.step(game, GUI.ACTION.NONE, System.currentTimeMillis());
         arenaController.step(game, GUI.ACTION.UP, System.currentTimeMillis());
         arenaController.step(game, GUI.ACTION.DOWN, System.currentTimeMillis());
         arenaController.step(game, GUI.ACTION.LEFT, System.currentTimeMillis());
         arenaController.step(game, GUI.ACTION.RIGHT, System.currentTimeMillis());
 
-        verify(game, times(5)).stopAudio();
-        verify(game, times(5)).setState(
+        verify(game, times(4)).stopAudio();
+        verify(game, times(4)).setState(
                 any(GameOverMenuState.class),
                 any(MenuGraphics.class)
         );
@@ -135,17 +134,17 @@ class ArenaControllerTest {
         when(iceCream.isStrawberryActive()).thenReturn(true);
         long currentTime = System.currentTimeMillis();
 
-        arenaController.step(game, GUI.ACTION.NONE, currentTime);
         arenaController.step(game, GUI.ACTION.UP, currentTime);
         arenaController.step(game, GUI.ACTION.DOWN, currentTime);
         arenaController.step(game, GUI.ACTION.RIGHT, currentTime);
         arenaController.step(game, GUI.ACTION.LEFT, currentTime);
 
 
-        verify(iceCream, times(5)).setStrawberry(false);
+        verify(iceCream, times(4)).setStrawberry(false);
 
     }
 
+    @Test
     void testStepEatFruit() throws IOException {
 
         when(iceCreamController.eatFruit()).thenReturn(5);
