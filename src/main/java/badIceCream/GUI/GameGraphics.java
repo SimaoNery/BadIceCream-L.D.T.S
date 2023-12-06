@@ -42,7 +42,6 @@ public class GameGraphics implements GUI{
         }
     }
 
-
     private Screen createScreen(Terminal terminal) throws IOException{
         final Screen screen;
         screen = new TerminalScreen(terminal);
