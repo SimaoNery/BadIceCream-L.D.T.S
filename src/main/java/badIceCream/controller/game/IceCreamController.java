@@ -17,20 +17,20 @@ public class IceCreamController extends GameController {
             this.iceCream = arena.getIceCream();
         }
 
-        public void moveIceCreamLeft() {
-            moveIceCream(iceCream.getPosition().getLeft(), GUI.ACTION.LEFT, System.currentTimeMillis());
+        private void moveIceCreamLeft() {
+            moveIceCream(getModel().getIceCream().getPosition().getLeft(), GUI.ACTION.LEFT, System.currentTimeMillis());
         }
 
-        public void moveIceCreamRight() {
-            moveIceCream(iceCream.getPosition().getRight(), GUI.ACTION.RIGHT, System.currentTimeMillis());
+        private void moveIceCreamRight() {
+            moveIceCream(getModel().getIceCream().getPosition().getRight(), GUI.ACTION.RIGHT, System.currentTimeMillis());
         }
 
-        public void moveIceCreamUp() {
-            moveIceCream(iceCream.getPosition().getUp(), GUI.ACTION.UP, System.currentTimeMillis());
+        private void moveIceCreamUp() {
+            moveIceCream(getModel().getIceCream().getPosition().getUp(), GUI.ACTION.UP, System.currentTimeMillis());
         }
 
-        public void moveIceCreamDown() {
-            moveIceCream(iceCream.getPosition().getDown(), GUI.ACTION.DOWN, System.currentTimeMillis());
+        private void moveIceCreamDown() {
+            moveIceCream(getModel().getIceCream().getPosition().getDown(), GUI.ACTION.DOWN, System.currentTimeMillis());
         }
 
         public int eatFruit() {
