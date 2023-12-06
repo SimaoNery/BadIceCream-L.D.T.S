@@ -23,7 +23,6 @@ public class GameGraphics implements GUI{
     public GameGraphics(int width, int height) throws IOException{
         Terminal terminal = createGameTerminal(width, height);
         this.screen = createScreen(terminal);
-
     }
 
     private Terminal createGameTerminal(int width, int height) throws IOException {
