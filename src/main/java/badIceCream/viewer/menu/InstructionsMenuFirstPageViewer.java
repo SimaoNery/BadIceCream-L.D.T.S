@@ -100,13 +100,9 @@ public class InstructionsMenuFirstPageViewer extends Viewer<InstructionsMenuFirs
         gui.drawText(new Position(120, 40), "| ->|", "#FFFFFF");
         gui.drawText(new Position(120, 41), "|___|", "#FFFFFF");
 
-
-
-        int height = 35 ;
-
-        for(int i = 0; i < getModel().getNumberEntries(); i++) {
-            gui.drawText(new Position(63, height + i), getModel().getEntry(i), getModel().isSelected(i) ? "#D1D100" : "#FFFFFF" );
-            height += 3;
-        }
+        gui.drawText(new Position(36, 40), "Main Menu", "#FFFFFF");
+        gui.drawText(new Position(30, 39), " ___", "#FFFFFF");
+        gui.drawText(new Position(30, 40), "|ESC|", "#FFFFFF");
+        gui.drawText(new Position(30, 41), "|___| ", "#FFFFFF");
     }
 }

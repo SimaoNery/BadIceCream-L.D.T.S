@@ -226,7 +226,6 @@ public class Graphics implements Cloneable {
         }
     }
 
-
     public void drawText(Position position, String text, String color){
         gui.drawText(position, text, color);
     }
@@ -239,5 +238,14 @@ public class Graphics implements Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
         }
+    }
+
+    public void drawCharacters() {
+        gui.drawCharacter(33, 15, 'Ê', "#00FF00");
+        gui.drawCharacter(33, 18, 'À', "#00FF00");
+        gui.drawCharacter(33, 21, 'Á', "#00FF00");
+        gui.drawCharacter(33, 24, 'È', "#00FF00");
+        gui.drawCharacter(33, 27, 'É', "#00FF00");
+        gui.drawCharacter(33, 30, 'Í', "#00FF00");
     }
 }
