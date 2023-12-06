@@ -14,19 +14,19 @@ public class IceCreamController extends GameController {
             super(arena);
         }
 
-        public void moveIceCreamLeft() {
+        private void moveIceCreamLeft() {
             moveIceCream(getModel().getIceCream().getPosition().getLeft(), GUI.ACTION.LEFT, System.currentTimeMillis());
         }
 
-        public void moveIceCreamRight() {
+        private void moveIceCreamRight() {
             moveIceCream(getModel().getIceCream().getPosition().getRight(), GUI.ACTION.RIGHT, System.currentTimeMillis());
         }
 
-        public void moveIceCreamUp() {
+        private void moveIceCreamUp() {
             moveIceCream(getModel().getIceCream().getPosition().getUp(), GUI.ACTION.UP, System.currentTimeMillis());
         }
 
-        public void moveIceCreamDown() {
+        private void moveIceCreamDown() {
             moveIceCream(getModel().getIceCream().getPosition().getDown(), GUI.ACTION.DOWN, System.currentTimeMillis());
         }
 
@@ -34,7 +34,7 @@ public class IceCreamController extends GameController {
             return getModel().eatFruit(getModel().getIceCream().getPosition());
         }
 
-        private void moveIceCream(Position position, GUI.ACTION last, long time) {
+        public void moveIceCream(Position position, GUI.ACTION last, long time) {
 
             if (getModel().isEmpty(position) && time - lastTime >= 15) {
                 getModel().getIceCream().setPosition(position);
@@ -45,7 +45,7 @@ public class IceCreamController extends GameController {
             lastMovement = last;
         }
 
-        public void powerIceCream() {
+        private void powerIceCream() {
             getModel().powerIceCream(lastMovement);
         }
 
@@ -53,7 +53,7 @@ public class IceCreamController extends GameController {
         public void step(Game game, GUI.ACTION action, long time) {
             if (action == GUI.ACTION.UP) moveIceCreamUp();
             if (action == GUI.ACTION.RIGHT) moveIceCreamRight();
-            if (action == GUI.ACTION.DOWN) moveIceCreamDown();
+            if (action == GUI.ACTION.DOWN) this.moveIceCream(getModel().getIceCream().getPosition().getDown(), GUI.ACTION.DOWN, System.currentTimeMillis());
             if (action == GUI.ACTION.LEFT) moveIceCreamLeft();
             if (action == GUI.ACTION.SPACE) powerIceCream();
         }

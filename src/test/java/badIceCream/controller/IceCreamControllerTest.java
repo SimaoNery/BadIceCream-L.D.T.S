@@ -15,6 +15,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,29 +27,32 @@ class IceCreamControllerTest {
     private IceCreamController controller;
     private Game game;
     private IceCream iceCream;
+    private State state;
     private Arena arena;
 
     @BeforeEach
     void setUp() {
         game = mock(Game.class);
-        State mockedState = mock(State.class);
+        state = mock(State.class);
 
-        when(game.getState()).thenReturn(mockedState);
+        when(game.getState()).thenReturn(state);
 
-        iceCream = new IceCream(5,5);
-        arena = new Arena(10, 10);
-
-        arena.setIceCream(iceCream);
-        arena.setWalls(new ArrayList<>());
-        arena.setFruits(new ArrayList<>());
-        arena.setMonsters(new ArrayList<>());
+        iceCream = mock(IceCream.class);
+        arena = mock(Arena.class);
+        when(iceCream.getPosition()).thenReturn(mock(Position.class));
+        when(arena.getIceCream()).thenReturn(iceCream);
+        when(arena.getWalls()).thenReturn(new ArrayList<>());
+        when(arena.getFruits()).thenReturn(new ArrayList<>());
+        when(arena.getMonsters()).thenReturn(new ArrayList<>());
         controller = new IceCreamController(arena);
     }
 
     @Test
     void testMoveIceCreamRightEmpty() {
-        controller.step(game, GUI.ACTION.RIGHT, System.currentTimeMillis());
-        Assertions.assertEquals(new Position(6,5), iceCream.getPosition());
+        long time = System.currentTimeMillis();
+        controller.step(game, GUI.ACTION.RIGHT, time);
+
+        verify(moveIce, times(1)).moveIceCream(eq(any(Position.class)), GUI.ACTION.RIGHT, time);
     }
 
     @Test
