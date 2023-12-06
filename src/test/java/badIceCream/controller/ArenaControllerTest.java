@@ -6,13 +6,12 @@ import badIceCream.Game;
 import badIceCream.controller.game.ArenaController;
 import badIceCream.controller.game.IceCreamController;
 import badIceCream.controller.game.MonsterController;
+import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.fruits.BananaFruit;
-import badIceCream.model.game.elements.monsters.DefaultMonster;
-import badIceCream.model.game.elements.monsters.JumperMonster;
-import badIceCream.model.game.elements.monsters.RunnerMonster;
-import badIceCream.model.game.elements.monsters.WallBreakerMonster;
+import badIceCream.model.game.elements.fruits.Fruit;
+import badIceCream.model.game.elements.monsters.*;
 import badIceCream.states.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -33,44 +32,43 @@ class ArenaControllerTest {
     private Game game;
     private IceCreamController iceCreamController;
     private List<MonsterController> monsterControllers;
+    private IceCream iceCream;
 
+    private State state;
     private Arena arena;
 
     @BeforeEach
     void setUp() {
-        Arena arena = Mockito.mock(Arena.class);
+        state = mock(State.class);
+        game = Mockito.mock(Game.class);
+        when(game.getState()).thenReturn(state);
+
+        Position position = mock(Position.class);
+        iceCream = mock(IceCream.class);
+        when(iceCream.getPosition()).thenReturn(position);
+
+        arena = Mockito.mock(Arena.class);
+        when(arena.getIceCream()).thenReturn(iceCream);
         iceCreamController = Mockito.mock(IceCreamController.class);
-        monsterControllers = new ArrayList<>();
-        monsterControllers.add(Mockito.mock(MonsterController.class));
 
-        when(arena.getMonsters()).thenReturn(Arrays.asList(
-                new DefaultMonster(6, 5),
-                new JumperMonster(5, 4),
-                new WallBreakerMonster(5, 6),
-                new RunnerMonster(4, 5)
-        ));
+        MonsterController monsterController1 = mock(MonsterController.class);
+        MonsterController monsterController2 = mock(MonsterController.class);
+
+        monsterControllers = new ArrayList<>(Arrays.asList(monsterController1, monsterController2));
+
+
         when(arena.getFruits()).thenReturn(Arrays.asList(
-                new BananaFruit(6, 5),
-                new BananaFruit(5, 4),
-                new BananaFruit(5, 6),
-                new BananaFruit(4, 5)
+                mock(Fruit.class),
+                mock(Fruit.class)
         ));
-
-        when(arena.getIceCream()).thenReturn(new IceCream(5, 5));
-
-        this.arena = arena;
 
         arenaController = new ArenaController(arena, iceCreamController, monsterControllers);
-        game = Mockito.mock(Game.class);
     }
 
     @Test
     void stepTestWin() throws IOException {
 
-
         when(arena.getFruits()).thenReturn(Collections.emptyList());
-        State mockState = mock(State.class);
-        when(game.getState()).thenReturn(mockState);
 
         Field firstField = null;
         try {
@@ -86,50 +84,44 @@ class ArenaControllerTest {
         }
 
         arenaController.step(game, GUI.ACTION.UP, System.currentTimeMillis());
+        arenaController.step(game, GUI.ACTION.DOWN, System.currentTimeMillis());
+        arenaController.step(game, GUI.ACTION.LEFT, System.currentTimeMillis());
+        arenaController.step(game, GUI.ACTION.RIGHT, System.currentTimeMillis());
 
-        verify(game, times(1)).stopAudio();
-        verify(mockState, times(1)).increaseLevel();
-        verify(game).setState(any(LevelCompletedMenuState.class), any(MenuGraphics.class));
+        verify(game, times(4)).stopAudio();
+        verify(state, times(4)).increaseLevel();
+        verify(game, times(4)).setState(any(LevelCompletedMenuState.class), any(MenuGraphics.class));
     }
 
     @Test
     void stepTestNewFruits() throws IOException {
-
         when(arena.getFruits()).thenReturn(Collections.emptyList());
-        State mockState = mock(State.class);
-        when(game.getState()).thenReturn(mockState);
-
-
         arenaController.step(game, GUI.ACTION.UP, System.currentTimeMillis());
-
         verify(arena, times(1)).generateNewFruits(anyInt());
     }
 
     @Test
     void stepTestEscape() throws IOException {
-        State mockState = mock(State.class);
-        when(game.getState()).thenReturn(mockState);
 
+        when(iceCream.getAlive()).thenReturn(true);
         arenaController.step(game, GUI.ACTION.PAUSE, System.currentTimeMillis());
 
-
-        verify(game).setState(any(PauseMenuState.class), any(MenuGraphics.class));
         verify(game, times(1)).setAudioController("MainMenuMusic.wav");
+        verify(game, times(1)).setState(any(PauseMenuState.class), any(MenuGraphics.class));
     }
 
     @Test
     void stepTestGameOver() throws IOException {
-        State mockState = mock(State.class);
-        when(game.getState()).thenReturn(mockState);
-
-        IceCream mockedIceCream = mock(IceCream.class);
-        when(arena.getIceCream()).thenReturn(mockedIceCream);
-        when(mockedIceCream.getAlive()).thenReturn(false);
+        when(iceCream.getAlive()).thenReturn(false);
 
         arenaController.step(game, GUI.ACTION.NONE, System.currentTimeMillis());
+        arenaController.step(game, GUI.ACTION.UP, System.currentTimeMillis());
+        arenaController.step(game, GUI.ACTION.DOWN, System.currentTimeMillis());
+        arenaController.step(game, GUI.ACTION.LEFT, System.currentTimeMillis());
+        arenaController.step(game, GUI.ACTION.RIGHT, System.currentTimeMillis());
 
-        verify(game).stopAudio();
-        verify(game).setState(
+        verify(game, times(5)).stopAudio();
+        verify(game, times(5)).setState(
                 any(GameOverMenuState.class),
                 any(MenuGraphics.class)
         );
@@ -137,86 +129,73 @@ class ArenaControllerTest {
 
     @Test
     void testStrawberryExpiration() throws IOException {
-        State mockState = mock(State.class);
-        when(game.getState()).thenReturn(mockState);
 
-        IceCream mockedIceCream = mock(IceCream.class);
-        when(arena.getIceCream()).thenReturn(mockedIceCream);
-
-        when(mockedIceCream.isStrawberryActive()).thenReturn(true);
+        when(iceCream.getAlive()).thenReturn(true);
+        when(iceCreamController.eatFruit()).thenReturn(-1);
+        when(iceCream.isStrawberryActive()).thenReturn(true);
         long currentTime = System.currentTimeMillis();
 
-
+        arenaController.step(game, GUI.ACTION.NONE, currentTime);
         arenaController.step(game, GUI.ACTION.UP, currentTime);
+        arenaController.step(game, GUI.ACTION.DOWN, currentTime);
+        arenaController.step(game, GUI.ACTION.RIGHT, currentTime);
+        arenaController.step(game, GUI.ACTION.LEFT, currentTime);
 
-        verify(mockedIceCream).setStrawberry(false);
+
+        verify(iceCream, times(5)).setStrawberry(false);
 
     }
 
-    @Test
     void testStepEatFruit() throws IOException {
-        State mockState = mock(State.class);
-        when(game.getState()).thenReturn(mockState);
-        IceCream mockedIceCream = mock(IceCream.class);
-
-
-        arenaController = new ArenaController(arena, iceCreamController, monsterControllers);
 
         when(iceCreamController.eatFruit()).thenReturn(5);
-        when(arenaController.getModel().getIceCream()).thenReturn(mockedIceCream);
 
         arenaController.step(game, GUI.ACTION.UP, System.currentTimeMillis());
+        arenaController.step(game, GUI.ACTION.DOWN, System.currentTimeMillis());
+        arenaController.step(game, GUI.ACTION.LEFT, System.currentTimeMillis());
+        arenaController.step(game, GUI.ACTION.RIGHT, System.currentTimeMillis());
 
-        verify(arenaController.getModel().getIceCream()).setStrawberry(true);
+        verify(iceCream, times(4)).setStrawberry(true);
 
     }
 
     @Test
     void testStepDontEatStrawberry() throws IOException {
-        State mockState = mock(State.class);
-        when(game.getState()).thenReturn(mockState);
-        IceCream mockedIceCream = mock(IceCream.class);
 
-
-        arenaController = new ArenaController(arena, iceCreamController, monsterControllers);
 
         when(iceCreamController.eatFruit()).thenReturn(1,2,3,4);
-        when(arenaController.getModel().getIceCream()).thenReturn(mockedIceCream);
 
         arenaController.step(game, GUI.ACTION.UP, System.currentTimeMillis());
+        arenaController.step(game, GUI.ACTION.DOWN, System.currentTimeMillis());
+        arenaController.step(game, GUI.ACTION.LEFT, System.currentTimeMillis());
+        arenaController.step(game, GUI.ACTION.RIGHT, System.currentTimeMillis());
 
-        verify(arenaController.getModel().getIceCream(), times(0)).setStrawberry(true);
+        verify(iceCream, never()).setStrawberry(true);
 
     }
 
     @Test
     void testStepIceCream() throws IOException {
-        State mockState = mock(State.class);
-        when(game.getState()).thenReturn(mockState);
+        when(iceCream.getAlive()).thenReturn(true);
 
         long step = System.currentTimeMillis();
         arenaController.step(game, GUI.ACTION.UP, step);
-
         verify(iceCreamController, times(1)).step(game, GUI.ACTION.UP, step);
-
+        arenaController.step(game, GUI.ACTION.DOWN, step);
+        verify(iceCreamController, times(1)).step(game, GUI.ACTION.DOWN, step);
+        arenaController.step(game, GUI.ACTION.LEFT, step);
+        verify(iceCreamController, times(1)).step(game, GUI.ACTION.LEFT, step);
+        arenaController.step(game, GUI.ACTION.RIGHT, step);
+        verify(iceCreamController, times(1)).step(game, GUI.ACTION.RIGHT, step);
     }
 
     @Test
     void testStepMonster() throws IOException {
-        State mockState = mock(State.class);
-        when(game.getState()).thenReturn(mockState);
-
-        MonsterController mockMonsterController1 = mock(MonsterController.class);
-        MonsterController mockMonsterController2 = mock(MonsterController.class);
-
-        List<MonsterController> mockedMonsterControllers = new ArrayList<>(Arrays.asList(mockMonsterController1, mockMonsterController2));
-        arenaController = new ArenaController(arena, iceCreamController, mockedMonsterControllers);
-
         long currentTime = System.currentTimeMillis();
         arenaController.stepMonsters(currentTime);
 
-        verify(mockMonsterController1, times(1)).step(currentTime);
-        verify(mockMonsterController2, times(1)).step(currentTime);
+        verify(monsterControllers.get(0)).step(currentTime);
+        verify(monsterControllers.get(1)).step(currentTime);
     }
 
 }
