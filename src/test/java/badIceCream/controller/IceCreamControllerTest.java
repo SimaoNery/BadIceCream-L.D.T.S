@@ -9,6 +9,7 @@ import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.IceWall;
 import badIceCream.model.game.elements.StoneWall;
 import badIceCream.model.game.elements.monsters.DefaultMonster;
+import badIceCream.model.game.elements.monsters.Monster;
 import badIceCream.states.State;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -45,106 +46,121 @@ class IceCreamControllerTest {
     }
 
     @Test
-    void testMoveIceCreamRightEmpty() {
-        long time = System.currentTimeMillis();
-        controller.step(game, GUI.ACTION.RIGHT, time);
-        
-    }
-    @Test
-    void testMoveIceCreamRightNotEmptyStone() {
-        arena.setWalls(List.of(new StoneWall(6, 5)));
-        controller.step(game, GUI.ACTION.RIGHT, System.currentTimeMillis());
-        Assertions.assertEquals(new Position(5,5), iceCream.getPosition());
-    }
+    void testMoveIceCreamUpNoMonsterNoStrawberry() {
+        Position position = mock(Position.class);
+        Position previous = mock(Position.class);
+        when(iceCream.getPosition()).thenReturn(previous);
 
-    @Test
-    void testMoveIceCreamRightNotEmptyIce() {
-        arena.setWalls(List.of(new IceWall(6, 5)));
+        when(iceCream.getPosition().getDown()).thenReturn(position);
+        when(iceCream.getPosition().getUp()).thenReturn(position);
+        when(iceCream.getPosition().getLeft()).thenReturn(position);
+        when(iceCream.getPosition().getRight()).thenReturn(position);
 
-        controller.step(game, GUI.ACTION.RIGHT, System.currentTimeMillis());
-        Assertions.assertEquals(new Position(5,5), iceCream.getPosition());
-    }
+        when(arena.isEmpty(position)).thenReturn(true);
+        when(arena.hasMonster(position)).thenReturn(null);
+        when(iceCream.isStrawberryActive()).thenReturn(false);
 
-    @Test
-    void testMoveIceCreamLeftEmpty() {
-        controller.step(game, GUI.ACTION.LEFT, System.currentTimeMillis());
-        Assertions.assertEquals(new Position(4,5), iceCream.getPosition());
-    }
+        controller.step(game, GUI.ACTION.DOWN, 100L);
+        controller.step(game, GUI.ACTION.UP, 100L);
+        controller.step(game, GUI.ACTION.RIGHT, 100L);
+        controller.step(game, GUI.ACTION.LEFT, 100L);
 
-    @Test
-    void testMoveIceCreamLeftNotEmptyStone() {
-        arena.setWalls(List.of(new StoneWall(4, 5)));
-
-        controller.step(game, GUI.ACTION.LEFT, System.currentTimeMillis());
-        Assertions.assertEquals(new Position(5,5), iceCream.getPosition());
+        verify(iceCream, times(4)).setPosition(position);
+        verify(iceCream, times(1)).setLastMovement(GUI.ACTION.DOWN);
+        verify(iceCream, times(1)).setLastMovement(GUI.ACTION.UP);
+        verify(iceCream, times(1)).setLastMovement(GUI.ACTION.LEFT);
+        verify(iceCream, times(1)).setLastMovement(GUI.ACTION.RIGHT);
+        verify(iceCream, never()).changeAlive();
     }
 
     @Test
-    void testMoveIceCreamLeftNotEmptyIce() {
-        arena.setWalls(List.of(new IceWall(4, 5)));
+    void testMoveIceCreamBlocked() {
+        Position position = mock(Position.class);
+        Position previous = mock(Position.class);
+        when(iceCream.getPosition()).thenReturn(previous);
+        when(iceCream.getPosition().getRight()).thenReturn(position);
+        when(arena.isEmpty(position)).thenReturn(false);
+        when(arena.hasMonster(position)).thenReturn(null);
+        when(iceCream.isStrawberryActive()).thenReturn(false);
+        controller.step(game, GUI.ACTION.UP, 100L);
 
-        controller.step(game, GUI.ACTION.LEFT, System.currentTimeMillis());
-        Assertions.assertEquals(new Position(5,5), iceCream.getPosition());
+        verify(iceCream, never()).setPosition(position);
+        verify(iceCream, times(1)).setLastMovement(GUI.ACTION.UP);
+
+        controller.step(game, GUI.ACTION.DOWN, 100L);
+
+        verify(iceCream, never()).setPosition(position);
+        verify(iceCream, times(1)).setLastMovement(GUI.ACTION.DOWN);
+
+        controller.step(game, GUI.ACTION.LEFT, 100L);
+
+        verify(iceCream, never()).setPosition(position);
+        verify(iceCream, times(1)).setLastMovement(GUI.ACTION.LEFT);
+
+        controller.step(game, GUI.ACTION.RIGHT, 100L);
+
+        verify(iceCream, never()).setPosition(position);
+        verify(iceCream, times(1)).setLastMovement(GUI.ACTION.RIGHT);
     }
 
     @Test
-    void testMoveIceCreamDownEmpty() {
-        controller.step(game, GUI.ACTION.DOWN, System.currentTimeMillis());
-        Assertions.assertEquals(new Position(5,6), iceCream.getPosition());
+    void testMoveIceCreamMonsterNoStrawberry() {
+        Position position = mock(Position.class);
+        Position previous = mock(Position.class);
+        when(iceCream.getPosition()).thenReturn(previous);
+
+        when(iceCream.getPosition().getDown()).thenReturn(position);
+        when(iceCream.getPosition().getUp()).thenReturn(position);
+        when(iceCream.getPosition().getLeft()).thenReturn(position);
+        when(iceCream.getPosition().getRight()).thenReturn(position);
+
+        when(arena.isEmpty(position)).thenReturn(true);
+
+        Monster monster = mock(Monster.class);
+        when(arena.hasMonster(position)).thenReturn(monster);
+        when(iceCream.isStrawberryActive()).thenReturn(false);
+
+        controller.step(game, GUI.ACTION.DOWN, 100L);
+        controller.step(game, GUI.ACTION.UP, 100L);
+        controller.step(game, GUI.ACTION.RIGHT, 100L);
+        controller.step(game, GUI.ACTION.LEFT, 100L);
+
+        verify(iceCream, times(4)).setPosition(position);
+        verify(iceCream, times(1)).setLastMovement(GUI.ACTION.DOWN);
+        verify(iceCream, times(1)).setLastMovement(GUI.ACTION.UP);
+        verify(iceCream, times(1)).setLastMovement(GUI.ACTION.LEFT);
+        verify(iceCream, times(1)).setLastMovement(GUI.ACTION.RIGHT);
+        verify(iceCream, times(4)).changeAlive();
     }
 
     @Test
-    void testMoveIceCreamDownNotEmptyStone() {
-        arena.setWalls(List.of(new StoneWall(5, 6)));
+    void testMoveIceCreamMonsterStrawberry() {
+        Position position = mock(Position.class);
+        Position previous = mock(Position.class);
+        when(iceCream.getPosition()).thenReturn(previous);
 
-        controller.step(game, GUI.ACTION.DOWN, System.currentTimeMillis());
-        Assertions.assertEquals(new Position(5,5), iceCream.getPosition());
+        when(iceCream.getPosition().getDown()).thenReturn(position);
+        when(iceCream.getPosition().getUp()).thenReturn(position);
+        when(iceCream.getPosition().getLeft()).thenReturn(position);
+        when(iceCream.getPosition().getRight()).thenReturn(position);
+
+        when(arena.isEmpty(position)).thenReturn(true);
+
+        Monster monster = mock(Monster.class);
+        when(arena.hasMonster(position)).thenReturn(monster);
+        when(iceCream.isStrawberryActive()).thenReturn(true);
+
+        controller.step(game, GUI.ACTION.DOWN, 100L);
+        controller.step(game, GUI.ACTION.UP, 100L);
+        controller.step(game, GUI.ACTION.RIGHT, 100L);
+        controller.step(game, GUI.ACTION.LEFT, 100L);
+
+        verify(iceCream, times(4)).setPosition(position);
+        verify(iceCream, times(1)).setLastMovement(GUI.ACTION.DOWN);
+        verify(iceCream, times(1)).setLastMovement(GUI.ACTION.UP);
+        verify(iceCream, times(1)).setLastMovement(GUI.ACTION.LEFT);
+        verify(iceCream, times(1)).setLastMovement(GUI.ACTION.RIGHT);
+        verify(iceCream, never()).changeAlive();
     }
 
-    @Test
-    void testMoveIceCreamDownNotEmptyIce() {
-        arena.setWalls(List.of(new IceWall(5, 6)));
-
-        controller.step(game, GUI.ACTION.DOWN, System.currentTimeMillis());
-        Assertions.assertEquals(new Position(5,5), iceCream.getPosition());
-    }
-
-    @Test
-    void testMoveIceCreamUpEmpty() {
-
-        controller.step(game, GUI.ACTION.UP, System.currentTimeMillis());
-        Assertions.assertEquals(new Position(5,4), iceCream.getPosition());
-    }
-
-    @Test
-    void testMoveIceCreamUpNotEmptyStone() {
-        arena.setWalls(List.of(new StoneWall(5, 4)));
-
-        controller.step(game, GUI.ACTION.UP, System.currentTimeMillis());
-        Assertions.assertEquals(new Position(5,5), iceCream.getPosition());
-    }
-
-    @Test
-    void testMoveIceCreamUpNotEmptyIce() {
-        arena.setWalls(List.of(new IceWall(5, 4)));
-
-        controller.step(game, GUI.ACTION.UP, System.currentTimeMillis());
-        Assertions.assertEquals(new Position(5,5), iceCream.getPosition());
-    }
-
-    @Test
-    void testMonsterColision() {
-        arena.setMonsters(List.of(new DefaultMonster(5, 4)));
-
-        controller.step(game, GUI.ACTION.UP, System.currentTimeMillis());
-        assertFalse(iceCream.getAlive());
-    }
-
-    @Test
-    void testMonsterNoColision() {
-        arena.setMonsters(List.of(new DefaultMonster(5, 6)));
-
-        controller.step(game, GUI.ACTION.UP, System.currentTimeMillis());
-        assertTrue(iceCream.getAlive());
-    }
 }
