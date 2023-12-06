@@ -1,9 +1,7 @@
 package badIceCream.model.game.arena;
 
-import badIceCream.Exceptions.StoneWallDestroyedException;
 import badIceCream.GUI.GUI;
 import badIceCream.model.Position;
-
 import badIceCream.model.game.elements.*;
 import badIceCream.model.game.elements.fruits.*;
 import badIceCream.model.game.elements.monsters.Monster;
@@ -117,11 +115,8 @@ public class Arena {
         return false;
     }
 
-    public void iceWallDestroyed(Position position) throws StoneWallDestroyedException {
+    public void iceWallDestroyed(Position position) {
         for (Wall wall : walls) {
-            if (wall.getPosition().equals(position) && wall instanceof StoneWall) {
-                throw new StoneWallDestroyedException();
-            }
             if (wall.getPosition().equals(position)) {
                 walls.remove(wall);
                 return;
@@ -213,15 +208,9 @@ public class Arena {
                 new Audio("BreakWallSound.wav").playOnce();
                 first = false;
             }
-            try {
-                iceWallDestroyed(pos);
-                pos.setX(pos.getX() + deltaX);
-                pos.setY(pos.getY() + deltaY);
-            }
-            catch (StoneWallDestroyedException e) {
-                System.err.println("Error: " + e.getMessage());
-                break;
-            }
+            iceWallDestroyed(pos);
+            pos.setX(pos.getX() + deltaX);
+            pos.setY(pos.getY() + deltaY);
         }
     }
 
