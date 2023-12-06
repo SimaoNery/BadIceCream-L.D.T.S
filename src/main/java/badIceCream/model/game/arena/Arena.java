@@ -258,7 +258,7 @@ public class Arena {
             case 2:
                 for (int i = 0; i < 8; i++) {
                     Position nextPos = generateRandomPosition();
-                    fruits.add(new PepperFruit(nextPos.getX(), nextPos.getY()));
+                    fruits.add(new CherryFruit(nextPos.getX(), nextPos.getY()));
                 }
                 break;
 

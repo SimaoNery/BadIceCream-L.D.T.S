@@ -1,6 +1,5 @@
 package badIceCream.controller.MonsterMovements;
 
-import badIceCream.Exceptions.StoneWallDestroyedException;
 import badIceCream.GUI.GUI;
 import badIceCream.controller.game.monsters.WallBreakerMovement;
 import badIceCream.model.Position;
@@ -72,7 +71,7 @@ public class WallBreakerMovementTest {
     }
 
     @Test
-    void testStepDestroyIceWall() throws IOException, StoneWallDestroyedException {
+    void testStepDestroyIceWall() throws IOException {
         IceCream mockedIceCream = mock(IceCream.class);
         when(mockedIceCream.getPosition()).thenReturn(new Position(5,5));
         when(mockedIceCream.isStrawberryActive()).thenReturn(false);

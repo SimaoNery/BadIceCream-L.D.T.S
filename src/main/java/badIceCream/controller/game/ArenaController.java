@@ -17,12 +17,11 @@ import badIceCream.utils.Audio;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ArenaController extends GameController {
     private final IceCreamController iceCreamController;
-    private List<MonsterController> monsterController;
+    private final List<MonsterController> monsterController;
     private boolean first;
     private long strawberry;
 

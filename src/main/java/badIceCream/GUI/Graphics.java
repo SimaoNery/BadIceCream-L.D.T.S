@@ -39,9 +39,9 @@ public class Graphics implements Cloneable {
             case LEFT: {c = ':'; break;}
             case RIGHT: {c = '9'; break;}
             default: c = '8';
-
         }
-        gui.drawCharacter(position.getX(), position.getY(), c , "#FFFFFF");
+        String color = strawberry ? "#48DEFF" : "#FFFFFF";
+        gui.drawCharacter(position.getX(), position.getY(), c , color);
     }
     public void drawStoneWall(Position position) {
         gui.drawCharacter(position.getX(), position.getY(), 'G', "#696969");

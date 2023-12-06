@@ -1,7 +1,6 @@
 package badIceCream.GUI;
 
 import badIceCream.model.Position;
-import badIceCream.model.game.arena.Arena;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -19,7 +18,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class GameGraphics implements GUI{
-    private Screen screen;
+    private final Screen screen;
     public GameGraphics(int width, int height) throws IOException{
         Terminal terminal = createGameTerminal(width, height);
         this.screen = createScreen(terminal);
@@ -33,9 +32,7 @@ public class GameGraphics implements GUI{
             Font font = Font.createFont(Font.TRUETYPE_FONT, new File(mapLocation));
             font = font.deriveFont(Font.PLAIN, 35);
             AWTTerminalFontConfiguration cfg = new SwingTerminalFontConfiguration(true, AWTTerminalFontConfiguration.BoldMode.NOTHING, font);
-            Terminal gameTerminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height)).setTerminalEmulatorFontConfiguration(cfg).createTerminal();
-
-            return gameTerminal;
+            return new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height)).setTerminalEmulatorFontConfiguration(cfg).createTerminal();
         } catch (IOException | FontFormatException e) {
             e.printStackTrace();
             throw new IOException("Error creating terminal with custom font.", e);

@@ -3,7 +3,6 @@ package badIceCream.model.menu;
 import java.util.Arrays;
 
 public class SelectLevelMenu extends Menu{
-
     public SelectLevelMenu() {
         super(Arrays.asList("1", "2", "3", "4", "5"));
     }
