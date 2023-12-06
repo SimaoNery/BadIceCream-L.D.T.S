@@ -151,7 +151,6 @@ public class Arena {
             if (f.getPosition().equals(position)) {
                 int type = f.getType();
                 fruits.remove(f);
-                new Audio("EatFruitSound.wav").playOnce();
                 return type;
             }
         }

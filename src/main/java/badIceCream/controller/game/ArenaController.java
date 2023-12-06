@@ -49,7 +49,7 @@ public class ArenaController extends GameController {
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
         int fruit = iceCreamController.eatFruit();
         if (fruit != -1) {
-            //new Audio("EatFruitSound.wav").playOnce();
+
             if (fruit == 5) {
                 getModel().getIceCream().setStrawberry(true);
                 strawberry = time;
