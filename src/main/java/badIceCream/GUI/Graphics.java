@@ -1,21 +1,6 @@
 package badIceCream.GUI;
 
-import badIceCream.states.GameState;
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
-import com.googlecode.lanterna.screen.Screen;
-import com.googlecode.lanterna.screen.TerminalScreen;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.googlecode.lanterna.terminal.Terminal;
 import badIceCream.model.Position;
-import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
-import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
-
-import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 
 
@@ -54,9 +39,9 @@ public class Graphics implements Cloneable {
             case LEFT: {c = ':'; break;}
             case RIGHT: {c = '9'; break;}
             default: c = '8';
-
         }
-        gui.drawCharacter(position.getX(), position.getY(), c , "#FFFFFF");
+        String color = strawberry ? "#48DEFF" : "#FFFFFF";
+        gui.drawCharacter(position.getX(), position.getY(), c , color);
     }
     public void drawStoneWall(Position position) {
         gui.drawCharacter(position.getX(), position.getY(), 'G', "#696969");
@@ -226,7 +211,6 @@ public class Graphics implements Cloneable {
         }
     }
 
-
     public void drawText(Position position, String text, String color){
         gui.drawText(position, text, color);
     }
@@ -239,5 +223,14 @@ public class Graphics implements Cloneable {
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
         }
+    }
+
+    public void drawCharacters() {
+        gui.drawCharacter(33, 15, 'Ê', "#00FF00");
+        gui.drawCharacter(33, 18, 'À', "#00FF00");
+        gui.drawCharacter(33, 21, 'Á', "#00FF00");
+        gui.drawCharacter(33, 24, 'È', "#00FF00");
+        gui.drawCharacter(33, 27, 'É', "#00FF00");
+        gui.drawCharacter(33, 30, 'Í', "#00FF00");
     }
 }

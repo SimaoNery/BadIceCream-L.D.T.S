@@ -5,9 +5,7 @@ import badIceCream.model.game.elements.fruits.*;
 import badIceCream.model.game.elements.monsters.*;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -94,7 +92,7 @@ public class LoaderArenaBuilder extends ArenaBuilder {
             for (int x = 0; x < line.length(); x++)
                 if (line.charAt(x) == 'M') fruits.add(new BananaFruit(x,y));
                 else if (line.charAt(x) == 'Q') fruits.add(new StrawberryFruit(x,y));
-                else if (line.charAt(x) == 'K') fruits.add(new PepperFruit(x,y));
+                else if (line.charAt(x) == 'K') fruits.add(new CherryFruit(x,y));
                 else if (line.charAt(x) == 'O') fruits.add(new PineappleFruit(x,y));
                 else if (line.charAt(x) == 'T') fruits.add(new AppleFruit(x,y));
         }
