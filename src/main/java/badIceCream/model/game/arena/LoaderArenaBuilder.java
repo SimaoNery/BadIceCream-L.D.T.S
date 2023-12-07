@@ -66,9 +66,9 @@ public class LoaderArenaBuilder extends ArenaBuilder {
             String line = lines.get(y);
             for (int x = 0; x < line.length(); x++)
                 if (line.charAt(x) == 'Y') monsters.add(new DefaultMonster(x, y));
-                else if (line.charAt(x) == 'T') monsters.add(new JumperMonster(x, y));
+                else if (line.charAt(x) == 'J') monsters.add(new JumperMonster(x, y));
                 else if (line.charAt(x) == 'V') monsters.add(new RunnerMonster(x, y));
-                else if (line.charAt(x) == 'U') monsters.add(new WallBreakerMonster(x, y));
+                else if (line.charAt(x) == 'W') monsters.add(new WallBreakerMonster(x, y));
         }
         return monsters;
     }
