@@ -70,8 +70,11 @@ public class GameGraphicsTest {
     }
     @Test
     public void getNextAction() throws IOException {
-        when(keyStroke.getKeyType()).thenReturn(KeyType.ArrowUp);
         GUI.ACTION action = gameGraphics.getNextAction();
+        assertEquals(GUI.ACTION.NONE, action);
+
+        when(keyStroke.getKeyType()).thenReturn(KeyType.ArrowUp);
+        action = gameGraphics.getNextAction();
         assertEquals(GUI.ACTION.UP, action);
 
         when(keyStroke.getKeyType()).thenReturn(KeyType.ArrowDown);
@@ -92,10 +95,6 @@ public class GameGraphicsTest {
 
         when(keyStroke.getKeyType()).thenReturn(null);
         when(keyStroke.getCharacter()).thenReturn(' ');
-        action = gameGraphics.getNextAction();
-        assertEquals(GUI.ACTION.SPACE, action);
-
-        keyStroke = null;
         action = gameGraphics.getNextAction();
         assertEquals(GUI.ACTION.SPACE, action);
     }
