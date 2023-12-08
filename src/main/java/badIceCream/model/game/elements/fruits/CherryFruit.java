@@ -1,8 +1,8 @@
 package badIceCream.model.game.elements.fruits;
 
 
-public class PepperFruit extends Fruit {
-    public PepperFruit(int x, int y) {
+public class CherryFruit extends Fruit {
+    public CherryFruit(int x, int y) {
         super(x, y);
     }
     @Override

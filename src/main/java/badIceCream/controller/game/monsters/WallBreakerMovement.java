@@ -1,6 +1,5 @@
 package badIceCream.controller.game.monsters;
 
-import badIceCream.Exceptions.StoneWallDestroyedException;
 import badIceCream.GUI.GUI;
 import badIceCream.controller.game.StepMonsters;
 import badIceCream.model.Position;
@@ -21,13 +20,8 @@ public class WallBreakerMovement implements StepMonsters {
                 monster.setLastAction(lastMove(monster.getPosition(), pos));
 
                 if (arena.isIceWall(pos)) {
-                    try {
-                        new Audio(Audio.loadMusic("BreakWallSound.wav")).playOnce();
-                        arena.iceWallDestroyed(pos);
-                    }
-                    catch (StoneWallDestroyedException e) {
-                        System.err.println("Error: " + e.getMessage());
-                    }
+                    new Audio(Audio.loadMusic("BreakWallSound.wav")).playOnce();
+                    arena.iceWallDestroyed(pos);
                 }
                 moveMonster(monster, pos, arena);
             }
