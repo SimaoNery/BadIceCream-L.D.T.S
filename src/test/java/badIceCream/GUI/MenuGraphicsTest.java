@@ -1,7 +1,5 @@
-package badIceCream.gui;
+package badIceCream.GUI;
 
-import badIceCream.GUI.GUI;
-import badIceCream.GUI.MenuGraphics;
 import badIceCream.model.Position;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;

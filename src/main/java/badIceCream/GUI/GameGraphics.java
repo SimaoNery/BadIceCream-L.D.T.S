@@ -19,10 +19,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class GameGraphics implements GUI{
-    public Screen screen;
-    public GameGraphics(Screen screen) {
-
-    }
+    Screen screen;
     public GameGraphics(int width, int height) throws IOException{
         Terminal terminal = createGameTerminal(width, height);
         this.screen = createScreen(terminal);

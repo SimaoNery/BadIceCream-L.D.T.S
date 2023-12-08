@@ -1,7 +1,5 @@
-package badIceCream.gui;
+package badIceCream.GUI;
 
-import badIceCream.GUI.GUI;
-import badIceCream.GUI.GameGraphics;
 import badIceCream.model.Position;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -11,9 +9,6 @@ import com.googlecode.lanterna.input.KeyStroke;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import org.mockito.Mockito;
-
-import javax.swing.*;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

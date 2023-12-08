@@ -1,22 +1,13 @@
-package badIceCream.gui;
+package badIceCream.GUI;
 
-import badIceCream.GUI.GUI;
-import badIceCream.GUI.GameGraphics;
-import badIceCream.GUI.Graphics;
-import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.screen.Screen;
 import badIceCream.model.Position;
-import com.googlecode.lanterna.terminal.Terminal;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
 
 public class GraphicsTest {
