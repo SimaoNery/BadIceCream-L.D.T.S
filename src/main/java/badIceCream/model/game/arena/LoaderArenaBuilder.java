@@ -14,8 +14,10 @@ import java.util.List;
 
 public class LoaderArenaBuilder extends ArenaBuilder {
     private final List<String> lines;
+    private final int level;
 
     public LoaderArenaBuilder(int level) throws IOException {
+        this.level = level;
 
         String rootPath = new File(System.getProperty("user.dir")).getPath();
         String mapLocation = rootPath + "/src/main/resources/levels/level"  + level + ".lvl";
@@ -30,6 +32,11 @@ public class LoaderArenaBuilder extends ArenaBuilder {
         for (String line; (line = br.readLine()) != null; )
             lines.add(line);
         return lines;
+    }
+
+    @Override
+    protected int getLevel() {
+        return this.level;
     }
 
     @Override

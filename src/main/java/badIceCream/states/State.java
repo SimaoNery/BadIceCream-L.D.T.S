@@ -40,6 +40,8 @@ public abstract class State<T> {
     }
 
     public void increaseLevel() {
-        this.level++;
+        if (this.level < 5) {
+            this.level++;
+        }
     }
 }
