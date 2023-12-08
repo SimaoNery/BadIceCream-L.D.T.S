@@ -1,13 +1,16 @@
-package badIceCream.controller.MonsterMovements;
+package badIceCream.controller.game.monsters;
 
 import badIceCream.GUI.GUI;
-import badIceCream.controller.game.monsters.RunnerMovementDisabled;
+import badIceCream.controller.game.monsters.RunnerMovementEnabled;
 import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.monsters.Monster;
+import badIceCream.utils.ShortestPathNextMove;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import java.io.IOException;
 
@@ -15,16 +18,18 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
 
-public class RunnerMovementDisabledTest {
-    private RunnerMovementDisabled runnerMovementDisabled;
+public class RunnerMovementEnabledTest {
+    private RunnerMovementEnabled runnerMovementEnabled;
+
+    @Mock
     private Arena arena;
+    @Mock
     private Monster monster;
 
     @BeforeEach
     void setUp() {
-        runnerMovementDisabled = new RunnerMovementDisabled();
-        arena = mock(Arena.class);
-        monster = mock(Monster.class);
+        runnerMovementEnabled = new RunnerMovementEnabled();
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test
@@ -34,7 +39,7 @@ public class RunnerMovementDisabledTest {
         when(arena.getIceCream().isStrawberryActive()).thenReturn(false);
         when(arena.getIceCream().getPosition()).thenReturn(newPosition);
 
-        runnerMovementDisabled.moveMonster(monster, newPosition, arena);
+        runnerMovementEnabled.moveMonster(monster, newPosition, arena);
 
         verify(monster, times(1)).setPosition(newPosition);
         verify(arena.getIceCream(), times(1)).isStrawberryActive();
@@ -45,9 +50,9 @@ public class RunnerMovementDisabledTest {
     @Test
     void testStepDoesNotMoveMonsterBeforeInterval() throws IOException {
         long currentTime = 200L;
-        long lastMovement = 100L;
+        long lastMovement = 196L;
 
-        runnerMovementDisabled.step(monster, arena, currentTime, lastMovement);
+        runnerMovementEnabled.step(monster, arena, currentTime, lastMovement);
 
         verify(monster, never()).setLastAction(any());
         verify(monster, never()).setPosition(any());
@@ -64,13 +69,14 @@ public class RunnerMovementDisabledTest {
         when(monster.getPosition()).thenReturn(new Position(1, 1));
         when(arena.isEmptyMonsters(any())).thenReturn(true);
 
-        runnerMovementDisabled.step(monster, arena, currentTime, lastMovement);
+        runnerMovementEnabled.step(monster, arena, currentTime, lastMovement);
 
         verify(monster, times(1)).setLastAction(any());
         verify(monster, times(1)).setPosition(any());
-        verify(arena, times(1)).getIceCream();
+        verify(arena, times(2)).getIceCream();
         verify(arena.getIceCream(), never()).changeAlive();
     }
+
 
     @Test
     void testMoveMonsterUpdatesPositionAndChecksIceCreamStrawberryOn() {
@@ -80,7 +86,7 @@ public class RunnerMovementDisabledTest {
         when(mockedIceCream.isStrawberryActive()).thenReturn(true);
         when(arena.getIceCream()).thenReturn(mockedIceCream);
 
-        runnerMovementDisabled.moveMonster(monster, newPosition, arena);
+        runnerMovementEnabled.moveMonster(monster, newPosition, arena);
 
         verify(monster, times(1)).setPosition(newPosition);
         verify(arena.getIceCream(), times(1)).isStrawberryActive();
@@ -91,34 +97,48 @@ public class RunnerMovementDisabledTest {
     void testMoveMonsterLocked() throws IOException {
         Position newPosition = new Position(3, 2);
         when(arena.getIceCream()).thenReturn(mock(IceCream.class));
-        when(arena.getIceCream().isStrawberryActive()).thenReturn(false);
         when(arena.getIceCream().getPosition()).thenReturn(new Position(1,2));
         when(monster.getPosition()).thenReturn(new Position(2,2));
 
         when(arena.isEmptyMonsters(any(Position.class))).thenReturn(false);
 
-        runnerMovementDisabled.step(monster, arena, 500L, 200L);
+        runnerMovementEnabled.step(monster, arena, 500L, 200L);
 
         verify(monster, never()).setPosition(newPosition);
-        verify(monster, never()).setLastAction(any(GUI.ACTION.class));;
+        verify(monster, never()).setLastAction(any(GUI.ACTION.class));
+    }
+
+    @Test
+    void testMoveMonsterShortPath() throws IOException {
+        Position newPosition = new Position(3, 2);
+        when(arena.getIceCream()).thenReturn(mock(IceCream.class));
+        when(arena.getIceCream().getPosition()).thenReturn(new Position(1,2));
+        when(monster.getPosition()).thenReturn(new Position(2,2));
+
+        ShortestPathNextMove shortestPathNextMove = mock(ShortestPathNextMove.class);
+        when(shortestPathNextMove.findShortestPath(monster, arena)).thenReturn(new Position(1,2));
+
+        runnerMovementEnabled.step(monster, arena, 500L, 200L);
+
+        verify(monster, never()).setPosition(newPosition);
+        verify(monster, never()).setLastAction(GUI.ACTION.LEFT);
     }
 
     @Test
     void testMoveMonsterUpdatesLeft() throws IOException {
         Position newPosition = new Position(1, 2);
         when(arena.getIceCream()).thenReturn(mock(IceCream.class));
-        when(arena.getIceCream().getPosition()).thenReturn(new Position(5,5));
+        when(arena.getIceCream().getPosition()).thenReturn(new Position(1,2));
         when(monster.getPosition()).thenReturn(new Position(2,2));
 
         when(arena.isEmptyMonsters(newPosition)).thenReturn(true);
 
-        runnerMovementDisabled.step(monster, arena, 500L, 200L);
+        runnerMovementEnabled.step(monster, arena, 500L, 200L);
 
         verify(monster, times(1)).setPosition(newPosition);
         verify(monster, times(1)).setLastAction(GUI.ACTION.LEFT);
         verify(arena.getIceCream(), times(1)).isStrawberryActive();
-        verify(arena.getIceCream(), times(1)).getPosition();
-        verify(arena.getIceCream(), never()).changeAlive();
+        verify(arena.getIceCream(), times(2)).getPosition();
     }
 
     @Test
@@ -130,13 +150,12 @@ public class RunnerMovementDisabledTest {
 
         when(arena.isEmptyMonsters(newPosition)).thenReturn(true);
 
-        runnerMovementDisabled.step(monster, arena, 500L, 200L);
+        runnerMovementEnabled.step(monster, arena, 500L, 200L);
 
         verify(monster, times(1)).setPosition(newPosition);
         verify(monster, times(1)).setLastAction(GUI.ACTION.DOWN);
         verify(arena.getIceCream(), times(1)).isStrawberryActive();
-        verify(arena.getIceCream(), times(1)).getPosition();
-        verify(arena.getIceCream(), never()).changeAlive();
+        verify(arena.getIceCream(), times(2)).getPosition();
     }
 
     @Test
@@ -148,13 +167,12 @@ public class RunnerMovementDisabledTest {
 
         when(arena.isEmptyMonsters(newPosition)).thenReturn(true);
 
-        runnerMovementDisabled.step(monster, arena, 500L, 200L);
+        runnerMovementEnabled.step(monster, arena, 500L, 200L);
 
         verify(monster, times(1)).setPosition(newPosition);
         verify(monster, times(1)).setLastAction(GUI.ACTION.UP);
         verify(arena.getIceCream(), times(1)).isStrawberryActive();
-        verify(arena.getIceCream(), times(1)).getPosition();
-        verify(arena.getIceCream(), never()).changeAlive();
+        verify(arena.getIceCream(), times(2)).getPosition();
     }
 
     @Test
@@ -166,12 +184,11 @@ public class RunnerMovementDisabledTest {
 
         when(arena.isEmptyMonsters(newPosition)).thenReturn(true);
 
-        runnerMovementDisabled.step(monster, arena, 500L, 200L);
+        runnerMovementEnabled.step(monster, arena, 500L, 200L);
 
         verify(monster, times(1)).setPosition(newPosition);
         verify(monster, times(1)).setLastAction(GUI.ACTION.RIGHT);
         verify(arena.getIceCream(), times(1)).isStrawberryActive();
-        verify(arena.getIceCream(), times(1)).getPosition();
-        verify(arena.getIceCream(), never()).changeAlive();
+        verify(arena.getIceCream(), times(2)).getPosition();
     }
 }

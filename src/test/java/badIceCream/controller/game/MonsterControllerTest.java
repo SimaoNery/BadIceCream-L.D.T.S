@@ -1,4 +1,4 @@
-package badIceCream.controller;
+package badIceCream.controller.game;
 
 import badIceCream.Game;
 import badIceCream.controller.game.ArenaController;
@@ -22,7 +22,6 @@ public class MonsterControllerTest {
 
     private Arena arena;
     private Game game;
-
     private IceCream iceCream;
     private StepMonsters step;
     private Monster monster;
