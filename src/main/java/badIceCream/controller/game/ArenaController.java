@@ -64,13 +64,15 @@ public class ArenaController extends GameController {
         if (getModel().getFruits().isEmpty()) {
             if (first) {
                 first = false;
-                getModel().generateNewFruits(game.getState().getLevel());
+                getModel().generateNewFruits(getModel().getLevel());
             }
             else {
                 game.stopAudio();
                 Audio levelCompletedAudio = new Audio("LevelCompleteMenuSound.wav");
                 levelCompletedAudio.playOnce();
-                game.getState().increaseLevel();
+                if (getModel().getLevel() >= game.getState().getLevel()) {
+                    game.getState().increaseLevel();
+                }
                 game.setState(new LevelCompletedMenuState(new LevelCompletedMenu(), game.getState().getLevel(), levelCompletedAudio), new MenuGraphics(135, 50));
             }
         }

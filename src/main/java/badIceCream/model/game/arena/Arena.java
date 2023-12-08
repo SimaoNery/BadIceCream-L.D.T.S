@@ -14,6 +14,7 @@ import java.util.Random;
 public class Arena {
     private final int width;
     private final int height;
+    private int level;
     private IceCream iceCream;
     private List<Monster> monsters;
     private List<Wall> walls;
@@ -23,6 +24,14 @@ public class Arena {
     public Arena(int width, int height) {
         this.width = width;
         this.height = height;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getLevel() {
+        return this.level;
     }
 
     public int getWidth() {
