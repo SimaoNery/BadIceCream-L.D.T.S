@@ -14,16 +14,12 @@ public abstract class State<T> {
     private final Viewer<T> viewer;
     private int level;
 
-    public State(T model, Controller controller, Viewer viewer, int level) {
+    public State(T model, Controller<T> controller, Viewer<T> viewer, int level) {
         this.model = model;
         this.viewer = viewer;
         this.controller = controller;
         this.level = level;
     }
-
-    protected Viewer<T> getViewer() {return viewer;}
-
-    protected Controller<T> getController() {return controller;}
 
     public T getModel() {
         return model;
@@ -43,8 +39,9 @@ public abstract class State<T> {
         return level;
     }
 
-    public int increaseLevel() {
-        this.level++;
-        return this.level;
+    public void increaseLevel() {
+        if (this.level < 5) {
+            this.level++;
+        }
     }
 }

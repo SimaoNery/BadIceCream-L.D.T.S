@@ -4,29 +4,32 @@ import badIceCream.Game;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.Position;
 import badIceCream.GUI.GUI;
+import badIceCream.model.game.elements.IceCream;
 
 
 public class IceCreamController extends GameController {
 
+        private final IceCream iceCream;
         private GUI.ACTION lastMovement;
         long lastTime = 0;
         public IceCreamController(Arena arena) {
             super(arena);
+            this.iceCream = arena.getIceCream();
         }
 
-        public void moveIceCreamLeft() {
+        private void moveIceCreamLeft() {
             moveIceCream(getModel().getIceCream().getPosition().getLeft(), GUI.ACTION.LEFT, System.currentTimeMillis());
         }
 
-        public void moveIceCreamRight() {
+        private void moveIceCreamRight() {
             moveIceCream(getModel().getIceCream().getPosition().getRight(), GUI.ACTION.RIGHT, System.currentTimeMillis());
         }
 
-        public void moveIceCreamUp() {
+        private void moveIceCreamUp() {
             moveIceCream(getModel().getIceCream().getPosition().getUp(), GUI.ACTION.UP, System.currentTimeMillis());
         }
 
-        public void moveIceCreamDown() {
+        private void moveIceCreamDown() {
             moveIceCream(getModel().getIceCream().getPosition().getDown(), GUI.ACTION.DOWN, System.currentTimeMillis());
         }
 
@@ -37,11 +40,11 @@ public class IceCreamController extends GameController {
         private void moveIceCream(Position position, GUI.ACTION last, long time) {
 
             if (getModel().isEmpty(position) && time - lastTime >= 15) {
-                getModel().getIceCream().setPosition(position);
+                iceCream.setPosition(position);
 
-                if (!getModel().getIceCream().isStrawberryActive() && getModel().hasMonster(position) != null) getModel().getIceCream().changeAlive();
+                if (!iceCream.isStrawberryActive() && getModel().hasMonster(position) != null) iceCream.changeAlive();
             }
-            getModel().getIceCream().setLastMovement(last);
+            iceCream.setLastMovement(last);
             lastMovement = last;
         }
 
