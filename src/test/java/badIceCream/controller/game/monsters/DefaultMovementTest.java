@@ -1,4 +1,4 @@
-package badIceCream.controller.MonsterMovements;
+package badIceCream.controller.game.monsters;
 
 import badIceCream.GUI.GUI;
 import badIceCream.controller.game.monsters.DefaultMovement;
@@ -8,6 +8,8 @@ import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.monsters.Monster;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import java.io.IOException;
 
@@ -15,14 +17,18 @@ import static org.mockito.Mockito.*;
 
 public class DefaultMovementTest {
     private DefaultMovement defaultMovement;
+    @Mock
     private Arena arena;
+    @Mock
     private Monster monster;
+    @Mock
+    private IceCream iceCream;
 
     @BeforeEach
     void setUp() {
+        MockitoAnnotations.openMocks(this);
         defaultMovement = new DefaultMovement();
-        arena = mock(Arena.class);
-        monster = mock(Monster.class);
+        when(arena.getIceCream()).thenReturn(iceCream);
     }
 
     @Test

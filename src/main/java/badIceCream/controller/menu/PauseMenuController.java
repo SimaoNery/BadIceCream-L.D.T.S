@@ -14,7 +14,7 @@ import badIceCream.states.State;
 import java.io.IOException;
 
 public class PauseMenuController extends MenuController<PauseMenu> {
-    private State parent;
+    private final State parent;
 
     public PauseMenuController(PauseMenu menu, State parent) {
         super(menu);

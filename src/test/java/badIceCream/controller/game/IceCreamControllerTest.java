@@ -1,4 +1,4 @@
-package badIceCream.controller;
+package badIceCream.controller.game;
 
 import badIceCream.GUI.GUI;
 import badIceCream.Game;
@@ -23,7 +23,6 @@ class IceCreamControllerTest {
     private State state;
     private Arena arena;
     private Position position;
-    private Position positionNew;
 
     @BeforeEach
     void setUp() {
@@ -40,7 +39,6 @@ class IceCreamControllerTest {
         when(arena.getMonsters()).thenReturn(new ArrayList<>());
 
         position = mock(Position.class);
-        positionNew = mock(Position.class);
         when(position.getRight()).thenReturn(position);
         when(position.getUp()).thenReturn(position);
         when(position.getLeft()).thenReturn(position);

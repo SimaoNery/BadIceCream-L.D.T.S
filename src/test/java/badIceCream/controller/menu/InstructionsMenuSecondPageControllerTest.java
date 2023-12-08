@@ -1,17 +1,16 @@
-package badIceCream.controller.Menu;
+package badIceCream.controller.menu;
 
 import badIceCream.GUI.GUI;
 import badIceCream.Game;
 import badIceCream.controller.menu.InstructionsMenuSecondPageController;
-import badIceCream.controller.menu.InstructionsMenuSecondPageController;
-import badIceCream.model.menu.InstructionsMenuSecondPage;
 import badIceCream.model.menu.InstructionsMenuSecondPage;
 import badIceCream.states.InstructionsMenuFirstPageState;
-import badIceCream.states.InstructionsMenuSecondPageState;
 import badIceCream.states.MainMenuState;
 import badIceCream.states.State;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import java.io.IOException;
 
@@ -22,15 +21,17 @@ import static org.mockito.Mockito.times;
 
 public class InstructionsMenuSecondPageControllerTest {
     private InstructionsMenuSecondPageController InstructionsMenuSecondPageController;
+    @Mock
     private InstructionsMenuSecondPage instructionsMenuSecondPage;
+    @Mock
     private Game game;
+    @Mock
+    private State state;
 
     @BeforeEach
     void setUp() {
-        instructionsMenuSecondPage = mock(InstructionsMenuSecondPage.class);
+        MockitoAnnotations.openMocks(this);
         InstructionsMenuSecondPageController = new InstructionsMenuSecondPageController(instructionsMenuSecondPage);
-        State state = mock(State.class);
-        game = mock(Game.class);
         when(game.getState()).thenReturn(state);
     }
 

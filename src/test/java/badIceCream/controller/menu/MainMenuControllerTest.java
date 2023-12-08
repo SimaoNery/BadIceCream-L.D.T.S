@@ -1,4 +1,4 @@
-package badIceCream.controller.Menu;
+package badIceCream.controller.menu;
 
 import badIceCream.GUI.GUI;
 import badIceCream.Game;
@@ -10,6 +10,8 @@ import badIceCream.states.SelectLevelMenuState;
 import badIceCream.states.State;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import java.io.IOException;
 
@@ -17,14 +19,16 @@ import static org.mockito.Mockito.*;
 
 public class MainMenuControllerTest {
     private MainMenuController mainMenuController;
+    @Mock
     private MainMenu mainMenu;
+    @Mock
+    private State state;
+    @Mock
     private Game game;
 
     @BeforeEach
     void setUp() {
-        mainMenu = mock(MainMenu.class);
-        State state = mock(State.class);
-        game = mock(Game.class);
+        MockitoAnnotations.openMocks(this);
         when(game.getState()).thenReturn(state);
         mainMenuController = new MainMenuController(mainMenu);
     }

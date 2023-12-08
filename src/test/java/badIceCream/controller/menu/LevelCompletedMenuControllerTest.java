@@ -1,11 +1,9 @@
-package badIceCream.controller.Menu;
+package badIceCream.controller.menu;
 
 import badIceCream.GUI.GUI;
 import badIceCream.GUI.GameGraphics;
 import badIceCream.Game;
-import badIceCream.controller.menu.GameOverMenuController;
 import badIceCream.controller.menu.LevelCompletedMenuController;
-import badIceCream.model.menu.GameOverMenu;
 import badIceCream.model.menu.LevelCompletedMenu;
 import badIceCream.states.GameState;
 import badIceCream.states.MainMenuState;
@@ -13,6 +11,8 @@ import badIceCream.states.State;
 import badIceCream.utils.Audio;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import java.io.IOException;
 
@@ -23,19 +23,23 @@ import static org.mockito.Mockito.times;
 
 public class LevelCompletedMenuControllerTest {
     private LevelCompletedMenuController levelCompletedMenuController;
+    @Mock
     private LevelCompletedMenu levelCompletedMenu;
+    @Mock
     private Game game;
+    @Mock
+    private State state;
+    @Mock
     private Audio audio;
 
     @BeforeEach
     void setUp() {
-        levelCompletedMenu = mock(LevelCompletedMenu.class);
-        State state = mock(State.class);
+        MockitoAnnotations.openMocks(this);
         when(state.getLevel()).thenReturn(1);
-        game = mock(Game.class);
-        audio = mock(Audio.class);
         when(game.getState()).thenReturn(state);
         levelCompletedMenuController = new LevelCompletedMenuController(levelCompletedMenu, audio);
+        when(levelCompletedMenu.isSelectedQuitToMainMenu()).thenReturn(false);
+        when(levelCompletedMenu.isSelectedNextLevel()).thenReturn(false);
     }
 
     @Test

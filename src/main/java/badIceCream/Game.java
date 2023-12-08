@@ -5,6 +5,7 @@ import badIceCream.GUI.Graphics;
 import badIceCream.GUI.MenuGraphics;
 import badIceCream.model.menu.MainMenu;
 import badIceCream.states.MainMenuState;
+import badIceCream.states.MenuState;
 import badIceCream.states.State;
 import badIceCream.utils.Audio;
 import badIceCream.utils.AudioController;

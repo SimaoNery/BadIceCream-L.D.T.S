@@ -54,7 +54,6 @@ public class ArenaController extends GameController {
                 getModel().getIceCream().setStrawberry(true);
                 strawberry = time;
             }
-
         }
 
         if (getModel().getIceCream().isStrawberryActive() && time - strawberry >= 10000) {
