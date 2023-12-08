@@ -3,7 +3,6 @@ package badIceCream.model.game.elements;
 import badIceCream.model.Position;
 
 public abstract class Element {
-    private int type;
     private Position position;
     public Element(int x, int y) {
         this.position = new Position(x, y);

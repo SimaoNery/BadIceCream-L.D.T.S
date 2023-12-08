@@ -9,7 +9,6 @@ public class PauseMenu extends Menu {
     public boolean isSelectedMenu() {
         return isSelected(1);
     }
-
     public boolean isSelectedResume() {
         return isSelected(0);
     }

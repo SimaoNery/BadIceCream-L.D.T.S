@@ -17,19 +17,18 @@ import badIceCream.utils.Audio;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ArenaController extends GameController {
     private final IceCreamController iceCreamController;
-    private List<MonsterController> monsterController;
+    private final List<MonsterController> monsterController;
     private boolean first;
     private long strawberry;
 
-    public ArenaController(Arena arena) {
+    public ArenaController(Arena arena, IceCreamController iceCreamController, List<MonsterController> monsterController) {
         super(arena);
-        this.iceCreamController = new IceCreamController(arena);
-        monsterController = new ArrayList<>();
+        this.iceCreamController = iceCreamController;
+        this.monsterController = monsterController;
         this.first = true;
 
         for (Monster m : arena.getMonsters()) {
@@ -49,7 +48,7 @@ public class ArenaController extends GameController {
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
         int fruit = iceCreamController.eatFruit();
         if (fruit != -1) {
-            //new Audio("EatFruitSound.wav").playOnce();
+
             if (fruit == 5) {
                 getModel().getIceCream().setStrawberry(true);
                 strawberry = time;
@@ -64,13 +63,15 @@ public class ArenaController extends GameController {
         if (getModel().getFruits().isEmpty()) {
             if (first) {
                 first = false;
-                getModel().generateNewFruits(game.getState().getLevel());
+                getModel().generateNewFruits(getModel().getLevel());
             }
             else {
                 game.stopAudio();
                 Audio levelCompletedAudio = new Audio("LevelCompleteMenuSound.wav");
                 levelCompletedAudio.playOnce();
-                game.getState().increaseLevel();
+                if (getModel().getLevel() >= game.getState().getLevel()) {
+                    game.getState().increaseLevel();
+                }
                 game.setState(new LevelCompletedMenuState(new LevelCompletedMenu(), game.getState().getLevel(), levelCompletedAudio), new MenuGraphics(135, 50));
             }
         }

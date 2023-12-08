@@ -1,12 +1,9 @@
 package badIceCream.viewer.menu;
 
-import badIceCream.GUI.GUI;
 import badIceCream.GUI.Graphics;
-import badIceCream.GUI.MenuGraphics;
 import badIceCream.model.Position;
 import badIceCream.model.menu.SelectLevelMenu;
 import badIceCream.viewer.Viewer;
-import com.googlecode.lanterna.screen.Screen;
 
 public class SelectLevelMenuViewer extends Viewer<SelectLevelMenu> {
     public SelectLevelMenuViewer(SelectLevelMenu menu) {
