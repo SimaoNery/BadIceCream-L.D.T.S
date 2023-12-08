@@ -1,14 +1,19 @@
 plugins {
     id 'java'
     id 'application'
+    id 'info.solidsoft.pitest'version'1.15.0'
     //id "org.kordamp.gradle.errorprone" version "0.47.0"
 }
 
-group = 'org.example'
+group = 'badIceCream.*'
 version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+}
+
+pitest {
+    junit5PluginVersion = '1.2.0'
 }
 
 application {
