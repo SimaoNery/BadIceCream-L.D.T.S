@@ -6,8 +6,10 @@ import badIceCream.controller.menu.MainMenuController;
 import badIceCream.model.menu.InstructionsMenuFirstPage;
 import badIceCream.model.menu.MainMenu;
 import badIceCream.states.InstructionsMenuFirstPageState;
+import badIceCream.states.MainMenuState;
 import badIceCream.states.SelectLevelMenuState;
 import badIceCream.states.State;
+import badIceCream.utils.Type;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -27,10 +29,11 @@ public class MainMenuControllerTest {
     private Game game;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws IOException {
         MockitoAnnotations.openMocks(this);
         when(game.getState()).thenReturn(state);
         mainMenuController = new MainMenuController(mainMenu);
+        when(game.getGraphicsForGame(any(Type.class), anyInt(), anyInt())).thenReturn(null);
     }
 
     @Test
@@ -53,7 +56,7 @@ public class MainMenuControllerTest {
         mainMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
 
         verify(game, times(1)).stopAudio();
-        verify(game, times(1)).setState(null, null);
+        verify(game, times(1)).setState(null, Type.nulo, 0 ,0);
     }
 
     @Test
@@ -63,9 +66,7 @@ public class MainMenuControllerTest {
 
         mainMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
 
-        InstructionsMenuFirstPage instructionsMenu = mock(InstructionsMenuFirstPage.class);
-
-        verify(game, times(1)).setState(eq(any(InstructionsMenuFirstPageState.class)), null);
+        verify(game, times(1)).setState(any(InstructionsMenuFirstPageState.class), any(Type.class), anyInt(), anyInt());
     }
 
     @Test
@@ -75,9 +76,8 @@ public class MainMenuControllerTest {
 
         mainMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
 
-        InstructionsMenuFirstPage instructionsMenu = mock(InstructionsMenuFirstPage.class);
 
-        verify(game, times(1)).setState(eq(any(SelectLevelMenuState.class)), null);
+        verify(game, times(1)).setState(any(SelectLevelMenuState.class), any(Type.class), anyInt(), anyInt());
     }
 
 }

@@ -1,6 +1,7 @@
 package badIceCream.controller.game;
 
 import badIceCream.GUI.GUI;
+import badIceCream.GUI.Graphics;
 import badIceCream.Game;
 import badIceCream.controller.game.IceCreamController;
 import badIceCream.model.Position;
@@ -8,8 +9,11 @@ import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.monsters.Monster;
 import badIceCream.states.State;
+import badIceCream.utils.Audio;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
 
@@ -18,16 +22,24 @@ import static org.mockito.Mockito.*;
 
 class IceCreamControllerTest {
     private IceCreamController controller;
+    @Mock
     private Game game;
     private IceCream iceCream;
+    @Mock
     private State state;
+    @Mock
     private Arena arena;
+    @Mock
     private Position position;
+    @Mock
+    private Audio audio;
+    @Mock
+    private Graphics graphics;
 
     @BeforeEach
     void setUp() {
-        game = mock(Game.class);
-        state = mock(State.class);
+        MockitoAnnotations.openMocks(this);
+
 
         when(game.getState()).thenReturn(state);
 
@@ -46,6 +58,8 @@ class IceCreamControllerTest {
         when(iceCream.getPosition()).thenReturn(position);
 
         controller = new IceCreamController(arena);
+        game.setAll(state, graphics, audio);
+        Game.setBackgroundAudio(audio);
     }
 
     @Test

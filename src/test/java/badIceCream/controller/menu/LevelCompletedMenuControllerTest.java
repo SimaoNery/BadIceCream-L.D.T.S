@@ -2,6 +2,7 @@ package badIceCream.controller.menu;
 
 import badIceCream.GUI.GUI;
 import badIceCream.GUI.GameGraphics;
+import badIceCream.GUI.Graphics;
 import badIceCream.Game;
 import badIceCream.controller.menu.LevelCompletedMenuController;
 import badIceCream.model.menu.LevelCompletedMenu;
@@ -9,6 +10,7 @@ import badIceCream.states.GameState;
 import badIceCream.states.MainMenuState;
 import badIceCream.states.State;
 import badIceCream.utils.Audio;
+import badIceCream.utils.Type;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -32,14 +34,18 @@ public class LevelCompletedMenuControllerTest {
     @Mock
     private Audio audio;
 
+    @Mock
+    private Graphics graphics;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
         when(state.getLevel()).thenReturn(1);
         when(game.getState()).thenReturn(state);
-        levelCompletedMenuController = new LevelCompletedMenuController(levelCompletedMenu, audio);
+        levelCompletedMenuController = new LevelCompletedMenuController(levelCompletedMenu);
         when(levelCompletedMenu.isSelectedQuitToMainMenu()).thenReturn(false);
         when(levelCompletedMenu.isSelectedNextLevel()).thenReturn(false);
+        game.setAll(state, graphics, audio);
     }
 
     @Test
@@ -61,9 +67,8 @@ public class LevelCompletedMenuControllerTest {
         when(levelCompletedMenu.isSelectedQuitToMainMenu()).thenReturn(true);
         levelCompletedMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
 
-        verify(audio, times(1)).stop();
-        verify(game, times(1)).setAudioController("MainMenuMusic.wav");
-        verify(game, times(1)).setState(eq(any(MainMenuState.class)), null);
+        verify(game, times(1)).setAudio(any(Audio.class));
+        verify(game, times(1)).setState(any(MainMenuState.class), any(Type.class), anyInt(), anyInt());
     }
 
     @Test
@@ -71,8 +76,7 @@ public class LevelCompletedMenuControllerTest {
         when(levelCompletedMenu.isSelectedNextLevel()).thenReturn(true);
 
         levelCompletedMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(audio, times(1)).stop();
-        verify(game, times(1)).setAudioController("LevelMusic.wav");
-        verify(game, times(1)).setState(any(GameState.class), any(GameGraphics.class));
+        verify(game, times(1)).setAudio(any(Audio.class));
+        verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 }

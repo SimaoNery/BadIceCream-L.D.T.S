@@ -1,11 +1,14 @@
 package badIceCream.controller.game.monsters;
 
 import badIceCream.GUI.GUI;
+import badIceCream.GUI.Graphics;
 import badIceCream.controller.game.monsters.DefaultMovement;
 import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.monsters.Monster;
+import badIceCream.states.State;
+import badIceCream.utils.Audio;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -29,6 +32,7 @@ public class DefaultMovementTest {
         MockitoAnnotations.openMocks(this);
         defaultMovement = new DefaultMovement();
         when(arena.getIceCream()).thenReturn(iceCream);
+
     }
 
     @Test

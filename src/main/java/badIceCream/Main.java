@@ -2,6 +2,7 @@ package badIceCream;
 
 import badIceCream.model.menu.SelectLevelMenu;
 import badIceCream.states.SelectLevelMenuState;
+import badIceCream.utils.Type;
 
 import java.awt.*;
 import java.io.IOException;
@@ -13,7 +14,7 @@ public class Main {
         try {
             Game game = new Game();
             game.start();
-            game.setState(new SelectLevelMenuState(new SelectLevelMenu(), game.getState().getLevel()), null);
+            game.setState(new SelectLevelMenuState(new SelectLevelMenu(), game.getState().getLevel()), Type.nulo, 0,0);
         } catch (FontFormatException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {

@@ -35,7 +35,7 @@ public class MonsterController {
             runnerOn = !runnerOn;
 
             if (runnerOn) {
-                new Audio("RunnerMonsterSound.wav").playOnce();
+                new Audio(Audio.loadMusic("RunnerMonsterSound.wav")).playOnce();
                 monster.startRunning();
                 this.step = new RunnerMovementEnabled();
             }

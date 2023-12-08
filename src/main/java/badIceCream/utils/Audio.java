@@ -8,17 +8,13 @@ import java.io.File;
 
 
 public class Audio {
-    private Clip sound;
+    private final Clip sound;
 
-    public boolean isPlaying(){
-        return sound.isRunning();
+    public Audio(Clip sound) {
+        this.sound = sound;
     }
 
-    public Audio(String sound) {
-        this.sound = loadMusic(sound);
-    }
-
-    public Clip loadMusic(String sound) throws NullPointerException{
+    public static Clip loadMusic(String sound) throws NullPointerException{
         try {
             String rootPath = new File(System.getProperty("user.dir")).getPath();
             String soundPath = rootPath + "/src/main/resources/Music/" + sound;
@@ -37,10 +33,6 @@ public class Audio {
         return null;
     }
 
-    public void setSound(Clip sound) {
-        this.sound = sound;
-    }
-    public Clip getSound() {return sound;}
     public void play() {
         sound.setMicrosecondPosition(0);
         sound.start();

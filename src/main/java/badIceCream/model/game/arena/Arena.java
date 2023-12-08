@@ -2,6 +2,7 @@ package badIceCream.model.game.arena;
 
 import badIceCream.Exceptions.StoneWallDestroyedException;
 import badIceCream.GUI.GUI;
+import badIceCream.Game;
 import badIceCream.model.Position;
 
 import badIceCream.model.game.elements.*;
@@ -156,7 +157,6 @@ public class Arena {
             if (f.getPosition().equals(position)) {
                 int type = f.getType();
                 fruits.remove(f);
-                new Audio("EatFruitSound.wav").playOnce();
                 return type;
             }
         }
@@ -210,7 +210,8 @@ public class Arena {
 
         while (isIceWall(pos)) {
             if (first) {
-                new Audio("BreakWallSound.wav").playOnce();
+                Game.setBackgroundAudio(new Audio(Audio.loadMusic("BreakWallSound.wav")));
+                Game.playBackgroundAudio();
                 first = false;
             }
             try {
@@ -236,7 +237,8 @@ public class Arena {
 
         while (isEmptyMonsters(pos) && !isHotFloor(pos)) {
             if (first) {
-                new Audio("BuildWallSound.wav").playOnce();
+                Game.setBackgroundAudio(new Audio(Audio.loadMusic("BuildWallSound.wav")));
+                Game.playBackgroundAudio();
                 first = false;
             }
             createIceWall(pos);

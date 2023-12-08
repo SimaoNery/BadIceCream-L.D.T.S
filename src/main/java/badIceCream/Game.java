@@ -1,14 +1,16 @@
 package badIceCream;
 
 import badIceCream.GUI.GUI;
+import badIceCream.GUI.GameGraphics;
 import badIceCream.GUI.Graphics;
 import badIceCream.GUI.MenuGraphics;
+import badIceCream.model.game.arena.Arena;
+import badIceCream.model.game.arena.LoaderArenaBuilder;
 import badIceCream.model.menu.MainMenu;
 import badIceCream.states.MainMenuState;
-import badIceCream.states.MenuState;
 import badIceCream.states.State;
 import badIceCream.utils.Audio;
-import badIceCream.utils.AudioController;
+import badIceCream.utils.Type;
 
 import java.awt.*;
 import java.io.IOException;
@@ -17,40 +19,68 @@ import java.net.URISyntaxException;
 public class Game {
     private Graphics gui;
     private State state;
-    private AudioController audioController;
+    private Audio audio;
+    private static Audio backgroundAudio;
 
     public Game() throws FontFormatException, IOException, URISyntaxException {
         this.gui = new Graphics(new MenuGraphics(135, 55));
         this.state = new MainMenuState(new MainMenu(), 1);
-        this.audioController = new AudioController(new Audio("MainMenuMusic.wav"));
-        audioController.play();
+        this.audio = new Audio(Audio.loadMusic("MainMenuMusic.wav"));
+        audio.play();
     }
 
     public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException {
         new Game().start();
     }
-    public void setAudioController(String audio) {
-        audioController.stop();
-        audioController = new AudioController(new Audio(audio));
-        audioController.play();
-    }
-    public void stopAudio() {
-        audioController.stop();
+    public void setAudio(Audio audio) {
+        this.audio.stop();
+        this.audio = audio;
+        this.audio.play();
     }
 
-    public void setState(State state, GUI gui) throws IOException {
+    public static void setBackgroundAudio(Audio audio) {
+        backgroundAudio = audio;
+    }
+
+    public static void playBackgroundAudio() {
+        backgroundAudio.playOnce();
+    }
+
+    public void stopAudio() {
+        audio.stop();
+    }
+
+    public void playAudioOnce() {
+        audio.playOnce();
+    }
+
+    public void setState(State state, Type type, int width, int height) throws IOException {
         this.state = state;
-        if (gui != null) {
+        if (type != Type.nulo) {
             this.gui.close();
-            this.gui = new Graphics(gui);
-            gui.refresh();
+            this.gui = this.getGraphicsForGame(type, width, height);
+            this.gui.refresh();
         }
+    }
+
+    public void setAll(State state, Graphics gui, Audio audio) {
+        this.audio = audio;
+        this.state = state;
+        this.gui = gui;
     }
     public Graphics getGui(){
         return this.gui;
     }
     public State getState() {
         return this.state;
+    }
+
+    public Graphics getGraphicsForGame(Type type, int width, int height) throws IOException {
+        return switch (type) {
+            case menu -> new Graphics(new MenuGraphics(width, height));
+            case game -> new Graphics(new GameGraphics(width, height));
+            default -> null;
+        };
     }
 
     /*

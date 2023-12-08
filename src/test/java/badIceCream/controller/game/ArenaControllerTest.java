@@ -1,18 +1,19 @@
 package badIceCream.controller.game;
 
 import badIceCream.GUI.GUI;
-import badIceCream.GUI.MenuGraphics;
+import badIceCream.GUI.Graphics;
 import badIceCream.Game;
 import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.fruits.Fruit;
 import badIceCream.states.*;
+import badIceCream.utils.Audio;
+import badIceCream.utils.Type;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -38,9 +39,13 @@ class ArenaControllerTest {
     private Arena arena;
     @Mock
     private Position position;
+    @Mock
+    private Audio audio;
+    @Mock
+    private Graphics graphics;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws IOException {
         MockitoAnnotations.openMocks(this);
         when(game.getState()).thenReturn(state);
         when(iceCream.getPosition()).thenReturn(position);
@@ -52,6 +57,7 @@ class ArenaControllerTest {
         monsterControllers = new ArrayList<>(Arrays.asList(monsterController1, monsterController2));
 
         arenaController = new ArenaController(arena, iceCreamController, monsterControllers);
+        game.setAll(state, graphics, audio);
     }
     @Test
     void stepTestWinUp() throws IOException {
@@ -74,7 +80,7 @@ class ArenaControllerTest {
 
         verify(game, times(1)).stopAudio();
         verify(state, times(1)).increaseLevel();
-        verify(game, times(1)).setState(any(LevelCompletedMenuState.class), any(MenuGraphics.class));
+        verify(game, times(1)).setState(any(LevelCompletedMenuState.class), any(Type.class), anyInt(), anyInt());
     }
 
     @Test
@@ -98,7 +104,7 @@ class ArenaControllerTest {
 
         verify(game, times(1)).stopAudio();
         verify(state, times(1)).increaseLevel();
-        verify(game, times(1)).setState(any(LevelCompletedMenuState.class), any(MenuGraphics.class));
+        verify(game, times(1)).setState(any(LevelCompletedMenuState.class), any(Type.class), anyInt(), anyInt());
     }
 
     @Test
@@ -122,7 +128,7 @@ class ArenaControllerTest {
 
         verify(game, times(1)).stopAudio();
         verify(state, times(1)).increaseLevel();
-        verify(game, times(1)).setState(any(LevelCompletedMenuState.class), any(MenuGraphics.class));
+        verify(game, times(1)).setState(any(LevelCompletedMenuState.class), any(Type.class), anyInt(), anyInt());
     }
 
     @Test
@@ -146,7 +152,7 @@ class ArenaControllerTest {
 
         verify(game, times(1)).stopAudio();
         verify(state, times(1)).increaseLevel();
-        verify(game, times(1)).setState(any(LevelCompletedMenuState.class), any(MenuGraphics.class));
+        verify(game, times(1)).setState(any(LevelCompletedMenuState.class), any(Type.class), anyInt(), anyInt());
     }
 
     @Test
@@ -159,10 +165,11 @@ class ArenaControllerTest {
     void stepTestEscape() throws IOException {
         when(arena.getFruits()).thenReturn(List.of(mock(Fruit.class)));
         when(iceCream.getAlive()).thenReturn(true);
+        game.setAll(state, graphics, audio);
         arenaController.step(game, GUI.ACTION.PAUSE, System.currentTimeMillis());
 
-        verify(game, times(1)).setAudioController("MainMenuMusic.wav");
-        verify(game, times(1)).setState(any(PauseMenuState.class), any(MenuGraphics.class));
+        verify(game, times(1)).setAudio(any(Audio.class));
+        verify(game, times(1)).setState(any(PauseMenuState.class), any(Type.class), anyInt(), anyInt());
     }
     @Test
     void stepTestGameOverUp() throws IOException {
@@ -177,8 +184,8 @@ class ArenaControllerTest {
         verify(game, times(1)).stopAudio();
         verify(game, times(1)).getState();
         verify(game.getState(), times(1)).getLevel();
-        verify(game, times(1)).setState(any(GameOverMenuState.class), any(MenuGraphics.class)
-        );
+        verify(game, times(1)).setState(any(GameOverMenuState.class), any(Type.class), anyInt(), anyInt());
+
     }
 
     @Test
@@ -192,9 +199,7 @@ class ArenaControllerTest {
         arenaController.step(game, GUI.ACTION.DOWN, System.currentTimeMillis());
 
         verify(game, times(1)).stopAudio();
-        verify(game, times(1)).setState(any(GameOverMenuState.class),
-                any(MenuGraphics.class)
-        );
+        verify(game, times(1)).setState(any(GameOverMenuState.class), any(Type.class), anyInt(), anyInt());
     }
 
     @Test
@@ -208,9 +213,7 @@ class ArenaControllerTest {
         arenaController.step(game, GUI.ACTION.LEFT, System.currentTimeMillis());
 
         verify(game, times(1)).stopAudio();
-        verify(game, times(1)).setState(any(GameOverMenuState.class),
-                any(MenuGraphics.class)
-        );
+        verify(game, times(1)).setState(any(GameOverMenuState.class), any(Type.class), anyInt(), anyInt());
     }
 
     @Test
@@ -224,9 +227,7 @@ class ArenaControllerTest {
         arenaController.step(game, GUI.ACTION.RIGHT, System.currentTimeMillis());
 
         verify(game, times(1)).stopAudio();
-        verify(game, times(1)).setState(any(GameOverMenuState.class),
-                any(MenuGraphics.class)
-        );
+        verify(game, times(1)).setState(any(GameOverMenuState.class), any(Type.class), anyInt(), anyInt());
     }
 
     @Test

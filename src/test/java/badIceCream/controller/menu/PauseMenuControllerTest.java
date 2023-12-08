@@ -2,11 +2,15 @@ package badIceCream.controller.menu;
 
 import badIceCream.GUI.GUI;
 import badIceCream.GUI.GameGraphics;
+import badIceCream.GUI.Graphics;
 import badIceCream.Game;
 import badIceCream.model.menu.PauseMenu;
 import badIceCream.states.GameState;
 import badIceCream.states.MainMenuState;
+import badIceCream.states.PauseMenuState;
 import badIceCream.states.State;
+import badIceCream.utils.Audio;
+import badIceCream.utils.Type;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -28,13 +32,19 @@ public class PauseMenuControllerTest {
     private Game game;
     @Mock
     private State state;
+    @Mock
+    private Audio audio;
+    @Mock
+    private Graphics graphics;
     @BeforeEach
-    void setUp() {
+    void setUp() throws IOException {
         MockitoAnnotations.openMocks(this);
         when(game.getState()).thenReturn(state);
         pauseMenuController = new PauseMenuController(pauseMenu, state);
         when(pauseMenu.isSelectedMenu()).thenReturn(false);
         when(pauseMenu.isSelectedResume()).thenReturn(false);
+        game.setAll(state, graphics, audio);
+        when(game.getGraphicsForGame(any(Type.class), anyInt(), anyInt())).thenReturn(null);
     }
 
     @Test
@@ -58,7 +68,7 @@ public class PauseMenuControllerTest {
         when(pauseMenu.isSelectedResume()).thenReturn(false);
         pauseMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
 
-        verify(game, times(1)).setState(eq(any(MainMenuState.class)), null);
+        verify(game, times(1)).setState(any(MainMenuState.class), any(Type.class), anyInt(), anyInt());
     }
 
     @Test
@@ -67,8 +77,8 @@ public class PauseMenuControllerTest {
 
         pauseMenuController.step(game, GUI.ACTION.SELECT, 0);
 
-        verify(game, times(1)).setAudioController("LevelMusic.wav");
-        verify(game, times(1)).setState(eq(state), any(GameGraphics.class));
+        verify(game, times(1)).setAudio(any(Audio.class));
+        verify(game, times(1)).setState(state, Type.game, 70, 50);
     }
 
 }

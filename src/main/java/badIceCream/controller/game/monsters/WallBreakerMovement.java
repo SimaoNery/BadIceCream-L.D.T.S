@@ -22,7 +22,7 @@ public class WallBreakerMovement implements StepMonsters {
 
                 if (arena.isIceWall(pos)) {
                     try {
-                        new Audio("BreakWallSound.wav").playOnce();
+                        new Audio(Audio.loadMusic("BreakWallSound.wav")).playOnce();
                         arena.iceWallDestroyed(pos);
                     }
                     catch (StoneWallDestroyedException e) {

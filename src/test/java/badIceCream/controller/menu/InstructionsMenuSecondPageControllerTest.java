@@ -7,6 +7,7 @@ import badIceCream.model.menu.InstructionsMenuSecondPage;
 import badIceCream.states.InstructionsMenuFirstPageState;
 import badIceCream.states.MainMenuState;
 import badIceCream.states.State;
+import badIceCream.utils.Type;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -40,14 +41,14 @@ public class InstructionsMenuSecondPageControllerTest {
     void testCaseLeft() throws IOException {
         InstructionsMenuSecondPageController.step(game, GUI.ACTION.LEFT, System.currentTimeMillis());
 
-        verify(game, times(1)).setState(eq(any(InstructionsMenuFirstPageState.class)), null);
+        verify(game, times(1)).setState(any(InstructionsMenuFirstPageState.class), any(Type.class), anyInt(), anyInt());
     }
 
     @Test
     void testCaseSelectExit() throws IOException  {
         InstructionsMenuSecondPageController.step(game, GUI.ACTION.PAUSE, System.currentTimeMillis());
 
-        verify(game, times(1)).setState(eq(any(MainMenuState.class)), null);
+        verify(game, times(1)).setState(any(MainMenuState.class), any(Type.class), anyInt(), anyInt());
     }
 
 }
