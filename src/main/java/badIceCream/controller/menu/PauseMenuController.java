@@ -7,6 +7,8 @@ import badIceCream.model.menu.MainMenu;
 import badIceCream.model.menu.PauseMenu;
 import badIceCream.states.MainMenuState;
 import badIceCream.states.State;
+import badIceCream.utils.Audio;
+import badIceCream.utils.AudioController;
 
 
 import java.io.IOException;
@@ -30,7 +32,7 @@ public class PauseMenuController extends MenuController<PauseMenu> {
                 break;
             case SELECT:
                 if (getModel().isSelectedResume()) {
-                    game.setAudioController("LevelMusic.wav");
+                    game.setAudioController(new AudioController(new Audio("LevelMusic.wav")));
                     game.setState(parent, new GameGraphics(70, 50));
                 }
                 if (getModel().isSelectedMenu()) game.setState(new MainMenuState(new MainMenu(), game.getState().getLevel()), null);

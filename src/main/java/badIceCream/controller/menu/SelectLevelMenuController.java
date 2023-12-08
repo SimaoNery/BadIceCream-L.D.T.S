@@ -7,6 +7,8 @@ import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.arena.LoaderArenaBuilder;
 import badIceCream.model.menu.SelectLevelMenu;
 import badIceCream.states.GameState;
+import badIceCream.utils.Audio;
+import badIceCream.utils.AudioController;
 
 import java.io.IOException;
 
@@ -26,27 +28,27 @@ public class SelectLevelMenuController extends MenuController<SelectLevelMenu> {
                 break;
             case SELECT:
                 if (getModel().isSelectedLevel1()){
-                    game.setAudioController("LevelMusic.wav");
+                    game.setAudioController(new AudioController(new Audio("LevelMusic.wav")));
                     Arena arena = new LoaderArenaBuilder(1).createArena();
                     game.setState(new GameState(arena, game.getState().getLevel()), new GameGraphics(arena.getWidth(), arena.getHeight()));
                 }
                 if (getModel().isSelectedLevel2() && game.getState().getLevel() >= 2){
-                    game.setAudioController("LevelMusic.wav");
+                    game.setAudioController(new AudioController(new Audio("LevelMusic.wav")));
                     Arena arena = new LoaderArenaBuilder(2).createArena();
                     game.setState(new GameState(arena, game.getState().getLevel()), new GameGraphics(arena.getWidth(), arena.getHeight()));
                 }
                 if (getModel().isSelectedLevel3() && game.getState().getLevel() >= 3){
-                    game.setAudioController("LevelMusic.wav");
+                    game.setAudioController(new AudioController(new Audio("LevelMusic.wav")));
                     Arena arena = new LoaderArenaBuilder(3).createArena();
                     game.setState(new GameState(arena, game.getState().getLevel()), new GameGraphics(arena.getWidth(), arena.getHeight()));
                 }
                 if (getModel().isSelectedLevel4() && game.getState().getLevel() >= 4){
-                    game.setAudioController("LevelMusic.wav");
+                    game.setAudioController(new AudioController(new Audio("LevelMusic.wav")));
                     Arena arena = new LoaderArenaBuilder(4).createArena();
                     game.setState(new GameState(arena, game.getState().getLevel()), new GameGraphics(arena.getWidth(), arena.getHeight()));
                 }
                 if (getModel().isSelectedLevel5() && game.getState().getLevel() >= 5){
-                    game.setAudioController("LevelMusic.wav");
+                    game.setAudioController(new AudioController(new Audio("LevelMusic.wav")));
                     Arena arena = new LoaderArenaBuilder(5).createArena();
                     game.setState(new GameState(arena, game.getState().getLevel()), new GameGraphics(arena.getWidth(), arena.getHeight()));
                 }

@@ -27,10 +27,13 @@ public class Game {
     public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException {
         new Game().start();
     }
-    public void setAudioController(String audio) {
-        audioController.stop();
-        audioController = new AudioController(new Audio(audio));
-        audioController.play();
+    public void setAudioController(AudioController audioController) {
+        this.audioController.stop();
+        this.audioController = audioController;
+    }
+
+    public void playAudio() {
+        this.audioController.play();
     }
     public void stopAudio() {
         audioController.stop();

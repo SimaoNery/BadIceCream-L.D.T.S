@@ -79,6 +79,7 @@ public class SelectLevelMenuControllerTest {
 */
         when(game.getState().getLevel()).thenReturn(2);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
+
         verify(game, times(1)).setAudioController("LevelMusic.wav");
         verify(game, times(1)).setState(any(GameState.class), any(GameGraphics.class));
         /*
