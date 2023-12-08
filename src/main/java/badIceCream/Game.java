@@ -8,7 +8,6 @@ import badIceCream.states.MainMenuState;
 import badIceCream.states.State;
 import badIceCream.utils.Audio;
 import badIceCream.utils.AudioController;
-
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -19,7 +18,7 @@ public class Game {
     private AudioController audioController;
 
     public Game() throws FontFormatException, IOException, URISyntaxException {
-        this.gui = new Graphics(new MenuGraphics(135, 50));
+        this.gui = new Graphics(new MenuGraphics(135, 55));
         this.state = new MainMenuState(new MainMenu(), 1);
         this.audioController = new AudioController(new Audio("MainMenuMusic.wav"));
         audioController.play();
@@ -51,28 +50,6 @@ public class Game {
     public State getState() {
         return this.state;
     }
-
-    /*
-    public void start() throws IOException {
-        int FPS = 4;
-        int frameTime = 1000 / FPS;
-
-        while (this.state != null) {
-            long startTime = System.currentTimeMillis();
-
-            state.step(this, gui, startTime);
-
-            long elapsedTime = System.currentTimeMillis() - startTime;
-            long sleepTime = frameTime - elapsedTime;
-
-            try {
-                if (sleepTime > 0) Thread.sleep(sleepTime);
-            } catch (InterruptedException ignored) {
-            }
-        }
-
-        gui.close();
-    }*/
 
     public void start() throws IOException {
         Thread normalThread = new Thread(() -> {

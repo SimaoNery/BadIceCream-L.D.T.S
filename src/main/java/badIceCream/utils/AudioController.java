@@ -1,7 +1,7 @@
 package badIceCream.utils;
 
 public class AudioController {
-    private Audio audio;
+    private final Audio audio;
 
     public AudioController(Audio audio){
         this.audio = audio;

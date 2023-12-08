@@ -8,11 +8,7 @@ import java.io.File;
 
 
 public class Audio {
-    private Clip sound;
-
-    public boolean isPlaying(){
-        return sound.isRunning();
-    }
+    private final Clip sound;
 
     public Audio(String sound) {
         this.sound = loadMusic(sound);
@@ -37,10 +33,6 @@ public class Audio {
         return null;
     }
 
-    public void setSound(Clip sound) {
-        this.sound = sound;
-    }
-    public Clip getSound() {return sound;}
     public void play() {
         sound.setMicrosecondPosition(0);
         sound.start();

@@ -17,6 +17,7 @@ public abstract class ArenaBuilder {
     arena.setWalls(createWalls());
     arena.setFruits(createFruits());
     arena.setHotFloors(createHotFloors());
+    arena.setLevel(getLevel());
 
     return arena;
 }
@@ -32,4 +33,6 @@ public abstract class ArenaBuilder {
     protected abstract IceCream createIceCream();
     protected abstract List<Fruit> createFruits();
     protected abstract List<HotFloor> createHotFloors();
+
+    protected abstract int getLevel();
 }
