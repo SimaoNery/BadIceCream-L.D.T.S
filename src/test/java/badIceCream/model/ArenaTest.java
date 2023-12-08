@@ -1,5 +1,6 @@
 package badIceCream.model;
 
+import badIceCream.GUI.GUI;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.*;
 
@@ -322,9 +323,5 @@ public class ArenaTest {
         assertEquals(-1,arena.isFruit(new Position(1,2)));
         assertEquals(-1,arena.isFruit(new Position(1,3)));
         assertEquals(expected, arena.getFruits().size());
-    }
-    @Test
-    public void powerIceCream() {
-
     }
 }
