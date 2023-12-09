@@ -1,7 +1,5 @@
 package badIceCream.viewer;
 
-import badIceCream.GUI.GUI;
-import badIceCream.GUI.GameGraphics;
 import badIceCream.GUI.Graphics;
 
 import java.io.IOException;

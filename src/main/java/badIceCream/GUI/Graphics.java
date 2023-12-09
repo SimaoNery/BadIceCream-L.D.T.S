@@ -1,21 +1,6 @@
 package badIceCream.GUI;
 
-import badIceCream.states.GameState;
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
-import com.googlecode.lanterna.screen.Screen;
-import com.googlecode.lanterna.screen.TerminalScreen;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.googlecode.lanterna.terminal.Terminal;
 import badIceCream.model.Position;
-import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
-import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
-
-import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 
 
@@ -54,9 +39,9 @@ public class Graphics implements Cloneable {
             case LEFT: {c = ':'; break;}
             case RIGHT: {c = '9'; break;}
             default: c = '8';
-
         }
-        gui.drawCharacter(position.getX(), position.getY(), c , "#FFFFFF");
+        String color = strawberry ? "#48DEFF" : "#FFFFFF";
+        gui.drawCharacter(position.getX(), position.getY(), c , color);
     }
     public void drawStoneWall(Position position) {
         gui.drawCharacter(position.getX(), position.getY(), 'G', "#696969");
@@ -67,9 +52,9 @@ public class Graphics implements Cloneable {
             break;
             case 3: gui.drawCharacter(position.getX(), position.getY(), 'f', "#87CEFA");
             break;
-            case 4: gui.drawCharacter(position.getX(), position.getY(), 'g', "#87CEFA");
+            case 4: gui.drawCharacter(position.getX(), position.getY(), 'h', "#87CEFA");
             break;
-            case 5: gui.drawCharacter(position.getX(), position.getY(), 'h', "#87CEFA");
+            case 5: gui.drawCharacter(position.getX(), position.getY(), 'g', "#87CEFA");
             break;
             case 6: gui.drawCharacter(position.getX(), position.getY(), 'i', "#87CEFA");
             break;
