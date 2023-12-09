@@ -1,14 +1,9 @@
 package badIceCream.viewer.menu;
 
-import badIceCream.GUI.GUI;
 import badIceCream.GUI.Graphics;
 import badIceCream.model.Position;
 import badIceCream.model.menu.MainMenu;
 import badIceCream.viewer.Viewer;
-import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.screen.Screen;
-
-import java.io.IOException;
 
 public class MainMenuViewer extends Viewer<MainMenu> {
     public MainMenuViewer(MainMenu menu){

@@ -20,6 +20,7 @@ public abstract class State<T> {
         this.controller = controller;
         this.level = level;
     }
+
     public T getModel() {
         return model;
     }
