@@ -12,13 +12,4 @@ public class GameOverMenuState extends MenuState<GameOverMenu> {
     public GameOverMenuState(GameOverMenu model, int level) {
         super(model, new GameOverMenuController(model), new GameOverMenuViewer(model), level);
     }
-    @Override
-    protected Viewer<GameOverMenu> getViewer() {
-        return new GameOverMenuViewer(getModel());
-    }
-
-    @Override
-    protected Controller<GameOverMenu> getController() {
-        return new GameOverMenuController(getModel());
-    }
 }

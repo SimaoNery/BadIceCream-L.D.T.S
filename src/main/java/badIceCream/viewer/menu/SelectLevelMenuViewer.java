@@ -13,7 +13,7 @@ public class SelectLevelMenuViewer extends Viewer<SelectLevelMenu> {
         super(menu);
     }
 
-    private void drawTitle(Graphics gui) {
+    void drawTitle(Graphics gui) {
         String s0 = "   _                    _    _____      _           _              ";
         String s1 = "  | |                  | |  / ____|    | |         | |             ";
         String s2 = "  | |     _____   _____| | | (___   ___| | ___  ___| |_            ";
@@ -33,7 +33,7 @@ public class SelectLevelMenuViewer extends Viewer<SelectLevelMenu> {
         gui.drawText(new Position(41, 6), s5, "  #f7dc6f  ");
     }
 
-    private void drawSnowflake(Graphics gui) {
+    void drawSnowflake(Graphics gui) {
         String s0 = "   ..    ..          ";
         String s1 = "   '\\    /'         ";
         String s2 = "     \\\\//          ";
@@ -90,7 +90,7 @@ public class SelectLevelMenuViewer extends Viewer<SelectLevelMenu> {
     }
 
     @Override
-    protected void drawElements(Graphics gui) {
+    public void drawElements(Graphics gui) {
         drawTitle(gui);
         drawSnowflake(gui);
 

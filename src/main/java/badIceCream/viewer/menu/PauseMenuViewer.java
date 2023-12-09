@@ -10,7 +10,7 @@ import com.googlecode.lanterna.screen.Screen;
 public class PauseMenuViewer extends Viewer<PauseMenu> {
     public PauseMenuViewer(PauseMenu menu) {super(menu);}
 
-    private void drawTitle(Graphics gui) {
+    void drawTitle(Graphics gui) {
         String s0 = "  _____                                            ";
         String s1 = " |  __ \\                                          ";
         String s2 = " | |__) |  __ _   _   _   ___    ___              ";
@@ -27,7 +27,7 @@ public class PauseMenuViewer extends Viewer<PauseMenu> {
         gui.drawText(new Position(51, 8), s5, "  #f7dc6f  ");
     }
 
-    private void drawPauseSymbol(Graphics gui){
+    void drawPauseSymbol(Graphics gui){
         String s1 = " __    _           ";
         String s2 = "|  |  | \\          ";
         String s3 = "|  |  |  \\         ";
@@ -45,7 +45,7 @@ public class PauseMenuViewer extends Viewer<PauseMenu> {
         gui.drawText(new Position(66, 16), s7, "  #b05fa3  ");
     }
 
-    private void drawSnowflake(Graphics gui) {
+    void drawSnowflake(Graphics gui) {
 
         String s0 = "   ..    ..          ";
         String s1 = "   '\\    /'         ";

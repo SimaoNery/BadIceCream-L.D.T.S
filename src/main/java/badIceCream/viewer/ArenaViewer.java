@@ -1,7 +1,5 @@
-package badIceCream.viewer.game;
+package badIceCream.viewer;
 
-import badIceCream.GUI.GUI;
-import badIceCream.GUI.GameGraphics;
 import badIceCream.GUI.Graphics;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.Element;
@@ -10,13 +8,12 @@ import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.Wall;
 import badIceCream.model.game.elements.fruits.Fruit;
 import badIceCream.model.game.elements.monsters.Monster;
-import badIceCream.viewer.Viewer;
 
 public class ArenaViewer extends Viewer<Arena> {
     public ArenaViewer(Arena arena){
         super(arena);
     }
-    private <T extends Element> void drawElement(Graphics gui, T element, ElementViewer<T> viewer, int type) {
+    <T extends Element> void drawElement(Graphics gui, T element, ElementViewer<T> viewer, int type) {
         viewer.draw(element, gui, type);
     }
     @Override

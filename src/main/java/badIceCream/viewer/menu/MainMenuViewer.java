@@ -15,7 +15,7 @@ public class MainMenuViewer extends Viewer<MainMenu> {
         super(menu);
     }
 
-    private void drawTitle(Graphics gui) {
+    void drawTitle(Graphics gui) {
         String s0 = "                        ....                .                                     ";
         String s1 = "                       |  . \\              | |                                    ";
         String s2 = "                       | |.) |   .. .    ..| |                                    ";
@@ -47,7 +47,7 @@ public class MainMenuViewer extends Viewer<MainMenu> {
         gui.drawText(new Position(35, 14), s13, " #bb8fce ");
     }
 
-    private void drawSnowflake(Graphics gui) {
+    void drawSnowflake(Graphics gui) {
         String s0 = "   ..    ..          ";
         String s1 = "   '\\    /'         ";
         String s2 = "     \\\\//          ";

@@ -1,11 +1,7 @@
-package badIceCream.viewer.game;
+package badIceCream.viewer;
 
-import badIceCream.GUI.GUI;
-import badIceCream.GUI.GameGraphics;
 import badIceCream.GUI.Graphics;
 import badIceCream.model.game.elements.Wall;
-
-import java.io.IOException;
 
 public class WallViewer implements ElementViewer<Wall> {
     @Override

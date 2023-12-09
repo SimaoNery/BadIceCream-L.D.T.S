@@ -12,7 +12,7 @@ public class InstructionsMenuSecondPageViewer extends Viewer<InstructionsMenuSec
 
     public InstructionsMenuSecondPageViewer(InstructionsMenuSecondPage menu) {super(menu);}
 
-    private void drawTitle(Graphics gui) {
+    void drawTitle(Graphics gui) {
         String s0 = "           _____           _                   _   _                       ";
         String s1 = "          |_   _|         | |                 | | (_)                      " ;
         String s2 = "            | |  _ __  ___| |_ _ __ _   _  ___| |_ _  ___  _ __  ___       ";
@@ -32,7 +32,7 @@ public class InstructionsMenuSecondPageViewer extends Viewer<InstructionsMenuSec
         gui.drawText(new Position(35, 6), s5, "  #f7dc6f  ");
     }
 
-    private void drawSnowflake(Graphics gui) {
+    void drawSnowflake(Graphics gui) {
         String s0 = "   ..    ..          ";
         String s1 = "   '\\    /'         ";
         String s2 = "     \\\\//          ";
@@ -71,7 +71,7 @@ public class InstructionsMenuSecondPageViewer extends Viewer<InstructionsMenuSec
     }
 
     @Override
-    protected void drawElements(Graphics gui) throws IOException {
+    public void drawElements(Graphics gui) throws IOException {
         drawTitle(gui);
         drawSnowflake(gui);
         gui.drawCharacters();

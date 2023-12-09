@@ -4,7 +4,7 @@ plugins {
     id 'info.solidsoft.pitest' version '1.15.0'
 }
 
-group 'badIceCream.controller.*'
+group 'badIceCream.*'
 version '1.0'
 
 repositories {
