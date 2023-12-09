@@ -29,7 +29,6 @@ public class MenuGraphicsTest {
     @BeforeEach
     public void setUp() throws IOException {
         MockitoAnnotations.openMocks(this);
-        when(screen.pollInput()).thenReturn(keyStroke);
         when(screen.newTextGraphics()).thenReturn(textGraphics);
         menuGraphics = new MenuGraphics(screen);
     }
@@ -67,8 +66,12 @@ public class MenuGraphicsTest {
     @Test
     public void getNextAction() throws IOException {
         GUI.ACTION action = menuGraphics.getNextAction();
+        assertEquals(GUI.ACTION.NONE, action);
+
+        when(screen.pollInput()).thenReturn(keyStroke);
         action = menuGraphics.getNextAction();
         assertEquals(GUI.ACTION.NONE, action);
+
 
         when(keyStroke.getKeyType()).thenReturn(KeyType.ArrowUp);
         action = menuGraphics.getNextAction();

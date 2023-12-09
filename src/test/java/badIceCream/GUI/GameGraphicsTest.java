@@ -28,7 +28,6 @@ public class GameGraphicsTest {
     @BeforeEach
     public void setUp() throws IOException {
         MockitoAnnotations.openMocks(this);
-        when(screen.pollInput()).thenReturn(keyStroke);
         when(screen.newTextGraphics()).thenReturn(textGraphics);
         gameGraphics = new GameGraphics(screen);
     }
@@ -67,6 +66,10 @@ public class GameGraphicsTest {
     @Test
     public void getNextAction() throws IOException {
         GUI.ACTION action = gameGraphics.getNextAction();
+        assertEquals(GUI.ACTION.NONE, action);
+
+        when(screen.pollInput()).thenReturn(keyStroke);
+        action = gameGraphics.getNextAction();
         assertEquals(GUI.ACTION.NONE, action);
 
         when(keyStroke.getKeyType()).thenReturn(KeyType.ArrowUp);
