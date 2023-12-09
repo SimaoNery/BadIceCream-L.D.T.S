@@ -16,11 +16,15 @@ import static org.mockito.Mockito.*;
 public class GraphicsTest {
     @Mock
     private GUI gui;
+    @Mock
+    private Position position;
     private Graphics graphics;
 
     @BeforeEach
-    void setUp() throws IOException {
+    public void setUp() throws IOException {
         MockitoAnnotations.openMocks(this);
+        when(position.getX()).thenReturn(1);
+        when(position.getY()).thenReturn(1);
         graphics = new Graphics(gui);
     }
 
@@ -45,10 +49,7 @@ public class GraphicsTest {
         verify(gui,times(1)).close();
     }
     @Test
-    void drawIceCream(){
-        Position position = mock(Position.class);
-        when(position.getX()).thenReturn(1);
-        when(position.getY()).thenReturn(1);
+    public void drawIceCream(){
         graphics.drawIceCream(position, GUI.ACTION.UP, true);
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), '7', "#48DEFF");
         graphics.drawIceCream(position, GUI.ACTION.UP, false);
@@ -67,18 +68,12 @@ public class GraphicsTest {
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), '9', "#FFFFFF");
     }
     @Test
-    void drawStoneWall(){
-        Position position = mock(Position.class);
-        when(position.getX()).thenReturn(1);
-        when(position.getY()).thenReturn(1);
+    public void drawStoneWall(){
         graphics.drawStoneWall(position);
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), 'G', "#696969");
     }
     @Test
-    void drawIceWall(){
-        Position position = mock(Position.class);
-        when(position.getX()).thenReturn(1);
-        when(position.getY()).thenReturn(1);
+    public void drawIceWall(){
         graphics.drawIceWall(position,1);
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), 'F', "#87CEFA");
         graphics.drawIceWall(position,3);
@@ -101,10 +96,7 @@ public class GraphicsTest {
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), 'n', "#87CEFA");
     }
     @Test
-    void drawDefaultMonster() {
-        Position position = mock(Position.class);
-        when(position.getX()).thenReturn(1);
-        when(position.getY()).thenReturn(1);
+    public void drawDefaultMonster() {
         graphics.drawDefaultMonster(position, GUI.ACTION.UP);
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), '4', "#00FF00");
         graphics.drawDefaultMonster(position, GUI.ACTION.LEFT);
@@ -115,10 +107,7 @@ public class GraphicsTest {
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), 'Y', "#00FF00");
     }
     @Test
-    void drawJumperMonster() {
-        Position position = mock(Position.class);
-        when(position.getX()).thenReturn(1);
-        when(position.getY()).thenReturn(1);
+    public void drawJumperMonster() {
         graphics.drawJumperMonster(position, GUI.ACTION.UP);
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), '/', "#FF3333");
         graphics.drawJumperMonster(position, GUI.ACTION.LEFT);
@@ -129,10 +118,7 @@ public class GraphicsTest {
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), 'T', "#FF3333");
     }
     @Test
-    void drawRunnerMonster() {
-        Position position = mock(Position.class);
-        when(position.getX()).thenReturn(1);
-        when(position.getY()).thenReturn(1);
+    public void drawRunnerMonster() {
         graphics.drawRunnerMonster(position, GUI.ACTION.UP, true);
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), '3', "#FF0000");
         graphics.drawRunnerMonster(position, GUI.ACTION.UP, false);
@@ -151,10 +137,7 @@ public class GraphicsTest {
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), 'V', "#FFFF66");
     }
     @Test
-    void drawWallBreakerMonster() {
-        Position position = mock(Position.class);
-        when(position.getX()).thenReturn(1);
-        when(position.getY()).thenReturn(1);
+    public void drawWallBreakerMonster() {
         graphics.drawWallBreakerMonster(position, GUI.ACTION.UP);
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), '0', "#FF99FF");
         graphics.drawWallBreakerMonster(position, GUI.ACTION.LEFT);
@@ -165,50 +148,32 @@ public class GraphicsTest {
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), 'U', "#FF99FF");
     }
     @Test
-    void drawAppleFruit() {
-        Position position = mock(Position.class);
-        when(position.getX()).thenReturn(1);
-        when(position.getY()).thenReturn(1);
+    public void drawAppleFruit() {
         graphics.drawAppleFruit(position);
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), ']', "#FF0000");
     }
     @Test
-    void drawBananaFruit() {
-        Position position = mock(Position.class);
-        when(position.getX()).thenReturn(1);
-        when(position.getY()).thenReturn(1);
+    public void drawBananaFruit() {
         graphics.drawBananaFruit(position);
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), 'a', "#FFFF00");
     }
     @Test
-    void drawPineappleFruit() {
-        Position position = mock(Position.class);
-        when(position.getX()).thenReturn(1);
-        when(position.getY()).thenReturn(1);
+    public void drawPineappleFruit() {
         graphics.drawPineappleFruit(position);
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), '^', "#FFFF66");
     }
     @Test
-    void drawPepperFruit() {
-        Position position = mock(Position.class);
-        when(position.getX()).thenReturn(1);
-        when(position.getY()).thenReturn(1);
+    public void drawPepperFruit() {
         graphics.drawPepperFruit(position);
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), '\\', "#FF0000");
     }
     @Test
-    void drawStrawberryFruit() {
-        Position position = mock(Position.class);
-        when(position.getX()).thenReturn(1);
-        when(position.getY()).thenReturn(1);
+    public void drawStrawberryFruit() {
         graphics.drawStrawberryFruit(position);
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), '_', "#FF0000");
     }
     @Test
-    void drawHotFloor() {
-        Position position = mock(Position.class);
-        when(position.getX()).thenReturn(1);
-        when(position.getY()).thenReturn(1);
+    public void drawHotFloor() {
         graphics.drawHotFloor(position,1);
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), 'w', "#FF0000");
         graphics.drawHotFloor(position,2);
@@ -271,14 +236,22 @@ public class GraphicsTest {
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), 'b', "#FF0000");
     }
     @Test
-    void drawText() {
-        Position position = mock(Position.class);
+    public void drawText() {
         String text = "string";
         String color = "color";
         graphics.drawText(position, text, color);
         verify(gui,times(1)).drawText(position,text,color);
     }
-
+    @Test
+    public void drawCharacters() {
+        graphics.drawCharacters();
+        verify(gui, times(1)).drawCharacter(33, 15, 'Ê', "#00FF00");
+        verify(gui, times(1)).drawCharacter(33, 18, 'À', "#00FF00");
+        verify(gui, times(1)).drawCharacter(33, 21, 'Á', "#00FF00");
+        verify(gui, times(1)).drawCharacter(33, 24, 'È', "#00FF00");
+        verify(gui, times(1)).drawCharacter(33, 27, 'É', "#00FF00");
+        verify(gui, times(1)).drawCharacter(33, 30, 'Í', "#00FF00");
+    }
 /*
     @Test
     public void testClone() {
