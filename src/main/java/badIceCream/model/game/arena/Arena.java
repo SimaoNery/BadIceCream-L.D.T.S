@@ -208,7 +208,7 @@ public class Arena {
         }
     }
 
-    private void destroyIceWall(int deltaX, int deltaY) {
+    public void destroyIceWall(int deltaX, int deltaY) {
         boolean first = true;
         Position pos = new Position(iceCream.getPosition().getX() + deltaX, iceCream.getPosition().getY() + deltaY);
 
@@ -224,12 +224,12 @@ public class Arena {
         }
     }
 
-    private void createIceWall(Position pos) {
+    void createIceWall(Position pos) {
         IceWall newIceWall = new IceWall(pos.getX(), pos.getY());
         walls.add(newIceWall);
     }
 
-    private void constroyIceWall(int deltaX, int deltaY) {
+    void constroyIceWall(int deltaX, int deltaY) {
         boolean first = true;
         Position pos = new Position(iceCream.getPosition().getX() + deltaX, iceCream.getPosition().getY() + deltaY);
 
@@ -245,7 +245,7 @@ public class Arena {
         }
     }
 
-    private Position generateRandomPosition() {
+    Position generateRandomPosition() {
         Random rand = new Random();
         int upperWidth = width;
         int upperHeight = height;

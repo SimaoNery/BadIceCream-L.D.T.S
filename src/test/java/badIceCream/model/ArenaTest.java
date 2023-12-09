@@ -6,6 +6,7 @@ import badIceCream.model.game.elements.*;
 
 import badIceCream.model.game.elements.fruits.*;
 import badIceCream.model.game.elements.monsters.*;
+import net.jqwik.api.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -290,22 +291,27 @@ public class ArenaTest {
         arena.eatFruit(new Position(0,2));
         System.out.println(arena.isFruit(new Position(0,2)));
         expected--;
+        assertFalse(arena.getFruits().contains(bananaFruit));
         assertEquals(expected, arena.getFruits().size());
         verify(bananaFruit, times(1)).getType();
         arena.eatFruit(new Position(0,3));
         expected--;
+        assertFalse(arena.getFruits().contains(appleFruit));
         assertEquals(expected, arena.getFruits().size());
         verify(appleFruit, times(1)).getType();
         arena.eatFruit(new Position(0,4));
         expected--;
+        assertFalse(arena.getFruits().contains(cherryFruit));
         assertEquals(expected, arena.getFruits().size());
         verify(cherryFruit, times(1)).getType();
         arena.eatFruit(new Position(0,5));
         expected--;
+        assertFalse(arena.getFruits().contains(pineappleFruit));
         assertEquals(expected, arena.getFruits().size());
         verify(pineappleFruit, times(1)).getType();
         arena.eatFruit(new Position(0,6));
         expected--;
+        assertFalse(arena.getFruits().contains(strawberryFruit));
         assertEquals(expected, arena.getFruits().size());
         verify(strawberryFruit, times(1)).getType();
     }
@@ -323,5 +329,77 @@ public class ArenaTest {
         assertEquals(-1,arena.isFruit(new Position(1,2)));
         assertEquals(-1,arena.isFruit(new Position(1,3)));
         assertEquals(expected, arena.getFruits().size());
+    }
+    @Test
+    public void powerIceCreamUpIceWall() {
+        when(iceCream.getPosition()).thenReturn(new Position(0,2));
+        arena.setIceCream(iceCream);
+        arena.powerIceCream(GUI.ACTION.UP);
+        assertFalse(arena.getWalls().contains(iceWall));
+    }
+    @Test
+    public void powerIceCreamUpNoIceWall() {
+        StoneWall stoneWall1 = mock(StoneWall.class);
+        when(stoneWall1.getPosition()).thenReturn(new Position(2,2));
+        List<Wall> walls = new ArrayList<>(Arrays.asList(stoneWall1));
+        arena.setWalls(walls);
+        when(iceCream.getPosition()).thenReturn(new Position(2,6));
+        arena.setIceCream(iceCream);
+        arena.powerIceCream(GUI.ACTION.UP);
+        assertEquals(4, arena.getWalls().size());
+    }
+    @Test
+    public void powerIceCreamDownIceWall() {
+        when(iceCream.getPosition()).thenReturn(new Position(0,0));
+        arena.setIceCream(iceCream);
+        arena.powerIceCream(GUI.ACTION.DOWN);
+        assertFalse(arena.getWalls().contains(iceWall));
+    }
+    @Test
+    public void powerIceCreaDownNoIceWall() {
+        StoneWall stoneWall1 = mock(StoneWall.class);
+        when(stoneWall1.getPosition()).thenReturn(new Position(2,6));
+        List<Wall> walls = new ArrayList<>(Arrays.asList(stoneWall1));
+        arena.setWalls(walls);
+        when(iceCream.getPosition()).thenReturn(new Position(2,2));
+        arena.setIceCream(iceCream);
+        arena.powerIceCream(GUI.ACTION.DOWN);
+        assertEquals(4, arena.getWalls().size());
+    }
+    @Test
+    public void powerIceCreamLeftIceWall() {
+        when(iceCream.getPosition()).thenReturn(new Position(1,1));
+        arena.setIceCream(iceCream);
+        arena.powerIceCream(GUI.ACTION.LEFT);
+        assertFalse(arena.getWalls().contains(iceWall));
+    }
+    @Test
+    public void powerIceCreaLeftNoIceWall() {
+        StoneWall stoneWall1 = mock(StoneWall.class);
+        when(stoneWall1.getPosition()).thenReturn(new Position(2,2));
+        List<Wall> walls = new ArrayList<>(Arrays.asList(stoneWall1));
+        arena.setWalls(walls);
+        when(iceCream.getPosition()).thenReturn(new Position(6,2));
+        arena.setIceCream(iceCream);
+        arena.powerIceCream(GUI.ACTION.LEFT);
+        assertEquals(4, arena.getWalls().size());
+    }
+    @Test
+    public void powerIceCreamRightIceWall() {
+        when(iceCream.getPosition()).thenReturn(new Position(-1,1));
+        arena.setIceCream(iceCream);
+        arena.powerIceCream(GUI.ACTION.RIGHT);
+        assertFalse(arena.getWalls().contains(iceWall));
+    }
+    @Test
+    public void powerIceCreaRightNoIceWall() {
+        StoneWall stoneWall1 = mock(StoneWall.class);
+        when(stoneWall1.getPosition()).thenReturn(new Position(6,2));
+        List<Wall> walls = new ArrayList<>(Arrays.asList(stoneWall1));
+        arena.setWalls(walls);
+        when(iceCream.getPosition()).thenReturn(new Position(2,2));
+        arena.setIceCream(iceCream);
+        arena.powerIceCream(GUI.ACTION.RIGHT);
+        assertEquals(4, arena.getWalls().size());
     }
 }
