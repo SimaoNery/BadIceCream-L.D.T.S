@@ -1,6 +1,7 @@
-package badIceCream.model;
+package badIceCream.model.game;
 
 import badIceCream.GUI.GUI;
+import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.*;
 
