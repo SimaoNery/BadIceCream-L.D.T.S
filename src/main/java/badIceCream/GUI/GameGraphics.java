@@ -25,6 +25,10 @@ public class GameGraphics implements GUI{
         this.screen = createScreen(terminal);
     }
 
+    public GameGraphics(Screen screen) {
+        this.screen = screen;
+    }
+
     private Terminal createGameTerminal(int width, int height) throws IOException {
         try {
             String rootPath = new File(System.getProperty("user.dir")).getPath();

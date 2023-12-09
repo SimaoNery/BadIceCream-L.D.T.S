@@ -15,7 +15,9 @@ import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
 import com.googlecode.lanterna.terminal.swing.TerminalScrollController;
 
+import javax.script.ScriptEngine;
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 
 public class MenuGraphics implements GUI {
@@ -26,11 +28,24 @@ public class MenuGraphics implements GUI {
         this.screen = createScreen(terminal);
     }
 
+    public MenuGraphics(Screen screen) {
+        this.screen = screen;
+    }
+
     private Terminal createMenuTerminal(int width, int height) throws IOException{
-        Font font = new Font(Font.MONOSPACED, Font.BOLD, 17);
-        AWTTerminalFontConfiguration cfg = new SwingTerminalFontConfiguration(true, AWTTerminalFontConfiguration.BoldMode.NOTHING, font);
-        Terminal menuTerminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height)).setTerminalEmulatorFontConfiguration(cfg).createTerminal();
-        return menuTerminal;
+        try {
+            String rootPath = new File(System.getProperty("user.dir")).getPath();
+            String mapLocation = rootPath + "/src/main/resources/FontForge/TowerofSilence.otf";
+            Font font = Font.createFont(Font.TRUETYPE_FONT, new File(mapLocation));
+            font = font.deriveFont(Font.PLAIN, 20);
+            AWTTerminalFontConfiguration cfg = new SwingTerminalFontConfiguration(true, AWTTerminalFontConfiguration.BoldMode.NOTHING, font);
+            Terminal menuTerminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height)).setTerminalEmulatorFontConfiguration(cfg).createTerminal();
+
+            return menuTerminal;
+        } catch (IOException | FontFormatException e) {
+            e.printStackTrace();
+            throw new IOException("Error creating terminal with custom font.", e);
+        }
     }
 
     private Screen createScreen(Terminal terminal) throws IOException{
