@@ -18,7 +18,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class MenuGraphics implements GUI {
-    Screen screen;
+    private Screen screen;
 
     public MenuGraphics(int width, int height) throws IOException {
         Terminal terminal = createMenuTerminal(width, height);

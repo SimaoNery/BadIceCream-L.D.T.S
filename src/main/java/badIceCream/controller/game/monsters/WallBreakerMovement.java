@@ -1,6 +1,5 @@
 package badIceCream.controller.game.monsters;
 
-import badIceCream.Exceptions.StoneWallDestroyedException;
 import badIceCream.GUI.GUI;
 import badIceCream.controller.game.StepMonsters;
 import badIceCream.model.Position;

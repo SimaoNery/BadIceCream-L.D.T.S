@@ -8,6 +8,8 @@ import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import java.io.IOException;
 
@@ -16,20 +18,20 @@ import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
 
 public class MenuGraphicsTest {
+    @Mock
     private TextGraphics textGraphics;
 
     private MenuGraphics menuGraphics;
+    @Mock
     private Screen screen;
+    @Mock
     private KeyStroke keyStroke;
     @BeforeEach
     public void setUp() throws IOException {
-        screen = mock(Screen.class);
-        textGraphics = mock(TextGraphics.class);
-        keyStroke = mock(KeyStroke.class);
+        MockitoAnnotations.openMocks(this);
         when(screen.pollInput()).thenReturn(keyStroke);
         when(screen.newTextGraphics()).thenReturn(textGraphics);
-        menuGraphics = new MenuGraphics(10,10);
-        menuGraphics.screen = screen;
+        menuGraphics = new MenuGraphics(screen);
     }
     @Test
     public void drawCharacter() throws IOException {

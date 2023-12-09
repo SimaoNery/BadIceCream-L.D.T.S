@@ -14,6 +14,7 @@ import badIceCream.model.menu.LevelCompletedMenu;
 import badIceCream.model.menu.PauseMenu;
 import badIceCream.states.*;
 import badIceCream.utils.Audio;
+import badIceCream.utils.Type;
 
 
 import java.io.IOException;
@@ -68,12 +69,12 @@ public class ArenaController extends GameController {
             }
             else {
                 game.stopAudio();
-                Audio levelCompletedAudio = new Audio("LevelCompleteMenuSound.wav");
-                levelCompletedAudio.playOnce();
+                game.setAudio(new Audio(Audio.loadMusic("LevelCompleteMenuSound.wav")));
+                game.playAudioOnce();
                 if (getModel().getLevel() >= game.getState().getLevel()) {
                     game.getState().increaseLevel();
                 }
-                game.setState(new LevelCompletedMenuState(new LevelCompletedMenu(), game.getState().getLevel(), levelCompletedAudio), new MenuGraphics(135, 50));
+                game.setState(new LevelCompletedMenuState(new LevelCompletedMenu(), game.getState().getLevel()), Type.menu,135,50);
             }
         }
         else if (!getModel().getIceCream().getAlive()) {
