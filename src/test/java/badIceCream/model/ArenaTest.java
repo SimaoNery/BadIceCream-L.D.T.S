@@ -402,4 +402,75 @@ public class ArenaTest {
         arena.powerIceCream(GUI.ACTION.RIGHT);
         assertEquals(4, arena.getWalls().size());
     }
+    @Test
+    public void generateNewFruitsLevel1() {
+        List<Fruit> newFruits = new ArrayList<>();
+        arena.setFruits(newFruits);
+        arena.generateNewFruits(1);
+        assertEquals(6, arena.getFruits().size());
+        for (Fruit fruit : arena.getFruits()) {
+            assertTrue(fruit instanceof AppleFruit);
+            assertTrue(fruit.getPosition().getX() < 10);
+            assertTrue(fruit.getPosition().getX() >= 0);
+            assertTrue(fruit.getPosition().getY() < 10);
+            assertTrue(fruit.getPosition().getY() >= 0);
+        }
+    }
+    @Test
+    public void generateNewFruitsLevel2() {
+        List<Fruit> newFruits = new ArrayList<>();
+        arena.setFruits(newFruits);
+        arena.generateNewFruits(2);
+        assertEquals(8, arena.getFruits().size());
+        for (Fruit fruit : arena.getFruits()) {
+            assertTrue(fruit instanceof CherryFruit);
+            assertTrue(fruit.getPosition().getX() < 10);
+            assertTrue(fruit.getPosition().getX() >= 0);
+            assertTrue(fruit.getPosition().getY() < 10);
+            assertTrue(fruit.getPosition().getY() >= 0);
+        }
+    }
+    @Test
+    public void generateNewFruitsLevel3() {
+        List<Fruit> newFruits = new ArrayList<>();
+        arena.setFruits(newFruits);
+        arena.generateNewFruits(3);
+        assertEquals(10, arena.getFruits().size());
+        for (Fruit fruit : arena.getFruits()) {
+            assertTrue(fruit instanceof PineappleFruit);
+            assertTrue(fruit.getPosition().getX() < 10);
+            assertTrue(fruit.getPosition().getX() >= 0);
+            assertTrue(fruit.getPosition().getY() < 10);
+            assertTrue(fruit.getPosition().getY() >= 0);
+        }
+    }
+    @Test
+    public void generateNewFruitsLevel4() {
+        List<Fruit> newFruits = new ArrayList<>();
+        arena.setFruits(newFruits);
+        arena.generateNewFruits(4);
+        assertEquals(12, arena.getFruits().size());
+        for (Fruit fruit : arena.getFruits()) {
+            assertTrue(fruit instanceof BananaFruit);
+            assertTrue(fruit.getPosition().getX() < 10);
+            assertTrue(fruit.getPosition().getX() >= 0);
+            assertTrue(fruit.getPosition().getY() < 10);
+            assertTrue(fruit.getPosition().getY() >= 0);
+        }
+    }
+    @Test
+    public void generateNewFruitsLevel5() {
+        List<Fruit> newFruits = new ArrayList<>();
+        arena.setFruits(newFruits);
+        arena.generateNewFruits(5);
+        assertEquals(14, arena.getFruits().size());
+        for (Fruit fruit : arena.getFruits()) {
+            assertTrue(fruit instanceof AppleFruit);
+            assertTrue(fruit.getPosition().getX() < 10);
+            assertTrue(fruit.getPosition().getX() >= 0);
+            assertTrue(fruit.getPosition().getY() < 10);
+            assertTrue(fruit.getPosition().getY() >= 0);
+        }
+    }
+
 }
