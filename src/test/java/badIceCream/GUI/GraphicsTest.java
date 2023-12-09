@@ -3,6 +3,9 @@ package badIceCream.GUI;
 import badIceCream.model.Position;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 import java.io.IOException;
 
@@ -11,12 +14,13 @@ import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.mockito.Mockito.*;
 
 public class GraphicsTest {
+    @Mock
     private GUI gui;
     private Graphics graphics;
 
     @BeforeEach
     void setUp() throws IOException {
-        gui = mock(GUI.class);
+        MockitoAnnotations.openMocks(this);
         graphics = new Graphics(gui);
     }
 
@@ -46,12 +50,20 @@ public class GraphicsTest {
         when(position.getX()).thenReturn(1);
         when(position.getY()).thenReturn(1);
         graphics.drawIceCream(position, GUI.ACTION.UP, true);
+        verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), '7', "#48DEFF");
+        graphics.drawIceCream(position, GUI.ACTION.UP, false);
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), '7', "#FFFFFF");
         graphics.drawIceCream(position, GUI.ACTION.DOWN, true);
+        verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), '8', "#48DEFF");
+        graphics.drawIceCream(position, GUI.ACTION.DOWN, false);
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), '8', "#FFFFFF");
         graphics.drawIceCream(position, GUI.ACTION.LEFT, true);
+        verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), ':', "#48DEFF");
+        graphics.drawIceCream(position, GUI.ACTION.LEFT, false);
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), ':', "#FFFFFF");
         graphics.drawIceCream(position, GUI.ACTION.RIGHT, true);
+        verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), '9', "#48DEFF");
+        graphics.drawIceCream(position, GUI.ACTION.RIGHT, false);
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), '9', "#FFFFFF");
     }
     @Test
@@ -72,9 +84,9 @@ public class GraphicsTest {
         graphics.drawIceWall(position,3);
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), 'f', "#87CEFA");
         graphics.drawIceWall(position,4);
-        verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), 'g', "#87CEFA");
-        graphics.drawIceWall(position,5);
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), 'h', "#87CEFA");
+        graphics.drawIceWall(position,5);
+        verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), 'g', "#87CEFA");
         graphics.drawIceWall(position,6);
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), 'i', "#87CEFA");
         graphics.drawIceWall(position,7);
