@@ -9,8 +9,7 @@ import org.mockito.MockitoAnnotations;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class GraphicsTest {
@@ -27,10 +26,9 @@ public class GraphicsTest {
         when(position.getY()).thenReturn(1);
         graphics = new Graphics(gui);
     }
-
     @Test
     public void getNextAction() throws IOException {
-        GUI.ACTION action = graphics.getNextAction();
+        graphics.getNextAction();
         verify(gui,times(1)).getNextAction();
     }
     @Test
