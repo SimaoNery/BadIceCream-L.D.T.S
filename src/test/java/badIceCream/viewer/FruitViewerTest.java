@@ -46,11 +46,11 @@ public class FruitViewerTest {
 
     @Test
     void drawPepper(){
-        PepperFruit pepper = mock(PepperFruit.class);
+        CherryFruit pepper = mock(CherryFruit.class);
         when(pepper.getPosition()).thenReturn(position);
 
         viewer.draw(pepper, graphics, 3);
-        verify(graphics, times(1)).drawPepperFruit(position);
+        verify(graphics, times(1)).drawCherryFruit(position);
     }
 
     @Test

@@ -36,7 +36,6 @@ public class ArenaViewerTest {
 
         viewer = new ArenaViewer(arena);
 
-        iceCream = mock(IceCream.class);
         when(arena.getIceCream()).thenReturn(iceCream);
     }
 
@@ -44,7 +43,7 @@ public class ArenaViewerTest {
     void drawSingleFruits() {
         AppleFruit apple = mock(AppleFruit.class);
         BananaFruit banana = mock(BananaFruit.class);
-        PepperFruit pepper = mock(PepperFruit.class);
+        CherryFruit cherry = mock(CherryFruit.class);
         PineappleFruit pineapple = mock(PineappleFruit.class);
         StrawberryFruit strawberry = mock(StrawberryFruit.class);
 
@@ -52,13 +51,13 @@ public class ArenaViewerTest {
 
         viewer.drawElement(graphics, apple, fruitViewer, 1);
         viewer.drawElement(graphics, banana, fruitViewer, 2);
-        viewer.drawElement(graphics, pepper, fruitViewer, 3);
+        viewer.drawElement(graphics, cherry, fruitViewer, 3);
         viewer.drawElement(graphics, pineapple, fruitViewer, 4);
         viewer.drawElement(graphics, strawberry, fruitViewer, 5);
 
         verify(fruitViewer, times(1)).draw(apple, graphics, 1);
         verify(fruitViewer, times(1)).draw(banana, graphics, 2);
-        verify(fruitViewer, times(1)).draw(pepper, graphics, 3);
+        verify(fruitViewer, times(1)).draw(cherry, graphics, 3);
         verify(fruitViewer, times(1)).draw(pineapple, graphics, 4);
         verify(fruitViewer, times(1)).draw(strawberry, graphics, 5);
     }
@@ -89,7 +88,7 @@ public class ArenaViewerTest {
         IceWall iceWallDefault = mock(IceWall.class);
         IceWall iceWallApple = mock(IceWall.class);
         IceWall iceWallBanana = mock(IceWall.class);
-        IceWall iceWallPepper = mock(IceWall.class);
+        IceWall iceWallcherry = mock(IceWall.class);
         IceWall iceWallPineapple = mock(IceWall.class);
         IceWall iceWallStrawberry = mock(IceWall.class);
         IceWall iceWallJumperUp = mock(IceWall.class);
@@ -103,7 +102,7 @@ public class ArenaViewerTest {
         viewer.drawElement(graphics, iceWallDefault, wallViewer, 1);
         viewer.drawElement(graphics, iceWallApple, wallViewer, 3);
         viewer.drawElement(graphics, iceWallBanana, wallViewer, 5);
-        viewer.drawElement(graphics, iceWallPepper, wallViewer, 4);
+        viewer.drawElement(graphics, iceWallcherry, wallViewer, 4);
         viewer.drawElement(graphics, iceWallPineapple, wallViewer, 6);
         viewer.drawElement(graphics, iceWallStrawberry, wallViewer, 7);
         viewer.drawElement(graphics, iceWallJumperUp, wallViewer, 9);
@@ -115,7 +114,7 @@ public class ArenaViewerTest {
         verify(wallViewer, times(1)).draw(iceWallDefault, graphics, 1);
         verify(wallViewer, times(1)).draw(iceWallApple, graphics, 3);
         verify(wallViewer, times(1)).draw(iceWallBanana, graphics, 5);
-        verify(wallViewer, times(1)).draw(iceWallPepper, graphics, 4);
+        verify(wallViewer, times(1)).draw(iceWallcherry, graphics, 4);
         verify(wallViewer, times(1)).draw(iceWallPineapple, graphics, 6);
         verify(wallViewer, times(1)).draw(iceWallStrawberry, graphics, 7);
         verify(wallViewer, times(1)).draw(iceWallJumperUp, graphics, 9);

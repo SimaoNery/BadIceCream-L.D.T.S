@@ -162,7 +162,7 @@ public class GraphicsTest {
     }
     @Test
     public void drawPepperFruit() {
-        graphics.drawPepperFruit(position);
+        graphics.drawCherryFruit(position);
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), '\\', "#FF0000");
     }
     @Test

@@ -11,7 +11,7 @@ public class FruitViewer implements ElementViewer<Fruit>{
                 break;
             case 2: gui.drawBananaFruit(fruit.getPosition());
                 break;
-            case 3: gui.drawPepperFruit(fruit.getPosition());
+            case 3: gui.drawCherryFruit(fruit.getPosition());
                 break;
             case 4: gui.drawPineappleFruit(fruit.getPosition());
                 break;
