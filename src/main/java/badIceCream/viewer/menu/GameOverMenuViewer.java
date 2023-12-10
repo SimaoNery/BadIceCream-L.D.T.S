@@ -19,12 +19,12 @@ public class GameOverMenuViewer extends Viewer<GameOverMenu> {
         String s5 = " \\_____|  \\__,_| |_| |_| |_|  \\___|    \\____/    \\_/    \\___| |_|       ";
 
 
-        gui.drawText(new Position(37, 4), s0, "  #f6160f ");
-        gui.drawText(new Position(37, 5), s1, "  #f6160f  ");
-        gui.drawText(new Position(37, 6), s2, "  #f6160f  ");
-        gui.drawText(new Position(37, 7), s3, "  #f6160f  ");
-        gui.drawText(new Position(37, 8), s4, "  #f6160f  ");
-        gui.drawText(new Position(37, 9), s5, "  #f6160f  ");
+        gui.drawText(new Position(37, 4), s0, "#f6160f");
+        gui.drawText(new Position(37, 5), s1, "#f6160f");
+        gui.drawText(new Position(37, 6), s2, "#f6160f");
+        gui.drawText(new Position(37, 7), s3, "#f6160f");
+        gui.drawText(new Position(37, 8), s4, "#f6160f");
+        gui.drawText(new Position(37, 9), s5, "#f6160f");
     }
 
     void drawSnowflake(Graphics gui) {
@@ -37,14 +37,14 @@ public class GameOverMenuViewer extends Viewer<GameOverMenu> {
         String s6 = "   ./    \\.         ";
         String s7 = "   ''    ''          ";
 
-        gui.drawText(new Position(15, 25), s0, "  #ffffff  ");
-        gui.drawText(new Position(15, 26), s1, "  #ffffff  ");
-        gui.drawText(new Position(15, 27), s2, "  #ffffff  ");
-        gui.drawText(new Position(15, 28), s3, "  #ffffff  ");
-        gui.drawText(new Position(15, 29), s4, "  #ffffff  ");
-        gui.drawText(new Position(15, 30), s5, "  #ffffff  ");
-        gui.drawText(new Position(15, 31), s6, " #ffffff ");
-        gui.drawText(new Position(15, 32), s7, " #ffffff ");
+        gui.drawText(new Position(15, 25), s0, "#ffffff");
+        gui.drawText(new Position(15, 26), s1, "#ffffff");
+        gui.drawText(new Position(15, 27), s2, "#ffffff");
+        gui.drawText(new Position(15, 28), s3, "#ffffff");
+        gui.drawText(new Position(15, 29), s4, "#ffffff");
+        gui.drawText(new Position(15, 30), s5, "#ffffff");
+        gui.drawText(new Position(15, 31), s6, "#ffffff");
+        gui.drawText(new Position(15, 32), s7, "#ffffff");
 
         gui.drawText(new Position(5, 1), s0, "  #ffffff  ");
         gui.drawText(new Position(5, 2), s1, "  #ffffff  ");

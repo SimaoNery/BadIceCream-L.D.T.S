@@ -42,14 +42,14 @@ public class InstructionsMenuSecondPageViewer extends Viewer<InstructionsMenuSec
         String s6 = "   ./    \\.         ";
         String s7 = "   ''    ''          ";
 
-        gui.drawText(new Position(15, 25), s0, "  #ffffff  ");
-        gui.drawText(new Position(15, 26), s1, "  #ffffff  ");
-        gui.drawText(new Position(15, 27), s2, "  #ffffff  ");
-        gui.drawText(new Position(15, 28), s3, "  #ffffff  ");
-        gui.drawText(new Position(15, 29), s4, "  #ffffff  ");
-        gui.drawText(new Position(15, 30), s5, "  #ffffff  ");
-        gui.drawText(new Position(15, 31), s6, " #ffffff ");
-        gui.drawText(new Position(15, 32), s7, " #ffffff ");
+        gui.drawText(new Position(15, 25), s0, "#ffffff");
+        gui.drawText(new Position(15, 26), s1, "#ffffff");
+        gui.drawText(new Position(15, 27), s2, "#ffffff");
+        gui.drawText(new Position(15, 28), s3, "#ffffff");
+        gui.drawText(new Position(15, 29), s4, "#ffffff");
+        gui.drawText(new Position(15, 30), s5, "#ffffff");
+        gui.drawText(new Position(15, 31), s6, "#ffffff");
+        gui.drawText(new Position(15, 32), s7, "#ffffff");
 
         gui.drawText(new Position(5, 1), s0, "  #ffffff  ");
         gui.drawText(new Position(5, 2), s1, "  #ffffff  ");
