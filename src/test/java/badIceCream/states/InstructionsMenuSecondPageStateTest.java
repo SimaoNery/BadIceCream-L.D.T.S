@@ -39,7 +39,7 @@ public class InstructionsMenuSecondPageStateTest {
         MockitoAnnotations.openMocks(this);
         int level = 1;
 
-        state = new InstructionsMenuSecondPageState(model, level);
+        state = new InstructionsMenuSecondPageState(model,controller, viewer, level);
     }
 
     @Test

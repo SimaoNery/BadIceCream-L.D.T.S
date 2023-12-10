@@ -39,7 +39,7 @@ public class PauseMenuStateTest {
         MockitoAnnotations.openMocks(this);
         int level = 1;
 
-        state = new PauseMenuState(model, parent, level);
+        state = new PauseMenuState(model, parent, controller, viewer, level);
     }
 
     @Test

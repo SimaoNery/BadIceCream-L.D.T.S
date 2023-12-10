@@ -37,7 +37,7 @@ public class LevelCompletedMenuStateTest {
         MockitoAnnotations.openMocks(this);
         int level = 1;
 
-        state = new LevelCompletedMenuState(model, level);
+        state = new LevelCompletedMenuState(model, controller, viewer, level);
     }
 
     @Test
