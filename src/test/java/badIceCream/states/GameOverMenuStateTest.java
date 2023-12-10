@@ -6,6 +6,7 @@ import badIceCream.Game;
 import badIceCream.controller.menu.GameOverMenuController;
 import badIceCream.model.menu.GameOverMenu;
 import badIceCream.utils.Audio;
+import badIceCream.viewer.ArenaViewer;
 import badIceCream.viewer.menu.GameOverMenuViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -48,13 +49,15 @@ public class GameOverMenuStateTest {
     @Test
     void step() throws IOException {
         long time = 1000L;
-
+        GUI.ACTION action = GUI.ACTION.UP;
         when(graphics.getNextAction()).thenReturn(GUI.ACTION.UP);
+
 
         state.step(game, graphics, time);
 
-        verify(controller, times(1)).step(game, GUI.ACTION.UP, time);
-        verify(viewer, times(1)).draw(graphics);
+        assertEquals(action, graphics.getNextAction());
+        verify(controller, times(1)).step(eq(game), eq(GUI.ACTION.UP), eq(time));
+        verify(viewer, times(1)).draw(eq(graphics));
     }
 
     @Test
