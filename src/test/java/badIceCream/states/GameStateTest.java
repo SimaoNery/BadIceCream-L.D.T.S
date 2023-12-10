@@ -34,8 +34,6 @@ public class GameStateTest {
     @Mock
     private Arena arena;
     @Mock
-    private IceCreamController iceCreamController;
-    @Mock
     private IceCream iceCream;
 
     @BeforeEach
@@ -45,7 +43,7 @@ public class GameStateTest {
 
         when(arena.getIceCream()).thenReturn(iceCream);
 
-        state = new GameState(arena, level);
+        state = new GameState(arena, controller, viewer, level);
     }
 
     @Test

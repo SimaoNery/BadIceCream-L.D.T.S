@@ -37,7 +37,7 @@ public class SelectLevelMenuStateTest {
         MockitoAnnotations.openMocks(this);
         int level = 1;
 
-        state = new SelectLevelMenuState(model, level);
+        state = new SelectLevelMenuState(model,controller, viewer, level);
     }
 
     @Test
