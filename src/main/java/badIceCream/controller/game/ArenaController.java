@@ -6,6 +6,7 @@ import badIceCream.controller.game.monsters.DefaultMovement;
 import badIceCream.controller.game.monsters.JumperMovement;
 import badIceCream.controller.game.monsters.RunnerMovementDisabled;
 import badIceCream.controller.game.monsters.WallBreakerMovement;
+import badIceCream.controller.menu.LevelCompletedMenuController;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.GUI.GUI;
 import badIceCream.model.game.elements.monsters.Monster;
@@ -15,6 +16,7 @@ import badIceCream.model.menu.PauseMenu;
 import badIceCream.states.*;
 import badIceCream.utils.Audio;
 import badIceCream.utils.Type;
+import badIceCream.viewer.menu.LevelCompletedMenuViewer;
 
 
 import java.io.IOException;
@@ -74,7 +76,8 @@ public class ArenaController extends GameController {
                 if (getModel().getLevel() >= game.getState().getLevel()) {
                     game.getState().increaseLevel();
                 }
-                game.setState(new LevelCompletedMenuState(new LevelCompletedMenu(), game.getState().getLevel()), Type.menu,135,50);
+                LevelCompletedMenu menu = new LevelCompletedMenu();
+                game.setState(new LevelCompletedMenuState(menu, new LevelCompletedMenuController(menu), new LevelCompletedMenuViewer(menu),game.getState().getLevel()), Type.menu,135,50);
             }
         }
         else if (!getModel().getIceCream().getAlive()) {

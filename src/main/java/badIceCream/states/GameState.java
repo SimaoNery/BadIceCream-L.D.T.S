@@ -8,7 +8,7 @@ import badIceCream.viewer.ArenaViewer;
 import java.util.ArrayList;
 
 public class GameState extends State<Arena> {
-    public GameState(Arena arena, int level) {
-        super(arena, new ArenaController(arena, new IceCreamController(arena), new ArrayList<>()), new ArenaViewer(arena), level);
+    public GameState(Arena arena, ArenaController controller, ArenaViewer viewer, int level) {
+        super(arena, controller, viewer, level);
     }
 }

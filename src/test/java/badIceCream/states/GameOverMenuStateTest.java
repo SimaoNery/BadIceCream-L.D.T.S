@@ -37,7 +37,7 @@ public class GameOverMenuStateTest {
         MockitoAnnotations.openMocks(this);
         int level = 1;
 
-        state = new GameOverMenuState(model, level);
+        state = new GameOverMenuState(model, controller, viewer, level);
     }
 
     @Test
