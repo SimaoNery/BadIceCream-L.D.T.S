@@ -208,7 +208,7 @@ public class Arena {
         }
     }
 
-    public void destroyIceWall(int deltaX, int deltaY) {
+    void destroyIceWall(int deltaX, int deltaY) {
         boolean first = true;
         Position pos = new Position(iceCream.getPosition().getX() + deltaX, iceCream.getPosition().getY() + deltaY);
 
@@ -264,7 +264,6 @@ public class Arena {
                     Position nextPos = generateRandomPosition();
                     fruits.add(new AppleFruit(nextPos.getX(), nextPos.getY()));
                 }
-
                 break;
 
             case 2:
