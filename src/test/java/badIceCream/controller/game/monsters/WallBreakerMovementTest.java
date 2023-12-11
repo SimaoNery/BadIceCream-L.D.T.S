@@ -1,13 +1,14 @@
-package badIceCream.controller.MonsterMovements;
+package badIceCream.controller.game.monsters;
 
 import badIceCream.GUI.GUI;
-import badIceCream.controller.game.monsters.WallBreakerMovement;
 import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.monsters.Monster;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import java.io.IOException;
 
@@ -17,20 +18,23 @@ import static org.mockito.Mockito.times;
 public class WallBreakerMovementTest {
 
     private WallBreakerMovement wallBreakerMovement;
+    @Mock
     private Arena arena;
+    @Mock
     private Monster monster;
+    @Mock
+    private IceCream iceCream;
 
     @BeforeEach
     void setUp() {
+        MockitoAnnotations.openMocks(this);
         wallBreakerMovement = new WallBreakerMovement();
-        arena = mock(Arena.class);
-        monster = mock(Monster.class);
+        when(arena.getIceCream()).thenReturn(iceCream);
     }
 
     @Test
     void testMoveMonsterUpdatesPositionAndChecksIceCream() {
         Position newPosition = new Position(2, 2);
-        when(arena.getIceCream()).thenReturn(mock(IceCream.class));
         when(arena.getIceCream().isStrawberryActive()).thenReturn(false);
         when(arena.getIceCream().getPosition()).thenReturn(newPosition);
 

@@ -1,4 +1,4 @@
-package badIceCream.controller.MonsterMovements;
+package badIceCream.controller.game.monsters;
 
 import badIceCream.GUI.GUI;
 import badIceCream.controller.game.monsters.JumperMovement;
@@ -9,6 +9,8 @@ import badIceCream.model.game.elements.IceWall;
 import badIceCream.model.game.elements.monsters.Monster;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,14 +19,15 @@ import static org.mockito.Mockito.*;
 
 public class JumperMovementTest {
     private JumperMovement jumperMovement;
+    @Mock
     private Arena arena;
+    @Mock
     private Monster monster;
 
     @BeforeEach
     void setUp() {
+        MockitoAnnotations.openMocks(this);
         jumperMovement = new JumperMovement();
-        arena = mock(Arena.class);
-        monster = mock(Monster.class);
     }
 
     @Test

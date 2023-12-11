@@ -7,6 +7,7 @@ import badIceCream.model.menu.MainMenu;
 import badIceCream.model.menu.SelectLevelMenu;
 import badIceCream.states.InstructionsMenuFirstPageState;
 import badIceCream.states.SelectLevelMenuState;
+import badIceCream.utils.Type;
 
 import java.io.IOException;
 
@@ -27,10 +28,10 @@ public class MainMenuController extends MenuController<MainMenu> {
             case SELECT:
                 if (getModel().isSelectedExit()) {
                     game.stopAudio();
-                    game.setState(null, null);
+                    game.setState(null, Type.nulo, 0,0);
                 }
-                if (getModel().isSelectedInstructions()) game.setState(new InstructionsMenuFirstPageState(new InstructionsMenuFirstPage(), game.getState().getLevel()), null);
-                if (getModel().isSelectedStart()) game.setState(new SelectLevelMenuState(new SelectLevelMenu(), game.getState().getLevel()), null);
+                if (getModel().isSelectedInstructions()) game.setState(new InstructionsMenuFirstPageState(new InstructionsMenuFirstPage(), game.getState().getLevel()), Type.nulo,0,0);
+                if (getModel().isSelectedStart()) game.setState(new SelectLevelMenuState(new SelectLevelMenu(), game.getState().getLevel()), Type.nulo,0,0);
         }
     }
 }

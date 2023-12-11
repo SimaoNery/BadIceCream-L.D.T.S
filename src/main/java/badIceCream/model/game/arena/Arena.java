@@ -1,6 +1,7 @@
 package badIceCream.model.game.arena;
 
 import badIceCream.GUI.GUI;
+import badIceCream.Game;
 import badIceCream.model.Position;
 import badIceCream.model.game.elements.*;
 import badIceCream.model.game.elements.fruits.*;
@@ -213,7 +214,8 @@ public class Arena {
 
         while (isIceWall(pos)) {
             if (first) {
-                new Audio("BreakWallSound.wav").playOnce();
+                Game.setBackgroundAudio(new Audio(Audio.loadMusic("BreakWallSound.wav")));
+                Game.playBackgroundAudio();
                 first = false;
             }
             iceWallDestroyed(pos);
@@ -233,7 +235,8 @@ public class Arena {
 
         while (isEmptyMonsters(pos) && !isHotFloor(pos)) {
             if (first) {
-                new Audio("BuildWallSound.wav").playOnce();
+                Game.setBackgroundAudio(new Audio(Audio.loadMusic("BuildWallSound.wav")));
+                Game.playBackgroundAudio();
                 first = false;
             }
             createIceWall(pos);
@@ -261,7 +264,6 @@ public class Arena {
                     Position nextPos = generateRandomPosition();
                     fruits.add(new AppleFruit(nextPos.getX(), nextPos.getY()));
                 }
-
                 break;
 
             case 2:
