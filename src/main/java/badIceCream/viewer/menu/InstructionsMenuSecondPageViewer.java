@@ -78,7 +78,7 @@ public class InstructionsMenuSecondPageViewer extends Viewer<InstructionsMenuSec
         gui.drawText(new Position(45, 18), "Jumper Monster: Has the ability to jump walls.", "#FFFFFF");
         gui.drawText(new Position(45, 21), "WallBreaker Monster: Has the ability to break ice walls.", "#FFFFFF");
         gui.drawText(new Position(45, 24), "Runner Monster Inactive: Acts like a default monster.", "#FFFFFF");
-        gui.drawText(new Position(45, 27), "Default Monster Active: Has the hability to track Bad Ice Cream and run faster.", "#FFFFFF");
+        gui.drawText(new Position(45, 27), "Default Monster Active: Has the ability to track Bad Ice Cream and run faster.", "#FFFFFF");
         gui.drawText(new Position(45, 30), "Hot Floor: Blocks the progression of ice walls.", "#FFFFFF");
 
 

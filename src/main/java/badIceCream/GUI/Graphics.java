@@ -136,7 +136,6 @@ public class Graphics implements Cloneable {
 
     }
 
-
     public void drawPepperFruit(Position position) {
         gui.drawCharacter(position.getX(), position.getY(), '\\', "#FF0000");
     }

@@ -10,7 +10,7 @@ public class GameOverMenuViewer extends Viewer<GameOverMenu> {
         super(menu);
     }
 
-    private void drawTitle(Graphics gui) {
+    public void drawTitle(Graphics gui) {
         String s0 = "  _____                                 ____                            ";
         String s1 = " / ____|                               / __ \\                           ";
         String s2 = "| |  __    __ _   _ __ ___     ___    | |  | | __   __   ___   _ __    ";
@@ -27,7 +27,7 @@ public class GameOverMenuViewer extends Viewer<GameOverMenu> {
         gui.drawText(new Position(37, 9), s5, "  #f6160f  ");
     }
 
-    private void drawSnowflake(Graphics gui) {
+    public void drawSnowflake(Graphics gui) {
         String s0 = "   ..    ..          ";
         String s1 = "   '\\    /'         ";
         String s2 = "     \\\\//          ";

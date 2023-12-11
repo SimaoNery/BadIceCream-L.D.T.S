@@ -34,7 +34,7 @@ public class MenuGraphics implements GUI {
             String rootPath = new File(System.getProperty("user.dir")).getPath();
             String mapLocation = rootPath + "/src/main/resources/FontForge/TowerofSilence.otf";
             Font font = Font.createFont(Font.TRUETYPE_FONT, new File(mapLocation));
-            font = font.deriveFont(Font.PLAIN, 20);
+            font = font.deriveFont(Font.PLAIN, 16);
             AWTTerminalFontConfiguration cfg = new SwingTerminalFontConfiguration(true, AWTTerminalFontConfiguration.BoldMode.NOTHING, font);
 
             return new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height)).setTerminalEmulatorFontConfiguration(cfg).createTerminal();
