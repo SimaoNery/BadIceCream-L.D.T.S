@@ -264,7 +264,6 @@ public class Arena {
                     Position nextPos = generateRandomPosition();
                     fruits.add(new AppleFruit(nextPos.getX(), nextPos.getY()));
                 }
-
                 break;
 
             case 2:
