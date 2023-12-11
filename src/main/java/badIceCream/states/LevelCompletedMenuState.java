@@ -7,7 +7,7 @@ import badIceCream.viewer.menu.LevelCompletedMenuViewer;
 
 public class LevelCompletedMenuState extends MenuState<LevelCompletedMenu> {
 
-    public LevelCompletedMenuState(LevelCompletedMenu model, int level, Audio audio) {
-        super(model, new LevelCompletedMenuController(model, audio), new LevelCompletedMenuViewer(model), level);
+    public LevelCompletedMenuState(LevelCompletedMenu model, int level) {
+        super(model, new LevelCompletedMenuController(model), new LevelCompletedMenuViewer(model), level);
     }
 }

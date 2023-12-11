@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Menu {
     private final List<String> entries;
-    private int currentEntry = 0;
+    int currentEntry = 0;
 
     public Menu(List<String> entries) {
         this.entries = entries;
@@ -33,4 +33,5 @@ public class Menu {
     public int getNumberEntries() {
         return this.entries.size();
     }
+
 }

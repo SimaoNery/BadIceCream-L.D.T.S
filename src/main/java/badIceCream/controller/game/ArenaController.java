@@ -14,9 +14,11 @@ import badIceCream.model.menu.LevelCompletedMenu;
 import badIceCream.model.menu.PauseMenu;
 import badIceCream.states.*;
 import badIceCream.utils.Audio;
+import badIceCream.utils.Type;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ArenaController extends GameController {
@@ -67,23 +69,23 @@ public class ArenaController extends GameController {
             }
             else {
                 game.stopAudio();
-                Audio levelCompletedAudio = new Audio("LevelCompleteMenuSound.wav");
-                levelCompletedAudio.playOnce();
+                game.setAudio(new Audio(Audio.loadMusic("LevelCompleteMenuSound.wav")));
+                game.playAudioOnce();
                 if (getModel().getLevel() >= game.getState().getLevel()) {
                     game.getState().increaseLevel();
                 }
-                game.setState(new LevelCompletedMenuState(new LevelCompletedMenu(), game.getState().getLevel(), levelCompletedAudio), new MenuGraphics(135, 50));
+                game.setState(new LevelCompletedMenuState(new LevelCompletedMenu(), game.getState().getLevel()), Type.menu,135,50);
             }
         }
         else if (!getModel().getIceCream().getAlive()) {
             game.stopAudio();
-            Audio gameOverSound = new Audio("GameOverMenuSound.wav");
-            gameOverSound.playOnce();
-            game.setState(new GameOverMenuState(new GameOverMenu(), game.getState().getLevel(), gameOverSound), new MenuGraphics(135, 50));
+            game.setAudio(new Audio(Audio.loadMusic("GameOverMenuSound.wav")));
+            game.playAudioOnce();
+            game.setState(new GameOverMenuState(new GameOverMenu(), game.getState().getLevel()), Type.menu, 135, 50);
         }
         else if (action == GUI.ACTION.PAUSE) {
-            game.setAudioController("MainMenuMusic.wav");
-            game.setState(new PauseMenuState(new PauseMenu(), game.getState() ,game.getState().getLevel()), new MenuGraphics(135, 50));
+            game.setAudio(new Audio(Audio.loadMusic("MainMenuMusic.wav")));
+            game.setState(new PauseMenuState(new PauseMenu(), game.getState() ,game.getState().getLevel()), Type.menu, 135, 50);
         }
         else {
             iceCreamController.step(game, action, time);

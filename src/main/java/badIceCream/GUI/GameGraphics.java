@@ -1,6 +1,7 @@
 package badIceCream.GUI;
 
 import badIceCream.model.Position;
+import badIceCream.model.game.arena.Arena;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -22,7 +23,10 @@ public class GameGraphics implements GUI{
     public GameGraphics(int width, int height) throws IOException{
         Terminal terminal = createGameTerminal(width, height);
         this.screen = createScreen(terminal);
+    }
 
+    public GameGraphics(Screen screen) {
+        this.screen = screen;
     }
 
     private Terminal createGameTerminal(int width, int height) throws IOException {
@@ -32,6 +36,7 @@ public class GameGraphics implements GUI{
             Font font = Font.createFont(Font.TRUETYPE_FONT, new File(mapLocation));
             font = font.deriveFont(Font.PLAIN, 35);
             AWTTerminalFontConfiguration cfg = new SwingTerminalFontConfiguration(true, AWTTerminalFontConfiguration.BoldMode.NOTHING, font);
+
             return new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height)).setTerminalEmulatorFontConfiguration(cfg).createTerminal();
         } catch (IOException | FontFormatException e) {
             e.printStackTrace();
