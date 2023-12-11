@@ -18,11 +18,15 @@ import java.io.File;
 import java.io.IOException;
 
 public class MenuGraphics implements GUI {
-    private final Screen screen;
+    private Screen screen;
 
     public MenuGraphics(int width, int height) throws IOException {
         Terminal terminal = createMenuTerminal(width, height);
         this.screen = createScreen(terminal);
+    }
+
+    public MenuGraphics(Screen screen) {
+        this.screen = screen;
     }
 
     private Terminal createMenuTerminal(int width, int height) throws IOException{

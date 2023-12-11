@@ -20,7 +20,7 @@ public class WallBreakerMovement implements StepMonsters {
                 monster.setLastAction(lastMove(monster.getPosition(), pos));
 
                 if (arena.isIceWall(pos)) {
-                    new Audio("BreakWallSound.wav").playOnce();
+                    new Audio(Audio.loadMusic("BreakWallSound.wav")).playOnce();
                     arena.iceWallDestroyed(pos);
                 }
                 moveMonster(monster, pos, arena);

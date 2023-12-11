@@ -1,4 +1,4 @@
-package badIceCream.controller.Menu;
+package badIceCream.controller.menu;
 
 import badIceCream.GUI.GUI;
 import badIceCream.Game;
@@ -7,6 +7,7 @@ import badIceCream.model.menu.InstructionsMenuFirstPage;
 import badIceCream.states.InstructionsMenuSecondPageState;
 import badIceCream.states.MainMenuState;
 import badIceCream.states.State;
+import badIceCream.utils.Type;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -37,14 +38,14 @@ public class InstructionsMenuFirstPageControllerTest {
     void testCaseLeft() throws IOException  {
         InstructionsMenuFirstPageController.step(game, GUI.ACTION.RIGHT, System.currentTimeMillis());
 
-        verify(game, times(1)).setState(eq(any(InstructionsMenuSecondPageState.class)), null);
+        verify(game, times(1)).setState(any(InstructionsMenuSecondPageState.class), any(Type.class), anyInt(), anyInt());
     }
 
     @Test
     void testCaseSelectExit() throws IOException  {
         InstructionsMenuFirstPageController.step(game, GUI.ACTION.PAUSE, System.currentTimeMillis());
 
-        verify(game, times(1)).setState(eq(any(MainMenuState.class)), null);
+        verify(game, times(1)).setState(any(MainMenuState.class), any(Type.class), anyInt(), anyInt());
     }
 
 }

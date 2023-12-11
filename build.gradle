@@ -1,10 +1,10 @@
 plugins {
     id 'java'
     id 'application'
-    id 'info.solidsoft.pitest' version '1.6.0'
+    id 'info.solidsoft.pitest' version '1.15.0'
 }
 
-group 'com.aor.hero'
+group 'badIceCream.*'
 version '1.0'
 
 repositories {
@@ -12,8 +12,13 @@ repositories {
 }
 
 pitest {
-    junit5PluginVersion = '0.12'
+    junit5PluginVersion = '1.2.0'
 }
+
+test {
+    jvmArgs = ['-Xmx2048m']
+}
+
 
 application {
     mainClass.set('badIceCream.Game')
