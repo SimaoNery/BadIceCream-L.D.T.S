@@ -1,7 +1,7 @@
 package badIceCream.GUI;
 
 import badIceCream.model.Position;
-import badIceCream.model.game.arena.Arena;
+
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;

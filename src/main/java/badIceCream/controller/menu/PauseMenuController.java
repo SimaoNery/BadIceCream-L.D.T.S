@@ -1,11 +1,10 @@
 package badIceCream.controller.menu;
 
 import badIceCream.GUI.GUI;
-import badIceCream.GUI.GameGraphics;
-import badIceCream.GUI.Graphics;
 import badIceCream.Game;
 import badIceCream.model.menu.MainMenu;
 import badIceCream.model.menu.PauseMenu;
+import badIceCream.states.GameState;
 import badIceCream.states.MainMenuState;
 import badIceCream.states.State;
 import badIceCream.utils.Audio;
@@ -15,9 +14,9 @@ import badIceCream.utils.Type;
 import java.io.IOException;
 
 public class PauseMenuController extends MenuController<PauseMenu> {
-    private final State parent;
+    private final State<GameState> parent;
 
-    public PauseMenuController(PauseMenu menu, State parent) {
+    public PauseMenuController(PauseMenu menu, State<GameState> parent) {
         super(menu);
         this.parent = parent;
     }

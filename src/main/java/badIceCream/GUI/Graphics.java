@@ -4,7 +4,7 @@ import badIceCream.model.Position;
 import java.io.IOException;
 
 
-public class Graphics implements Cloneable {
+public class Graphics {
     private GUI gui;
 
     public Graphics(GUI gui) throws IOException {
@@ -212,16 +212,6 @@ public class Graphics implements Cloneable {
 
     public void drawText(Position position, String text, String color){
         gui.drawText(position, text, color);
-    }
-
-
-    @Override
-    public Graphics clone() {
-        try {
-            return (Graphics) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
     }
 
     public void drawCharacters() {

@@ -1,6 +1,5 @@
 package badIceCream.controller.game;
 
-import badIceCream.GUI.MenuGraphics;
 import badIceCream.Game;
 import badIceCream.controller.game.monsters.DefaultMovement;
 import badIceCream.controller.game.monsters.JumperMovement;
@@ -18,7 +17,6 @@ import badIceCream.utils.Type;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ArenaController extends GameController {
@@ -85,7 +83,7 @@ public class ArenaController extends GameController {
         }
         else if (action == GUI.ACTION.PAUSE) {
             game.setAudio(new Audio(Audio.loadMusic("MainMenuMusic.wav")));
-            game.setState(new PauseMenuState(new PauseMenu(), game.getState() ,game.getState().getLevel()), Type.menu, 135, 50);
+            game.setState(new PauseMenuState(new PauseMenu(), game.getState(), game.getState().getLevel()), Type.menu, 135, 50);
         }
         else {
             iceCreamController.step(game, action, time);

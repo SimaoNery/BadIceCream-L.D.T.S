@@ -1,8 +1,6 @@
 package badIceCream.controller.menu;
 
 import badIceCream.GUI.GUI;
-import badIceCream.GUI.GameGraphics;
-import badIceCream.GUI.Graphics;
 import badIceCream.Game;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.arena.LoaderArenaBuilder;
