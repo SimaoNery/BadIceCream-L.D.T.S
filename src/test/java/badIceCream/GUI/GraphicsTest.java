@@ -28,8 +28,24 @@ public class GraphicsTest {
     }
     @Test
     public void getNextAction() throws IOException {
-        graphics.getNextAction();
-        verify(gui,times(1)).getNextAction();
+        when(gui.getNextAction()).thenReturn(GUI.ACTION.UP);
+        assertNotNull(graphics.getNextAction());
+        when(gui.getNextAction()).thenReturn(GUI.ACTION.DOWN);
+        assertNotNull(graphics.getNextAction());
+        when(gui.getNextAction()).thenReturn(GUI.ACTION.LEFT);
+        assertNotNull(graphics.getNextAction());
+        when(gui.getNextAction()).thenReturn(GUI.ACTION.RIGHT);
+        assertNotNull(graphics.getNextAction());
+        when(gui.getNextAction()).thenReturn(GUI.ACTION.NONE);
+        assertNotNull(graphics.getNextAction());
+        when(gui.getNextAction()).thenReturn(GUI.ACTION.PAUSE);
+        assertNotNull(graphics.getNextAction());
+        when(gui.getNextAction()).thenReturn(GUI.ACTION.SPACE);
+        assertNotNull(graphics.getNextAction());
+        when(gui.getNextAction()).thenReturn(GUI.ACTION.SELECT);
+        assertNotNull(graphics.getNextAction());
+
+        verify(gui,times(8)).getNextAction();
     }
     @Test
     public void clear() {
@@ -250,12 +266,4 @@ public class GraphicsTest {
         verify(gui, times(1)).drawCharacter(33, 27, 'É', "#00FF00");
         verify(gui, times(1)).drawCharacter(33, 30, 'Í', "#00FF00");
     }
-/*
-    @Test
-    public void testClone() {
-        Graphics cloned = graphics.clone();
-        assertNotSame(graphics, cloned);
-        assertEquals(graphics, cloned);
-    }
- */
 }

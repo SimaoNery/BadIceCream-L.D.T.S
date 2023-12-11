@@ -32,14 +32,14 @@ public class GameGraphicsTest {
         gameGraphics = new GameGraphics(screen);
     }
     @Test
-    public void drawCharacter() throws IOException {
+    public void drawCharacter() {
         gameGraphics.drawCharacter(1,1, 'c', "#336699");
 
         verify(textGraphics, times(1)).setForegroundColor(new TextColor.RGB(51, 102, 153));
         verify(textGraphics, times(1)).putString(1, 1, "c");
     }
     @Test
-    public void drawText() throws IOException {
+    public void drawText() {
         Position position = mock(Position.class);
         when(position.getX()).thenReturn(1);
         when(position.getY()).thenReturn(1);

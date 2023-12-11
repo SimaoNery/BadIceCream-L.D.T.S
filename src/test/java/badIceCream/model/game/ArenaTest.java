@@ -269,15 +269,25 @@ public class ArenaTest {
     @Test
     public void isFruit() {
         //tests if isFruit() invokes the method getType() for each fruit that is in the given position
-        arena.isFruit(new Position(0, 2));
+        // and if the correct type of the fruit is returned
+        when(bananaFruit.getType()).thenReturn(2);
+        assertEquals(2,arena.isFruit(new Position(0, 2)));
         verify(bananaFruit, times(1)).getType();
-        arena.isFruit(new Position(0, 3));
+
+        when(appleFruit.getType()).thenReturn(1);
+        assertEquals(1, arena.isFruit(new Position(0, 3)));
         verify(appleFruit, times(1)).getType();
-        arena.isFruit(new Position(0, 4));
+
+        when(cherryFruit.getType()).thenReturn(3);
+        assertEquals(3, arena.isFruit(new Position(0, 4)));
         verify(cherryFruit, times(1)).getType();
-        arena.isFruit(new Position(0, 5));
+
+        when(pineappleFruit.getType()).thenReturn(4);
+        assertEquals(4, arena.isFruit(new Position(0, 5)));
         verify(pineappleFruit, times(1)).getType();
-        arena.isFruit(new Position(0, 6));
+
+        when(strawberryFruit.getType()).thenReturn(5);
+        assertEquals(5, arena.isFruit(new Position(0, 6)));
         verify(strawberryFruit, times(1)).getType();
     }
 
@@ -299,28 +309,36 @@ public class ArenaTest {
     public void eatFruit() {
         //tests if eatFruit() invokes the method getType() for each fruit that is in the given position and removes that fruit from fruits
         int expected = arena.getFruits().size();
-        arena.eatFruit(new Position(0, 2));
-        System.out.println(arena.isFruit(new Position(0, 2)));
+        when(bananaFruit.getType()).thenReturn(2);
+        assertEquals(2, arena.eatFruit(new Position(0, 2)));
         expected--;
         assertFalse(arena.getFruits().contains(bananaFruit));
         assertEquals(expected, arena.getFruits().size());
         verify(bananaFruit, times(1)).getType();
-        arena.eatFruit(new Position(0, 3));
+
+        when(appleFruit.getType()).thenReturn(1);
+        assertEquals(1,arena.eatFruit(new Position(0, 3)));
         expected--;
         assertFalse(arena.getFruits().contains(appleFruit));
         assertEquals(expected, arena.getFruits().size());
         verify(appleFruit, times(1)).getType();
-        arena.eatFruit(new Position(0, 4));
+
+        when(cherryFruit.getType()).thenReturn(3);
+        assertEquals(3, arena.eatFruit(new Position(0, 4)));
         expected--;
         assertFalse(arena.getFruits().contains(cherryFruit));
         assertEquals(expected, arena.getFruits().size());
         verify(cherryFruit, times(1)).getType();
-        arena.eatFruit(new Position(0, 5));
+
+        when(pineappleFruit.getType()).thenReturn(4);
+        assertEquals(4, arena.eatFruit(new Position(0, 5)));
         expected--;
         assertFalse(arena.getFruits().contains(pineappleFruit));
         assertEquals(expected, arena.getFruits().size());
         verify(pineappleFruit, times(1)).getType();
-        arena.eatFruit(new Position(0, 6));
+
+        when(strawberryFruit.getType()).thenReturn(5);
+        assertEquals(5, arena.eatFruit(new Position(0, 6)));
         expected--;
         assertFalse(arena.getFruits().contains(strawberryFruit));
         assertEquals(expected, arena.getFruits().size());
@@ -331,15 +349,15 @@ public class ArenaTest {
     public void eatNotFruit() {
         //tests if eatFruit() returns -1 for each position that doesn't have a fruit and if not a single fruit is eliminated from fruits
         int expected = arena.getFruits().size();
-        assertEquals(-1, arena.isFruit(new Position(0, 0)));
-        assertEquals(-1, arena.isFruit(new Position(0, 1)));
-        assertEquals(-1, arena.isFruit(new Position(0, 7)));
-        assertEquals(-1, arena.isFruit(new Position(0, 8)));
-        assertEquals(-1, arena.isFruit(new Position(0, 9)));
-        assertEquals(-1, arena.isFruit(new Position(1, 0)));
-        assertEquals(-1, arena.isFruit(new Position(1, 1)));
-        assertEquals(-1, arena.isFruit(new Position(1, 2)));
-        assertEquals(-1, arena.isFruit(new Position(1, 3)));
+        assertEquals(-1, arena.eatFruit(new Position(0, 0)));
+        assertEquals(-1, arena.eatFruit(new Position(0, 1)));
+        assertEquals(-1, arena.eatFruit(new Position(0, 7)));
+        assertEquals(-1, arena.eatFruit(new Position(0, 8)));
+        assertEquals(-1, arena.eatFruit(new Position(0, 9)));
+        assertEquals(-1, arena.eatFruit(new Position(1, 0)));
+        assertEquals(-1, arena.eatFruit(new Position(1, 1)));
+        assertEquals(-1, arena.eatFruit(new Position(1, 2)));
+        assertEquals(-1, arena.eatFruit(new Position(1, 3)));
         assertEquals(expected, arena.getFruits().size());
     }
 }

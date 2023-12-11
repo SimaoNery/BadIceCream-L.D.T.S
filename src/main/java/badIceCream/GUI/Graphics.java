@@ -215,16 +215,6 @@ public class Graphics implements Cloneable {
         gui.drawText(position, text, color);
     }
 
-
-    @Override
-    public Graphics clone() {
-        try {
-            return (Graphics) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
-    }
-
     public void drawCharacters() {
         gui.drawCharacter(33, 15, 'Ê', "#00FF00");
         gui.drawCharacter(33, 18, 'À', "#00FF00");
