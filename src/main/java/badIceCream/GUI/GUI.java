@@ -1,16 +1,59 @@
 package badIceCream.GUI;
 
 import badIceCream.model.Position;
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.TextGraphics;
+import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
+import com.googlecode.lanterna.screen.Screen;
+import com.googlecode.lanterna.screen.TerminalScreen;
+import com.googlecode.lanterna.terminal.Terminal;
 
 import java.io.IOException;
 
 
-public interface GUI {
-    ACTION getNextAction() throws IOException;
-    void drawText(Position position, String text, String color);
-    void clear();
-    void refresh() throws IOException;
-    void close() throws IOException;
-    void drawCharacter(int a, int b, char c, String color);
-    enum ACTION {UP, RIGHT, DOWN, LEFT, SPACE, NONE, SELECT, PAUSE}
+public abstract class GUI {
+    protected Screen screen;
+    ACTION getNextAction() throws IOException {
+        KeyStroke keyStroke = screen.pollInput();
+        if(keyStroke == null) return GUI.ACTION.NONE;
+        if(keyStroke.getKeyType() == KeyType.ArrowDown) return GUI.ACTION.DOWN;
+        if(keyStroke.getKeyType() == KeyType.ArrowUp) return GUI.ACTION.UP;
+        if(keyStroke.getKeyType() == KeyType.ArrowRight) return GUI.ACTION.RIGHT;
+        if(keyStroke.getKeyType() == KeyType.ArrowLeft) return GUI.ACTION.LEFT;
+        if(keyStroke.getKeyType() == KeyType.Enter) return GUI.ACTION.SELECT;
+        if(keyStroke.getKeyType() == KeyType.Escape) return GUI.ACTION.PAUSE;
+        if(keyStroke.getCharacter() == ' ') return ACTION.SPACE;
+
+        return GUI.ACTION.NONE;
+    }
+
+    protected abstract Terminal createTerminal(int width, int height) throws IOException;
+
+    protected Screen createScreen(Terminal terminal) throws IOException{
+        final Screen screen;
+        screen = new TerminalScreen(terminal);
+        screen.setCursorPosition(null);
+        screen.startScreen();
+        screen.doResizeIfNecessary();
+        return screen;
+    }
+
+    void clear() {screen.clear();}
+    void refresh() throws IOException {screen.refresh();}
+    void close() throws IOException {
+        screen.close();
+    }
+    void drawCharacter(int a, int b, char c, String color) {
+        TextGraphics textGraphics = screen.newTextGraphics();
+        textGraphics.setForegroundColor(TextColor.Factory.fromString(color));
+        textGraphics.putString(a, b, "" + c);
+    }
+
+    public void drawText(Position position, String text, String color){
+        TextGraphics textGraphics = screen.newTextGraphics();
+        textGraphics.setForegroundColor(TextColor.Factory.fromString(color));
+        textGraphics.putString(position.getX(), position.getY(), text);
+    }
+    public enum ACTION {UP, RIGHT, DOWN, LEFT, SPACE, NONE, SELECT, PAUSE}
 }
