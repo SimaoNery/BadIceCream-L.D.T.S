@@ -1,7 +1,9 @@
-package badIceCream.model;
+package badIceCream.model.game;
 
+import badIceCream.model.Position;
 import net.jqwik.api.ForAll;
 import net.jqwik.api.Property;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +14,7 @@ public class PositionTest {
 
     @Property
     void getLeft(@ForAll int x, @ForAll int y) {
-        assertEquals(x - 1, new Position(x, y).getLeft().getX());
+        Assertions.assertEquals(x - 1, new Position(x, y).getLeft().getX());
         assertEquals(y, new Position(x, y).getLeft().getY());
     }
 
