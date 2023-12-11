@@ -8,8 +8,6 @@ import java.util.*;
 
 public class ShortestPathNextMove {
     public static Position findShortestPath(Monster monster, Arena arena) {
-        int rows = arena.getHeight();
-        int cols = arena.getWidth();
         Position monsterPos = monster.getPosition();
         Position iceCreamPos = arena.getIceCream().getPosition();
 

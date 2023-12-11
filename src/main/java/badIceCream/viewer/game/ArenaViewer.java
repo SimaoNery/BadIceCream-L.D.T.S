@@ -2,7 +2,6 @@ package badIceCream.viewer.game;
 
 import badIceCream.GUI.Graphics;
 import badIceCream.model.game.arena.Arena;
-import badIceCream.model.game.elements.Element;
 import badIceCream.model.game.elements.HotFloor;
 import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.Wall;
