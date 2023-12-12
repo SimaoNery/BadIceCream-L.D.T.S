@@ -10,7 +10,7 @@ public class LevelCompletedMenuViewer extends Viewer<LevelCompletedMenu> {
         super(menu);
     }
 
-    private void drawTitle(Graphics gui) {
+    void drawTitle(Graphics gui) {
         String s0 = "  _                              _      _____                               _          _  ";
         String s1 = " | |                            | |    / ____|                             | |        | | ";
         String s2 = " | |        ___  __   __   ___  | |   | |        ___    _ __ ___    _ __   | |   ___  | |_    ___  ";
@@ -32,7 +32,7 @@ public class LevelCompletedMenuViewer extends Viewer<LevelCompletedMenu> {
         gui.drawText(new Position(24, 9), s7, " #f7dc6f ");
     }
 
-    private void drawSnowflake(Graphics gui) {
+    void drawSnowflake(Graphics gui) {
         String s0 = "   ..    ..          ";
         String s1 = "   '\\    /'         ";
         String s2 = "     \\\\//          ";
@@ -89,7 +89,7 @@ public class LevelCompletedMenuViewer extends Viewer<LevelCompletedMenu> {
     }
 
     @Override
-    protected void drawElements(Graphics gui) {
+    public void drawElements(Graphics gui) {
         drawTitle(gui);
         drawSnowflake(gui);
 

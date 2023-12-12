@@ -136,7 +136,7 @@ public class Graphics {
 
     }
 
-    public void drawPepperFruit(Position position) {
+    public void drawCherryFruit(Position position) {
         gui.drawCharacter(position.getX(), position.getY(), '\\', "#FF0000");
     }
 

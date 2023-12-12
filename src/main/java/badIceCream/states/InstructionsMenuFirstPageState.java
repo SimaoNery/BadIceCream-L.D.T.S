@@ -10,4 +10,7 @@ public class InstructionsMenuFirstPageState extends MenuState<InstructionsMenuFi
         super(model, new InstructionsMenuFirstPageController(model), new InstructionsMenuFirstPageViewer(model), level);
     }
 
+    public InstructionsMenuFirstPageState(InstructionsMenuFirstPage model, InstructionsMenuFirstPageController controller, InstructionsMenuFirstPageViewer viewer, int level) {
+        super(model, controller, viewer, level);
+    }
 }

@@ -10,7 +10,7 @@ import badIceCream.model.game.elements.IceCream;
 public class IceCreamController extends GameController {
 
         private final IceCream iceCream;
-        private GUI.ACTION lastMovement = GUI.ACTION.UP;
+        private GUI.ACTION lastMovement = GUI.ACTION.DOWN;
         long lastTime = 0;
         public IceCreamController(Arena arena) {
             super(arena);

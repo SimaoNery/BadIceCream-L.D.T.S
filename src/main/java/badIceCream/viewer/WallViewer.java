@@ -1,7 +1,8 @@
-package badIceCream.viewer.game;
+package badIceCream.viewer;
 
 import badIceCream.GUI.Graphics;
 import badIceCream.model.game.elements.Wall;
+import badIceCream.viewer.ElementViewer;
 
 
 public class WallViewer implements ElementViewer<Wall> {
