@@ -7,9 +7,7 @@ import badIceCream.model.game.elements.monsters.Monster;
 import java.util.*;
 
 public class ShortestPathNextMove {
-    public static Position findShortestPath(Monster monster, Arena arena) {
-        int rows = arena.getHeight();
-        int cols = arena.getWidth();
+    public Position findShortestPath(Monster monster, Arena arena) {
         Position monsterPos = monster.getPosition();
         Position iceCreamPos = arena.getIceCream().getPosition();
 
@@ -36,7 +34,7 @@ public class ShortestPathNextMove {
                 visited.add(current.position.getX() + "," + current.position.getY());
                 List<Position> options = new ArrayList<>(List.of(new Position[]{current.position.getDown(), current.position.getLeft(), current.position.getUp(), current.position.getRight()}));
                 for (Position pos : options) {
-                    if (pos.getY() >= 0 && pos.getY() < rows && pos.getX() >= 0 && pos.getX() < cols && arena.isEmptyMonsters(pos)) {
+                    if (arena.isEmptyMonsters(pos)) {
                         int newCost = current.cost + 1;
                         int newHeuristic = manhattanDistance(pos, iceCreamPos);
                         pq.offer(new Node(pos, newCost, newHeuristic, current));

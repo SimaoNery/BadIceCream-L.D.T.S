@@ -1,17 +1,13 @@
 package badIceCream;
 
-import badIceCream.GUI.GUI;
 import badIceCream.GUI.GameGraphics;
 import badIceCream.GUI.Graphics;
 import badIceCream.GUI.MenuGraphics;
-import badIceCream.model.game.arena.Arena;
-import badIceCream.model.game.arena.LoaderArenaBuilder;
 import badIceCream.model.menu.MainMenu;
 import badIceCream.states.MainMenuState;
 import badIceCream.states.State;
 import badIceCream.utils.Audio;
 import badIceCream.utils.Type;
-
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -23,7 +19,7 @@ public class Game {
     private static Audio backgroundAudio;
 
     public Game() throws FontFormatException, IOException, URISyntaxException {
-        this.gui = new Graphics(new MenuGraphics(135, 55));
+        this.gui = new Graphics(new MenuGraphics(135, 130));
         this.state = new MainMenuState(new MainMenu(), 1);
         this.audio = new Audio(Audio.loadMusic("MainMenuMusic.wav"));
         audio.play();
@@ -82,28 +78,6 @@ public class Game {
             default -> null;
         };
     }
-
-    /*
-    public void start() throws IOException {
-        int FPS = 4;
-        int frameTime = 1000 / FPS;
-
-        while (this.state != null) {
-            long startTime = System.currentTimeMillis();
-
-            state.step(this, gui, startTime);
-
-            long elapsedTime = System.currentTimeMillis() - startTime;
-            long sleepTime = frameTime - elapsedTime;
-
-            try {
-                if (sleepTime > 0) Thread.sleep(sleepTime);
-            } catch (InterruptedException ignored) {
-            }
-        }
-
-        gui.close();
-    }*/
 
     public void start() throws IOException {
         Thread normalThread = new Thread(() -> {

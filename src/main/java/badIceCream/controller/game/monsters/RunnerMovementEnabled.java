@@ -23,7 +23,8 @@ public class RunnerMovementEnabled implements StepMonsters {
     }
 
     private Position getNextMove(Monster monster, Arena arena) {
-        Position nextMove = ShortestPathNextMove.findShortestPath(monster, arena);
+        ShortestPathNextMove shortestPathNextMove = new ShortestPathNextMove();
+        Position nextMove = shortestPathNextMove.findShortestPath(monster, arena);
         if (nextMove == null) {
             List<Position> options = new java.util.ArrayList<>(List.of(new Position[]{monster.getPosition().getDown(), monster.getPosition().getLeft(), monster.getPosition().getUp(), monster.getPosition().getRight()}));
 
