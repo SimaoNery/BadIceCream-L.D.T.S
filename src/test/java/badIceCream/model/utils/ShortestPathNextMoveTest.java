@@ -21,6 +21,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class ShortestPathNextMoveTest {
@@ -38,6 +39,7 @@ public class ShortestPathNextMoveTest {
     @Mock
     private StoneWall stoneWall4;
 
+
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
@@ -52,7 +54,8 @@ public class ShortestPathNextMoveTest {
     public void findShortestPathNoWall(){
         List<Wall> walls = new ArrayList<>();
         arena.setWalls(walls);
-        Position position = ShortestPathNextMove.findShortestPath(runnerMonster, arena);
+        ShortestPathNextMove shortestPathNextMove = new ShortestPathNextMove();
+        Position position = shortestPathNextMove.findShortestPath(runnerMonster, arena);
         assertEquals(2, position.getX());
         assertEquals(0, position.getY());
     }
@@ -63,19 +66,22 @@ public class ShortestPathNextMoveTest {
         when(stoneWall3.getPosition()).thenReturn(new Position(2,2));
         List<Wall> walls = new ArrayList<>(Arrays.asList(stoneWall1,stoneWall2,stoneWall3));
         arena.setWalls(walls);
-        Position position = ShortestPathNextMove.findShortestPath(runnerMonster, arena);
+        ShortestPathNextMove shortestPathNextMove = new ShortestPathNextMove();
+        Position position = shortestPathNextMove.findShortestPath(runnerMonster, arena);
         assertEquals(3, position.getX());
         assertEquals(1, position.getY());
     }
     @Test
     public void findShortestPathBlocked(){
-        when(stoneWall1.getPosition()).thenReturn(new Position(2,0));
-        when(stoneWall2.getPosition()).thenReturn(new Position(2,1));
-        when(stoneWall3.getPosition()).thenReturn(new Position(2,2));
-        when(stoneWall4.getPosition()).thenReturn(new Position(2,3));
-        List<Wall> walls = new ArrayList<>(Arrays.asList(stoneWall1,stoneWall2,stoneWall3, stoneWall4));
+        when(stoneWall1.getPosition()).thenReturn(new Position(1,0));
+        when(stoneWall2.getPosition()).thenReturn(new Position(0,1));
+        when(stoneWall3.getPosition()).thenReturn(new Position(2,1));
+        when(stoneWall4.getPosition()).thenReturn(new Position(1,2));
+        when(runnerMonster.getPosition()).thenReturn(new Position(1,1));
+        List<Wall> walls = new ArrayList<>(Arrays.asList(stoneWall1, stoneWall2, stoneWall3, stoneWall4));
         arena.setWalls(walls);
-        Position position = ShortestPathNextMove.findShortestPath(runnerMonster, arena);
+        ShortestPathNextMove shortestPathNextMove = new ShortestPathNextMove();
+        Position position = shortestPathNextMove.findShortestPath(runnerMonster, arena);
         assertNull(position);
     }
 }

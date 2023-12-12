@@ -7,7 +7,7 @@ import badIceCream.model.game.elements.monsters.Monster;
 import java.util.*;
 
 public class ShortestPathNextMove {
-    public static Position findShortestPath(Monster monster, Arena arena) {
+    public Position findShortestPath(Monster monster, Arena arena) {
         Position monsterPos = monster.getPosition();
         Position iceCreamPos = arena.getIceCream().getPosition();
 
