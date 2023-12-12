@@ -45,7 +45,7 @@ class ArenaControllerTest {
     private Graphics graphics;
 
     @BeforeEach
-    void setUp() throws IOException {
+    void setUp() {
         MockitoAnnotations.openMocks(this);
         when(game.getState()).thenReturn(state);
         when(iceCream.getPosition()).thenReturn(position);
@@ -63,7 +63,7 @@ class ArenaControllerTest {
     void stepTestWinUp() throws IOException {
         when(arena.getFruits()).thenReturn(Collections.emptyList());
 
-        Field firstField = null;
+        Field firstField;
         try {
             firstField = ArenaController.class.getDeclaredField("first");
         } catch (NoSuchFieldException e) {
@@ -87,7 +87,7 @@ class ArenaControllerTest {
     void stepTestWinDown() throws IOException {
         when(arena.getFruits()).thenReturn(Collections.emptyList());
 
-        Field firstField = null;
+        Field firstField;
         try {
             firstField = ArenaController.class.getDeclaredField("first");
         } catch (NoSuchFieldException e) {
@@ -111,7 +111,7 @@ class ArenaControllerTest {
     void stepTestWinLeft() throws IOException {
         when(arena.getFruits()).thenReturn(Collections.emptyList());
 
-        Field firstField = null;
+        Field firstField;
         try {
             firstField = ArenaController.class.getDeclaredField("first");
         } catch (NoSuchFieldException e) {
@@ -135,7 +135,7 @@ class ArenaControllerTest {
     void stepTestWinRight() throws IOException {
         when(arena.getFruits()).thenReturn(Collections.emptyList());
 
-        Field firstField = null;
+        Field firstField;
         try {
             firstField = ArenaController.class.getDeclaredField("first");
         } catch (NoSuchFieldException e) {

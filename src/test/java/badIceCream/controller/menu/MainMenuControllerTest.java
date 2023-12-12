@@ -2,11 +2,8 @@ package badIceCream.controller.menu;
 
 import badIceCream.GUI.GUI;
 import badIceCream.Game;
-import badIceCream.controller.menu.MainMenuController;
-import badIceCream.model.menu.InstructionsMenuFirstPage;
 import badIceCream.model.menu.MainMenu;
 import badIceCream.states.InstructionsMenuFirstPageState;
-import badIceCream.states.MainMenuState;
 import badIceCream.states.SelectLevelMenuState;
 import badIceCream.states.State;
 import badIceCream.utils.Type;
@@ -60,7 +57,7 @@ public class MainMenuControllerTest {
     }
 
     @Test
-    void testCaseSelectInstructions() throws IOException, InstantiationException, IllegalAccessException {
+    void testCaseSelectInstructions() throws IOException{
         when(mainMenu.isSelectedInstructions()).thenReturn(true);
         when(game.getState().getLevel()).thenReturn(1);
 
@@ -70,7 +67,7 @@ public class MainMenuControllerTest {
     }
 
     @Test
-    void testCaseSelectStart() throws IOException, InstantiationException, IllegalAccessException {
+    void testCaseSelectStart() throws IOException {
         when(mainMenu.isSelectedStart()).thenReturn(true);
         when(game.getState().getLevel()).thenReturn(1);
 

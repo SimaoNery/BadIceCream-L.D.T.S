@@ -1,8 +1,6 @@
 package badIceCream.controller.menu;
 
 import badIceCream.GUI.GUI;
-
-import badIceCream.GUI.GameGraphics;
 import badIceCream.GUI.Graphics;
 import badIceCream.Game;
 import badIceCream.model.menu.GameOverMenu;
@@ -15,7 +13,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import java.io.IOException;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
 public class GameOverMenuControllerTest {

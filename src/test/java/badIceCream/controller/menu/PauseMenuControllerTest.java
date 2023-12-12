@@ -1,13 +1,10 @@
 package badIceCream.controller.menu;
 
 import badIceCream.GUI.GUI;
-import badIceCream.GUI.GameGraphics;
 import badIceCream.GUI.Graphics;
 import badIceCream.Game;
 import badIceCream.model.menu.PauseMenu;
-import badIceCream.states.GameState;
 import badIceCream.states.MainMenuState;
-import badIceCream.states.PauseMenuState;
 import badIceCream.states.State;
 import badIceCream.utils.Audio;
 import badIceCream.utils.Type;
@@ -19,7 +16,6 @@ import org.mockito.MockitoAnnotations;
 import java.io.IOException;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
 

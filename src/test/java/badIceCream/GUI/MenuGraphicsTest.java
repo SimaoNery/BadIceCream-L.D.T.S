@@ -72,7 +72,6 @@ public class MenuGraphicsTest {
         action = menuGraphics.getNextAction();
         assertEquals(GUI.ACTION.NONE, action);
 
-
         when(keyStroke.getKeyType()).thenReturn(KeyType.ArrowUp);
         action = menuGraphics.getNextAction();
         assertEquals(GUI.ACTION.UP, action);

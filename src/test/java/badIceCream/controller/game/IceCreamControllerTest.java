@@ -3,7 +3,6 @@ package badIceCream.controller.game;
 import badIceCream.GUI.GUI;
 import badIceCream.GUI.Graphics;
 import badIceCream.Game;
-import badIceCream.controller.game.IceCreamController;
 import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.IceCream;

@@ -2,9 +2,6 @@ package badIceCream.controller.game;
 
 import badIceCream.GUI.Graphics;
 import badIceCream.Game;
-import badIceCream.controller.game.ArenaController;
-import badIceCream.controller.game.MonsterController;
-import badIceCream.controller.game.StepMonsters;
 import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.IceCream;
@@ -14,13 +11,9 @@ import badIceCream.utils.Audio;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-
 import java.io.IOException;
 import java.lang.reflect.Field;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class MonsterControllerTest {
@@ -68,7 +61,7 @@ public class MonsterControllerTest {
         when(monster.getType()).thenReturn(3);
 
 
-        Field runnerOn = null;
+        Field runnerOn;
         try {
             runnerOn = MonsterController.class.getDeclaredField("runnerOn");
         } catch (NoSuchFieldException e) {

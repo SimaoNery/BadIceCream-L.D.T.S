@@ -5,7 +5,6 @@ import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.StoneWall;
 import badIceCream.model.game.elements.Wall;
-import badIceCream.model.game.elements.fruits.BananaFruit;
 import badIceCream.model.game.elements.monsters.DefaultMonster;
 import badIceCream.model.game.elements.monsters.Monster;
 import badIceCream.model.game.elements.monsters.RunnerMonster;
@@ -13,7 +12,6 @@ import badIceCream.utils.ShortestPathNextMove;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
@@ -25,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.when;
 
 public class ShortestPathNextMoveTest {
+    private ShortestPathNextMove shortestPathNextMove;
     private Arena arena;
     @Mock
     private IceCream iceCream;
@@ -73,6 +72,7 @@ public class ShortestPathNextMoveTest {
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
+        this.shortestPathNextMove = new ShortestPathNextMove();
         arena = new Arena(5,5);
         when(stoneWall1.getPosition()).thenReturn(new Position(0,0));
         when(stoneWall2.getPosition()).thenReturn(new Position(1,0));
@@ -103,12 +103,12 @@ public class ShortestPathNextMoveTest {
         arena.setWalls(walls);
         List<Monster> monsters = new ArrayList<>(List.of(runnerMonster));
         arena.setMonsters(monsters);
-        Position position = ShortestPathNextMove.findShortestPath(runnerMonster, arena);
+        Position position = shortestPathNextMove.findShortestPath(runnerMonster, arena);
         assertEquals(2, position.getX());
         assertEquals(1, position.getY());
     }
     @Test
-    public void findShortestPathWall(){
+    public void findShortestPathWallAndMonsters(){
         when(stoneWall17.getPosition()).thenReturn(new Position(2,1));
         List<Wall> walls = new ArrayList<>(Arrays.asList(stoneWall1, stoneWall2, stoneWall3,
                 stoneWall4, stoneWall5, stoneWall6, stoneWall7, stoneWall8, stoneWall9,
@@ -118,7 +118,7 @@ public class ShortestPathNextMoveTest {
         when(defaultmonster.getPosition()).thenReturn(new Position(2,3));
         List<Monster> monsters = new ArrayList<>(List.of(runnerMonster, defaultmonster));
         arena.setMonsters(monsters);
-        Position position = ShortestPathNextMove.findShortestPath(runnerMonster, arena);
+        Position position = shortestPathNextMove.findShortestPath(runnerMonster, arena);
         assertEquals(3, position.getX());
         assertEquals(2, position.getY());
     }
@@ -134,7 +134,7 @@ public class ShortestPathNextMoveTest {
         when(defaultmonster.getPosition()).thenReturn(new Position(2,3));
         List<Monster> monsters = new ArrayList<>(List.of(runnerMonster, defaultmonster));
         arena.setMonsters(monsters);
-        Position position = ShortestPathNextMove.findShortestPath(runnerMonster, arena);
+        Position position = shortestPathNextMove.findShortestPath(runnerMonster, arena);
         assertNull(position);
     }
 }

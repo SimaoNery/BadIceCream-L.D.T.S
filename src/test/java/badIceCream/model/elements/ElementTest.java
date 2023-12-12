@@ -9,11 +9,8 @@ import badIceCream.model.game.elements.monsters.DefaultMonster;
 import badIceCream.model.game.elements.monsters.JumperMonster;
 import badIceCream.model.game.elements.monsters.RunnerMonster;
 import badIceCream.model.game.elements.monsters.WallBreakerMonster;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.anyInt;
 
 public class ElementTest {
     @Test
