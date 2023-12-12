@@ -6,7 +6,7 @@ import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.arena.LoaderArenaBuilder;
 import badIceCream.model.menu.SelectLevelMenu;
 import badIceCream.states.GameState;
-import badIceCream.utils.Audio;
+import badIceCream.Audio;
 import badIceCream.utils.Type;
 
 import java.io.IOException;

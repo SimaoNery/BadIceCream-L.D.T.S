@@ -8,7 +8,7 @@ import badIceCream.model.menu.GameOverMenu;
 import badIceCream.model.menu.MainMenu;
 import badIceCream.states.GameState;
 import badIceCream.states.MainMenuState;
-import badIceCream.utils.Audio;
+import badIceCream.Audio;
 import badIceCream.utils.Type;
 
 import java.io.IOException;

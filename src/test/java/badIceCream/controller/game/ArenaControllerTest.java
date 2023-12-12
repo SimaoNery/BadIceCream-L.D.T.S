@@ -8,7 +8,7 @@ import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.fruits.Fruit;
 import badIceCream.states.*;
-import badIceCream.utils.Audio;
+import badIceCream.Audio;
 import badIceCream.utils.Type;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

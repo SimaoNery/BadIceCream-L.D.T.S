@@ -5,7 +5,7 @@ import badIceCream.GUI.Graphics;
 import badIceCream.Game;
 import badIceCream.model.menu.GameOverMenu;
 import badIceCream.states.*;
-import badIceCream.utils.Audio;
+import badIceCream.Audio;
 import badIceCream.utils.Type;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,6 +1,6 @@
 package badIceCream.model.utils;
 
-import badIceCream.utils.Audio;
+import badIceCream.Audio;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;

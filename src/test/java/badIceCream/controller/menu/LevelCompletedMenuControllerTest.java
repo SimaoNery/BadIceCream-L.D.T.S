@@ -7,7 +7,7 @@ import badIceCream.model.menu.LevelCompletedMenu;
 import badIceCream.states.GameState;
 import badIceCream.states.MainMenuState;
 import badIceCream.states.State;
-import badIceCream.utils.Audio;
+import badIceCream.Audio;
 import badIceCream.utils.Type;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

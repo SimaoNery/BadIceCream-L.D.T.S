@@ -7,7 +7,7 @@ import badIceCream.model.menu.PauseMenu;
 import badIceCream.states.GameState;
 import badIceCream.states.MainMenuState;
 import badIceCream.states.State;
-import badIceCream.utils.Audio;
+import badIceCream.Audio;
 import badIceCream.utils.Type;
 
 

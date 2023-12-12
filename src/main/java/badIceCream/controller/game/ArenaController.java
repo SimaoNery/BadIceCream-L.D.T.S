@@ -12,7 +12,7 @@ import badIceCream.model.menu.GameOverMenu;
 import badIceCream.model.menu.LevelCompletedMenu;
 import badIceCream.model.menu.PauseMenu;
 import badIceCream.states.*;
-import badIceCream.utils.Audio;
+import badIceCream.Audio;
 import badIceCream.utils.Type;
 
 
