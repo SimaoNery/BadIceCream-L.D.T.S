@@ -1,5 +1,6 @@
 package badIceCream.controller.game;
 
+import badIceCream.Game;
 import badIceCream.controller.game.monsters.RunnerMovementEnabled;
 import badIceCream.controller.game.monsters.RunnerMovementDisabled;
 import badIceCream.model.game.arena.Arena;
@@ -35,7 +36,8 @@ public class MonsterController {
             runnerOn = !runnerOn;
 
             if (runnerOn) {
-                new Audio(Audio.loadMusic("RunnerMonsterSound.wav")).playOnce();
+                Game.setBackgroundAudio(new Audio(Audio.loadMusic("RunnerMonsterSound.wav")));
+                Game.playBackgroundAudio();
                 monster.startRunning();
                 this.step = new RunnerMovementEnabled();
             }

@@ -19,7 +19,7 @@ public class Game {
     private static Audio backgroundAudio;
 
     public Game() throws FontFormatException, IOException, URISyntaxException {
-        this.gui = new Graphics(new MenuGraphics(135, 130));
+        this.gui = new Graphics(new MenuGraphics(140, 50));
         this.state = new MainMenuState(new MainMenu(), 1);
         this.audio = new Audio(Audio.loadMusic("MainMenuMusic.wav"));
         audio.play();
