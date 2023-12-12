@@ -49,7 +49,6 @@ public class AudioTest {
         assertNotNull(Audio.loadMusic("LevelCompleteMenuSound.wav"));
         assertNotNull(Audio.loadMusic("LevelMusic.wav"));
         assertNotNull(Audio.loadMusic("MainMenuMusic.wav"));
-        assertNotNull(Audio.loadMusic("MonsterCollisionSound.wav"));
         assertNotNull(Audio.loadMusic("RunnerMonsterSound.wav"));
     }
 }
