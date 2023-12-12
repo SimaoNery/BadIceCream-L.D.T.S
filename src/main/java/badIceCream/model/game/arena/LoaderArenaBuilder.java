@@ -5,9 +5,7 @@ import badIceCream.model.game.elements.fruits.*;
 import badIceCream.model.game.elements.monsters.*;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -16,8 +14,10 @@ import java.util.List;
 
 public class LoaderArenaBuilder extends ArenaBuilder {
     private final List<String> lines;
+    private final int level;
 
     public LoaderArenaBuilder(int level) throws IOException {
+        this.level = level;
 
         String rootPath = new File(System.getProperty("user.dir")).getPath();
         String mapLocation = rootPath + "/src/main/resources/levels/level"  + level + ".lvl";
@@ -32,6 +32,11 @@ public class LoaderArenaBuilder extends ArenaBuilder {
         for (String line; (line = br.readLine()) != null; )
             lines.add(line);
         return lines;
+    }
+
+    @Override
+    protected int getLevel() {
+        return this.level;
     }
 
     @Override
@@ -68,9 +73,9 @@ public class LoaderArenaBuilder extends ArenaBuilder {
             String line = lines.get(y);
             for (int x = 0; x < line.length(); x++)
                 if (line.charAt(x) == 'Y') monsters.add(new DefaultMonster(x, y));
-                else if (line.charAt(x) == 'T') monsters.add(new JumperMonster(x, y));
+                else if (line.charAt(x) == 'J') monsters.add(new JumperMonster(x, y));
                 else if (line.charAt(x) == 'V') monsters.add(new RunnerMonster(x, y));
-                else if (line.charAt(x) == 'U') monsters.add(new WallBreakerMonster(x, y));
+                else if (line.charAt(x) == 'W') monsters.add(new WallBreakerMonster(x, y));
         }
         return monsters;
     }

@@ -1,10 +1,7 @@
 package badIceCream.viewer.game;
 
-import badIceCream.GUI.GUI;
-import badIceCream.GUI.GameGraphics;
 import badIceCream.GUI.Graphics;
 import badIceCream.model.game.arena.Arena;
-import badIceCream.model.game.elements.Element;
 import badIceCream.model.game.elements.HotFloor;
 import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.Wall;
@@ -16,60 +13,62 @@ public class ArenaViewer extends Viewer<Arena> {
     public ArenaViewer(Arena arena){
         super(arena);
     }
-    private <T extends Element> void drawElement(Graphics gui, T element, ElementViewer<T> viewer, int type) {
-        viewer.draw(element, gui, type);
-    }
     @Override
     public void drawElements(Graphics gui) {
 
+        FruitViewer fruitViewer = new FruitViewer();
         for (Fruit fruit : model.getFruits()){
-            drawElement(gui, fruit, new FruitViewer(), fruit.getType());
+            fruitViewer.draw(fruit, gui, fruit.getType());
         }
 
+        MonsterViewer monsterViewer = new MonsterViewer();
         for(Monster monster : model.getMonsters()){
-            drawElement(gui, monster, new MonsterViewer(), monster.getType());
+            monsterViewer.draw(monster, gui, monster.getType());
         }
 
+        WallViewer wallViewer = new WallViewer();
         for (Wall wall : model.getWalls()) {
             int type = wall.getType();
             if (type == 2) {
-                drawElement(gui, wall, new WallViewer(), type);
+                wallViewer.draw(wall, gui, type);
             }
             else {
                 int fruit = model.isFruit(wall.getPosition());
                 switch (fruit) {
-                    case 1: drawElement(gui, wall, new WallViewer(), 3);
+                    case 1: wallViewer.draw(wall, gui, 3);
                         break;
-                    case 2: drawElement(gui, wall, new WallViewer(), 4);
+                    case 2: wallViewer.draw(wall, gui, 4);
                         break;
-                    case 3: drawElement(gui, wall, new WallViewer(), 5);
+                    case 3: wallViewer.draw(wall, gui, 5);
                         break;
-                    case 4: drawElement(gui, wall, new WallViewer(), 6);
+                    case 4: wallViewer.draw(wall, gui, 6);
                         break;
-                    case 5: drawElement(gui, wall, new WallViewer(), 7);
+                    case 5: wallViewer.draw(wall, gui, 7);
                         break;
-                    default: drawElement(gui, wall, new WallViewer(), 1);
+                    default: wallViewer.draw(wall, gui, 1);
                 }
 
                 Monster monster = model.hasMonster(wall.getPosition());
                 if (monster != null) {
                     if (monster.getType() == 2) {
                         switch (monster.getLastAction()) {
-                            case UP: drawElement(gui, wall, new WallViewer(), 9);
+                            case UP: wallViewer.draw(wall, gui, 9);
                                 break;
-                            case RIGHT: drawElement(gui, wall, new WallViewer(), 10);
+                            case RIGHT: wallViewer.draw(wall, gui, 10);
                                 break;
-                            case LEFT: drawElement(gui, wall, new WallViewer(), 11);
+                            case LEFT: wallViewer.draw(wall, gui, 11);
                                 break;
-                            default: drawElement(gui, wall, new WallViewer(), 8);
+                            default: wallViewer.draw(wall, gui, 8);
                         }
                     }
                 }
             }
         }
 
-        drawElement(gui, getModel().getIceCream(), new IceCreamViewer(), 1);
+        IceCreamViewer iceCreamViewer = new IceCreamViewer();
+        iceCreamViewer.draw(getModel().getIceCream(), gui, 1);
 
+        HotFloorViewer hotFloorViewer = new HotFloorViewer();
         for(HotFloor hotFloor : model.getHotFloors()){
             int fruit = model.isFruit(hotFloor.getPosition());
             IceCream iceCream = model.getIceCream();
@@ -78,95 +77,95 @@ public class ArenaViewer extends Viewer<Arena> {
             if (monster != null) {
                 switch (monster.getType()) {
                     case 1: switch (monster.getLastAction()) {
-                        case UP: drawElement(gui, hotFloor, new HotFloorViewer(), 1);
+                        case UP: hotFloorViewer.draw(hotFloor, gui, 1);
                             break;
-                        case RIGHT: drawElement(gui, hotFloor, new HotFloorViewer(), 2);
+                        case RIGHT: hotFloorViewer.draw(hotFloor, gui, 2);
                             break;
-                        case LEFT: drawElement(gui, hotFloor, new HotFloorViewer(), 3);
+                        case LEFT: hotFloorViewer.draw(hotFloor, gui, 3);
                             break;
-                        default: drawElement(gui, hotFloor, new HotFloorViewer(), 4);
+                        default: hotFloorViewer.draw(hotFloor, gui, 4);
                     }
                         break;
                     case 2: switch (monster.getLastAction()) {
-                        case UP: drawElement(gui, hotFloor, new HotFloorViewer(), 5);
+                        case UP: hotFloorViewer.draw(hotFloor, gui, 5);
                             break;
-                        case RIGHT: drawElement(gui, hotFloor, new HotFloorViewer(), 6);
+                        case RIGHT: hotFloorViewer.draw(hotFloor, gui, 6);
                             break;
-                        case LEFT: drawElement(gui, hotFloor, new HotFloorViewer(), 7);
+                        case LEFT: hotFloorViewer.draw(hotFloor, gui, 7);
                             break;
-                        default: drawElement(gui, hotFloor, new HotFloorViewer(), 8);
+                        default: hotFloorViewer.draw(hotFloor, gui, 8);
                     }
                         break;
                     case 3: {
                         if (!monster.isRunning()) {
                             switch (monster.getLastAction()) {
                                 case UP:
-                                    drawElement(gui, hotFloor, new HotFloorViewer(), 9);
+                                    hotFloorViewer.draw(hotFloor, gui, 9);
                                     break;
                                 case RIGHT:
-                                    drawElement(gui, hotFloor, new HotFloorViewer(), 10);
+                                    hotFloorViewer.draw(hotFloor, gui, 10);
                                     break;
                                 case LEFT:
-                                    drawElement(gui, hotFloor, new HotFloorViewer(), 11);
+                                    hotFloorViewer.draw(hotFloor, gui, 11);
                                     break;
                                 default:
-                                    drawElement(gui, hotFloor, new HotFloorViewer(), 12);
+                                    hotFloorViewer.draw(hotFloor, gui, 12);
                             }
                         }
                         else {
                             switch (monster.getLastAction()) {
                                 case UP:
-                                    drawElement(gui, hotFloor, new HotFloorViewer(), 13);
+                                    hotFloorViewer.draw(hotFloor, gui, 13);
                                     break;
                                 case RIGHT:
-                                    drawElement(gui, hotFloor, new HotFloorViewer(), 14);
+                                    hotFloorViewer.draw(hotFloor, gui, 14);
                                     break;
                                 case LEFT:
-                                    drawElement(gui, hotFloor, new HotFloorViewer(), 15);
+                                    hotFloorViewer.draw(hotFloor, gui, 15);
                                     break;
                                 default:
-                                    drawElement(gui, hotFloor, new HotFloorViewer(), 16);
+                                    hotFloorViewer.draw(hotFloor, gui, 16);
                             }
                         }
                     }
                     break;
                     case 4: switch (monster.getLastAction()) {
-                        case UP: drawElement(gui, hotFloor, new HotFloorViewer(), 17);
+                        case UP: hotFloorViewer.draw(hotFloor, gui, 17);
                             break;
-                        case RIGHT: drawElement(gui, hotFloor, new HotFloorViewer(), 18);
+                        case RIGHT: hotFloorViewer.draw(hotFloor, gui, 18);
                             break;
-                        case LEFT: drawElement(gui, hotFloor, new HotFloorViewer(), 19);
+                        case LEFT: hotFloorViewer.draw(hotFloor, gui, 19);
                             break;
-                        default: drawElement(gui, hotFloor, new HotFloorViewer(), 20);
+                        default: hotFloorViewer.draw(hotFloor, gui, 20);
                     }
                 }
             }
             else if (fruit != -1) {
                 switch (fruit) {
-                    case 1: drawElement(gui, hotFloor, new HotFloorViewer(), 21);
+                    case 1: hotFloorViewer.draw(hotFloor, gui, 21);
                         break;
-                    case 2: drawElement(gui, hotFloor, new HotFloorViewer(), 22);
+                    case 2: hotFloorViewer.draw(hotFloor, gui, 22);
                         break;
-                    case 3: drawElement(gui, hotFloor, new HotFloorViewer(), 23);
+                    case 3: hotFloorViewer.draw(hotFloor, gui, 23);
                         break;
-                    case 4: drawElement(gui, hotFloor, new HotFloorViewer(), 24);
+                    case 4: hotFloorViewer.draw(hotFloor, gui, 24);
                         break;
-                    case 5: drawElement(gui, hotFloor, new HotFloorViewer(), 25);
+                    case 5: hotFloorViewer.draw(hotFloor, gui, 25);
                         break;
                 }
             }
             else if (iceCream.getPosition().equals(hotFloor.getPosition())) {
                 switch (iceCream.getLastMovement()) {
-                    case UP: drawElement(gui, hotFloor, new HotFloorViewer(), 26);
+                    case UP: hotFloorViewer.draw(hotFloor, gui, 26);
                         break;
-                    case RIGHT: drawElement(gui, hotFloor, new HotFloorViewer(), 27);
+                    case RIGHT: hotFloorViewer.draw(hotFloor, gui, 27);
                         break;
-                    case LEFT: drawElement(gui, hotFloor, new HotFloorViewer(), 28);
+                    case LEFT: hotFloorViewer.draw(hotFloor, gui, 28);
                         break;
-                    default: drawElement(gui, hotFloor, new HotFloorViewer(), 29);
+                    default: hotFloorViewer.draw(hotFloor, gui, 29);
                 }
             }
-            else {drawElement(gui, hotFloor, new HotFloorViewer(), 0);}
+            else {hotFloorViewer.draw(hotFloor, gui, 0);}
         }
     }
 }

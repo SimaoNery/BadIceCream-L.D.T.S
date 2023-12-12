@@ -21,10 +21,6 @@ public abstract class State<T> {
         this.level = level;
     }
 
-    protected Viewer<T> getViewer() {return viewer;}
-
-    protected Controller<T> getController() {return controller;}
-
     public T getModel() {
         return model;
     }
@@ -44,6 +40,8 @@ public abstract class State<T> {
     }
 
     public void increaseLevel() {
-        this.level++;
+        if (this.level < 5) {
+            this.level++;
+        }
     }
 }

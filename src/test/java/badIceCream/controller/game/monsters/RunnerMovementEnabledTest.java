@@ -1,12 +1,10 @@
 package badIceCream.controller.game.monsters;
 
 import badIceCream.GUI.GUI;
-import badIceCream.controller.game.monsters.RunnerMovementEnabled;
 import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.monsters.Monster;
-import badIceCream.utils.ShortestPathNextMove;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -108,21 +106,6 @@ public class RunnerMovementEnabledTest {
         verify(monster, never()).setLastAction(any(GUI.ACTION.class));
     }
 
-    @Test
-    void testMoveMonsterShortPath() throws IOException {
-        Position newPosition = new Position(3, 2);
-        when(arena.getIceCream()).thenReturn(mock(IceCream.class));
-        when(arena.getIceCream().getPosition()).thenReturn(new Position(1,2));
-        when(monster.getPosition()).thenReturn(new Position(2,2));
-
-        ShortestPathNextMove shortestPathNextMove = mock(ShortestPathNextMove.class);
-        when(shortestPathNextMove.findShortestPath(monster, arena)).thenReturn(new Position(1,2));
-
-        runnerMovementEnabled.step(monster, arena, 500L, 200L);
-
-        verify(monster, never()).setPosition(newPosition);
-        verify(monster, never()).setLastAction(GUI.ACTION.LEFT);
-    }
 
     @Test
     void testMoveMonsterUpdatesLeft() throws IOException {

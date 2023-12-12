@@ -1,18 +1,16 @@
 package badIceCream.viewer.menu;
 
-import badIceCream.GUI.GUI;
 import badIceCream.GUI.Graphics;
 import badIceCream.model.Position;
 import badIceCream.model.menu.GameOverMenu;
 import badIceCream.viewer.Viewer;
-import com.googlecode.lanterna.screen.Screen;
 
 public class GameOverMenuViewer extends Viewer<GameOverMenu> {
     public GameOverMenuViewer(GameOverMenu menu) {
         super(menu);
     }
 
-    private void drawTitle(Graphics gui) {
+    public void drawTitle(Graphics gui) {
         String s0 = "  _____                                 ____                            ";
         String s1 = " / ____|                               / __ \\                           ";
         String s2 = "| |  __    __ _   _ __ ___     ___    | |  | | __   __   ___   _ __    ";
@@ -29,7 +27,7 @@ public class GameOverMenuViewer extends Viewer<GameOverMenu> {
         gui.drawText(new Position(37, 9), s5, "  #f6160f  ");
     }
 
-    private void drawSnowflake(Graphics gui) {
+    public void drawSnowflake(Graphics gui) {
         String s0 = "   ..    ..          ";
         String s1 = "   '\\    /'         ";
         String s2 = "     \\\\//          ";

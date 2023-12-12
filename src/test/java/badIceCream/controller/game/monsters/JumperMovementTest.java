@@ -1,7 +1,6 @@
 package badIceCream.controller.game.monsters;
 
 import badIceCream.GUI.GUI;
-import badIceCream.controller.game.monsters.JumperMovement;
 import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.IceCream;

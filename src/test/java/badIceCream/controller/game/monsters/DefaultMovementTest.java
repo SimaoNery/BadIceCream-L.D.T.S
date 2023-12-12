@@ -1,14 +1,10 @@
 package badIceCream.controller.game.monsters;
 
 import badIceCream.GUI.GUI;
-import badIceCream.GUI.Graphics;
-import badIceCream.controller.game.monsters.DefaultMovement;
 import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.monsters.Monster;
-import badIceCream.states.State;
-import badIceCream.utils.Audio;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -107,7 +103,7 @@ public class DefaultMovementTest {
         defaultMovement.step(monster, arena, 500L, 200L);
 
         verify(monster, never()).setPosition(newPosition);
-        verify(monster, never()).setLastAction(any(GUI.ACTION.class));;
+        verify(monster, never()).setLastAction(any(GUI.ACTION.class));
     }
 
     @Test

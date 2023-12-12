@@ -1,7 +1,6 @@
 package badIceCream.controller.game.monsters;
 
 import badIceCream.GUI.GUI;
-import badIceCream.controller.game.monsters.RunnerMovementDisabled;
 import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.IceCream;
@@ -103,7 +102,7 @@ public class RunnerMovementDisabledTest {
         runnerMovementDisabled.step(monster, arena, 500L, 200L);
 
         verify(monster, never()).setPosition(newPosition);
-        verify(monster, never()).setLastAction(any(GUI.ACTION.class));;
+        verify(monster, never()).setLastAction(any(GUI.ACTION.class));
     }
 
     @Test

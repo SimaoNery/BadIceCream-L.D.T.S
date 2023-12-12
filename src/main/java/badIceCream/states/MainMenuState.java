@@ -1,8 +1,6 @@
 package badIceCream.states;
 
 import badIceCream.model.menu.MainMenu;
-import badIceCream.viewer.Viewer;
-import badIceCream.controller.Controller;
 import badIceCream.controller.menu.MainMenuController;
 import badIceCream.viewer.menu.MainMenuViewer;
 

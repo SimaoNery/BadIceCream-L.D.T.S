@@ -1,25 +1,10 @@
 package badIceCream.GUI;
 
-import badIceCream.states.GameState;
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
-import com.googlecode.lanterna.screen.Screen;
-import com.googlecode.lanterna.screen.TerminalScreen;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.googlecode.lanterna.terminal.Terminal;
 import badIceCream.model.Position;
-import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
-import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration;
-
-import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 
 
-public class Graphics implements Cloneable {
+public class Graphics {
     private GUI gui;
 
     public Graphics(GUI gui) throws IOException {
@@ -54,9 +39,9 @@ public class Graphics implements Cloneable {
             case LEFT: {c = ':'; break;}
             case RIGHT: {c = '9'; break;}
             default: c = '8';
-
         }
-        gui.drawCharacter(position.getX(), position.getY(), c , "#FFFFFF");
+        String color = strawberry ? "#48DEFF" : "#FFFFFF";
+        gui.drawCharacter(position.getX(), position.getY(), c , color);
     }
     public void drawStoneWall(Position position) {
         gui.drawCharacter(position.getX(), position.getY(), 'G', "#696969");
@@ -67,9 +52,9 @@ public class Graphics implements Cloneable {
             break;
             case 3: gui.drawCharacter(position.getX(), position.getY(), 'f', "#87CEFA");
             break;
-            case 4: gui.drawCharacter(position.getX(), position.getY(), 'g', "#87CEFA");
+            case 4: gui.drawCharacter(position.getX(), position.getY(), 'h', "#87CEFA");
             break;
-            case 5: gui.drawCharacter(position.getX(), position.getY(), 'h', "#87CEFA");
+            case 5: gui.drawCharacter(position.getX(), position.getY(), 'g', "#87CEFA");
             break;
             case 6: gui.drawCharacter(position.getX(), position.getY(), 'i', "#87CEFA");
             break;
@@ -151,7 +136,6 @@ public class Graphics implements Cloneable {
 
     }
 
-
     public void drawPepperFruit(Position position) {
         gui.drawCharacter(position.getX(), position.getY(), '\\', "#FF0000");
     }
@@ -164,80 +148,70 @@ public class Graphics implements Cloneable {
 
     public void drawHotFloor(Position position, int type) {
         switch (type) {
-            case 1: gui.drawCharacter(position.getX(), position.getY(), 'w', "#FF0000");
+            case 1: gui.drawCharacter(position.getX(), position.getY(), 'w', "#e14750");
                 break;
-            case 2: gui.drawCharacter(position.getX(), position.getY(), 'd', "#FF0000");
+            case 2: gui.drawCharacter(position.getX(), position.getY(), 'd', "#e14750");
                 break;
-            case 3: gui.drawCharacter(position.getX(), position.getY(), 'c', "#FF0000");
+            case 3: gui.drawCharacter(position.getX(), position.getY(), 'c', "#e14750");
                 break;
-            case 4: gui.drawCharacter(position.getX(), position.getY(), 'x', "#FF0000");
+            case 4: gui.drawCharacter(position.getX(), position.getY(), 'x', "#e14750");
                 break;
-            case 5: gui.drawCharacter(position.getX(), position.getY(), '%', "#FF0000");
+            case 5: gui.drawCharacter(position.getX(), position.getY(), '%', "#e14750");
                 break;
-            case 6: gui.drawCharacter(position.getX(), position.getY(), '(', "#FF0000");
+            case 6: gui.drawCharacter(position.getX(), position.getY(), '(', "#e14750");
                 break;
-            case 7: gui.drawCharacter(position.getX(), position.getY(), '\'', "#FF0000");
+            case 7: gui.drawCharacter(position.getX(), position.getY(), '\'', "#e14750");
                 break;
-            case 8: gui.drawCharacter(position.getX(), position.getY(), '&', "#FF0000");
+            case 8: gui.drawCharacter(position.getX(), position.getY(), '&', "#e14750");
                 break;
-            case 9: gui.drawCharacter(position.getX(), position.getY(), ')', "#FF0000");
+            case 9: gui.drawCharacter(position.getX(), position.getY(), ')', "#e14750");
                 break;
-            case 10: gui.drawCharacter(position.getX(), position.getY(), '+', "#FF0000");
+            case 10: gui.drawCharacter(position.getX(), position.getY(), '+', "#e14750");
                 break;
-            case 11: gui.drawCharacter(position.getX(), position.getY(), ',', "#FF0000");
+            case 11: gui.drawCharacter(position.getX(), position.getY(), ',', "#e14750");
                 break;
-            case 12: gui.drawCharacter(position.getX(), position.getY(), '*', "#FF0000");
+            case 12: gui.drawCharacter(position.getX(), position.getY(), '*', "#e14750");
                 break;
-            case 13: gui.drawCharacter(position.getX(), position.getY(), '-', "#FF0000");
+            case 13: gui.drawCharacter(position.getX(), position.getY(), '-', "#e14750");
                 break;
-            case 14: gui.drawCharacter(position.getX(), position.getY(), '.', "#FF0000");
+            case 14: gui.drawCharacter(position.getX(), position.getY(), '.', "#e14750");
                 break;
-            case 15: gui.drawCharacter(position.getX(), position.getY(), 'S', "#FF0000");
+            case 15: gui.drawCharacter(position.getX(), position.getY(), 'S', "#e14750");
                 break;
-            case 16: gui.drawCharacter(position.getX(), position.getY(), 'R', "#FF0000");
+            case 16: gui.drawCharacter(position.getX(), position.getY(), 'R', "#e14750");
                 break;
-            case 17: gui.drawCharacter(position.getX(), position.getY(), '!', "#FF0000");
+            case 17: gui.drawCharacter(position.getX(), position.getY(), '!', "#e14750");
                 break;
-            case 18: gui.drawCharacter(position.getX(), position.getY(), '#', "#FF0000");
+            case 18: gui.drawCharacter(position.getX(), position.getY(), '#', "#e14750");
                 break;
-            case 19: gui.drawCharacter(position.getX(), position.getY(), '"', "#FF0000");
+            case 19: gui.drawCharacter(position.getX(), position.getY(), '"', "#e14750");
                 break;
-            case 20: gui.drawCharacter(position.getX(), position.getY(), '$', "#FF0000");
+            case 20: gui.drawCharacter(position.getX(), position.getY(), '$', "#e14750");
                 break;
-            case 21: gui.drawCharacter(position.getX(), position.getY(), 'C', "#FF0000");
+            case 21: gui.drawCharacter(position.getX(), position.getY(), 'C', "#e14750");
                 break;
-            case 22: gui.drawCharacter(position.getX(), position.getY(), '@', "#FF0000");
+            case 22: gui.drawCharacter(position.getX(), position.getY(), '@', "#e14750");
                 break;
-            case 23: gui.drawCharacter(position.getX(), position.getY(), 'D', "#FF0000");
+            case 23: gui.drawCharacter(position.getX(), position.getY(), 'D', "#e14750");
                 break;
-            case 24: gui.drawCharacter(position.getX(), position.getY(), 'B', "#FF0000");
+            case 24: gui.drawCharacter(position.getX(), position.getY(), 'B', "#e14750");
                 break;
-            case 25: gui.drawCharacter(position.getX(), position.getY(), 'A', "#FF0000");
+            case 25: gui.drawCharacter(position.getX(), position.getY(), 'A', "#e14750");
                 break;
-            case 26: gui.drawCharacter(position.getX(), position.getY(), ';', "#FF0000");
+            case 26: gui.drawCharacter(position.getX(), position.getY(), ';', "#e14750");
                 break;
-            case 27: gui.drawCharacter(position.getX(), position.getY(), '=', "#FF0000");
+            case 27: gui.drawCharacter(position.getX(), position.getY(), '=', "#e14750");
                 break;
-            case 28: gui.drawCharacter(position.getX(), position.getY(), '>', "#FF0000");
+            case 28: gui.drawCharacter(position.getX(), position.getY(), '>', "#e14750");
                 break;
-            case 29: gui.drawCharacter(position.getX(), position.getY(), '<', "#FF0000");
+            case 29: gui.drawCharacter(position.getX(), position.getY(), '<', "#e14750");
                 break;
-            default: gui.drawCharacter(position.getX(), position.getY(), 'b', "#FF0000");
+            default: gui.drawCharacter(position.getX(), position.getY(), 'b', "#e14750");
         }
     }
 
     public void drawText(Position position, String text, String color){
         gui.drawText(position, text, color);
-    }
-
-
-    @Override
-    public Graphics clone() {
-        try {
-            return (Graphics) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
     }
 
     public void drawCharacters() {
