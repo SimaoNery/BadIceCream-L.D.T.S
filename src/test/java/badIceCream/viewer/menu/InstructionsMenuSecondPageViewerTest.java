@@ -9,8 +9,10 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import java.io.IOException;
+
+import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 public class InstructionsMenuSecondPageViewerTest {
     @Mock
@@ -89,6 +91,26 @@ public class InstructionsMenuSecondPageViewerTest {
     }
 
     @Test
-    void drawElements(){
+    void drawElements() throws IOException {
+
+        viewer.drawElements(graphics);
+
+        verify(graphics, times(1)).drawText(new Position(45, 15), "Default Monster: Just walks around the arena.", "#FFFFFF");
+        verify(graphics, times(1)).drawText(new Position(45, 18), "Jumper Monster: Has the ability to jump walls.", "#FFFFFF");
+        verify(graphics, times(1)).drawText(new Position(45, 21), "WallBreaker Monster: Has the ability to break ice walls.", "#FFFFFF");
+        verify(graphics, times(1)).drawText(new Position(45, 24), "Runner Monster Inactive: Acts like a default monster.", "#FFFFFF");
+        verify(graphics, times(1)).drawText(new Position(45, 27), "Default Monster Active: Has the ability to track Bad Ice Cream and run faster.", "#FFFFFF");
+        verify(graphics, times(1)).drawText(new Position(45, 30), "Hot Floor: Blocks the progression of ice walls.", "#FFFFFF");
+
+
+        verify(graphics, times(1)).drawText(new Position(36, 40), "Last Page", "#FFFFFF");
+        verify(graphics, times(1)).drawText(new Position(30, 39), " ___", "#FFFFFF");
+        verify(graphics, times(1)).drawText(new Position(30, 40), "|<- |", "#FFFFFF");
+        verify(graphics, times(1)).drawText(new Position(30, 41), "|___| ", "#FFFFFF");
+
+        verify(graphics, times(1)).drawText(new Position(110, 40), "Main Menu", "#FFFFFF");
+        verify(graphics, times(1)).drawText(new Position(120, 39), " ___", "#FFFFFF");
+        verify(graphics, times(1)).drawText(new Position(120, 40), "|ESC|", "#FFFFFF");
+        verify(graphics, times(1)).drawText(new Position(120, 41), "|___| ", "#FFFFFF");
     }
 }

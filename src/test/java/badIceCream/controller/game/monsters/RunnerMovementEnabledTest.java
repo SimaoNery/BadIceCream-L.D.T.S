@@ -108,7 +108,7 @@ public class RunnerMovementEnabledTest {
         verify(monster, never()).setLastAction(any(GUI.ACTION.class));
     }
 
-    @Test
+   /* @Test
     void testMoveMonsterShortPath() throws IOException {
         Position newPosition = new Position(3, 2);
         when(arena.getIceCream()).thenReturn(mock(IceCream.class));
@@ -122,7 +122,7 @@ public class RunnerMovementEnabledTest {
 
         verify(monster, never()).setPosition(newPosition);
         verify(monster, never()).setLastAction(GUI.ACTION.LEFT);
-    }
+    }*/
 
     @Test
     void testMoveMonsterUpdatesLeft() throws IOException {

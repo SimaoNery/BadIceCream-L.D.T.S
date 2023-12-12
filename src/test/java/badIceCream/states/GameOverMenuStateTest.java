@@ -46,7 +46,7 @@ public class GameOverMenuStateTest {
         assertEquals(model, test);
     }
 
-    /*@Test
+    @Test
     void step() throws IOException {
         long time = 1000L;
         GUI.ACTION action = GUI.ACTION.UP;
@@ -67,7 +67,7 @@ public class GameOverMenuStateTest {
         state.stepMonsters(time);
 
         verify(controller, times(1)).stepMonsters(time);
-    }*/
+    }
 
     @Test
     void getLevel(){

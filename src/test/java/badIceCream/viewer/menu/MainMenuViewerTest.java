@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 public class MainMenuViewerTest {
     @Mock
@@ -123,5 +123,18 @@ public class MainMenuViewerTest {
 
     @Test
     void drawElements(){
+        when(menu.getNumberEntries()).thenReturn(3);
+        when(menu.getEntry(0)).thenReturn("   START");
+        when(menu.getEntry(1)).thenReturn("INSTRUCTIONS");
+        when(menu.getEntry(2)).thenReturn("    EXIT");
+        when(menu.isSelected(0)).thenReturn(true);
+        when(menu.isSelected(1)).thenReturn(false);
+        when(menu.isSelected(2)).thenReturn(false);
+
+        viewer.drawElements(graphics);
+
+        verify(graphics, times(1)).drawText(new Position(63, 20), "   START", "#D1D100");
+        verify(graphics, times(1)).drawText(new Position(63, 24), "INSTRUCTIONS", "#FFFFFF");
+        verify(graphics, times(1)).drawText(new Position(63, 28), "    EXIT", "#FFFFFF");
     }
 }

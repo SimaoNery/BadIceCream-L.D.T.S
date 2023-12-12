@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 public class SelectLevelMenuViewerTest {
     @Mock
@@ -106,7 +106,46 @@ public class SelectLevelMenuViewerTest {
         verify(graphics,times(1)).drawText(new Position(120, 14), s7, " #ffffff ");
     }
 
-    @Test
+   @Test
     void drawElements(){
+        when(menu.getNumberEntries()).thenReturn(5);
+        when(menu.getEntry(0)).thenReturn("1");
+        when(menu.getEntry(1)).thenReturn("2");
+        when(menu.getEntry(2)).thenReturn("3");
+        when(menu.getEntry(3)).thenReturn("4");
+        when(menu.getEntry(4)).thenReturn("5");
+        when(menu.isSelected(0)).thenReturn(true);
+        when(menu.isSelected(1)).thenReturn(false);
+        when(menu.isSelected(2)).thenReturn(false);
+        when(menu.isSelected(3)).thenReturn(false);
+        when(menu.isSelected(4)).thenReturn(false);
+
+        viewer.drawElements(graphics);
+
+        verify(graphics, times(1)).drawText(new Position(43, 17), " --- ", "#f76fe0");
+        verify(graphics, times(1)).drawText(new Position(43, 18), "|   |", "#f76fe0");
+        verify(graphics, times(1)).drawText(new Position(43, 19), " ---", "#f76fe0");
+
+        verify(graphics, times(1)).drawText(new Position(55, 17), " --- ", "#f76fe0");
+        verify(graphics, times(1)).drawText(new Position(55, 18), "|   |", "#f76fe0");
+        verify(graphics, times(1)).drawText(new Position(55, 19), " ---", "#f76fe0");
+
+        verify(graphics, times(1)).drawText(new Position(67, 17), " --- ", "#f76fe0");
+        verify(graphics, times(1)).drawText(new Position(67, 18), "|   |", "#f76fe0");
+        verify(graphics, times(1)).drawText(new Position(67, 19), " ---", "#f76fe0");
+
+        verify(graphics, times(1)).drawText(new Position(79, 17), " --- ", "#f76fe0");
+        verify(graphics, times(1)).drawText(new Position(79, 18), "|   |", "#f76fe0");
+        verify(graphics, times(1)).drawText(new Position(79, 19), " ---", "#f76fe0");
+
+        verify(graphics, times(1)).drawText(new Position(91, 17), " --- ", "#f76fe0");
+        verify(graphics, times(1)).drawText(new Position(91, 18), "|   |", "#f76fe0");
+        verify(graphics, times(1)).drawText(new Position(91, 19), " ---", "#f76fe0");
+
+        verify(graphics, times(1)).drawText(new Position(45, 18), "1", "#D1D100");
+        verify(graphics, times(1)).drawText(new Position(57, 18), "2", "#FFFFFF");
+        verify(graphics, times(1)).drawText(new Position(69, 18), "3", "#FFFFFF");
+        verify(graphics, times(1)).drawText(new Position(81, 18), "4", "#FFFFFF");
+        verify(graphics, times(1)).drawText(new Position(93, 18), "5", "#FFFFFF");
     }
 }

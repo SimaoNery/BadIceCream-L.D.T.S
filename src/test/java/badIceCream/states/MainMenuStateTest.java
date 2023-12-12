@@ -46,7 +46,7 @@ public class MainMenuStateTest {
         assertEquals(model, test);
     }
 
-   /* @Test
+   @Test
     void step() throws IOException {
         long time = 1000L;
 
@@ -66,7 +66,7 @@ public class MainMenuStateTest {
 
 
         verify(controller, times(1)).stepMonsters(time);
-    }*/
+    }
 
     @Test
     void getLevel(){

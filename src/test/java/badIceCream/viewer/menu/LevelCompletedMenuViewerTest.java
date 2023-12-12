@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 public class LevelCompletedMenuViewerTest {
     @Mock
@@ -110,7 +110,17 @@ public class LevelCompletedMenuViewerTest {
         verify(graphics,times(1)).drawText(new Position(120, 18), s7, " #ff53f7 ");
     }
 
-    @Test
+   @Test
     void drawElements(){
+        when(menu.getNumberEntries()).thenReturn(2);
+        when(menu.getEntry(0)).thenReturn("NEXT LEVEL");
+        when(menu.getEntry(1)).thenReturn("   MENU");
+        when(menu.isSelected(0)).thenReturn(true);
+        when(menu.isSelected(1)).thenReturn(false);
+
+        viewer.drawElements(graphics);
+
+        verify(graphics, times(1)).drawText(eq(new Position(65, 17)), eq("NEXT LEVEL"), eq("#D1D100"));
+        verify(graphics, times(1)).drawText(new Position(65, 21), "   MENU", "#FFFFFF");
     }
 }

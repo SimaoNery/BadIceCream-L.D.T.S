@@ -52,7 +52,7 @@ public class GameStateTest {
         assertEquals(arena, test);
     }
 
-    /*@Test
+    @Test
     void step() throws IOException {
         when(graphics.getNextAction()).thenReturn(GUI.ACTION.UP);
 
@@ -68,7 +68,7 @@ public class GameStateTest {
         state.stepMonsters(time);
 
         verify(controller, times(1)).stepMonsters(time);
-    }*/
+    }
 
     @Test
     void getLevel(){
