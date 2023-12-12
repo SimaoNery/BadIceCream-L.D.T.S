@@ -1,4 +1,4 @@
-package badIceCream.viewer.game;
+package badIceCream.viewer;
 
 import badIceCream.GUI.Graphics;
 import badIceCream.model.game.arena.Arena;
@@ -7,26 +7,33 @@ import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.Wall;
 import badIceCream.model.game.elements.fruits.Fruit;
 import badIceCream.model.game.elements.monsters.Monster;
-import badIceCream.viewer.Viewer;
+import badIceCream.viewer.*;
 
 public class ArenaViewer extends Viewer<Arena> {
-    public ArenaViewer(Arena arena){
+    private final FruitViewer fruitViewer;
+    private final MonsterViewer monsterViewer;
+    private final WallViewer wallViewer;
+    private  final HotFloorViewer hotFloorViewer;
+    private  final IceCreamViewer iceCreamViewer;
+    public ArenaViewer(Arena arena, FruitViewer fruitViewer, MonsterViewer monsterViewer, WallViewer wallViewer, HotFloorViewer hotFloorViewer, IceCreamViewer iceCreamViewer){
         super(arena);
+        this.fruitViewer = fruitViewer;
+        this.monsterViewer = monsterViewer;
+        this.wallViewer = wallViewer;
+        this.hotFloorViewer = hotFloorViewer;
+        this.iceCreamViewer = iceCreamViewer;
     }
     @Override
     public void drawElements(Graphics gui) {
 
-        FruitViewer fruitViewer = new FruitViewer();
         for (Fruit fruit : model.getFruits()){
             fruitViewer.draw(fruit, gui, fruit.getType());
         }
 
-        MonsterViewer monsterViewer = new MonsterViewer();
         for(Monster monster : model.getMonsters()){
             monsterViewer.draw(monster, gui, monster.getType());
         }
 
-        WallViewer wallViewer = new WallViewer();
         for (Wall wall : model.getWalls()) {
             int type = wall.getType();
             if (type == 2) {
@@ -65,10 +72,8 @@ public class ArenaViewer extends Viewer<Arena> {
             }
         }
 
-        IceCreamViewer iceCreamViewer = new IceCreamViewer();
         iceCreamViewer.draw(getModel().getIceCream(), gui, 1);
 
-        HotFloorViewer hotFloorViewer = new HotFloorViewer();
         for(HotFloor hotFloor : model.getHotFloors()){
             int fruit = model.isFruit(hotFloor.getPosition());
             IceCream iceCream = model.getIceCream();

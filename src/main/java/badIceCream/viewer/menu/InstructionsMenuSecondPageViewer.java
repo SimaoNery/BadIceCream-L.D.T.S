@@ -1,16 +1,18 @@
 package badIceCream.viewer.menu;
 
+import badIceCream.GUI.GUI;
 import badIceCream.GUI.Graphics;
 import badIceCream.model.Position;
 import badIceCream.model.menu.InstructionsMenuSecondPage;
 import badIceCream.viewer.Viewer;
 
+import java.io.IOException;
 
 public class InstructionsMenuSecondPageViewer extends Viewer<InstructionsMenuSecondPage> {
 
     public InstructionsMenuSecondPageViewer(InstructionsMenuSecondPage menu) {super(menu);}
 
-    private void drawTitle(Graphics gui) {
+    void drawTitle(Graphics gui) {
         String s0 = "           _____           _                   _   _                       ";
         String s1 = "          |_   _|         | |                 | | (_)                      " ;
         String s2 = "            | |  _ __  ___| |_ _ __ _   _  ___| |_ _  ___  _ __  ___       ";
@@ -30,7 +32,7 @@ public class InstructionsMenuSecondPageViewer extends Viewer<InstructionsMenuSec
         gui.drawText(new Position(35, 6), s5, "  #f7dc6f  ");
     }
 
-    private void drawSnowflake(Graphics gui) {
+    void drawSnowflake(Graphics gui) {
         String s0 = "   ..    ..          ";
         String s1 = "   '\\    /'         ";
         String s2 = "     \\\\//          ";
@@ -40,14 +42,14 @@ public class InstructionsMenuSecondPageViewer extends Viewer<InstructionsMenuSec
         String s6 = "   ./    \\.         ";
         String s7 = "   ''    ''          ";
 
-        gui.drawText(new Position(15, 25), s0, "  #ffffff  ");
-        gui.drawText(new Position(15, 26), s1, "  #ffffff  ");
-        gui.drawText(new Position(15, 27), s2, "  #ffffff  ");
-        gui.drawText(new Position(15, 28), s3, "  #ffffff  ");
-        gui.drawText(new Position(15, 29), s4, "  #ffffff  ");
-        gui.drawText(new Position(15, 30), s5, "  #ffffff  ");
-        gui.drawText(new Position(15, 31), s6, " #ffffff ");
-        gui.drawText(new Position(15, 32), s7, " #ffffff ");
+        gui.drawText(new Position(15, 25), s0, "#ffffff");
+        gui.drawText(new Position(15, 26), s1, "#ffffff");
+        gui.drawText(new Position(15, 27), s2, "#ffffff");
+        gui.drawText(new Position(15, 28), s3, "#ffffff");
+        gui.drawText(new Position(15, 29), s4, "#ffffff");
+        gui.drawText(new Position(15, 30), s5, "#ffffff");
+        gui.drawText(new Position(15, 31), s6, "#ffffff");
+        gui.drawText(new Position(15, 32), s7, "#ffffff");
 
         gui.drawText(new Position(5, 1), s0, "  #ffffff  ");
         gui.drawText(new Position(5, 2), s1, "  #ffffff  ");
@@ -69,7 +71,7 @@ public class InstructionsMenuSecondPageViewer extends Viewer<InstructionsMenuSec
     }
 
     @Override
-    protected void drawElements(Graphics gui) {
+    public void drawElements(Graphics gui) throws IOException {
         drawTitle(gui);
         drawSnowflake(gui);
         gui.drawCharacters();
