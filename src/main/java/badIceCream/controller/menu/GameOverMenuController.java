@@ -36,13 +36,7 @@ public class GameOverMenuController extends MenuController<GameOverMenu> {
                 }
                 if (getModel().isSelectedPlayAgain()){
                     Arena arena = new LoaderArenaBuilder(game.getState().getLevel()).createArena();
-                    try {
-                        arena.setBreakWallSound(new Audio(Audio.loadMusic("BreakWallSound.wav")));
-                        arena.setBuildWallSound(new Audio(Audio.loadMusic("BuildWallSound.wav")));
-                        game.setState(new GameState(arena, game.getState().getLevel()), Type.game, arena.getWidth(), arena.getHeight());
-                    } catch (LineUnavailableException | UnsupportedAudioFileException e) {
-                        e.printStackTrace();
-                    }
+                    game.setState(new GameState(arena, game.getState().getLevel()), Type.game, arena.getWidth(), arena.getHeight());
                 }
         }
     }

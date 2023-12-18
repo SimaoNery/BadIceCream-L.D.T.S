@@ -6,6 +6,8 @@ import badIceCream.model.game.elements.*;
 import badIceCream.model.game.elements.fruits.*;
 import badIceCream.model.game.elements.monsters.Monster;
 import badIceCream.utils.Audio;
+import badIceCream.utils.AudioController;
+
 import java.util.List;
 import java.util.Random;
 
@@ -18,18 +20,10 @@ public class Arena {
     private List<Wall> walls;
     private List<Fruit> fruits;
     private List<HotFloor> hotFloors;
-    private Audio breakWallSound;
-    private Audio buildWallSound;
 
     public Arena(int width, int height){
         this.width = width;
         this.height = height;
-    }
-    public void setBreakWallSound(Audio breakWallSound) {
-        this.breakWallSound = breakWallSound;
-    }
-    public void setBuildWallSound(Audio buildWallSound) {
-        this.buildWallSound= buildWallSound;
     }
     public void setLevel(int level) {
         this.level = level;
@@ -217,7 +211,7 @@ public class Arena {
 
         while (isIceWall(pos)) {
             if (first) {
-                breakWallSound.playOnce();
+                AudioController.playBreakWallSound();
                 first = false;
             }
             iceWallDestroyed(pos);
@@ -237,7 +231,7 @@ public class Arena {
 
         while (isEmptyMonsters(pos) && !isHotFloor(pos)) {
             if (first) {
-                buildWallSound.playOnce();
+                AudioController.playBuildWallSound();
                 first = false;
             }
             createIceWall(pos);

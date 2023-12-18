@@ -5,7 +5,6 @@ import badIceCream.GUI.Graphics;
 import badIceCream.Game;
 import badIceCream.model.menu.SelectLevelMenu;
 import badIceCream.states.*;
-import badIceCream.utils.Audio;
 import badIceCream.utils.Type;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,15 +25,13 @@ public class SelectLevelMenuControllerTest {
     private Game game;
     @Mock
     private Graphics graphics;
-    @Mock
-    private Audio audio;
 
     @BeforeEach
     void setUp() throws IOException {
         MockitoAnnotations.openMocks(this);
         when(game.getState()).thenReturn(state);
         selectLevelMenuController = new SelectLevelMenuController(selectLevelMenu);
-        game.setAll(state, graphics, audio, audio, audio, audio);
+        game.setAll(state, graphics);
         when(game.getGraphicsForGame(any(Type.class), anyInt(), anyInt())).thenReturn(null);
     }
 

@@ -7,7 +7,6 @@ import badIceCream.model.game.arena.Arena;
 import badIceCream.model.menu.PauseMenu;
 import badIceCream.states.GameState;
 import badIceCream.states.MainMenuState;
-import badIceCream.utils.Audio;
 import badIceCream.utils.Type;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,8 +29,6 @@ public class PauseMenuControllerTest {
     @Mock
     private GameState state;
     @Mock
-    private Audio audio;
-    @Mock
     private Graphics graphics;
     @Mock
     private Arena arena;
@@ -42,7 +39,7 @@ public class PauseMenuControllerTest {
         pauseMenuController = new PauseMenuController(pauseMenu, state);
         when(pauseMenu.isSelectedMenu()).thenReturn(false);
         when(pauseMenu.isSelectedResume()).thenReturn(false);
-        game.setAll(state, graphics, audio, audio, audio, audio);
+        game.setAll(state, graphics);
         when(game.getGraphicsForGame(any(Type.class), anyInt(), anyInt())).thenReturn(null);
         when(arena.getHeight()).thenReturn(5);
         when(arena.getHeight()).thenReturn(5);

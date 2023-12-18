@@ -28,8 +28,6 @@ public class LevelCompletedMenuControllerTest {
     private Game game;
     @Mock
     private State state;
-    @Mock
-    private Audio audio;
 
     @Mock
     private Graphics graphics;
@@ -42,7 +40,7 @@ public class LevelCompletedMenuControllerTest {
         levelCompletedMenuController = new LevelCompletedMenuController(levelCompletedMenu);
         when(levelCompletedMenu.isSelectedQuitToMainMenu()).thenReturn(false);
         when(levelCompletedMenu.isSelectedNextLevel()).thenReturn(false);
-        game.setAll(state, graphics, audio, audio, audio, audio);
+        game.setAll(state, graphics);
     }
 
     @Test

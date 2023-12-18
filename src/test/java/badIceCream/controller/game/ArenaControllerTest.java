@@ -8,7 +8,6 @@ import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.fruits.Fruit;
 import badIceCream.states.*;
-import badIceCream.utils.Audio;
 import badIceCream.utils.Type;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -40,8 +39,6 @@ class ArenaControllerTest {
     @Mock
     private Position position;
     @Mock
-    private Audio audio;
-    @Mock
     private Graphics graphics;
 
     @BeforeEach
@@ -56,8 +53,8 @@ class ArenaControllerTest {
 
         monsterControllers = new ArrayList<>(Arrays.asList(monsterController1, monsterController2));
 
-        arenaController = new ArenaController(arena, iceCreamController, monsterControllers, audio);
-        game.setAll(state, graphics, audio, audio, audio, audio);
+        arenaController = new ArenaController(arena, iceCreamController, monsterControllers);
+        game.setAll(state, graphics);
     }
     @Test
     void stepTestWinUp() throws IOException {
@@ -162,7 +159,7 @@ class ArenaControllerTest {
     void stepTestEscape() throws IOException {
         when(arena.getFruits()).thenReturn(List.of(mock(Fruit.class)));
         when(iceCream.getAlive()).thenReturn(true);
-        game.setAll(state, graphics, audio, audio, audio, audio);
+        game.setAll(state, graphics);
         arenaController.step(game, GUI.ACTION.PAUSE, System.currentTimeMillis());
 
         verify(game, times(1)).setState(any(PauseMenuState.class), any(Type.class), anyInt(), anyInt());

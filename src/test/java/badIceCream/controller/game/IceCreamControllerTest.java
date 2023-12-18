@@ -8,7 +8,6 @@ import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.monsters.Monster;
 import badIceCream.states.State;
-import badIceCream.utils.Audio;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -30,8 +29,6 @@ class IceCreamControllerTest {
     private Arena arena;
     @Mock
     private Position position;
-    @Mock
-    private Audio audio;
     @Mock
     private Graphics graphics;
 
@@ -57,7 +54,7 @@ class IceCreamControllerTest {
         when(iceCream.getPosition()).thenReturn(position);
 
         controller = new IceCreamController(arena);
-        game.setAll(state, graphics, audio, audio, audio, audio);
+        game.setAll(state, graphics);
     }
 
     @Test

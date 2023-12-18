@@ -23,14 +23,12 @@ public class ArenaController extends GameController {
     private final List<MonsterController> monsterController;
     private boolean first;
     private long strawberry;
-    private Audio runnerSound;
 
-    public ArenaController(Arena arena, IceCreamController iceCreamController, List<MonsterController> monsterController, Audio audio) {
+    public ArenaController(Arena arena, IceCreamController iceCreamController, List<MonsterController> monsterController) {
         super(arena);
         this.iceCreamController = iceCreamController;
         this.monsterController = monsterController;
         this.first = true;
-        this.runnerSound = audio;
 
         for (Monster m : arena.getMonsters()) {
             switch (m.getType()) {
@@ -39,7 +37,7 @@ public class ArenaController extends GameController {
                 case 2: monsterController.add(new MonsterController(arena, new JumperMovement(), m));
                     break;
                 case 3:
-                    monsterController.add(new MonsterController(arena,new RunnerMovementDisabled(), m, runnerSound));
+                    monsterController.add(new MonsterController(arena,new RunnerMovementDisabled(), m));
                     break;
                 case 4: monsterController.add(new MonsterController(arena, new WallBreakerMovement(), m));
                     break;

@@ -6,6 +6,7 @@ import badIceCream.model.game.elements.*;
 import badIceCream.model.game.elements.monsters.DefaultMonster;
 import badIceCream.model.game.elements.monsters.Monster;
 import badIceCream.utils.Audio;
+import badIceCream.utils.AudioController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -37,17 +38,11 @@ public class PowerIceCreamTest {
     private IceWall iceWall3;
     @Mock
     private IceWall iceWall4;
-    @Mock
-    private Audio breakWallSound;
-    @Mock
-    private Audio buildWallSound;
 
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
         arena = new Arena(10,10);
-        arena.setBuildWallSound(buildWallSound);
-        arena.setBreakWallSound(breakWallSound);
     }
     @Test
     public void powerIceCreamUpIceWall() {
@@ -60,7 +55,6 @@ public class PowerIceCreamTest {
         arena.setWalls(walls);
         arena.setIceCream(iceCream);
         arena.powerIceCream(GUI.ACTION.UP);
-        verify(breakWallSound, times(1)).playOnce();
         assertFalse(arena.getWalls().contains(iceWall1));
         assertFalse(arena.getWalls().contains(iceWall2));
         assertFalse(arena.getWalls().contains(iceWall3));
@@ -77,7 +71,6 @@ public class PowerIceCreamTest {
         arena.setMonsters(new ArrayList<>());
         arena.setHotFloors(new ArrayList<>());
         arena.powerIceCream(GUI.ACTION.UP);
-        verify(buildWallSound, times(1)).playOnce();
         assertEquals(4, arena.getWalls().size());
     }
     @Test
@@ -90,7 +83,6 @@ public class PowerIceCreamTest {
         arena.setMonsters(new ArrayList<>());
         arena.setWalls(new ArrayList<>());
         arena.powerIceCream(GUI.ACTION.UP);
-        verify(buildWallSound, times(1)).playOnce();
         assertEquals(3, arena.getWalls().size());
     }
     @Test
@@ -103,7 +95,6 @@ public class PowerIceCreamTest {
         arena.setWalls(new ArrayList<>());
         arena.setHotFloors(new ArrayList<>());
         arena.powerIceCream(GUI.ACTION.UP);
-        verify(buildWallSound, times(1)).playOnce();
         assertEquals(3, arena.getWalls().size());
     }
     @Test
@@ -117,7 +108,6 @@ public class PowerIceCreamTest {
         arena.setWalls(walls);
         arena.setIceCream(iceCream);
         arena.powerIceCream(GUI.ACTION.DOWN);
-        verify(breakWallSound, times(1)).playOnce();
         assertFalse(arena.getWalls().contains(iceWall1));
         assertFalse(arena.getWalls().contains(iceWall2));
         assertFalse(arena.getWalls().contains(iceWall3));
@@ -133,7 +123,6 @@ public class PowerIceCreamTest {
         arena.setMonsters(new ArrayList<>());
         arena.setHotFloors(new ArrayList<>());
         arena.powerIceCream(GUI.ACTION.DOWN);
-        verify(buildWallSound, times(1)).playOnce();
         assertEquals(4, arena.getWalls().size());
     }
     @Test
@@ -146,7 +135,6 @@ public class PowerIceCreamTest {
         arena.setMonsters(new ArrayList<>());
         arena.setWalls(new ArrayList<>());
         arena.powerIceCream(GUI.ACTION.DOWN);
-        verify(buildWallSound, times(1)).playOnce();
         assertEquals(3, arena.getWalls().size());
     }
     @Test
@@ -159,7 +147,6 @@ public class PowerIceCreamTest {
         arena.setWalls(new ArrayList<>());
         arena.setHotFloors(new ArrayList<>());
         arena.powerIceCream(GUI.ACTION.DOWN);
-        verify(buildWallSound, times(1)).playOnce();
         assertEquals(3, arena.getWalls().size());
     }
     @Test
@@ -173,7 +160,6 @@ public class PowerIceCreamTest {
         arena.setWalls(walls);
         arena.setIceCream(iceCream);
         arena.powerIceCream(GUI.ACTION.LEFT);
-        verify(breakWallSound, times(1)).playOnce();
         assertFalse(arena.getWalls().contains(iceWall1));
         assertFalse(arena.getWalls().contains(iceWall2));
         assertFalse(arena.getWalls().contains(iceWall3));
@@ -189,7 +175,6 @@ public class PowerIceCreamTest {
         arena.setMonsters(new ArrayList<>());
         arena.setHotFloors(new ArrayList<>());
         arena.powerIceCream(GUI.ACTION.LEFT);
-        verify(buildWallSound, times(1)).playOnce();
         assertEquals(4, arena.getWalls().size());
     }
     @Test
@@ -202,7 +187,6 @@ public class PowerIceCreamTest {
         arena.setMonsters(new ArrayList<>());
         arena.setWalls(new ArrayList<>());
         arena.powerIceCream(GUI.ACTION.LEFT);
-        verify(buildWallSound, times(1)).playOnce();
         assertEquals(3, arena.getWalls().size());
     }
     @Test
@@ -215,7 +199,6 @@ public class PowerIceCreamTest {
         arena.setWalls(new ArrayList<>());
         arena.setHotFloors(new ArrayList<>());
         arena.powerIceCream(GUI.ACTION.LEFT);
-        verify(buildWallSound, times(1)).playOnce();
         assertEquals(3, arena.getWalls().size());
     }
     @Test
@@ -229,7 +212,6 @@ public class PowerIceCreamTest {
         arena.setWalls(walls);
         arena.setIceCream(iceCream);
         arena.powerIceCream(GUI.ACTION.RIGHT);
-        verify(breakWallSound, times(1)).playOnce();
         assertFalse(arena.getWalls().contains(iceWall1));
         assertFalse(arena.getWalls().contains(iceWall2));
         assertFalse(arena.getWalls().contains(iceWall3));
@@ -245,7 +227,6 @@ public class PowerIceCreamTest {
         arena.setMonsters(new ArrayList<>());
         arena.setHotFloors(new ArrayList<>());
         arena.powerIceCream(GUI.ACTION.RIGHT);
-        verify(buildWallSound, times(1)).playOnce();
         assertEquals(4, arena.getWalls().size());
     }
     @Test
@@ -258,7 +239,6 @@ public class PowerIceCreamTest {
         arena.setMonsters(new ArrayList<>());
         arena.setWalls(new ArrayList<>());
         arena.powerIceCream(GUI.ACTION.RIGHT);
-        verify(buildWallSound, times(1)).playOnce();
         assertEquals(3, arena.getWalls().size());
     }
     @Test
@@ -271,7 +251,6 @@ public class PowerIceCreamTest {
         arena.setWalls(new ArrayList<>());
         arena.setHotFloors(new ArrayList<>());
         arena.powerIceCream(GUI.ACTION.RIGHT);
-        verify(buildWallSound, times(1)).playOnce();
         assertEquals(3, arena.getWalls().size());
     }
 }

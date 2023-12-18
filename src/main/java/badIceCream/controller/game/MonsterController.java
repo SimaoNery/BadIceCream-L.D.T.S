@@ -6,6 +6,7 @@ import badIceCream.controller.game.monsters.RunnerMovementDisabled;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.monsters.Monster;
 import badIceCream.utils.Audio;
+import badIceCream.utils.AudioController;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -18,7 +19,6 @@ public class MonsterController {
     private long lastMovement;
     private long lastChange;
     private final Arena arena;
-    private Audio runner;
     boolean runnerOn;
 
     public MonsterController(Arena arena, StepMonsters step, Monster monster) {
@@ -27,12 +27,6 @@ public class MonsterController {
         this.monster = monster;
         lastMovement = 0;
         lastChange = 0;
-    }
-    public MonsterController(Arena arena, StepMonsters step, Monster monster, Audio runner) {
-        this.arena = arena;
-        this.step = step;
-        this.monster = monster;
-        this.runner = runner;
     }
     public void step(long time) throws IOException {
         long minValue = 5000L;
@@ -45,7 +39,7 @@ public class MonsterController {
             runnerOn = !runnerOn;
 
             if (runnerOn) {
-                runner.playOnce();
+                AudioController.playRunnerMonsterSound();
                 monster.startRunning();
                 this.step = new RunnerMovementEnabled();
             }

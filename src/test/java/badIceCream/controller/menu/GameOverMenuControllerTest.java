@@ -24,8 +24,6 @@ public class GameOverMenuControllerTest {
     @Mock
     private State state;
     @Mock
-    private Audio audio;
-    @Mock
     private Graphics graphics;
 
     @BeforeEach
@@ -33,7 +31,7 @@ public class GameOverMenuControllerTest {
         MockitoAnnotations.openMocks(this);
         when(game.getState()).thenReturn(state);
         gameOverMenuController = new GameOverMenuController(gameOverMenu);
-        game.setAll(state, graphics, audio, audio, audio, audio);
+        game.setAll(state, graphics);
     }
 
     @Test

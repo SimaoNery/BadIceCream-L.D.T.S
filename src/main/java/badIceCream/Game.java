@@ -7,6 +7,7 @@ import badIceCream.model.menu.MainMenu;
 import badIceCream.states.MainMenuState;
 import badIceCream.states.State;
 import badIceCream.utils.Audio;
+import badIceCream.utils.AudioController;
 import badIceCream.utils.Type;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -18,23 +19,11 @@ import java.net.URISyntaxException;
 public class Game {
     private Graphics gui;
     private State state;
-    private Audio gameOverMusic;
-    private Audio levelCompleteMusic;
-    private Audio levelMusic;
-    private Audio menuMusic;
 
     public Game() throws FontFormatException, IOException {
         this.gui = new Graphics(new MenuGraphics(140, 50));
-        this.state = new MainMenuState(new MainMenu(), 4);
-        try {
-            this.gameOverMusic = new Audio(Audio.loadMusic("GameOverMenuSound.wav"));
-            this.levelCompleteMusic = new Audio(Audio.loadMusic("LevelCompleteMenuSound.wav"));
-            this.levelMusic = new Audio(Audio.loadMusic("LevelMusic.wav"));
-            this.menuMusic = new Audio(Audio.loadMusic("MainMenuMusic.wav"));
-            this.menuMusic.play();
-        } catch (LineUnavailableException | UnsupportedAudioFileException e) {
-            throw new RuntimeException(e);
-        }
+        this.state = new MainMenuState(new MainMenu(), 1);
+        AudioController.playMenuMusic();
     }
 
     public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException {
@@ -52,39 +41,35 @@ public class Game {
     private void handleSound(Type type) {
         switch (type) {
             case menu:
-                gameOverMusic.stop();
-                levelCompleteMusic.stop();
-                levelMusic.stop();
-                menuMusic.play();
+                AudioController.stopGameOverMusic();
+                AudioController.stopLevelCompleteMusic();
+                AudioController.stopLevelMusic();
+                AudioController.playMenuMusic();
                 break;
             case win:
-                gameOverMusic.stop();
-                levelMusic.stop();
-                menuMusic.stop();
-                levelCompleteMusic.playOnce();
+                AudioController.stopGameOverMusic();
+                AudioController.stopLevelMusic();
+                AudioController.stopMenuMusic();
+                AudioController.playLevelCompleteMusic();
                 break;
             case gameOver:
-                levelMusic.stop();
-                menuMusic.stop();
-                levelCompleteMusic.stop();
-                gameOverMusic.playOnce();
+                AudioController.stopLevelMusic();
+                AudioController.stopMenuMusic();
+                AudioController.stopLevelCompleteMusic();
+                AudioController.playGameOverMusic();
                 break;
             case game:
-                menuMusic.stop();
-                levelCompleteMusic.stop();
-                gameOverMusic.stop();
-                levelMusic.play();
+                AudioController.stopMenuMusic();
+                AudioController.stopLevelCompleteMusic();
+                AudioController.stopGameOverMusic();
+                AudioController.playLevelMusic();
         }
     }
 
-    public void setAll(State state, Graphics gui, Audio gameOverMusic, Audio levelMusic, Audio levelCompleteMusic, Audio menuMusic) {
+    public void setAll(State state, Graphics gui) {
 
         this.state = state;
         this.gui = gui;
-        this.gameOverMusic = gameOverMusic;
-        this.levelMusic = levelMusic;
-        this.levelCompleteMusic = levelCompleteMusic;
-        this.menuMusic = menuMusic;
     }
     public Graphics getGui(){
         return this.gui;
