@@ -36,30 +36,30 @@ O esquema e desenho de alto nível deste jogo foram pensados inicialmente e reco
 ## Menus
 
 - Menu Principal: Quando o jogo é iniciado, o "Main Menu" é aberto. Neste, o jogador poderá escolher entre começar a jogar, aceder às instruções ou sair do jogo;
-<img src="MainMenu.png" width="1000" height="500" />
+  ![](resources/MainMenu.png)
 
 - Primeira Página das Instruções: Ao escolher a opção "Instructions" no "Main Menu", o jogador tem acesso a uma página com uma descrição do jogo e os controlos para jogar, juntamente com as opçoes de avançar para a página seguinte das instruçoes ou regressar ao menu principal;
-  <img src="Instructions1.png" width="1000" height="500" />
+  ![](resources/Instructions1.png)
 
 
 - Segunda Página das Instruçoes : Ao clicar na seta da direita na primeira página das intruçoes, o jogador tem acesso a uma nova página de instruçoes, onde é apresentada informaçao sobre os monstros e hot floors, juntamente com as opçoes de voltar à página anterior das instruçoes ou ao menu principal;
-  <img src="Instructions2.png" width="1000" height="500" />
+  ![](resources/Instructions2.png)
 
 
 - Seleção de Nível: Ao escolher a opção "Start Game" no "Main Menu", outro menu é aberto, onde será possível escolher entre os diferentes níveis existentes. Com exceção ao nível 1, só é possível escolher um nível se o anterior tiver sido completado com sucesso;
-  <img src="LevelSelect.png" width="1000" height="500" />
+  ![](resources/LevelSelect.png)
 
 
 - Menu de Pausa: No decorrer do jogo, o jogador pode clicar na tecla _Escape_, abrindo um menu que pausa o jogo. Neste, poderá escolher entre continuar a jogar ou sair para o "Main Menu".
-  <img src="Pause.png" width="1000" height="500" />
+  ![](resources/Pause.png)
 
 
 - Menu de Fim de Nível: Após um nível ser terminado, um novo menu irá abrir, onde o utilizador poderá escolher entre continuar para o próximo nível, ou retornar ao menu principal;
-  <img src="LevelComplete.png" width="1000" height="500" />
+  ![](resources/LevelComplete.png)
 
 
 - Menu de Fim de Jogo: Ao ser morto por um dos monstros, será aberto um menu onde o utilizador poderá escolher entre jogar novamente, ou voltar ao menu principal.
-  <img src="GameOver.png" width="1000" height="500" />
+  ![](resources/GameOver.png)
 
 
 # _Features_ Planeadas
