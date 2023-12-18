@@ -87,9 +87,9 @@ A implantação deste padrão pode ser representada através do seguinte modelo 
 
 
 As 3 classes podem ser encontradas nos seguintes links:
-- Controller https://github.com/FEUP-LDTS-2023/project-l10gr08/tree/main/src/main/java/badIceCream/controller
-- Model https://github.com/FEUP-LDTS-2023/project-l10gr08/tree/main/src/main/java/badIceCream/model
-- View https://github.com/FEUP-LDTS-2023/project-l10gr08/tree/main/src/main/java/badIceCream/viewer
+- Controller: https://github.com/FEUP-LDTS-2023/project-l10gr08/tree/main/src/main/java/badIceCream/controller
+- Model: https://github.com/FEUP-LDTS-2023/project-l10gr08/tree/main/src/main/java/badIceCream/model
+- View: https://github.com/FEUP-LDTS-2023/project-l10gr08/tree/main/src/main/java/badIceCream/viewer
 
 ### Consequências
 A escolha deste padrão trouxe vantagens e desvantagens:
@@ -120,17 +120,17 @@ Os controladores do jogo alteram o estado do programa, consoante o acontecimento
 # 
 
 O código para as classes que estendem State, encontra-se nos seguintes links:
-- GameState https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/GameState.java
-- MenuState https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/MenuState.java
+- GameState: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/GameState.java
+- MenuState: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/MenuState.java
 
 O código para as classes que estendem MenuState, encontram-se nos seguintes links:
-- MainMenuState https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/MainMenuState.java
-- PauseMenuState https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/PauseMenuState.java
-- SelectLevelMenuState https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/SelectLevelMenuState.java
-- InstructionsMenuFisrtPageState https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/InstructionsMenuFirstPageState.java
-- InstructionsMenuSecondPageState https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/InstructionsMenuSecondPageState.java
-- GameOverMenuState https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/GameOverMenuState.java
-- LevelCompletedMenuState https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/LevelCompletedMenuState.java
+- MainMenuState: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/MainMenuState.java
+- PauseMenuState: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/PauseMenuState.java
+- SelectLevelMenuState: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/SelectLevelMenuState.java
+- InstructionsMenuFisrtPageState: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/InstructionsMenuFirstPageState.java
+- InstructionsMenuSecondPageState: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/InstructionsMenuSecondPageState.java
+- GameOverMenuState: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/GameOverMenuState.java
+- LevelCompletedMenuState: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/LevelCompletedMenuState.java
 #
 
 ### Consequências
