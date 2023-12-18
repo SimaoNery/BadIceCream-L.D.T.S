@@ -8,67 +8,62 @@ O esquema e desenho de alto nível deste jogo foram pensados inicialmente e reco
 <img src="resources/UML.png" width="2000" height="1000" />
 
 # _Features_ Implementadas
+## _In-Game Features_
 - Movimento do Bad Ice Cream: O personagem irá mover-se para cima (seta para cima), para baixo (seta para baixo), para esquerda (seta para a esquerda) ou para a direita (seta para a direita), de acordo com o input do utilizador;
-
-![](resources/IceCreamMovement.gif)
 
 - Movimento do DefaultMonster: O DefaultMonster irá mover-se aleatoriamente pelos espaços livres no mapa. É o monstro mais lento, aproveita!;
 
-![](resources/DefaultMonster.gif)
-
 - Colisão do Bad Ice Cream: O personagem morre quando colide com monstros e não consegue avançar caso colida com uma parede;
-
-<img src="resources/Collision.gif" width="250" height="250" />
 
 - Colisão dos Monstros: Os monstros não conseguem avançar caso colidam com outro monstro ou com uma parede;
 
-
-
-# _Features_ Planeadas
-## _In-Game Features_ 
-- Habilidade do Personagem: Quando a tecla de espaço for pressionada, o personagem irá construir uma parede de gelo até ao primeiro bloqueio que lhe aparecer (monstro, fruta, parede ou hot floor). No caso de já existir uma parede de gelo à sua frente, o personagem irá destruí-la em cascata (a destruição é interrompida quando encontrar um espaço vazio ou Stone Wall);
-
-![](resources/IceCreamAbility.gif)
+- Habilidade do Personagem: Quando a tecla de espaço for pressionada, o personagem irá construir uma parede de gelo até ao primeiro bloqueio que lhe aparecer (monstro, fruta, parede ou hot floor). No caso de já existir uma parede de gelo à sua frente, o personagem irá destruí-la(a destruição é interrompida quando encontrar um espaço vazio ou Stone Wall);
 
 - Movimento do RunnerMonster: O RunnerMonster inicialmente irá ter o comportamento de um Defaultmonster, mas em intervalos curtos de tempo, a sua velocidade será aumentada e este passará a conseguir localizar o personagem (cálculo da trajetória mais curta), por isso foge enquanto podes!;
 
-![](resources/Runner.gif)
-
-- Movimento do JumperMonster: O JumperMonster será capaz de saltar para cima de paredes e andar em cima das mesmas de modo a conseguir percorrer sempre o caminho mais curto até ao personagem principal;
-
-![](resources/Jumper.gif)
+- Movimento do JumperMonster: O JumperMonster será capaz de saltar para cima de paredes e andar em cima das mesmas;
 
 - Movimento do WallBreakerMonster: O WallBreakerMonster terá a habilidade de destruir paredes de gelo do mesmo modo que o personagem principal;
 
-![](resources/WallBreaker.gif)
+- PowerUp do Morango: O Morango é uma fruta rara que dará ao personagem um escudo (o Bad Ice Cream fica azul), que o deixará imune ao toque de um monstro por um certo período de tempo;
 
-- PowerUp do Morango: O Morango é uma fruta rara que dará ao personagem um escudo (o Bad Ice Cream fica azul), que o deixará imune ao toque de um monstro;
-
-![](resources/StrawberryAbility.gif)
-
-- _Hot Floor_: No mapa irão existir zonas onde o IceCream não conseguirá criar paredes de gelo, apesar de ser possível caminhar por cima destas, normalmente;
-
-![](resources/HotTile.gif)
+- _Hot Floor_: No mapa irão existir zonas onde o IceCream não conseguirá criar paredes de gelo, apesar de ser possível caminhar por cima destas normalmente;
 
 - Colisão Personagem - Fruta: Quando o personagem avança para uma zona onde já existe uma fruta, coleta a fruta e dependendo do tipo de fruta, poderá receber um _Power Up_;
 
-![](resources/EatFruit.gif)
-
-- Sons no Jogo: Os diferentes Menus e o próprio jogo terão música de fundo. Também as diferentes interações do utilizador com o jogo, terão sons correspondentes. 
+- Sons no Jogo: Os diferentes Menus e o próprio jogo terão música de fundo. Também as diferentes interações do utilizador com o jogo, terão sons correspondentes.
 
 ## Menus
+
 - Menu Principal: Quando o jogo é iniciado, o "Main Menu" é aberto. Neste, o jogador poderá escolher entre começar a jogar, aceder às instruções ou sair do jogo;
-<img src="resources/MainMenu.png" width="250" height="250" />
-- Instruções: Ao escolher a opção "Instructions" no "Main Menu", o jogador tem acesso a uma página com uma descrição do jogo e os controlos para jogar;
-<img src="resources/Instructions.png" width="250" height="250" />
+<img src="MainMenu.png" width="1000" height="500" />
+
+- Primeira Página das Instruções: Ao escolher a opção "Instructions" no "Main Menu", o jogador tem acesso a uma página com uma descrição do jogo e os controlos para jogar, juntamente com as opçoes de avançar para a página seguinte das instruçoes ou regressar ao menu principal;
+  <img src="Instructions1.png" width="1000" height="500" />
+
+
+- Segunda Página das Instruçoes : Ao clicar na seta da direita na primeira página das intruçoes, o jogador tem acesso a uma nova página de instruçoes, onde é apresentada informaçao sobre os monstros e hot floors, juntamente com as opçoes de voltar à página anterior das instruçoes ou ao menu principal;
+  <img src="Instructions2.png" width="1000" height="500" />
+
+
 - Seleção de Nível: Ao escolher a opção "Start Game" no "Main Menu", outro menu é aberto, onde será possível escolher entre os diferentes níveis existentes. Com exceção ao nível 1, só é possível escolher um nível se o anterior tiver sido completado com sucesso;
-<img src="resources/LevelSelect.png" width="250" height="250" />
+  <img src="LevelSelect.png" width="1000" height="500" />
+
+
 - Menu de Pausa: No decorrer do jogo, o jogador pode clicar na tecla _Escape_, abrindo um menu que pausa o jogo. Neste, poderá escolher entre continuar a jogar ou sair para o "Main Menu".
-<img src="resources/PauseMenu.png" width="250" height="250" />
+  <img src="Pause.png" width="1000" height="500" />
+
+
 - Menu de Fim de Nível: Após um nível ser terminado, um novo menu irá abrir, onde o utilizador poderá escolher entre continuar para o próximo nível, ou retornar ao menu principal;
-<img src="resources/LevelCompleteMenu.png" width="250" height="250" />
+  <img src="LevelComplete.png" width="1000" height="500" />
+
+
 - Menu de Fim de Jogo: Ao ser morto por um dos monstros, será aberto um menu onde o utilizador poderá escolher entre jogar novamente, ou voltar ao menu principal.
-<img src="resources/GameOver.png" width="250" height="250" />
+  <img src="GameOver.png" width="1000" height="500" />
+
+
+# _Features_ Planeadas
+Todas as _features_ planeadas inicialmente foram implementadas. 
 
 
 # Design 
