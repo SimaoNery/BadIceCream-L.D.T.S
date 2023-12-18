@@ -104,7 +104,11 @@ O esquema e desenho de alto nível deste jogo foram pensados inicialmente e reco
 # _Features_ Planeadas
 Todas as _features_ planeadas inicialmente foram implementadas. 
 
+#
+## Gameplay
+![](resources/Gameplay.gif)
 
+#
 # Design 
 ## Padrão Arquitetural
 ### Contexto do Problema
