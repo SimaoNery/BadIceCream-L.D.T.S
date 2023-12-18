@@ -209,7 +209,7 @@ O código que reflete este padrão encontra-se nos seguintes links:
 - MenuController: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/menu/MenuController.java
 - PauseMenuController: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/menu/PauseMenuController.java
 - MainMenuController: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/menu/MainMenuController.java
-- GameOverMenuController https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/menu/GameOverMenuController.java
+- GameOverMenuController: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/menu/GameOverMenuController.java
 - InstructionsMenuFisrtPageController: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/menu/InstructionsMenuFirstPageController.java
 - InstructionsMenuSecondPageController: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/menu/InstructionsMenuSecondPageController.java
 - LevelCompletedMenuController: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/menu/LevelCompletedMenuController.java
