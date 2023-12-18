@@ -136,26 +136,30 @@ Vantagens
 - Ao introduzir novos estados deixa de ser necessário mudar estados já existentes.
 
 ## _Strategy Pattern e State Pattern_
-#### Game e Menu Graphics
-### Contexto do Problema
+### Game e Menu Graphics
+#### Contexto do Problema
 A representação dos vários elementos e suas variantes em fonte, implicou a inclusão de duas fontes no jogo, uma para os Menus e outra para o Jogo. Neste sentido, utilizou-se o strategy pattern para definir em qual os gráficos a serem utilizados. Sempre que o jogo passa de um menu para o jogo em si, cria um novo estado e, altera os gráficos para GameGraphics. De igual modo, se enquanto o jogo, o jogador perder, ganhar ou pressionar o "ESC" para fazer pausa, os gráficos passam de GameGraphics para MenuGraphics.
-#### Game e Menu Graphics
+
+#### Padrão
 Este padrão foi também utilizado pelo Graphics, na medida em que, o jogo inclui dois tipos de gráficos diferentes, a saber: MenuGraphics e GameGraphics. Deste modo, a alteração de um tipo de gráficos para outro é feita através do Strategy Pattern.
 Os controladores são responsáveis por alterar o estado dos gráficos, quando necessário.
 
-<img src="resources/State2.png" width="1000" height="550" />
-
-#### Movimento dos Monstros
-### Contexto do Problema
-O movimento dos monstros difere, pelo que se criou uma interface "StepMonsters", com dois métodos. No jogo estão presentes 5 tipos diferentes de movimentos de monstros (Default, WallBreaker, Jumper, RunnerEnabled e RunnerDisabled). O tipo de movimento é definido em tempo de execução, na medida em que a classe MonsterController está encarregue de definir o movimento de cada monstro. Já que o Runner pode ter dois movimentos diferentes (modo perseguição ou aletatório), cabe ao controlador alterar o comportamento destes monstros. Este padrão é uma junção com algumas alterações do Strategy Pattern e State Pattern.
-
-### Padrão
-Recorreu-se ao design pattern Strategy, que define implementações diferentes dos métodos referidos consoante o tipo de monstro em questão. As entidades que chamam estes métodos não têm informação acerca de como estão implementados cada um deles, estando apenas interessados em executá-los. O State pattern aparece porque ao fim de algum tempo, o comportamento do Runner Monsters é alterado pelo controlador.
-
-### Implementação
+#### Implementação
 A implementação deste padrão é representada através do seguinte modelo UML:
 
-<img src="resources/StateStrategy.png" width="1700" height="280" />
+<img src="resources/State2.png" width="600" height="550" />
+
+### Movimento dos Monstros
+#### Contexto do Problema
+O movimento dos monstros difere, pelo que se criou uma interface "StepMonsters", com dois métodos. No jogo estão presentes 5 tipos diferentes de movimentos de monstros (Default, WallBreaker, Jumper, RunnerEnabled e RunnerDisabled). O tipo de movimento é definido em tempo de execução, na medida em que a classe MonsterController está encarregue de definir o movimento de cada monstro. Já que o Runner pode ter dois movimentos diferentes (modo perseguição ou aletatório), cabe ao controlador alterar o comportamento destes monstros. Este padrão é uma junção com algumas alterações do Strategy Pattern e State Pattern.
+
+#### Padrão
+Recorreu-se ao design pattern Strategy, que define implementações diferentes dos métodos referidos consoante o tipo de monstro em questão. As entidades que chamam estes métodos não têm informação acerca de como estão implementados cada um deles, estando apenas interessados em executá-los. O State pattern aparece porque ao fim de algum tempo, o comportamento do Runner Monsters é alterado pelo controlador.
+
+#### Implementação
+A implementação deste padrão é representada através do seguinte modelo UML:
+
+<img src="resources/StateStrategy.png" width="1000" height="450" />
 
 O código para as classes que utilizam este padrão encontra-se nos seguintes links:
 - MonsterControllerManager (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/MonsterControllerManager.java)
@@ -178,7 +182,7 @@ Este padrão consiste num loop onde é controlado o tempo de cada iteração, pe
 ### Implementação
 A implementação deste padrão é representada através do seguinte modelo UML:
 
-<img src="resources/Loop.png" width="1700" height="330" />
+<img src="resources/Loop.png" width="1600" height="800" />
 
 O código que reflete este padrão encontra-se nos seguintes links:
 - State (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/State.java)
