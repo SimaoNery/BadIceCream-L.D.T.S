@@ -64,9 +64,9 @@ public class Graphics {
             break;
             case 9: gui.drawCharacter(position.getX(), position.getY(), 'l', "#87CEFA");
             break;
-            case 10: gui.drawCharacter(position.getX(), position.getY(), 'm', "#87CEFA");
+            case 10: gui.drawCharacter(position.getX(), position.getY(), 'n', "#87CEFA");
             break;
-            case 11: gui.drawCharacter(position.getX(), position.getY(), 'n', "#87CEFA");
+            case 11: gui.drawCharacter(position.getX(), position.getY(), 'm', "#87CEFA");
             break;
         }
     }
