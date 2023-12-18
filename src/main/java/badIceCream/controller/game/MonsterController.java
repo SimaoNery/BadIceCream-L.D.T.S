@@ -6,6 +6,9 @@ import badIceCream.controller.game.monsters.RunnerMovementDisabled;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.monsters.Monster;
 import badIceCream.utils.Audio;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.util.Random;
 
@@ -35,8 +38,12 @@ public class MonsterController {
             runnerOn = !runnerOn;
 
             if (runnerOn) {
-                Game.setBackgroundAudio(new Audio(Audio.loadMusic("RunnerMonsterSound.wav")));
-                Game.playBackgroundAudio();
+                try {
+                    Game.setBackgroundAudio(new Audio(Audio.loadMusic("RunnerMonsterSound.wav")));
+                    Game.playBackgroundAudio();
+                } catch (LineUnavailableException | UnsupportedAudioFileException e) {
+                    e.printStackTrace();
+                }
                 monster.startRunning();
                 this.step = new RunnerMovementEnabled();
             }

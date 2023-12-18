@@ -21,7 +21,7 @@ public class IceCream extends Element {
         return alive;
     }
 
-    public void changeAlive() {
+    public synchronized void changeAlive() {
         this.alive = !this.alive;
     }
 

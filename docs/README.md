@@ -110,18 +110,21 @@ Ao longo do jogo, é possível que um objeto se encontre em diferentes estados, 
 ### Padrão
 O _State Pattern_ permite resolver este problema facilmente, pegando no código que posteriormente estaria numa só classe e dividindo-o em várias classes, fazendo com que o objeto consiga mudar de comportamento quando o seu estado muda. Esta abordagem faz sentido quando um objeto atua de forma diferente consoante o seu estado interno. (Como por exemplo nos estados dos diversos Menus utilizados)
 ### Implementação
+Posto isto, utilizou-se este padrão nas seguintes classes, representadas pelo seguinte modelo UML:
 
-A implementação deste padrão é representada através do seguinte modelo UML:
+#### Game e Menu States
+O jogo altera o seu estado, consoante o acontecimento de algum evento. (Por exemplo, transição de game state para PauseMenu assim que utilizador pressiona "ESC", entre outros)
 
-# 
 <img src="resources/State.png" width="1000" height="550" />
 
 # 
 
-O código para as classes que estendem State ainda não está completo, mas a sua base encontra-se nos seguintes links:
+O código para as classes que estendem State, encontra-se nos seguintes links:
 - GameState (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/GameState.java);
 - MainMenuState (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/MainMenuState.java);
 - PauseMenuState (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/PauseMenuState.java).
+
+#
 
 ### Consequências
 A escolha deste padrão trouxe várias vantagens:
@@ -132,17 +135,27 @@ Vantagens
 - Torna a correção do código e a criação de testes mais simples;
 - Ao introduzir novos estados deixa de ser necessário mudar estados já existentes.
 
-## _Strategy Pattern_
+## _Strategy Pattern e State Pattern_
+#### Game e Menu Graphics
 ### Contexto do Problema
-As classes RunnerController, DefaultController, JumperController e WallBreakerController difererem apenas na definição dos métodos step e moveMonster. Criando quatro classes completamente iguais na sua interface mas apenas diferentes nas implementações desses métodos trás redundância ao projeto (por estar a repetir alguns campos idênticos).
+A representação dos vários elementos e suas variantes em fonte, implicou a inclusão de duas fontes no jogo, uma para os Menus e outra para o Jogo. Neste sentido, utilizou-se o strategy pattern para definir em qual os gráficos a serem utilizados. Sempre que o jogo passa de um menu para o jogo em si, cria um novo estado e, altera os gráficos para GameGraphics. De igual modo, se enquanto o jogo, o jogador perder, ganhar ou pressionar o "ESC" para fazer pausa, os gráficos passam de GameGraphics para MenuGraphics.
+#### Game e Menu Graphics
+Este padrão foi também utilizado pelo Graphics, na medida em que, o jogo inclui dois tipos de gráficos diferentes, a saber: MenuGraphics e GameGraphics. Deste modo, a alteração de um tipo de gráficos para outro é feita através do Strategy Pattern.
+Os controladores são responsáveis por alterar o estado dos gráficos, quando necessário.
+
+<img src="resources/State2.png" width="1000" height="550" />
+
+#### Movimento dos Monstros
+### Contexto do Problema
+O movimento dos monstros difere, pelo que se criou uma interface "StepMonsters", com dois métodos. No jogo estão presentes 5 tipos diferentes de movimentos de monstros (Default, WallBreaker, Jumper, RunnerEnabled e RunnerDisabled). O tipo de movimento é definido em tempo de execução, na medida em que a classe MonsterController está encarregue de definir o movimento de cada monstro. Já que o Runner pode ter dois movimentos diferentes (modo perseguição ou aletatório), cabe ao controlador alterar o comportamento destes monstros. Este padrão é uma junção com algumas alterações do Strategy Pattern e State Pattern.
 
 ### Padrão
-Pelo facto das classes RunnerController, DefaultController, JumperController e WallBreakerController difererem apenas na definição dos métodos step e moveMonster, recorreu-se ao design pattern Strategy, que define implementações diferentes dos métodos referidos consoante o tipo de Controller em questão. As entidades que chamam estes métodos não têm informação acerca de como estão implementados cada um deles, estando apenas interessados em executá-los. 
+Recorreu-se ao design pattern Strategy, que define implementações diferentes dos métodos referidos consoante o tipo de monstro em questão. As entidades que chamam estes métodos não têm informação acerca de como estão implementados cada um deles, estando apenas interessados em executá-los. O State pattern aparece porque ao fim de algum tempo, o comportamento do Runner Monsters é alterado pelo controlador.
 
 ### Implementação
 A implementação deste padrão é representada através do seguinte modelo UML:
 
-<img src="resources/Strategy.png" width="1700" height="280" />
+<img src="resources/StateStrategy.png" width="1700" height="280" />
 
 O código para as classes que utilizam este padrão encontra-se nos seguintes links:
 - MonsterControllerManager (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/MonsterControllerManager.java)
@@ -150,29 +163,10 @@ O código para as classes que utilizam este padrão encontra-se nos seguintes li
 - JumperController (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/monsters/JumperController.java)
 - RunnerController (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/monsters/RunnerController.java)
 - WallBreakerController (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/monsters/WallBreakerController.java)
-- 
-### Consequências
-Desta forma, quando se pretende executar _step_ de qualquer monstro, faz-se via _MonsterControllerManager_ e este executa o respetivo _MonsterController_ que irá processar e satisfazer o pedido.
-
-## _Factory Method Pattern_
-### Contexto do Problema
-A classe _State_, com subclasses GameState e MenuState, tem a necessidade de antecipar que objetos deve criar a partir dos métodos getController() e getViewer(). O mesmo verifica-se para uma das suas sublasses, MenuState, com subclasses PauseMenuState e MainMenuState.
-### Padrão
-Por este motivo, recorreu-se ao _Factory Method Pattern_, que elimina a necessidade de vincular classes específcas para cada aplicação no código. Deste modo, as subclasses das classes _State_ e _MenuState_ especificam o tipo de objetos a criar.
-
-### Implementação
-A implementação deste padrão é representada através do seguinte modelo UML:
-<img src="resources/FactoryPattern.png" width="600" height="400" />
-
-O código para a implementação deste padrão encontra-se nos seguintes links:
-- State(https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/State.java)
-- GameState(https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/GameState.java)
-- MenuState(https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/MenuState.java)
-- MainMenuState(https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/MainMenuState.java)
-- PauseMenuState(https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/PauseMenuState.java)
 
 ### Consequências
-Desta forma, quando se executa getController() ou getViewer(), a partir das subclasses implementadas para State() e MenuState(), o código só necessita de lidar com as classes State ou MenuState, sendo as suas sublcasses as que delegam onde se encontra a informação a obter.
+Desta forma, quando se pretende executar _step_ de qualquer monstro, faz-se via _MonsterController_ e este encarrega-se de executar o respetivo movimento de cada monstro.
+Para além disso, o Monster Controller altera o estado (tipo de movimento) do Runner Monster, passado de modo perseguição para modo aleatório, e vice-versa.
 
 ## _Game Loop Pattern_
 ### Contexto do Problema

@@ -1,12 +1,15 @@
 package badIceCream.controller.game.monsters;
 
 import badIceCream.GUI.GUI;
+import badIceCream.Game;
 import badIceCream.controller.game.StepMonsters;
 import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.monsters.Monster;
 import badIceCream.utils.Audio;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.util.List;
 
@@ -20,7 +23,12 @@ public class WallBreakerMovement implements StepMonsters {
                 monster.setLastAction(lastMove(monster.getPosition(), pos));
 
                 if (arena.isIceWall(pos)) {
-                    new Audio(Audio.loadMusic("BreakWallSound.wav")).playOnce();
+                    try {
+                        Game.setBackgroundAudio(new Audio(Audio.loadMusic("BreakWallSound.wav")));
+                        Game.playBackgroundAudio();
+                    } catch (LineUnavailableException | UnsupportedAudioFileException e) {
+                        e.printStackTrace();
+                    }
                     arena.iceWallDestroyed(pos);
                 }
                 moveMonster(monster, pos, arena);

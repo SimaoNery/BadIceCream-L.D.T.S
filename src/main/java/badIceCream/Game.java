@@ -8,6 +8,9 @@ import badIceCream.states.MainMenuState;
 import badIceCream.states.State;
 import badIceCream.utils.Audio;
 import badIceCream.utils.Type;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -21,8 +24,12 @@ public class Game {
     public Game() throws FontFormatException, IOException, URISyntaxException {
         this.gui = new Graphics(new MenuGraphics(140, 50));
         this.state = new MainMenuState(new MainMenu(), 1);
-        this.audio = new Audio(Audio.loadMusic("MainMenuMusic.wav"));
-        audio.play();
+        try {
+            this.audio = new Audio(Audio.loadMusic("MainMenuMusic.wav"));
+            audio.play();
+        } catch (LineUnavailableException | UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException {
@@ -34,19 +41,19 @@ public class Game {
         this.audio.play();
     }
 
-    public static void setBackgroundAudio(Audio audio) {
+    public synchronized static void setBackgroundAudio(Audio audio) {
         backgroundAudio = audio;
     }
 
-    public static void playBackgroundAudio() {
+    public synchronized static void playBackgroundAudio() {
         backgroundAudio.playOnce();
     }
 
-    public void stopAudio() {
+    public synchronized void stopAudio() {
         audio.stop();
     }
 
-    public void playAudioOnce() {
+    public synchronized void playAudioOnce() {
         audio.playOnce();
     }
 

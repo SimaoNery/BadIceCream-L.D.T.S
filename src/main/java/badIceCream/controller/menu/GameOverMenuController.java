@@ -11,6 +11,8 @@ import badIceCream.states.MainMenuState;
 import badIceCream.utils.Audio;
 import badIceCream.utils.Type;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 
 public class GameOverMenuController extends MenuController<GameOverMenu> {
@@ -30,11 +32,19 @@ public class GameOverMenuController extends MenuController<GameOverMenu> {
                 break;
             case SELECT:
                 if (getModel().isSelectedQuitToMainMenu()) {
-                    game.setAudio(new Audio(Audio.loadMusic("MainMenuMusic.wav")));
+                    try {
+                        game.setAudio(new Audio(Audio.loadMusic("MainMenuMusic.wav")));
+                    } catch (LineUnavailableException | UnsupportedAudioFileException e) {
+                        e.printStackTrace();
+                    }
                     game.setState(new MainMenuState(new MainMenu(), game.getState().getLevel()), Type.nulo, 0, 0);
                 }
                 if (getModel().isSelectedPlayAgain()){
-                    game.setAudio(new Audio(Audio.loadMusic("LevelMusic.wav")));
+                    try {
+                        game.setAudio(new Audio(Audio.loadMusic("LevelMusic.wav")));
+                    } catch (LineUnavailableException | UnsupportedAudioFileException e) {
+                        e.printStackTrace();
+                    }
                     Arena arena = new LoaderArenaBuilder(game.getState().getLevel()).createArena();
                     game.setState(new GameState(arena, game.getState().getLevel()), Type.game, arena.getWidth(), arena.getHeight());
                 }

@@ -9,6 +9,8 @@ import badIceCream.states.GameState;
 import badIceCream.utils.Audio;
 import badIceCream.utils.Type;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 
 public class SelectLevelMenuController extends MenuController<SelectLevelMenu> {
@@ -27,27 +29,47 @@ public class SelectLevelMenuController extends MenuController<SelectLevelMenu> {
                 break;
             case SELECT:
                 if (getModel().isSelectedLevel1()){
-                    game.setAudio(new Audio(Audio.loadMusic("LevelMusic.wav")));
+                    try {
+                        game.setAudio(new Audio(Audio.loadMusic("LevelMusic.wav")));
+                    } catch (LineUnavailableException | UnsupportedAudioFileException e) {
+                        e.printStackTrace();
+                    }
                     Arena arena = new LoaderArenaBuilder(1).createArena();
                     game.setState(new GameState(arena, game.getState().getLevel()), Type.game, arena.getWidth(), arena.getHeight());
                 }
                 if (getModel().isSelectedLevel2() && game.getState().getLevel() >= 2){
-                    game.setAudio(new Audio(Audio.loadMusic("LevelMusic.wav")));
+                    try {
+                        game.setAudio(new Audio(Audio.loadMusic("LevelMusic.wav")));
+                    } catch (LineUnavailableException | UnsupportedAudioFileException e) {
+                        e.printStackTrace();
+                    }
                     Arena arena = new LoaderArenaBuilder(2).createArena();
                     game.setState(new GameState(arena, game.getState().getLevel()), Type.game, arena.getWidth(), arena.getHeight());
                 }
                 if (getModel().isSelectedLevel3() && game.getState().getLevel() >= 3){
-                    game.setAudio(new Audio(Audio.loadMusic("LevelMusic.wav")));
+                    try {
+                        game.setAudio(new Audio(Audio.loadMusic("LevelMusic.wav")));
+                    } catch (LineUnavailableException | UnsupportedAudioFileException e) {
+                        e.printStackTrace();
+                    }
                     Arena arena = new LoaderArenaBuilder(3).createArena();
                     game.setState(new GameState(arena, game.getState().getLevel()), Type.game, arena.getWidth(), arena.getHeight());
                 }
                 if (getModel().isSelectedLevel4() && game.getState().getLevel() >= 4){
-                    game.setAudio(new Audio(Audio.loadMusic("LevelMusic.wav")));
+                    try {
+                        game.setAudio(new Audio(Audio.loadMusic("LevelMusic.wav")));
+                    } catch (LineUnavailableException | UnsupportedAudioFileException e) {
+                        e.printStackTrace();
+                    }
                     Arena arena = new LoaderArenaBuilder(4).createArena();
                     game.setState(new GameState(arena, game.getState().getLevel()), Type.game, arena.getWidth(), arena.getHeight());
                 }
                 if (getModel().isSelectedLevel5() && game.getState().getLevel() >= 5){
-                    game.setAudio(new Audio(Audio.loadMusic("LevelMusic.wav")));
+                    try {
+                        game.setAudio(new Audio(Audio.loadMusic("LevelMusic.wav")));
+                    } catch (LineUnavailableException | UnsupportedAudioFileException e) {
+                        e.printStackTrace();
+                    }
                     Arena arena = new LoaderArenaBuilder(5).createArena();
                     game.setState(new GameState(arena, game.getState().getLevel()), Type.game, arena.getWidth(), arena.getHeight());
                 }

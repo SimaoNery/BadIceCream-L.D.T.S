@@ -1,10 +1,8 @@
 package badIceCream.utils;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.FloatControl;
+import javax.sound.sampled.*;
 
 import java.io.File;
+import java.io.IOException;
 
 
 public class Audio {
@@ -14,8 +12,9 @@ public class Audio {
         this.sound = sound;
     }
 
-    public static Clip loadMusic(String sound) throws NullPointerException{
-        try {
+    public synchronized static Clip loadMusic(String sound) throws LineUnavailableException, UnsupportedAudioFileException, IOException {
+
+        try{
             String rootPath = new File(System.getProperty("user.dir")).getPath();
             String soundPath = rootPath + "/src/main/resources/Music/" + sound;
             File soundFile = new File(soundPath);
@@ -24,7 +23,7 @@ public class Audio {
             soundClip.open(input);
 
             FloatControl volumeController = (FloatControl) soundClip.getControl(FloatControl.Type.MASTER_GAIN);
-            volumeController.setValue(-20.0f); //sound volume
+            volumeController.setValue(-20.0f);
 
             return soundClip;
         } catch (Exception e) {
@@ -44,7 +43,7 @@ public class Audio {
         sound.start();
     }
 
-    public void stop() {
+    synchronized public void stop() {
         sound.stop();
     }
 }

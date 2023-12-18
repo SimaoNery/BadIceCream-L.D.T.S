@@ -16,6 +16,8 @@ import badIceCream.utils.Audio;
 import badIceCream.utils.Type;
 
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.util.List;
 
@@ -67,7 +69,11 @@ public class ArenaController extends GameController {
             }
             else {
                 game.stopAudio();
-                game.setAudio(new Audio(Audio.loadMusic("LevelCompleteMenuSound.wav")));
+                try {
+                    game.setAudio(new Audio(Audio.loadMusic("LevelCompleteMenuSound.wav")));
+                } catch (LineUnavailableException | UnsupportedAudioFileException e) {
+                    e.printStackTrace();
+                }
                 game.playAudioOnce();
                 if (getModel().getLevel() >= game.getState().getLevel()) {
                     game.getState().increaseLevel();
@@ -77,12 +83,20 @@ public class ArenaController extends GameController {
         }
         else if (!getModel().getIceCream().getAlive()) {
             game.stopAudio();
-            game.setAudio(new Audio(Audio.loadMusic("GameOverMenuSound.wav")));
+            try {
+                game.setAudio(new Audio(Audio.loadMusic("GameOverMenuSound.wav")));
+            } catch (LineUnavailableException | UnsupportedAudioFileException e) {
+                e.printStackTrace();
+            }
             game.playAudioOnce();
             game.setState(new GameOverMenuState(new GameOverMenu(), game.getState().getLevel()), Type.menu, 140, 50);
         }
         else if (action == GUI.ACTION.PAUSE) {
-            game.setAudio(new Audio(Audio.loadMusic("MainMenuMusic.wav")));
+            try {
+                game.setAudio(new Audio(Audio.loadMusic("MainMenuMusic.wav")));
+            } catch (LineUnavailableException | UnsupportedAudioFileException e) {
+                e.printStackTrace();
+            }
             game.setState(new PauseMenuState(new PauseMenu(), game.getState(), game.getState().getLevel()), Type.menu, 140, 50);
         }
         else {

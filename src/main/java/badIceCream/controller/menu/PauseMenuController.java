@@ -11,6 +11,8 @@ import badIceCream.utils.Audio;
 import badIceCream.utils.Type;
 
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 
 public class PauseMenuController extends MenuController<PauseMenu> {
@@ -32,7 +34,11 @@ public class PauseMenuController extends MenuController<PauseMenu> {
                 break;
             case SELECT:
                 if (getModel().isSelectedResume()) {
-                    game.setAudio(new Audio(Audio.loadMusic("LevelMusic.wav")));
+                    try {
+                        game.setAudio(new Audio(Audio.loadMusic("LevelMusic.wav")));
+                    } catch (LineUnavailableException | UnsupportedAudioFileException e) {
+                        e.printStackTrace();
+                    }
                     game.setState(parent, Type.game, 70, 50);
                 }
                 if (getModel().isSelectedMenu()) game.setState(new MainMenuState(new MainMenu(), game.getState().getLevel()), Type.nulo, 0, 0);
