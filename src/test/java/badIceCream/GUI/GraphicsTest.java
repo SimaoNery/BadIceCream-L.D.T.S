@@ -104,9 +104,9 @@ public class GraphicsTest {
         graphics.drawIceWall(position,9);
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), 'l', "#87CEFA");
         graphics.drawIceWall(position,10);
-        verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), 'm', "#87CEFA");
-        graphics.drawIceWall(position,11);
         verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), 'n', "#87CEFA");
+        graphics.drawIceWall(position,11);
+        verify(gui,times(1)).drawCharacter(position.getX(), position.getY(), 'm', "#87CEFA");
     }
     @Test
     public void drawDefaultMonster() {
