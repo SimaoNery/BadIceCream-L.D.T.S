@@ -199,7 +199,7 @@ Este padrão consiste num loop onde é controlado o tempo de cada iteração, pe
 ### Implementação
 A implementação deste padrão é representada através do seguinte modelo UML:
 
-<img src="resources/Loop.png" width="1500" height="500" />
+<img src="resources/Loop.png" width="1700" height="650" />
 
 O código que reflete este padrão encontra-se nos seguintes links:
 - Game: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/Game.java
