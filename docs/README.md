@@ -182,7 +182,7 @@ Este padrão consiste num loop onde é controlado o tempo de cada iteração, pe
 ### Implementação
 A implementação deste padrão é representada através do seguinte modelo UML:
 
-<img src="resources/Loop.png" width="2000" height="800" />
+<img src="resources/Loop.png" width="1800" height="800" />
 
 O código que reflete este padrão encontra-se nos seguintes links:
 - State (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/State.java)
