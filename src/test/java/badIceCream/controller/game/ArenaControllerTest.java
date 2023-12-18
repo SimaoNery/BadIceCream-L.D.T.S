@@ -56,7 +56,7 @@ class ArenaControllerTest {
 
         monsterControllers = new ArrayList<>(Arrays.asList(monsterController1, monsterController2));
 
-        arenaController = new ArenaController(arena, iceCreamController, monsterControllers);
+        arenaController = new ArenaController(arena, iceCreamController, monsterControllers, audio);
         game.setAll(state, graphics, audio, audio, audio, audio);
     }
     @Test

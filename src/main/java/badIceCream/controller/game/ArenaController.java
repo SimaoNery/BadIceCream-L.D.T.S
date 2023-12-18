@@ -1,10 +1,7 @@
 package badIceCream.controller.game;
 
 import badIceCream.Game;
-import badIceCream.controller.game.monsters.DefaultMovement;
-import badIceCream.controller.game.monsters.JumperMovement;
-import badIceCream.controller.game.monsters.RunnerMovementDisabled;
-import badIceCream.controller.game.monsters.WallBreakerMovement;
+import badIceCream.controller.game.monsters.*;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.GUI.GUI;
 import badIceCream.model.game.elements.monsters.Monster;
@@ -26,12 +23,14 @@ public class ArenaController extends GameController {
     private final List<MonsterController> monsterController;
     private boolean first;
     private long strawberry;
+    private Audio runnerSound;
 
-    public ArenaController(Arena arena, IceCreamController iceCreamController, List<MonsterController> monsterController) {
+    public ArenaController(Arena arena, IceCreamController iceCreamController, List<MonsterController> monsterController, Audio audio) {
         super(arena);
         this.iceCreamController = iceCreamController;
         this.monsterController = monsterController;
         this.first = true;
+        this.runnerSound = audio;
 
         for (Monster m : arena.getMonsters()) {
             switch (m.getType()) {
@@ -39,13 +38,8 @@ public class ArenaController extends GameController {
                     break;
                 case 2: monsterController.add(new MonsterController(arena, new JumperMovement(), m));
                     break;
-                case 3: MonsterController runner = new MonsterController(arena, new RunnerMovementDisabled(), m);
-                    try {
-                        runner.setRunner(new Audio(Audio.loadMusic("RunnerMonsterSound.wav")));
-                    } catch (LineUnavailableException | UnsupportedAudioFileException | IOException e) {
-                        e.printStackTrace();
-                    }
-                    monsterController.add(runner);
+                case 3:
+                    monsterController.add(new MonsterController(arena,new RunnerMovementDisabled(), m, runnerSound));
                     break;
                 case 4: monsterController.add(new MonsterController(arena, new WallBreakerMovement(), m));
                     break;

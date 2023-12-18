@@ -25,7 +25,7 @@ public class Game {
 
     public Game() throws FontFormatException, IOException {
         this.gui = new Graphics(new MenuGraphics(140, 50));
-        this.state = new MainMenuState(new MainMenu(), 1);
+        this.state = new MainMenuState(new MainMenu(), 4);
         try {
             this.gameOverMusic = new Audio(Audio.loadMusic("GameOverMenuSound.wav"));
             this.levelCompleteMusic = new Audio(Audio.loadMusic("LevelCompleteMenuSound.wav"));

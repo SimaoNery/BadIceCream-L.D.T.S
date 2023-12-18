@@ -36,47 +36,51 @@ public class SelectLevelMenuController extends MenuController<SelectLevelMenu> {
                     } catch (LineUnavailableException | UnsupportedAudioFileException e) {
                         e.printStackTrace();
                     }
-                    game.setState(new GameState(arena, game.getState().getLevel()), Type.game, arena.getWidth(), arena.getHeight());
+                    try {
+                        game.setState(new GameState(arena, game.getState().getLevel()), Type.game, arena.getWidth(), arena.getHeight());
+                    } catch (UnsupportedAudioFileException | LineUnavailableException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
                 if (getModel().isSelectedLevel2() && game.getState().getLevel() >= 2){
                     Arena arena = new LoaderArenaBuilder(2).createArena();
                     try {
                         arena.setBreakWallSound(new Audio(Audio.loadMusic("BreakWallSound.wav")));
                         arena.setBuildWallSound(new Audio(Audio.loadMusic("BuildWallSound.wav")));
+                        game.setState(new GameState(arena, game.getState().getLevel()), Type.game, arena.getWidth(), arena.getHeight());
                     } catch (LineUnavailableException | UnsupportedAudioFileException e) {
                         e.printStackTrace();
                     }
-                    game.setState(new GameState(arena, game.getState().getLevel()), Type.game, arena.getWidth(), arena.getHeight());
                 }
                 if (getModel().isSelectedLevel3() && game.getState().getLevel() >= 3){
                     Arena arena = new LoaderArenaBuilder(3).createArena();
                     try {
                         arena.setBreakWallSound(new Audio(Audio.loadMusic("BreakWallSound.wav")));
                         arena.setBuildWallSound(new Audio(Audio.loadMusic("BuildWallSound.wav")));
+                        game.setState(new GameState(arena, game.getState().getLevel()), Type.game, arena.getWidth(), arena.getHeight());
                     } catch (LineUnavailableException | UnsupportedAudioFileException e) {
                         e.printStackTrace();
                     }
-                    game.setState(new GameState(arena, game.getState().getLevel()), Type.game, arena.getWidth(), arena.getHeight());
                 }
                 if (getModel().isSelectedLevel4() && game.getState().getLevel() >= 4){
                     Arena arena = new LoaderArenaBuilder(4).createArena();
                     try {
                         arena.setBreakWallSound(new Audio(Audio.loadMusic("BreakWallSound.wav")));
                         arena.setBuildWallSound(new Audio(Audio.loadMusic("BuildWallSound.wav")));
+                        game.setState(new GameState(arena, game.getState().getLevel()), Type.game, arena.getWidth(), arena.getHeight());
                     } catch (LineUnavailableException | UnsupportedAudioFileException e) {
                         e.printStackTrace();
                     }
-                    game.setState(new GameState(arena, game.getState().getLevel()), Type.game, arena.getWidth(), arena.getHeight());
                 }
                 if (getModel().isSelectedLevel5() && game.getState().getLevel() >= 5){
                     Arena arena = new LoaderArenaBuilder(5).createArena();
                     try {
                         arena.setBreakWallSound(new Audio(Audio.loadMusic("BreakWallSound.wav")));
                         arena.setBuildWallSound(new Audio(Audio.loadMusic("BuildWallSound.wav")));
+                        game.setState(new GameState(arena, game.getState().getLevel()), Type.game, arena.getWidth(), arena.getHeight());
                     } catch (LineUnavailableException | UnsupportedAudioFileException e) {
                         e.printStackTrace();
                     }
-                    game.setState(new GameState(arena, game.getState().getLevel()), Type.game, arena.getWidth(), arena.getHeight());
                 }
 
         }

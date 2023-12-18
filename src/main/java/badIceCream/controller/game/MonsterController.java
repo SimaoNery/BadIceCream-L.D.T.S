@@ -34,9 +34,6 @@ public class MonsterController {
         this.monster = monster;
         this.runner = runner;
     }
-    public void setRunner(Audio runner) {
-        this.runner = runner;
-    }
     public void step(long time) throws IOException {
         long minValue = 5000L;
         long maxValue = 15000L;
