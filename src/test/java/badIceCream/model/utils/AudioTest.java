@@ -6,6 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -38,11 +42,11 @@ public class AudioTest {
         verify(sound,times(1)).stop();
     }
     @Test
-    public void loadMusicNull() {
+    public void loadMusicNull() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         assertNull(Audio.loadMusic("test.wav"));
     }
     @Test
-    void loadMusicNotNull() {
+    void loadMusicNotNull() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         assertNotNull(Audio.loadMusic("BreakWallSound.wav"));
         assertNotNull(Audio.loadMusic("BuildWallSound.wav"));
         assertNotNull(Audio.loadMusic("GameOverMenuSound.wav"));

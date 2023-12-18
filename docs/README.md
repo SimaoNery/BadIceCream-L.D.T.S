@@ -230,7 +230,9 @@ Desta forma, consegue-se controlar a fluidez e a progressão do jogo ao longo do
 ![](resources/TestCoverage.png)
 
 ### _Mutation Testing Report_
-**TO BE DONE**
+![](resources/PITestTerminal.png)
+
+![](resources/PITestReport.png)
 
 ## Self-evaluation
 Nelson Neto 33.3% <br />
