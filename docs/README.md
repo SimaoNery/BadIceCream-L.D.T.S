@@ -5,7 +5,7 @@ Neste jogo de _arcade_ poderás ajudar o Bad Ice Cream a roubar as suas frutas f
 # _UML Diagram_
 O esquema e desenho de alto nível deste jogo foram pensados inicialmente e recorreu-se a Unified Modelling Language (UML) para o representar. O UML é o seguinte:
 
-<img src="resources/UML.drawio.png" width="2000" height="1000" />
+<img src="resources/UML.png" width="2000" height="1000" />
 
 # _Features_ Implementadas
 - Movimento do Bad Ice Cream: O personagem irá mover-se para cima (seta para cima), para baixo (seta para baixo), para esquerda (seta para a esquerda) ou para a direita (seta para a direita), de acordo com o input do utilizador;
@@ -87,9 +87,9 @@ A implantação deste padrão pode ser representada através do seguinte modelo 
 
 
 As 3 classes podem ser encontradas nos seguintes links:
-- Controller (https://github.com/FEUP-LDTS-2023/project-l10gr08/tree/main/src/main/java/badIceCream/controller)
-- Model (https://github.com/FEUP-LDTS-2023/project-l10gr08/tree/main/src/main/java/badIceCream/model)
-- View (https://github.com/FEUP-LDTS-2023/project-l10gr08/tree/main/src/main/java/badIceCream/viewer)
+- Controller https://github.com/FEUP-LDTS-2023/project-l10gr08/tree/main/src/main/java/badIceCream/controller
+- Model https://github.com/FEUP-LDTS-2023/project-l10gr08/tree/main/src/main/java/badIceCream/model
+- View https://github.com/FEUP-LDTS-2023/project-l10gr08/tree/main/src/main/java/badIceCream/viewer
 
 ### Consequências
 A escolha deste padrão trouxe vantagens e desvantagens:
@@ -113,17 +113,24 @@ O _State Pattern_ permite resolver este problema facilmente, pegando no código 
 Posto isto, utilizou-se este padrão nas seguintes classes, representadas pelo seguinte modelo UML:
 
 #### Game e Menu States
-O jogo altera o seu estado, consoante o acontecimento de algum evento. (Por exemplo, transição de game state para PauseMenu assim que utilizador pressiona "ESC", entre outros)
+Os controladores do jogo alteram o estado do programa, consoante o acontecimento de algum evento. (Por exemplo, transição de game state para PauseMenu assim que utilizador pressiona "ESC", entre outros)
 
-<img src="resources/State.png" width="1000" height="550" />
+<img src="resources/State.png" width="1000" height="400" />
 
 # 
 
 O código para as classes que estendem State, encontra-se nos seguintes links:
-- GameState (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/GameState.java);
-- MainMenuState (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/MainMenuState.java);
-- PauseMenuState (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/PauseMenuState.java).
+- GameState https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/GameState.java
+- MenuState https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/MenuState.java
 
+O código para as classes que estendem MenuState, encontram-se nos seguintes links:
+- MainMenuState https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/MainMenuState.java
+- PauseMenuState https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/PauseMenuState.java
+- SelectLevelMenuState https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/SelectLevelMenuState.java
+- InstructionsMenuFisrtPageState https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/InstructionsMenuFirstPageState.java
+- InstructionsMenuSecondPageState https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/InstructionsMenuSecondPageState.java
+- GameOverMenuState https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/GameOverMenuState.java
+- LevelCompletedMenuState https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/LevelCompletedMenuState.java
 #
 
 ### Consequências
@@ -141,32 +148,42 @@ Vantagens
 A representação dos vários elementos e suas variantes em fonte, implicou a inclusão de duas fontes no jogo, uma para os Menus e outra para o Jogo. Neste sentido, utilizou-se o strategy pattern para definir em qual os gráficos a serem utilizados. Sempre que o jogo passa de um menu para o jogo em si, cria um novo estado e, altera os gráficos para GameGraphics. De igual modo, se enquanto o jogo, o jogador perder, ganhar ou pressionar o "ESC" para fazer pausa, os gráficos passam de GameGraphics para MenuGraphics.
 
 #### Padrão
-Este padrão foi também utilizado pelo Graphics, na medida em que, o jogo inclui dois tipos de gráficos diferentes, a saber: MenuGraphics e GameGraphics. Deste modo, a alteração de um tipo de gráficos para outro é feita através do Strategy Pattern.
-Os controladores são responsáveis por alterar o estado dos gráficos, quando necessário.
+Estes padrões foram utilizados pelo Graphics, na medida em que, o jogo inclui dois tipos de gráficos diferentes, a saber: MenuGraphics e GameGraphics. Deste modo, a alteração de um tipo de gráficos para outro é feita através do Strategy Pattern. Os controladores são responsáveis por informar o Game que o estado dos gráficos alterou, quando necessário.
+Sendo assim, o Game altera o seu campo privado "Graphics", que é criado com um dos gráficos existentes: GameGraphics ou MenuGraphics, em tempo de execução.
 
 #### Implementação
-A implementação deste padrão é representada através do seguinte modelo UML:
+A implementação destes padrões é representada através do seguinte modelo UML:
 
-<img src="resources/State2.png" width="600" height="550" />
+<img src="resources/StateStrategy2.png" width="700" height="650" />
+
+O código para as classes envolvidas encontra-se nos seguintes links:
+- GUI: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/GUI/GUI.java
+- GameGraphics: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/GUI/GameGraphics.java
+- MenuGraphics: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/GUI/MenuGraphics.java
+- Graphics: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/GUI/Graphics.java
+- Game: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/Game.java
 
 ### Movimento dos Monstros
 #### Contexto do Problema
-O movimento dos monstros difere, pelo que se criou uma interface "StepMonsters", com dois métodos. No jogo estão presentes 5 tipos diferentes de movimentos de monstros (Default, WallBreaker, Jumper, RunnerEnabled e RunnerDisabled). O tipo de movimento é definido em tempo de execução, na medida em que a classe MonsterController está encarregue de definir o movimento de cada monstro. Já que o Runner pode ter dois movimentos diferentes (modo perseguição ou aletatório), cabe ao controlador alterar o comportamento destes monstros. Este padrão é uma junção com algumas alterações do Strategy Pattern e State Pattern.
+O movimento dos monstros difere, pelo que se criou uma interface "StepMonsters", com dois métodos. No jogo estão presentes 5 tipos diferentes de movimentos de monstros (Default, WallBreaker, Jumper, RunnerEnabled e RunnerDisabled). O tipo de movimento é definido em tempo de execução, na medida em que a classe MonsterController está encarregue de definir o movimento de cada monstro. Já que o Runner pode ter dois movimentos diferentes (modo perseguição e aletatório), cabe ao controlador alterar o comportamento destes monstros. Este padrão é uma junção com algumas alterações do Strategy Pattern e State Pattern.
 
 #### Padrão
-Recorreu-se ao design pattern Strategy, que define implementações diferentes dos métodos referidos consoante o tipo de monstro em questão. As entidades que chamam estes métodos não têm informação acerca de como estão implementados cada um deles, estando apenas interessados em executá-los. O State pattern aparece porque ao fim de algum tempo, o comportamento do Runner Monsters é alterado pelo controlador.
+Recorreu-se ao design pattern Strategy, que define algoritmos diferentes para o movimento dos monstros, consoante o tipo de monstro em questão. As entidades que chamam estes métodos não têm informação acerca de como estão implementados cada um deles, estando apenas interessados em executá-los. O State pattern aparece porque ao fim de algum tempo, o comportamento do Runner Monsters é alterado pelo controlador.
 
 #### Implementação
-A implementação deste padrão é representada através do seguinte modelo UML:
+A implementação destes padrões é representada através do seguinte modelo UML:
 
-<img src="resources/StateStrategy.png" width="1000" height="700" />
+<img src="resources/StateStrategy.png" width="1400" height="600" />
 
 O código para as classes que utilizam este padrão encontra-se nos seguintes links:
-- MonsterControllerManager (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/MonsterControllerManager.java)
-- DefaultController (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/monsters/DefaultController.java)
-- JumperController (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/monsters/JumperController.java)
-- RunnerController (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/monsters/RunnerController.java)
-- WallBreakerController (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/monsters/WallBreakerController.java)
+- MonsterController: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/MonsterController.java
+- StepMonsters: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/StepMonsters.java
+- DefaultMovement: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/monsters/DefaultMovement.java
+- RunnerMovementEnabled: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/monsters/RunnerMovementEnabled.java
+- RunnerMovementDisabled: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/monsters/RunnerMovementDisabled.java
+- JumperMovement: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/monsters/JumperMovement.java
+- WallBreakerMovement: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/monsters/WallBreakerMovement.java
+- ArenaController: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/ArenaController.java
 
 ### Consequências
 Desta forma, quando se pretende executar _step_ de qualquer monstro, faz-se via _MonsterController_ e este encarrega-se de executar o respetivo movimento de cada monstro.
@@ -177,23 +194,36 @@ Para além disso, o Monster Controller altera o estado (tipo de movimento) do Ru
 Por se tratar de um jogo, existe um padrão de desenho evidente. O jogo funciona como um loop que vai iterando e fazendo alterações ao seu estado.
 
 ### Padrão
-Este padrão consiste num loop onde é controlado o tempo de cada iteração, permitindo avançar mais rapidamente ou lentamente no jogo. O método "step" utilizado por várias classes, por exemplo para avançar os monstros.
+Este padrão consiste num loop onde é controlado o tempo de cada iteração, permitindo avançar mais rapidamente ou lentamente no jogo. O método "step" utilizado por várias classes, bem como o método "stepMonsters".
 
 ### Implementação
 A implementação deste padrão é representada através do seguinte modelo UML:
 
-<img src="resources/Loop.png" width="1800" height="800" />
+<img src="resources/Loop.png" width="1500" height="500" />
 
 O código que reflete este padrão encontra-se nos seguintes links:
-- State (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/State.java)
-- Controller (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/Controller.java)
-- GameController (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/GameController.java)
-- MenuController (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/menu/MenuController.java)
-- PauseMenuController (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/menu/PauseMenuController.java)
-- MainMenuController (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/menu/MainMenuController.java)
-- ArenaController (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/ArenaController.java)
-- IceCreamController (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/IceCreamController.java)
-- MonsterControllerManager (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/MonsterControllerManager.java)
+- Game: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/Game.java
+- State: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/State.java
+- Controller: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/Controller.java
+- GameController: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/GameController.java
+- MenuController: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/menu/MenuController.java
+- PauseMenuController: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/menu/PauseMenuController.java
+- MainMenuController: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/menu/MainMenuController.java
+- GameOverMenuController https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/menu/GameOverMenuController.java
+- InstructionsMenuFisrtPageController: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/menu/InstructionsMenuFirstPageController.java
+- InstructionsMenuSecondPageController: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/menu/InstructionsMenuSecondPageController.java
+- LevelCompletedMenuController: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/menu/LevelCompletedMenuController.java
+- SelectLevelMenuController: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/menu/SelectLevelMenuController.java
+- ArenaController: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/ArenaController.java
+- IceCreamController: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/IceCreamController.java
+- MonsterController: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/MonsterController.java
+- StepMonsters: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/StepMonsters.java
+- DefaultMovement: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/monsters/DefaultMovement.java
+- RunnerMovementEnabled: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/monsters/RunnerMovementEnabled.java
+- RunnerMovementDisabled: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/monsters/RunnerMovementDisabled.java
+- JumperMovement: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/monsters/JumperMovement.java
+- WallBreakerMovement: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/monsters/WallBreakerMovement.java
+
 ### Consequências
 Desta forma, consegue-se controlar a fluidez e a progressão do jogo ao longo do tempo.
    
