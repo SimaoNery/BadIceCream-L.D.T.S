@@ -32,20 +32,16 @@ public class GameOverMenuController extends MenuController<GameOverMenu> {
                 break;
             case SELECT:
                 if (getModel().isSelectedQuitToMainMenu()) {
-                    try {
-                        game.setAudio(new Audio(Audio.loadMusic("MainMenuMusic.wav")));
-                    } catch (LineUnavailableException | UnsupportedAudioFileException e) {
-                        e.printStackTrace();
-                    }
-                    game.setState(new MainMenuState(new MainMenu(), game.getState().getLevel()), Type.nulo, 0, 0);
+                    game.setState(new MainMenuState(new MainMenu(), game.getState().getLevel()), Type.menu, 140, 50);
                 }
                 if (getModel().isSelectedPlayAgain()){
+                    Arena arena = new LoaderArenaBuilder(game.getState().getLevel()).createArena();
                     try {
-                        game.setAudio(new Audio(Audio.loadMusic("LevelMusic.wav")));
+                        arena.setBreakWallSound(new Audio(Audio.loadMusic("BreakWallSound.wav")));
+                        arena.setBuildWallSound(new Audio(Audio.loadMusic("BuildWallSound.wav")));
                     } catch (LineUnavailableException | UnsupportedAudioFileException e) {
                         e.printStackTrace();
                     }
-                    Arena arena = new LoaderArenaBuilder(game.getState().getLevel()).createArena();
                     game.setState(new GameState(arena, game.getState().getLevel()), Type.game, arena.getWidth(), arena.getHeight());
                 }
         }

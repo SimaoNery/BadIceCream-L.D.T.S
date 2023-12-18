@@ -5,7 +5,11 @@ import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.Wall;
 import badIceCream.model.game.elements.monsters.Monster;
 import badIceCream.model.game.elements.fruits.Fruit;
+import badIceCream.utils.Audio;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
 import java.util.List;
 
 public abstract class ArenaBuilder {

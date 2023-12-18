@@ -39,7 +39,13 @@ public class ArenaController extends GameController {
                     break;
                 case 2: monsterController.add(new MonsterController(arena, new JumperMovement(), m));
                     break;
-                case 3: monsterController.add(new MonsterController(arena, new RunnerMovementDisabled(), m));
+                case 3: MonsterController runner = new MonsterController(arena, new RunnerMovementDisabled(), m);
+                    try {
+                        runner.setRunner(new Audio(Audio.loadMusic("RunnerMonsterSound.wav")));
+                    } catch (LineUnavailableException | UnsupportedAudioFileException | IOException e) {
+                        e.printStackTrace();
+                    }
+                    monsterController.add(runner);
                     break;
                 case 4: monsterController.add(new MonsterController(arena, new WallBreakerMovement(), m));
                     break;
@@ -68,36 +74,17 @@ public class ArenaController extends GameController {
                 getModel().generateNewFruits(getModel().getLevel());
             }
             else {
-                game.stopAudio();
-                try {
-                    game.setAudio(new Audio(Audio.loadMusic("LevelCompleteMenuSound.wav")));
-                } catch (LineUnavailableException | UnsupportedAudioFileException e) {
-                    e.printStackTrace();
-                }
-                game.playAudioOnce();
                 if (getModel().getLevel() >= game.getState().getLevel()) {
                     game.getState().increaseLevel();
                 }
-                game.setState(new LevelCompletedMenuState(new LevelCompletedMenu(), game.getState().getLevel()), Type.menu,140,50);
+                game.setState(new LevelCompletedMenuState(new LevelCompletedMenu(), game.getState().getLevel()), Type.win,140,50);
             }
         }
         else if (!getModel().getIceCream().getAlive()) {
-            game.stopAudio();
-            try {
-                game.setAudio(new Audio(Audio.loadMusic("GameOverMenuSound.wav")));
-            } catch (LineUnavailableException | UnsupportedAudioFileException e) {
-                e.printStackTrace();
-            }
-            game.playAudioOnce();
-            game.setState(new GameOverMenuState(new GameOverMenu(), game.getState().getLevel()), Type.menu, 140, 50);
+            game.setState(new GameOverMenuState(new GameOverMenu(), game.getState().getLevel()), Type.gameOver, 140, 50);
         }
         else if (action == GUI.ACTION.PAUSE) {
-            try {
-                game.setAudio(new Audio(Audio.loadMusic("MainMenuMusic.wav")));
-            } catch (LineUnavailableException | UnsupportedAudioFileException e) {
-                e.printStackTrace();
-            }
-            game.setState(new PauseMenuState(new PauseMenu(), game.getState(), game.getState().getLevel()), Type.menu, 140, 50);
+            game.setState(new PauseMenuState(new PauseMenu(), (GameState) game.getState(), game.getState().getLevel()), Type.menu, 140, 50);
         }
         else {
             iceCreamController.step(game, action, time);

@@ -16,9 +16,9 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 
 public class PauseMenuController extends MenuController<PauseMenu> {
-    private final State<GameState> parent;
+    private final GameState parent;
 
-    public PauseMenuController(PauseMenu menu, State<GameState> parent) {
+    public PauseMenuController(PauseMenu menu, GameState parent) {
         super(menu);
         this.parent = parent;
     }
@@ -34,12 +34,7 @@ public class PauseMenuController extends MenuController<PauseMenu> {
                 break;
             case SELECT:
                 if (getModel().isSelectedResume()) {
-                    try {
-                        game.setAudio(new Audio(Audio.loadMusic("LevelMusic.wav")));
-                    } catch (LineUnavailableException | UnsupportedAudioFileException e) {
-                        e.printStackTrace();
-                    }
-                    game.setState(parent, Type.game, 70, 50);
+                    game.setState(parent, Type.game, parent.getModel().getWidth(), parent.getModel().getHeight());
                 }
                 if (getModel().isSelectedMenu()) game.setState(new MainMenuState(new MainMenu(), game.getState().getLevel()), Type.nulo, 0, 0);
         }

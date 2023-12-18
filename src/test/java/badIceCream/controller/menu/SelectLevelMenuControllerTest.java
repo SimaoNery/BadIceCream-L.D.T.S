@@ -34,7 +34,7 @@ public class SelectLevelMenuControllerTest {
         MockitoAnnotations.openMocks(this);
         when(game.getState()).thenReturn(state);
         selectLevelMenuController = new SelectLevelMenuController(selectLevelMenu);
-        game.setAll(state, graphics, audio);
+        game.setAll(state, graphics, audio, audio, audio, audio);
         when(game.getGraphicsForGame(any(Type.class), anyInt(), anyInt())).thenReturn(null);
     }
 
@@ -56,7 +56,7 @@ public class SelectLevelMenuControllerTest {
     void testCaseSelectLevel1WhenIn1() throws IOException  {
         when(selectLevelMenu.isSelectedLevel1()).thenReturn(true);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, times(1)).setAudio(any(Audio.class));
+        //
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 
@@ -64,7 +64,7 @@ public class SelectLevelMenuControllerTest {
     void testCaseSelectLevel2WhenIn1() throws IOException  {
         when(selectLevelMenu.isSelectedLevel2()).thenReturn(true);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, never()).setAudio(any(Audio.class));
+        //verify(game, never()).setAudio(any(Audio.class));
         verify(game, never()).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 
@@ -72,7 +72,6 @@ public class SelectLevelMenuControllerTest {
     void testCaseSelectLevel3WhenIn1() throws IOException  {
         when(selectLevelMenu.isSelectedLevel3()).thenReturn(true);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, never()).setAudio(any(Audio.class));
         verify(game, never()).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 
@@ -80,7 +79,7 @@ public class SelectLevelMenuControllerTest {
     void testCaseSelectLevel4WhenIn1() throws IOException  {
         when(selectLevelMenu.isSelectedLevel4()).thenReturn(true);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, never()).setAudio(any(Audio.class));
+       
         verify(game, never()).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 
@@ -88,7 +87,7 @@ public class SelectLevelMenuControllerTest {
     void testCaseSelectLevel5WhenIn1() throws IOException  {
         when(selectLevelMenu.isSelectedLevel5()).thenReturn(true);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, never()).setAudio(any(Audio.class));
+       
         verify(game, never()).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 
@@ -97,7 +96,7 @@ public class SelectLevelMenuControllerTest {
         when(selectLevelMenu.isSelectedLevel1()).thenReturn(true);
         when(game.getState().getLevel()).thenReturn(2);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, times(1)).setAudio(any(Audio.class));
+        
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 
@@ -106,7 +105,7 @@ public class SelectLevelMenuControllerTest {
         when(selectLevelMenu.isSelectedLevel2()).thenReturn(true);
         when(game.getState().getLevel()).thenReturn(2);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, times(1)).setAudio(any(Audio.class));
+        
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 
@@ -115,7 +114,7 @@ public class SelectLevelMenuControllerTest {
         when(selectLevelMenu.isSelectedLevel3()).thenReturn(true);
         when(game.getState().getLevel()).thenReturn(2);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, never()).setAudio(any(Audio.class));
+       
         verify(game, never()).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 
@@ -124,7 +123,7 @@ public class SelectLevelMenuControllerTest {
         when(selectLevelMenu.isSelectedLevel4()).thenReturn(true);
         when(game.getState().getLevel()).thenReturn(2);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, never()).setAudio(any(Audio.class));
+       
         verify(game, never()).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 
@@ -133,7 +132,7 @@ public class SelectLevelMenuControllerTest {
         when(selectLevelMenu.isSelectedLevel5()).thenReturn(true);
         when(game.getState().getLevel()).thenReturn(2);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, never()).setAudio(any(Audio.class));
+       
         verify(game, never()).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 
@@ -142,7 +141,7 @@ public class SelectLevelMenuControllerTest {
         when(selectLevelMenu.isSelectedLevel1()).thenReturn(true);
         when(game.getState().getLevel()).thenReturn(3);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, times(1)).setAudio(any(Audio.class));
+        
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 
@@ -151,7 +150,7 @@ public class SelectLevelMenuControllerTest {
         when(selectLevelMenu.isSelectedLevel2()).thenReturn(true);
         when(game.getState().getLevel()).thenReturn(3);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, times(1)).setAudio(any(Audio.class));
+        
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 
@@ -160,7 +159,7 @@ public class SelectLevelMenuControllerTest {
         when(selectLevelMenu.isSelectedLevel3()).thenReturn(true);
         when(game.getState().getLevel()).thenReturn(3);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, times(1)).setAudio(any(Audio.class));
+        
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 
@@ -169,7 +168,7 @@ public class SelectLevelMenuControllerTest {
         when(selectLevelMenu.isSelectedLevel4()).thenReturn(true);
         when(game.getState().getLevel()).thenReturn(3);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, never()).setAudio(any(Audio.class));
+       
         verify(game, never()).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 
@@ -178,7 +177,7 @@ public class SelectLevelMenuControllerTest {
         when(selectLevelMenu.isSelectedLevel5()).thenReturn(true);
         when(game.getState().getLevel()).thenReturn(3);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, never()).setAudio(any(Audio.class));
+       
         verify(game, never()).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 
@@ -187,7 +186,7 @@ public class SelectLevelMenuControllerTest {
         when(selectLevelMenu.isSelectedLevel1()).thenReturn(true);
         when(game.getState().getLevel()).thenReturn(4);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, times(1)).setAudio(any(Audio.class));
+        
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 
@@ -196,7 +195,7 @@ public class SelectLevelMenuControllerTest {
         when(selectLevelMenu.isSelectedLevel2()).thenReturn(true);
         when(game.getState().getLevel()).thenReturn(4);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, times(1)).setAudio(any(Audio.class));
+        
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 
@@ -205,7 +204,7 @@ public class SelectLevelMenuControllerTest {
         when(selectLevelMenu.isSelectedLevel3()).thenReturn(true);
         when(game.getState().getLevel()).thenReturn(4);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, times(1)).setAudio(any(Audio.class));
+        
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 
@@ -214,7 +213,7 @@ public class SelectLevelMenuControllerTest {
         when(selectLevelMenu.isSelectedLevel4()).thenReturn(true);
         when(game.getState().getLevel()).thenReturn(4);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, times(1)).setAudio(any(Audio.class));
+        
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 
@@ -223,7 +222,7 @@ public class SelectLevelMenuControllerTest {
         when(selectLevelMenu.isSelectedLevel5()).thenReturn(true);
         when(game.getState().getLevel()).thenReturn(4);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, never()).setAudio(any(Audio.class));
+       
         verify(game, never()).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 
@@ -232,7 +231,7 @@ public class SelectLevelMenuControllerTest {
         when(selectLevelMenu.isSelectedLevel1()).thenReturn(true);
         when(game.getState().getLevel()).thenReturn(5);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, times(1)).setAudio(any(Audio.class));
+        
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 
@@ -241,7 +240,7 @@ public class SelectLevelMenuControllerTest {
         when(selectLevelMenu.isSelectedLevel2()).thenReturn(true);
         when(game.getState().getLevel()).thenReturn(5);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, times(1)).setAudio(any(Audio.class));
+        
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 
@@ -250,7 +249,7 @@ public class SelectLevelMenuControllerTest {
         when(selectLevelMenu.isSelectedLevel3()).thenReturn(true);
         when(game.getState().getLevel()).thenReturn(5);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, times(1)).setAudio(any(Audio.class));
+        
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 
@@ -259,7 +258,7 @@ public class SelectLevelMenuControllerTest {
         when(selectLevelMenu.isSelectedLevel4()).thenReturn(true);
         when(game.getState().getLevel()).thenReturn(5);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, times(1)).setAudio(any(Audio.class));
+        
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 
@@ -268,7 +267,7 @@ public class SelectLevelMenuControllerTest {
         when(selectLevelMenu.isSelectedLevel5()).thenReturn(true);
         when(game.getState().getLevel()).thenReturn(5);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, times(1)).setAudio(any(Audio.class));
+        
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 }

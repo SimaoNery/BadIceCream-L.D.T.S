@@ -3,9 +3,10 @@ package badIceCream.controller.menu;
 import badIceCream.GUI.GUI;
 import badIceCream.GUI.Graphics;
 import badIceCream.Game;
+import badIceCream.model.game.arena.Arena;
 import badIceCream.model.menu.PauseMenu;
+import badIceCream.states.GameState;
 import badIceCream.states.MainMenuState;
-import badIceCream.states.State;
 import badIceCream.utils.Audio;
 import badIceCream.utils.Type;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,11 +28,13 @@ public class PauseMenuControllerTest {
     @Mock
     private Game game;
     @Mock
-    private State state;
+    private GameState state;
     @Mock
     private Audio audio;
     @Mock
     private Graphics graphics;
+    @Mock
+    private Arena arena;
     @BeforeEach
     void setUp() throws IOException {
         MockitoAnnotations.openMocks(this);
@@ -39,8 +42,11 @@ public class PauseMenuControllerTest {
         pauseMenuController = new PauseMenuController(pauseMenu, state);
         when(pauseMenu.isSelectedMenu()).thenReturn(false);
         when(pauseMenu.isSelectedResume()).thenReturn(false);
-        game.setAll(state, graphics, audio);
+        game.setAll(state, graphics, audio, audio, audio, audio);
         when(game.getGraphicsForGame(any(Type.class), anyInt(), anyInt())).thenReturn(null);
+        when(arena.getHeight()).thenReturn(5);
+        when(arena.getHeight()).thenReturn(5);
+        when(state.getModel()).thenReturn(arena);
     }
 
     @Test
@@ -73,8 +79,7 @@ public class PauseMenuControllerTest {
 
         pauseMenuController.step(game, GUI.ACTION.SELECT, 0);
 
-        verify(game, times(1)).setAudio(any(Audio.class));
-        verify(game, times(1)).setState(state, Type.game, 70, 50);
+        verify(game, times(1)).setState(state, Type.game, 0, 5);
     }
 
 }

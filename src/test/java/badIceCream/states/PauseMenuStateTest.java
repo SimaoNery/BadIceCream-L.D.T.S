@@ -32,7 +32,7 @@ public class PauseMenuStateTest {
     @Mock
     private Game game;
     @Mock
-    private State parent;
+    private GameState parent;
 
     @BeforeEach
     void setUp(){

@@ -228,7 +228,7 @@ O código que reflete este padrão encontra-se nos seguintes links:
 Desta forma, consegue-se controlar a fluidez e a progressão do jogo ao longo do tempo.
    
 ## _Code Smells_
-**TO BE DONE**  
+
 
 ## Testes
 ### _Coverage Report_

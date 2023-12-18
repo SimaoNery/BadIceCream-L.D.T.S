@@ -18,6 +18,7 @@ public class MonsterController {
     private long lastMovement;
     private long lastChange;
     private final Arena arena;
+    private Audio runner;
     boolean runnerOn;
 
     public MonsterController(Arena arena, StepMonsters step, Monster monster) {
@@ -26,6 +27,15 @@ public class MonsterController {
         this.monster = monster;
         lastMovement = 0;
         lastChange = 0;
+    }
+    public MonsterController(Arena arena, StepMonsters step, Monster monster, Audio runner) {
+        this.arena = arena;
+        this.step = step;
+        this.monster = monster;
+        this.runner = runner;
+    }
+    public void setRunner(Audio runner) {
+        this.runner = runner;
     }
     public void step(long time) throws IOException {
         long minValue = 5000L;
@@ -38,12 +48,7 @@ public class MonsterController {
             runnerOn = !runnerOn;
 
             if (runnerOn) {
-                try {
-                    Game.setBackgroundAudio(new Audio(Audio.loadMusic("RunnerMonsterSound.wav")));
-                    Game.playBackgroundAudio();
-                } catch (LineUnavailableException | UnsupportedAudioFileException e) {
-                    e.printStackTrace();
-                }
+                runner.playOnce();
                 monster.startRunning();
                 this.step = new RunnerMovementEnabled();
             }

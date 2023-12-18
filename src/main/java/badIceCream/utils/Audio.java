@@ -25,25 +25,31 @@ public class Audio {
             FloatControl volumeController = (FloatControl) soundClip.getControl(FloatControl.Type.MASTER_GAIN);
             volumeController.setValue(-20.0f);
 
+
             return soundClip;
         } catch (Exception e) {
+            e.printStackTrace();
             System.out.println("Couldn't get the sound");
         }
         return null;
     }
 
     synchronized public void play() {
-        sound.setMicrosecondPosition(0);
-        sound.start();
-        sound.loop(Clip.LOOP_CONTINUOUSLY);
+        if (sound != null) {
+            sound.setMicrosecondPosition(0);
+            sound.start();
+            sound.loop(Clip.LOOP_CONTINUOUSLY);
+        }
     }
 
     synchronized public void playOnce() {
-        sound.setMicrosecondPosition(0);
-        sound.start();
+        if (sound != null) {
+            sound.setMicrosecondPosition(0);
+            sound.start();
+        }
     }
 
     synchronized public void stop() {
-        sound.stop();
+        if (sound != null) sound.stop();
     }
 }

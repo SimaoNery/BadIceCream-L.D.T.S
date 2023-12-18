@@ -33,7 +33,7 @@ public class GameOverMenuControllerTest {
         MockitoAnnotations.openMocks(this);
         when(game.getState()).thenReturn(state);
         gameOverMenuController = new GameOverMenuController(gameOverMenu);
-        game.setAll(state, graphics, audio);
+        game.setAll(state, graphics, audio, audio, audio, audio);
     }
 
     @Test
@@ -55,7 +55,7 @@ public class GameOverMenuControllerTest {
         when(gameOverMenu.isSelectedQuitToMainMenu()).thenReturn(true);
         gameOverMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
 
-        verify(game, times(1)).setAudio(any(Audio.class));
+        
         verify(game, times(1)).setState(any(MainMenuState.class), any(Type.class), anyInt(), anyInt());
     }
 
@@ -66,7 +66,7 @@ public class GameOverMenuControllerTest {
         when(gameOverMenu.isSelectedPlayAgain()).thenReturn(true);
 
         gameOverMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, times(1)).setAudio(any(Audio.class));
+        
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 }

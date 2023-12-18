@@ -52,7 +52,7 @@ public class MainMenuControllerTest {
         when(mainMenu.isSelectedExit()).thenReturn(true);
         mainMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
 
-        verify(game, times(1)).stopAudio();
+        
         verify(game, times(1)).setState(null, Type.nulo, 0 ,0);
     }
 

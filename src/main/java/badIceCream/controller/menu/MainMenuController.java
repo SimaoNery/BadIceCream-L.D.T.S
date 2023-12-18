@@ -27,7 +27,6 @@ public class MainMenuController extends MenuController<MainMenu> {
                 break;
             case SELECT:
                 if (getModel().isSelectedExit()) {
-                    game.stopAudio();
                     game.setState(null, Type.nulo, 0,0);
                 }
                 if (getModel().isSelectedInstructions()) game.setState(new InstructionsMenuFirstPageState(new InstructionsMenuFirstPage(), game.getState().getLevel()), Type.nulo,0,0);

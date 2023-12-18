@@ -18,58 +18,73 @@ import java.net.URISyntaxException;
 public class Game {
     private Graphics gui;
     private State state;
-    private Audio audio;
-    private static Audio backgroundAudio;
+    private Audio gameOverMusic;
+    private Audio levelCompleteMusic;
+    private Audio levelMusic;
+    private Audio menuMusic;
 
-    public Game() throws FontFormatException, IOException, URISyntaxException {
+    public Game() throws FontFormatException, IOException {
         this.gui = new Graphics(new MenuGraphics(140, 50));
         this.state = new MainMenuState(new MainMenu(), 1);
         try {
-            this.audio = new Audio(Audio.loadMusic("MainMenuMusic.wav"));
-            audio.play();
+            this.gameOverMusic = new Audio(Audio.loadMusic("GameOverMenuSound.wav"));
+            this.levelCompleteMusic = new Audio(Audio.loadMusic("LevelCompleteMenuSound.wav"));
+            this.levelMusic = new Audio(Audio.loadMusic("LevelMusic.wav"));
+            this.menuMusic = new Audio(Audio.loadMusic("MainMenuMusic.wav"));
+            this.menuMusic.play();
         } catch (LineUnavailableException | UnsupportedAudioFileException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
     public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException {
         new Game().start();
     }
-    public void setAudio(Audio audio) {
-        this.audio.stop();
-        this.audio = audio;
-        this.audio.play();
-    }
-
-    public synchronized static void setBackgroundAudio(Audio audio) {
-        backgroundAudio = audio;
-    }
-
-    public synchronized static void playBackgroundAudio() {
-        backgroundAudio.playOnce();
-    }
-
-    public synchronized void stopAudio() {
-        audio.stop();
-    }
-
-    public synchronized void playAudioOnce() {
-        audio.playOnce();
-    }
-
     public void setState(State state, Type type, int width, int height) throws IOException {
         this.state = state;
         if (type != Type.nulo) {
+            handleSound(type);
             this.gui.close();
             this.gui = this.getGraphicsForGame(type, width, height);
             this.gui.refresh();
         }
     }
+    private void handleSound(Type type) {
+        switch (type) {
+            case menu:
+                gameOverMusic.stop();
+                levelCompleteMusic.stop();
+                levelMusic.stop();
+                menuMusic.play();
+                break;
+            case win:
+                gameOverMusic.stop();
+                levelMusic.stop();
+                menuMusic.stop();
+                levelCompleteMusic.playOnce();
+                break;
+            case gameOver:
+                levelMusic.stop();
+                menuMusic.stop();
+                levelCompleteMusic.stop();
+                gameOverMusic.playOnce();
+                break;
+            case game:
+                menuMusic.stop();
+                levelCompleteMusic.stop();
+                gameOverMusic.stop();
+                levelMusic.play();
+        }
+    }
 
-    public void setAll(State state, Graphics gui, Audio audio) {
-        this.audio = audio;
+    public void setAll(State state, Graphics gui, Audio gameOverMusic, Audio levelMusic, Audio levelCompleteMusic, Audio menuMusic) {
+
         this.state = state;
         this.gui = gui;
+        this.gameOverMusic = gameOverMusic;
+        this.levelMusic = levelMusic;
+        this.levelCompleteMusic = levelCompleteMusic;
+        this.menuMusic = menuMusic;
     }
     public Graphics getGui(){
         return this.gui;
@@ -80,7 +95,7 @@ public class Game {
 
     public Graphics getGraphicsForGame(Type type, int width, int height) throws IOException {
         return switch (type) {
-            case menu -> new Graphics(new MenuGraphics(width, height));
+            case menu, win, gameOver -> new Graphics(new MenuGraphics(width, height));
             case game -> new Graphics(new GameGraphics(width, height));
             default -> null;
         };
@@ -133,4 +148,5 @@ public class Game {
 
         gui.close();
     }
+
 }

@@ -42,7 +42,7 @@ public class LevelCompletedMenuControllerTest {
         levelCompletedMenuController = new LevelCompletedMenuController(levelCompletedMenu);
         when(levelCompletedMenu.isSelectedQuitToMainMenu()).thenReturn(false);
         when(levelCompletedMenu.isSelectedNextLevel()).thenReturn(false);
-        game.setAll(state, graphics, audio);
+        game.setAll(state, graphics, audio, audio, audio, audio);
     }
 
     @Test
@@ -64,7 +64,7 @@ public class LevelCompletedMenuControllerTest {
         when(levelCompletedMenu.isSelectedQuitToMainMenu()).thenReturn(true);
         levelCompletedMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
 
-        verify(game, times(1)).setAudio(any(Audio.class));
+        
         verify(game, times(1)).setState(any(MainMenuState.class), any(Type.class), anyInt(), anyInt());
     }
 
@@ -73,7 +73,7 @@ public class LevelCompletedMenuControllerTest {
         when(levelCompletedMenu.isSelectedNextLevel()).thenReturn(true);
 
         levelCompletedMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
-        verify(game, times(1)).setAudio(any(Audio.class));
+        
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
     }
 }

@@ -9,10 +9,10 @@ import badIceCream.viewer.menu.PauseMenuViewer;
 
 
 public class PauseMenuState extends MenuState<PauseMenu> {
-    public PauseMenuState(PauseMenu model, State<GameState> parent, int level) {
+    public PauseMenuState(PauseMenu model, GameState parent, int level) {
         super(model, new PauseMenuController(model, parent), new PauseMenuViewer(model), level);
     }
-    public PauseMenuState(PauseMenu model, State parent, PauseMenuController controller, PauseMenuViewer viewer, int level) {
+    public PauseMenuState(PauseMenu model, GameState parent, PauseMenuController controller, PauseMenuViewer viewer, int level) {
         super(model, controller, viewer, level);
     }
 }

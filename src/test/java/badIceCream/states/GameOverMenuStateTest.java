@@ -5,8 +5,6 @@ import badIceCream.GUI.Graphics;
 import badIceCream.Game;
 import badIceCream.controller.menu.GameOverMenuController;
 import badIceCream.model.menu.GameOverMenu;
-import badIceCream.utils.Audio;
-import badIceCream.viewer.ArenaViewer;
 import badIceCream.viewer.menu.GameOverMenuViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

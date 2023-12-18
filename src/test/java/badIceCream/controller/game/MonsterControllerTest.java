@@ -41,9 +41,9 @@ public class MonsterControllerTest {
         when(iceCream.getPosition()).thenReturn(new Position(5, 5));
         when(monster.getPosition()).thenReturn(new Position(1, 2));
         when(arena.getIceCream()).thenReturn(iceCream);
-        monsterController = new MonsterController(arena, step, monster);
+        monsterController = new MonsterController(arena, step, monster, audio);
         when(game.getState()).thenReturn(state);
-        game.setAll(state, graphics, audio);
+        game.setAll(state, graphics, audio, audio, audio, audio);
     }
 
     @Test

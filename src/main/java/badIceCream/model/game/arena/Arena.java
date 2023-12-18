@@ -1,17 +1,11 @@
 package badIceCream.model.game.arena;
 
 import badIceCream.GUI.GUI;
-import badIceCream.Game;
 import badIceCream.model.Position;
 import badIceCream.model.game.elements.*;
 import badIceCream.model.game.elements.fruits.*;
 import badIceCream.model.game.elements.monsters.Monster;
 import badIceCream.utils.Audio;
-
-
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 
@@ -24,12 +18,19 @@ public class Arena {
     private List<Wall> walls;
     private List<Fruit> fruits;
     private List<HotFloor> hotFloors;
+    private Audio breakWallSound;
+    private Audio buildWallSound;
 
-    public Arena(int width, int height) {
+    public Arena(int width, int height){
         this.width = width;
         this.height = height;
     }
-
+    public void setBreakWallSound(Audio breakWallSound) {
+        this.breakWallSound = breakWallSound;
+    }
+    public void setBuildWallSound(Audio buildWallSound) {
+        this.buildWallSound= buildWallSound;
+    }
     public void setLevel(int level) {
         this.level = level;
     }
@@ -216,13 +217,8 @@ public class Arena {
 
         while (isIceWall(pos)) {
             if (first) {
-                try {
-                    Game.setBackgroundAudio(new Audio(Audio.loadMusic("BreakWallSound.wav")));
-                    Game.playBackgroundAudio();
-                    first = false;
-                } catch (LineUnavailableException | UnsupportedAudioFileException | IOException e) {
-                    e.printStackTrace();
-                }
+                breakWallSound.playOnce();
+                first = false;
             }
             iceWallDestroyed(pos);
             pos.setX(pos.getX() + deltaX);
@@ -241,13 +237,8 @@ public class Arena {
 
         while (isEmptyMonsters(pos) && !isHotFloor(pos)) {
             if (first) {
-                try {
-                    Game.setBackgroundAudio(new Audio(Audio.loadMusic("BuildWallSound.wav")));
-                    Game.playBackgroundAudio();
-                    first = false;
-                } catch (LineUnavailableException | UnsupportedAudioFileException | IOException e) {
-                    e.printStackTrace();
-                }
+                buildWallSound.playOnce();
+                first = false;
             }
             createIceWall(pos);
             pos.setX(pos.getX() + deltaX);

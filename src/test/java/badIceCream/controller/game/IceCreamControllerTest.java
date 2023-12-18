@@ -57,8 +57,7 @@ class IceCreamControllerTest {
         when(iceCream.getPosition()).thenReturn(position);
 
         controller = new IceCreamController(arena);
-        game.setAll(state, graphics, audio);
-        Game.setBackgroundAudio(audio);
+        game.setAll(state, graphics, audio, audio, audio, audio);
     }
 
     @Test
