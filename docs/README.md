@@ -159,7 +159,7 @@ Recorreu-se ao design pattern Strategy, que define implementações diferentes d
 #### Implementação
 A implementação deste padrão é representada através do seguinte modelo UML:
 
-<img src="resources/StateStrategy.png" width="1000" height="450" />
+<img src="resources/StateStrategy.png" width="1000" height="700" />
 
 O código para as classes que utilizam este padrão encontra-se nos seguintes links:
 - MonsterControllerManager (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/MonsterControllerManager.java)
@@ -182,7 +182,7 @@ Este padrão consiste num loop onde é controlado o tempo de cada iteração, pe
 ### Implementação
 A implementação deste padrão é representada através do seguinte modelo UML:
 
-<img src="resources/Loop.png" width="1600" height="800" />
+<img src="resources/Loop.png" width="1600" height="1000" />
 
 O código que reflete este padrão encontra-se nos seguintes links:
 - State (https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/State.java)
