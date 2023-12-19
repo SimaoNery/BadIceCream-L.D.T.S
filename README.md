@@ -3,25 +3,27 @@
 ## Bem vindo ao Bad Ice Cream!
 **Neste jogo _singleplayer_ irás controlar o Bad Ice Cream, fugir de monstros e comer muita fruta! Diverte-te!**
 
-<img src="docs/resources/gameplayExample.gif" width="500" height="500" />
+<img src="docs/resources/gameplayExample.gif"/>
 
-## Menu Principal:
-<img src="docs/resources/MainMenu.png" width="500" height="500" />
+## Ao longo do jogo vais encontrar os seguintes menus:
+### Menu Principal:
+<img src="docs/resources/MainMenu.png"/>
 
-## Instruções:
-<img src="docs/resources/Instructions.png" width="500" height="500" />
+### Instruções:
+<img src="docs/resources/Instructions1.png"/>
+<img src="docs/resources/Instructions2.png"/>
 
-## Seleção de Nível:
-<img src="docs/resources/LevelSelect.png" width="500" height="500" />
+### Seleção de Nível:
+<img src="docs/resources/LevelSelect.png"/>
 
-## Menu de Pausa:
-<img src="docs/resources/PauseMenu.png" width="500" height="500" />
+### Menu de Pausa:
+<img src="docs/resources/Pause.png"/>
 
-## Menu de Fim de Nível:
-<img src="docs/resources/LevelCompleteMenu.png" width="500" height="500" />
+### Menu de Fim de Nível:
+<img src="docs/resources/LevelComplete.png"/>
 
-## Menu de Fim de Jogo:
-<img src="docs/resources/GameOver.png" width="500" height="500" />
+### Menu de Fim de Jogo Derrota:
+<img src="docs/resources/GameOver.png"/>
 
 ## Relatório Completo:
 https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/docs/README.md
