@@ -12,7 +12,7 @@ public abstract class Viewer<T> {
     public T getModel(){
         return model;
     }
-    public void draw(Graphics gui) throws IOException{
+    public synchronized void draw(Graphics gui) throws IOException{
         gui.clear();
         drawElements(gui);
         gui.refresh();

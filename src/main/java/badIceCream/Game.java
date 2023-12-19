@@ -22,7 +22,7 @@ public class Game {
 
     public Game() throws FontFormatException, IOException {
         this.gui = new Graphics(new MenuGraphics(140, 50));
-        this.state = new MainMenuState(new MainMenu(), 1);
+        this.state = new MainMenuState(new MainMenu(), 4);
         AudioController.playMenuMusic();
     }
 
@@ -86,7 +86,7 @@ public class Game {
         };
     }
 
-    public void start() throws IOException {
+    public synchronized void start() throws IOException {
         Thread normalThread = new Thread(() -> {
             while (state != null) {
                 long startTime = System.currentTimeMillis();

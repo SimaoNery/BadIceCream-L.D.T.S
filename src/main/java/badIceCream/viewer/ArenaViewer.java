@@ -24,7 +24,7 @@ public class ArenaViewer extends Viewer<Arena> {
         this.iceCreamViewer = iceCreamViewer;
     }
     @Override
-    public void drawElements(Graphics gui) {
+    public synchronized void drawElements(Graphics gui) {
 
         for (Fruit fruit : model.getFruits()){
             fruitViewer.draw(fruit, gui, fruit.getType());
