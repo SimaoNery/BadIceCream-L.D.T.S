@@ -5,7 +5,7 @@ Neste jogo de _arcade_ poderás ajudar o Bad Ice Cream a roubar as suas frutas f
 # _UML Diagram_
 O esquema e desenho de alto nível deste jogo foram pensados inicialmente e recorreu-se a Unified Modelling Language (UML) para o representar. O UML é o seguinte:
 
-<img src="resources/UML.png" width="2000" height="1000" />
+<img src="resources/UML.png"/>
 
 # _Features_ Implementadas
 ## _In-Game Features_
@@ -192,7 +192,7 @@ Sendo assim, o Game altera o seu campo privado "Graphics", que é criado com um 
 #### Implementação
 A implementação destes padrões é representada através do seguinte modelo UML:
 
-<img src="resources/StateStrategy2.png" width="700" height="650" />
+<img src="resources/StateStrategy2.png"/>
 
 O código para as classes envolvidas encontra-se nos seguintes links:
 - GUI: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/GUI/GUI.java
@@ -211,7 +211,7 @@ Recorreu-se ao design pattern Strategy, que define algoritmos diferentes para o 
 #### Implementação
 A implementação destes padrões é representada através do seguinte modelo UML:
 
-<img src="resources/StateStrategy.png" width="1400" height="600" />
+<img src="resources/StateStrategy.png"/>
 
 O código para as classes que utilizam este padrão encontra-se nos seguintes links:
 - MonsterController: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/controller/game/MonsterController.java
@@ -237,7 +237,7 @@ Este padrão consiste num loop onde é controlado o tempo de cada iteração, pe
 ### Implementação
 A implementação deste padrão é representada através do seguinte modelo UML:
 
-<img src="resources/Loop.png" width="1700" height="650" />
+<img src="resources/Loop.png"/>
 
 O código que reflete este padrão encontra-se nos seguintes links:
 - Game: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/Game.java
@@ -265,6 +265,26 @@ O código que reflete este padrão encontra-se nos seguintes links:
 ### Consequências
 Desta forma, consegue-se controlar a fluidez e a progressão do jogo ao longo do tempo.
    
+## AudioController
+O jogo desenvolvido inclui diversos sons, a saber:
+- Música de Menu
+- Música de Jogo
+- Música de Vitória
+- Música de Derrota
+- Som de ativação do Runner Monster
+- Som de construção de parede de gelo
+- Som de destruição de parede de gelo
+
+Para garantir que existe apenas uma instância de cada música, e evitar a criação de diversas versões do mesmo som, inclui-se a classe AudioController, com 7 membros estáticos, cada um para cada som presente no jogo. Cada som é carregado apenas quando necessário, e, adicionalmente garantimos que o mesmo som apenas é criado uma vez. Sempre que for necessário produzir um som, faz-se via AudioController (ex: AudioController.playMenuMusic(), que irá criar uma menuMusic caso esta ainda não tenha sido criada, e reproduzir essa música). Apesar desta classe não ser um Singleton, o princípio é o mesmo, na medida em que em todo o jogo, apenas existe uma instância de qualquer dos sons utilizados.
+
+A implementação desta propriedade, é representada no seguinte UML:
+
+<img src="resources/audio.drawio.png"/>
+
+O código para as classes envolvidas encontra-se nos seguintes links:
+- Audio: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/utils/Audio.java
+- AudioController: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/utils/AudioController.java
+
 ## _Code Smells_
 
 

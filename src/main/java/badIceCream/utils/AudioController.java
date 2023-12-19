@@ -5,7 +5,6 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 
 public class AudioController {
-    private static AudioController audioController;
     private static Audio breakWallSound, buildWallSound, gameOverMusic, levelCompleteMusic, levelMusic, menuMusic, runnerMonsterSound;
 
     public static synchronized void playLevelMusic() {
