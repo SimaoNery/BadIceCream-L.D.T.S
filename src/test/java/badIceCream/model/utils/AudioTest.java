@@ -8,7 +8,6 @@ import org.mockito.MockitoAnnotations;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -43,8 +42,8 @@ public class AudioTest {
         verify(sound,times(1)).stop();
     }
     @Test
-    public void loadMusicNull() {
-        //assertThrows(FileNotFoundException.class,()->Audio.loadMusic("test.wav"));
+    public void loadMusicNull() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        assertNull(Audio.loadMusic("test.wav"));
     }
     @Test
     void loadMusicNotNull() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
