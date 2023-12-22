@@ -1,9 +1,9 @@
 # LDTS-project-l10gr08
 
-## Bem vindo ao Bad Ice Cream!
+## Bem-vindo ao Bad Ice Cream!
 **Neste jogo _singleplayer_ irás controlar o Bad Ice Cream, fugir de monstros e comer muita fruta! Diverte-te!**
 
-## Niveis:
+## Níveis:
 ### Nível 1:
 <img src="docs/resources/Gameplay.gif"/>
 
@@ -33,10 +33,10 @@
 ### Menu de Pausa:
 <img src="docs/resources/Pause.png"/>
 
-### Menu de Fim de Nível:
+### Menu de Fim de Nível - Vitória:
 <img src="docs/resources/LevelComplete.png"/>
 
-### Menu de Fim de Jogo Derrota:
+### Menu de Fim de Jogo - Derrota:
 <img src="docs/resources/GameOver.png"/>
 
 ## Relatório Completo:
