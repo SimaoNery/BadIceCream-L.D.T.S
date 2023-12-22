@@ -202,6 +202,7 @@ public class Arena {
                 }
                 break;
             }
+            default:
         }
     }
 

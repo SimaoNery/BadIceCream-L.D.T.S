@@ -6,12 +6,8 @@ import badIceCream.GUI.MenuGraphics;
 import badIceCream.model.menu.MainMenu;
 import badIceCream.states.MainMenuState;
 import badIceCream.states.State;
-import badIceCream.utils.Audio;
 import badIceCream.utils.AudioController;
 import badIceCream.utils.Type;
-
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -63,6 +59,7 @@ public class Game {
                 AudioController.stopLevelCompleteMusic();
                 AudioController.stopGameOverMusic();
                 AudioController.playLevelMusic();
+            default:
         }
     }
 
@@ -100,6 +97,7 @@ public class Game {
                 try {
                     if (sleepTime > 0) Thread.sleep(sleepTime);
                 } catch (InterruptedException ignored) {
+                    ignored.printStackTrace();
                 }
             }
         });

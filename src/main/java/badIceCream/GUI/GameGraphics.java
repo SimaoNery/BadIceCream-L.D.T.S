@@ -14,17 +14,14 @@ import java.io.File;
 import java.io.IOException;
 
 public class GameGraphics extends GUI {
-    public GameGraphics(int width, int height) throws IOException{
-        Terminal terminal = createTerminal(width, height);
-        this.screen = createScreen(terminal);
-    }
-
-    public GameGraphics(Screen screen) {
-        this.screen = screen;
+    int width, height;
+    public GameGraphics(int width, int height) {
+        this.width = width;
+        this.height = height;
     }
 
     @Override
-    protected Terminal createTerminal(int width, int height) throws IOException {
+    protected Terminal createTerminal() throws IOException {
         try {
             String rootPath = new File(System.getProperty("user.dir")).getPath();
             String mapLocation = rootPath + "/src/main/resources/FontForge/Untitled1.otf";
