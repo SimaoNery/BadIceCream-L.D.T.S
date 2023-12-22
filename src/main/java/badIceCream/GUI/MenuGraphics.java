@@ -14,13 +14,12 @@ import java.io.IOException;
 public class MenuGraphics extends GUI {
     int width, height;
 
-    public MenuGraphics(int width, int height) throws IOException {
+    public MenuGraphics(int width, int height) {
         this.width = width;
         this.height = height;
     }
 
     @Override
-
     protected Terminal createTerminal() throws IOException{
         try {
             String rootPath = new File(System.getProperty("user.dir")).getPath();
