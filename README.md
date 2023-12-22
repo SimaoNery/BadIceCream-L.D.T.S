@@ -8,7 +8,7 @@
 <img src="docs/resources/level5.gif"/>
 
 
-<img src="docs/resources/gameplayExample.gif"/>
+<img src="docs/resources/gameplayExample.gif" width="600" height="600"/>
 
 ## Ao longo do jogo vais encontrar os seguintes menus:
 ### Menu Principal:
