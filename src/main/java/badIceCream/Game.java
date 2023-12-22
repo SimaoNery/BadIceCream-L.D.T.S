@@ -22,7 +22,7 @@ public class Game {
 
     public Game() throws FontFormatException, IOException {
         this.gui = new Graphics(new MenuGraphics(140, 50));
-        this.state = new MainMenuState(new MainMenu(), 4);
+        this.state = new MainMenuState(new MainMenu(), 1);
         AudioController.playMenuMusic();
     }
 

@@ -2,12 +2,18 @@ package badIceCream.viewer;
 
 import badIceCream.GUI.Graphics;
 import badIceCream.model.game.arena.Arena;
+import badIceCream.model.game.elements.Element;
 import badIceCream.model.game.elements.HotFloor;
 import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.Wall;
 import badIceCream.model.game.elements.fruits.Fruit;
 import badIceCream.model.game.elements.monsters.Monster;
 import badIceCream.viewer.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 public class ArenaViewer extends Viewer<Arena> {
     private final FruitViewer fruitViewer;
@@ -25,6 +31,7 @@ public class ArenaViewer extends Viewer<Arena> {
     }
     @Override
     public synchronized void drawElements(Graphics gui) {
+        List<Wall> walls = new ArrayList<>(model.getWalls());
 
         for (Fruit fruit : model.getFruits()){
             fruitViewer.draw(fruit, gui, fruit.getType());
@@ -34,7 +41,7 @@ public class ArenaViewer extends Viewer<Arena> {
             monsterViewer.draw(monster, gui, monster.getType());
         }
 
-        for (Wall wall : model.getWalls()) {
+        for (Wall wall : walls) {
             int type = wall.getType();
             if (type == 2) {
                 wallViewer.draw(wall, gui, type);

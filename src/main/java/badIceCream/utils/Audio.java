@@ -30,9 +30,8 @@ public class Audio {
             return soundClip;
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Couldn't get the sound");
+            throw new FileNotFoundException("Couldn't get the sound!");
         }
-        return null;
     }
 
     synchronized public void play() {

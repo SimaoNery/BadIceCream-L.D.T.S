@@ -5,9 +5,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.opentest4j.AssertionFailedError;
+
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -43,7 +46,9 @@ public class AudioTest {
     }
     @Test
     public void loadMusicNull() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        assertNull(Audio.loadMusic("test.wav"));
+        assertThrows(FileNotFoundException.class, () -> {
+            Audio.loadMusic("test.wav");
+        });
     }
     @Test
     void loadMusicNotNull() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
