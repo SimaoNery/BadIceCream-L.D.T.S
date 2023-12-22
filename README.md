@@ -5,7 +5,7 @@
 
 ## Niveis:
 ## Nível 5:
-<img src="docs/resources/level5.gif"/>
+<img src="docs/resources/level5.gif"width="600" height="600"/>
 
 
 <img src="docs/resources/gameplayExample.gif" width="600" height="600"/>
