@@ -102,25 +102,8 @@ O esquema e desenho de alto nível deste jogo foram pensados inicialmente e reco
 
 
 # _Features_ Planeadas
-Todas as _features_ planeadas inicialmente foram implementadas. 
+Todas as _features_ planeadas inicialmente foram implementadas.
 
-#
-## _Gameplay_ Nível 1
-![](resources/Gameplay.gif)
-
-## _Gameplay_ Nível 2
-![](resources/Gameplay2.gif)
-
-## _Gameplay_ Nível 3
-![](resources/Gameplay3.gif)
-
-## _Gameplay_ Nível 4
-![](resources/Gameplay4.gif)
-
-## _Gameplay_ Nível 5
-![](resources/Gameplay5.gif)
-
-#
 # Design 
 ## Padrão Arquitetural
 ### Contexto do Problema

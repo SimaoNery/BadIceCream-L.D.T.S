@@ -4,11 +4,20 @@
 **Neste jogo _singleplayer_ irás controlar o Bad Ice Cream, fugir de monstros e comer muita fruta! Diverte-te!**
 
 ## Niveis:
+### Nível 1:
+<img src="docs/resources/Gameplay.gif"/>
+
+### Nível 2:
+<img src="docs/resources/Gameplay2.gif"/>
+
+### Nível 3:
+<img src="docs/resources/Gameplay3.gif"/>
+
+### Nível 4:
+<img src="docs/resources/Gameplay4.gif"/>
+
 ### Nível 5:
 <img src="docs/resources/level5.gif"/>
-
-
-<img src="docs/resources/gameplayExample.gif" width="600" height="600"/>
 
 ## Ao longo do jogo vais encontrar os seguintes menus:
 ### Menu Principal:
