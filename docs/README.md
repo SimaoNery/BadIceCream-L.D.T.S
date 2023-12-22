@@ -9,79 +9,79 @@ O esquema e desenho de alto nível deste jogo foram pensados inicialmente e reco
 
 # _Features_ Implementadas
 ## _In-Game Features_
-- Movimento do Bad Ice Cream: O personagem irá mover-se para cima (seta para cima), para baixo (seta para baixo), para esquerda (seta para a esquerda) ou para a direita (seta para a direita), de acordo com o input do utilizador;
+- Movimento do Bad Ice Cream: O personagem irá mover-se para cima (seta para cima), para baixo (seta para baixo), para esquerda (seta para a esquerda) ou para a direita (seta para a direita), de acordo com o input do utilizador.
 
 
 ![](resources/IceCreamMovement.gif)
 
 
-- Movimento do DefaultMonster: O DefaultMonster irá mover-se aleatoriamente pelos espaços livres no mapa. É o monstro mais lento, aproveita!;
+- Movimento do DefaultMonster: O DefaultMonster irá mover-se aleatoriamente pelos espaços livres no mapa. É o monstro mais lento, aproveita!
 
 ![](resources/DefaultMonsterMovement.gif)
 
 
-- Colisão do Bad Ice Cream: O personagem morre quando colide com monstros e não consegue avançar caso colida com uma parede;
+- Colisão do Bad Ice Cream: O personagem morre quando colide com monstros, foge antes que seja tarde!
 
 ![](resources/Die.gif)
 
 
-- Colisão dos Monstros: Os monstros não conseguem avançar caso colidam com outro monstro ou com uma parede;
+- Colisão dos Monstros: Os monstros não conseguem avançar caso colidam com outro monstro ou com uma parede.
 
 ![](resources/MonsterandWalls.gif)
 
-- Colisão Personagem - Fruta: Quando o personagem avança para uma zona onde já existe uma fruta, coleta a fruta e dependendo do tipo de fruta, poderá receber um _Power Up_;
+- Colisão Personagem - Fruta: Quando o personagem avança para uma zona onde existe uma fruta, coleta a fruta e dependendo do tipo de fruta, poderá receber um _Power Up_.
 
 ![](resources/FruitColision.gif)
 
 
-- Habilidade do Personagem: Quando a tecla de espaço for pressionada, o personagem irá construir uma parede de gelo até ao primeiro bloqueio que lhe aparecer (monstro, parede ou hot floor). No caso de já existir uma parede de gelo à sua frente, o personagem irá destruí-la(a destruição é interrompida quando encontrar um espaço vazio ou Stone Wall). As frutas no caminho da parede de gelo serao também congeladas;
+- Habilidade do Personagem: Quando a tecla de espaço for pressionada, o personagem irá construir uma parede de gelo até ao primeiro bloqueio que lhe aparecer (monstro, parede ou hot floor). No caso de já existir uma parede de gelo à sua frente, o personagem irá destruí-la (a destruição é interrompida quando encontrar um espaço vazio ou Stone Wall). As frutas no caminho da parede de gelo serao também congeladas.
 
 ![](resources/IceCreamHability.gif)
 
 
-- Movimento do RunnerMonster: O RunnerMonster inicialmente irá ter o comportamento de um Defaultmonster, mas em intervalos curtos de tempo, a sua velocidade será aumentada e este passará a conseguir localizar o personagem (cálculo da trajetória mais curta), por isso foge enquanto podes!;
+- Movimento do RunnerMonster: O RunnerMonster inicialmente irá ter o comportamento de um DefaultMonster, mas em intervalos curtos de tempo, a sua velocidade será aumentada e este passará a conseguir localizar o personagem (cálculo da trajetória mais curta), por isso foge enquanto podes!
 
 ![](resources/RunnerMonsterMovement.gif)
 
 
-- Movimento do JumperMonster: O JumperMonster será capaz de saltar para cima de paredes e andar em cima das mesmas;
+- Movimento do JumperMonster: O JumperMonster é capaz de saltar para cima de paredes e andar em cima das mesmas.
 
 ![](resources/JumperMonsterMovement.gif)
 
 
-- Movimento do WallBreakerMonster: O WallBreakerMonster terá a habilidade de destruir paredes de gelo do mesmo modo que o personagem principal;
+- Movimento do WallBreakerMonster: O WallBreakerMonster terá a habilidade de destruir paredes de gelo do mesmo modo que o personagem principal.
 
 ![](resources/WallBreakerMonsterMovement.gif)
 
 
-- PowerUp do Morango: O Morango é uma fruta rara que dará ao personagem um escudo (o Bad Ice Cream fica azul), que o deixará imune ao toque de um monstro por um certo período de tempo;
+- PowerUp do Morango: O Morango é uma fruta rara que dará ao personagem um escudo (o Bad Ice Cream fica azul), que o deixará imune ao toque de um monstro por um certo período.
 
 ![](resources/StrawberryPower.gif)
 
 
-- _Hot Floor_: No mapa irão existir zonas onde o IceCream não conseguirá criar paredes de gelo, apesar de ser possível caminhar por cima destas normalmente;
+- _Hot Floor_: No mapa irão existir zonas onde o IceCream não conseguirá criar paredes de gelo, apesar de ser possível caminhar por cima destas normalmente.
 
 ![](resources/HotFloors.gif)
 
-- Sons no Jogo: Os diferentes Menus e o próprio jogo terão música de fundo. Também as diferentes interações do utilizador com o jogo, terão sons correspondentes.
+- Sons no Jogo: Os diferentes Menus e o próprio jogo terão música de fundo. Também as diferentes interações do utilizador com o jogo, terão sons correspondentes. As paredes fazem som quando são destruídas ou construídas e o RunnerMonster buzina quando entra em modo perseguição, está atento!
 
 ## Menus
 
-- Menu Principal: Quando o jogo é iniciado, o "Main Menu" é aberto. Neste, o jogador poderá escolher entre começar a jogar, aceder às instruções ou sair do jogo;
+- Menu Principal: Quando o jogo é iniciado, o "Main Menu" é aberto. Neste, o jogador poderá escolher entre começar a jogar, aceder às instruções ou sair do jogo.
 
 ![](resources/MainMenu.png)
 
-- Primeira Página das Instruções: Ao escolher a opção "Instructions" no "Main Menu", o jogador tem acesso a uma página com uma descrição do jogo e os controlos para jogar, juntamente com as opçoes de avançar para a página seguinte das instruçoes ou regressar ao menu principal;
+- Primeira Página das Instruções: Ao escolher a opção "Instructions" no "Main Menu", o jogador tem acesso a uma página com uma descrição do jogo e os controlos para jogar, incluindo as opções de avançar para a página seguinte das instruçoes ou regressar ao menu principal.
 
 
 ![](resources/Instructions1.png)
 
-- Segunda Página das Instruçoes : Ao clicar na seta da direita na primeira página das intruçoes, o jogador tem acesso a uma nova página de instruçoes, onde é apresentada informaçao sobre os monstros e hot floors, juntamente com as opçoes de voltar à página anterior das instruçoes ou ao menu principal;
+- Segunda Página das Instruçoes: Ao clicar na seta da direita na primeira página das intruçoes, o jogador tem acesso a uma nova página de instruçoes, onde é apresentada informação sobre os monstros e hot floors, juntamente com as opções de voltar à página anterior das instruções ou ao menu principal.
  
 ![](resources/Instructions2.png)
 
 
-- Seleção de Nível: Ao escolher a opção "Start Game" no "Main Menu", outro menu é aberto, onde será possível escolher entre os diferentes níveis existentes. Com exceção ao nível 1, só é possível escolher um nível se o anterior tiver sido completado com sucesso;
+- Seleção de Nível: Ao escolher a opção "Start Game" no "Main Menu", outro menu é aberto, onde será possível escolher entre os diferentes níveis existentes. Com exceção ao nível 1, só é possível escolher um nível se o anterior tiver sido completado com sucesso.
 
 ![](resources/LevelSelect.png)
 
@@ -91,12 +91,12 @@ O esquema e desenho de alto nível deste jogo foram pensados inicialmente e reco
 ![](resources/Pause.png)
 
 
-- Menu de Fim de Nível: Após um nível ser terminado, um novo menu irá abrir, onde o utilizador poderá escolher entre continuar para o próximo nível, ou retornar ao menu principal;
+- Menu de Fim de Nível - Vitória: Quando conseguires saciar o Bad Ice Cream por completo, comendo todas as frutas de um mapa, ganhaste esse nível. De seguida, um novo menu vai abrir-se, onde o utilizador poderá escolher entre continuar para o próximo nível, ou retornar ao menu principal.
 
 ![](resources/LevelComplete.png)
 
 
-- Menu de Fim de Jogo: Ao ser morto por um dos monstros, será aberto um menu onde o utilizador poderá escolher entre jogar novamente, ou voltar ao menu principal.
+- Menu de Fim de Jogo - Derrota: Ao ser apanhado por um dos monstros, será aberto um menu onde o utilizador poderá escolher entre jogar novamente, ou voltar ao menu principal.
 
 ![](resources/GameOver.png)
 
@@ -108,13 +108,13 @@ Todas as _features_ planeadas inicialmente foram implementadas.
 ## Padrão Arquitetural
 ### Contexto do Problema
 
-Desde o início do projeto, visou-se desenvolver uma estrutura que fosse bem organizada, de modo ao código ser fácil de ler e de se tornar trivial a localização de snippets de código nos diversos ficheiros, permitindo ainda, que diversas pessoas consigam alterar o código, sem prejudicarem o trabalho dos outros.
+Desde o início do projeto, visou-se desenvolver uma estrutura que fosse bem organizada, de modo a permitir a rápida leitura e compreensão do código, bem como facilitar a localização de snippets de código nos diversos ficheiros, permitindo ainda, que diversas pessoas consigam alterar o código, sem prejudicarem o trabalho dos outros.
 
 ### Padrão
-Com estes problemas em mente, optou-se por aplicar o padrão arquitetural MVC (Model View Controller), que divide o programa em três camadas, _View_, _Model_ e _Controller_. A camada _Model_ contém apenas os dados, que caso sofram mudanças, informará a _View_ . Por sua vez a _View_ é responsável pela interface com a qual o jogado vai interagir, tendo em conta os dados atuais e envia ações do utilizador para o _Controller_. Esta última camada interpreta os inputs recebidos pelo utilizador e fornecidos pelo _View_ e atualiza o _Model_ com base nessa informação. 
+Neste sentido, optou-se por aplicar o padrão arquitetural MVC (Model View Controller), que divide o programa em três camadas, _View_, _Model_ e _Controller_. A camada _Model_ contém apenas os dados, que caso sofram mudanças, informará a _View_ . Por sua vez a _View_ é responsável pela interface com a qual o jogado vai interagir, tendo em conta os dados atuais, e enviando ações do utilizador para o _Controller_. Esta última camada interpreta os inputs recebidos pelo utilizador e fornecidos pelo _View_ e atualiza o _Model_ com base nessa informação, é o "cérebro" do jogo. 
 
 ### Implementação
-A implantação deste padrão pode ser representada através do seguinte modelo U.M.L:
+A implementação deste padrão pode ser representada através do seguinte modelo U.M.L:
 
 <img src="resources/MVC.drawio.png" width="1000" height="500" />
 
@@ -128,7 +128,7 @@ As 3 classes podem ser encontradas nos seguintes links:
 A escolha deste padrão trouxe vantagens e desvantagens:
 
 Vantagens
-- Melhorar a manutenção do código, uma vez que é fácil de localizar os erros e em caso de adições apenas é necessário criar um novo elemento viewer, controller ou model;
+- Melhorar a manutenção do código, uma vez que é fácil de localizar os erros e em caso de adições apenas é necessário criar um elemento viewer, controller ou model;
 - Simplicidade na criação de testes;
 - Código fácil de ler;
 - Divisão em partes "independentes", permite a várias pessoas desenvolver o código em simultâneo, sem conflitos.
@@ -137,15 +137,16 @@ Desvantagens
 - É necessário um melhor planeamento prévio e mais atenção na escrita do código, uma vez que as componentes estão separadas.
 
 ## _State Pattern_
-### Contexto do Problema
-Ao longo do jogo, é possível que um objeto se encontre em diferentes estados, o que pode afetar o comportamento de todo o programa. Haveria então uma grande dependência em if ’s e switch cases’s, o que tornaria a interpretação do código mais complexa, uma vez que todos os comportamentos seriam executados por apenas uma classe, bem como dificultaria a extensão do código.
+### Game e Menu States
+#### Contexto do Problema
+É espectável que diferentes partes do jogo tenham comportamentos distintos. Um forma ineficaz de resolver este problema seria através de uma grande dependência em if ’s e switch cases’s, o que tornaria a interpretação do código mais complexa, uma vez que todos os comportamentos seriam executados por apenas uma classe, bem como dificultaria a extensibilidade do código.
 
-### Padrão
-O _State Pattern_ permite resolver este problema facilmente, pegando no código que posteriormente estaria numa só classe e dividindo-o em várias classes, fazendo com que o objeto consiga mudar de comportamento quando o seu estado muda. Esta abordagem faz sentido quando um objeto atua de forma diferente consoante o seu estado interno. (Como por exemplo nos estados dos diversos Menus utilizados)
-### Implementação
+#### Padrão
+O _State Pattern_ permite resolver este problema facilmente, aproveitando o código que estaria numa só classe e dividindo-o em várias classes, fazendo com que o objeto consiga mudar de comportamento quando o seu estado muda. Esta abordagem faz sentido quando um objeto atua de forma diferente consoante o seu estado interno. (O jogo pode estar em modo "jogo" ou modo "menu", e dentro de cada categoria, existem ainda outros estados possívels, como os vários menus)
+
+#### Implementação
 Posto isto, utilizou-se este padrão nas seguintes classes, representadas pelo seguinte modelo UML:
 
-#### Game e Menu States
 Os controladores do jogo alteram o estado do programa, consoante o acontecimento de algum evento. (Por exemplo, transição de game state para PauseMenu assim que utilizador pressiona "ESC", entre outros)
 
 <img src="resources/State.png" width="1000" height="400" />
@@ -166,6 +167,26 @@ O código para as classes que estendem MenuState, encontram-se nos seguintes lin
 - LevelCompletedMenuState: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/states/LevelCompletedMenuState.java
 #
 
+### Game e Menu Graphics
+#### Contexto do Problema
+A representação dos vários elementos e as suas variantes em fonte, implicou a inclusão de duas fontes no jogo, uma para os Menus e outra para o Jogo. Neste sentido, utilizou-se o strategy pattern para definir em qual os gráficos a serem utilizados. Sempre que o jogo passa de um menu para o jogo em si, altera o seu estado, altera os gráficos para GameGraphics. De igual modo, se durante o jogo, o jogador perder, ganhar ou pressionar o "ESC" para fazer pausa, os gráficos passam de GameGraphics para MenuGraphics. A classe Graphics tem um "GUI" (classe abstrata), que poderá ser um GameGraphics ou um MenuGraphics, e na alteração de estado do jogo, o Graphics recebe um novo "GUI" e apenas se limita a chamar o método "createScreen" (não importa como está implementado por GameGraphics ou MenuGraphics). Caso fosse necessário criar uma fonte, seria extremamente fácil.
+
+#### Padrão
+Este padrãos foi utilizado pelo Graphics, na medida em que, o jogo inclui dois tipos de gráficos diferentes, a saber: MenuGraphics e GameGraphics. Deste modo, a alteração de um tipo de gráficos para outro é feita através do Strategy Pattern. Os controladores são responsáveis por informar o Game que o estado dos gráficos alterou, quando necessário.
+Sendo assim, o Game altera o seu campo privado "Graphics", criado com um dos gráficos existentes: GameGraphics ou MenuGraphics, em tempo de execução.
+
+#### Implementação
+A implementação destes padrões é representada através do seguinte modelo UML:
+
+<img src="resources/State2.png"/>
+
+O código para as classes envolvidas encontra-se nos seguintes links:
+- GUI: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/GUI/GUI.java
+- GameGraphics: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/GUI/GameGraphics.java
+- MenuGraphics: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/GUI/MenuGraphics.java
+- Graphics: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/GUI/Graphics.java
+- Game: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/Game.java
+
 ### Consequências
 A escolha deste padrão trouxe várias vantagens:
 
@@ -175,35 +196,14 @@ Vantagens
 - Torna a correção do código e a criação de testes mais simples;
 - Ao introduzir novos estados deixa de ser necessário mudar estados já existentes.
 
-## _Strategy Pattern e State Pattern_
-### Game e Menu Graphics
-#### Contexto do Problema
-A representação dos vários elementos e suas variantes em fonte, implicou a inclusão de duas fontes no jogo, uma para os Menus e outra para o Jogo. Neste sentido, utilizou-se o strategy pattern para definir em qual os gráficos a serem utilizados. Sempre que o jogo passa de um menu para o jogo em si, cria um novo estado e, altera os gráficos para GameGraphics. De igual modo, se enquanto o jogo, o jogador perder, ganhar ou pressionar o "ESC" para fazer pausa, os gráficos passam de GameGraphics para MenuGraphics.
+## _Strategy e State Pattern_
+### Contexto do Problema
+O algoritmo que movimenta os monstros é diferente consoante o tipo de monstro, pelo que se criou uma interface "StepMonsters", com dois métodos. No jogo estão presentes 5 tipos diferentes de movimentos de monstros (Default, WallBreaker, Jumper, RunnerEnabled e RunnerDisabled). O tipo de movimento é definido em tempo de execução, na medida em que a classe MonsterController está encarregue de definir o movimento de cada monstro. Já que o Runner pode ter dois movimentos diferentes (modo perseguição ou aletatório), cabe ao controlador alterar o comportamento destes monstros. Este padrão é uma junção com algumas alterações do Strategy Pattern e State Pattern.
 
-#### Padrão
-Estes padrões foram utilizados pelo Graphics, na medida em que, o jogo inclui dois tipos de gráficos diferentes, a saber: MenuGraphics e GameGraphics. Deste modo, a alteração de um tipo de gráficos para outro é feita através do Strategy Pattern. Os controladores são responsáveis por informar o Game que o estado dos gráficos alterou, quando necessário.
-Sendo assim, o Game altera o seu campo privado "Graphics", que é criado com um dos gráficos existentes: GameGraphics ou MenuGraphics, em tempo de execução.
+### Padrão
+Recorreu-se ao design pattern Strategy, que define algoritmos diferentes para o movimento dos monstros, consoante o tipo de monstro em questão. As entidades que chamam estes métodos não têm informação nem interesse acerca de como estão implementados cada um deles, estando apenas interessados em executá-los. O State pattern aparece porque ao fim de algum tempo, o comportamento do Runner Monsters é alterado pelo controlador.
 
-#### Implementação
-A implementação destes padrões é representada através do seguinte modelo UML:
-
-<img src="resources/StateStrategy2.png"/>
-
-O código para as classes envolvidas encontra-se nos seguintes links:
-- GUI: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/GUI/GUI.java
-- GameGraphics: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/GUI/GameGraphics.java
-- MenuGraphics: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/GUI/MenuGraphics.java
-- Graphics: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/GUI/Graphics.java
-- Game: https://github.com/FEUP-LDTS-2023/project-l10gr08/blob/main/src/main/java/badIceCream/Game.java
-
-### Movimento dos Monstros
-#### Contexto do Problema
-O movimento dos monstros difere, pelo que se criou uma interface "StepMonsters", com dois métodos. No jogo estão presentes 5 tipos diferentes de movimentos de monstros (Default, WallBreaker, Jumper, RunnerEnabled e RunnerDisabled). O tipo de movimento é definido em tempo de execução, na medida em que a classe MonsterController está encarregue de definir o movimento de cada monstro. Já que o Runner pode ter dois movimentos diferentes (modo perseguição e aletatório), cabe ao controlador alterar o comportamento destes monstros. Este padrão é uma junção com algumas alterações do Strategy Pattern e State Pattern.
-
-#### Padrão
-Recorreu-se ao design pattern Strategy, que define algoritmos diferentes para o movimento dos monstros, consoante o tipo de monstro em questão. As entidades que chamam estes métodos não têm informação acerca de como estão implementados cada um deles, estando apenas interessados em executá-los. O State pattern aparece porque ao fim de algum tempo, o comportamento do Runner Monsters é alterado pelo controlador.
-
-#### Implementação
+### Implementação
 A implementação destes padrões é representada através do seguinte modelo UML:
 
 <img src="resources/StateStrategy.png"/>
@@ -220,14 +220,21 @@ O código para as classes que utilizam este padrão encontra-se nos seguintes li
 
 ### Consequências
 Desta forma, quando se pretende executar _step_ de qualquer monstro, faz-se via _MonsterController_ e este encarrega-se de executar o respetivo movimento de cada monstro.
-Para além disso, o Monster Controller altera o estado (tipo de movimento) do Runner Monster, passado de modo perseguição para modo aleatório, e vice-versa.
+Além disso, o Monster Controller altera o estado (tipo de movimento) do Runner Monster, passado de modo perseguição para modo aleatório, e vice-versa.
+
+Vantagens
+- Fácil extensibilidade do código (criar novo movimento);
+- Mais fácil manter o código;
+- Mais fácil compreensão do código;
+- Torna a correção do código e a criação de testes mais simples;
+- Ao introduzir novos estados deixa de ser necessário mudar estados já existentes.
 
 ## _Game Loop Pattern_
 ### Contexto do Problema
 Por se tratar de um jogo, existe um padrão de desenho evidente. O jogo funciona como um loop que vai iterando e fazendo alterações ao seu estado.
 
 ### Padrão
-Este padrão consiste num loop onde é controlado o tempo de cada iteração, permitindo avançar mais rapidamente ou lentamente no jogo. O método "step" utilizado por várias classes, bem como o método "stepMonsters".
+Este padrão consiste num loop onde é controlado o tempo de cada iteração, permitindo avançar mais rápida ou lentamente no jogo. O método "step" utilizado por várias classes, bem como o método "stepMonsters" faz a magia acontecer (movimenta os monstros e o IceCream).
 
 ### Implementação
 A implementação deste padrão é representada através do seguinte modelo UML:
@@ -261,7 +268,7 @@ O código que reflete este padrão encontra-se nos seguintes links:
 Desta forma, consegue-se controlar a fluidez e a progressão do jogo ao longo do tempo.
    
 ## AudioController
-O jogo desenvolvido inclui diversos sons, a saber:
+O jogo desenvolvido incluiu diversos sons, a saber:
 - Música de Menu
 - Música de Jogo
 - Música de Vitória
@@ -270,7 +277,7 @@ O jogo desenvolvido inclui diversos sons, a saber:
 - Som de construção de parede de gelo
 - Som de destruição de parede de gelo
 
-Para garantir que existe apenas uma instância de cada música, e evitar a criação de diversas versões do mesmo som, inclui-se a classe AudioController, com 7 membros estáticos, cada um para cada som presente no jogo. Cada som é carregado apenas quando necessário, e, adicionalmente garantimos que o mesmo som apenas é criado uma vez. Sempre que for necessário produzir um som, faz-se via AudioController (ex: AudioController.playMenuMusic(), que irá criar uma menuMusic caso esta ainda não tenha sido criada, e reproduzir essa música). Apesar desta classe não ser um Singleton, o princípio é o mesmo, na medida em que em todo o jogo, apenas existe uma instância de qualquer dos sons utilizados.
+Para garantir que existe apenas uma instância de cada música, e evitar a criação de diversas versões do mesmo som, inclui-se a classe AudioController, com 7 membros estáticos, cada um para cada som presente no jogo. Cada som é carregado apenas quando necessário, e, adicionalmente garantd-se que o mesmo som apenas é criado uma única vez. Sempre que for necessário produzir um som, faz-se via AudioController (ex: AudioController.playMenuMusic(), que irá criar uma menuMusic caso esta ainda não tenha sido criada, e reproduzir essa música). Apesar desta classe não ser um Singleton, o princípio é o mesmo, na medida em que em todo o jogo, apenas existe uma instância de qualquer um dos sons utilizados, criada à medida da necessidade.
 
 A implementação desta propriedade, é representada no seguinte UML:
 
