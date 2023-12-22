@@ -12,17 +12,16 @@ import java.io.File;
 import java.io.IOException;
 
 public class MenuGraphics extends GUI {
+    int width, height;
 
     public MenuGraphics(int width, int height) throws IOException {
-        Terminal terminal = createTerminal(width, height);
-        this.screen = createScreen(terminal);
+        this.width = width;
+        this.height = height;
     }
 
-    public MenuGraphics(Screen screen) {
-        this.screen = screen;
-    }
+    @Override
 
-    protected Terminal createTerminal(int width, int height) throws IOException{
+    protected Terminal createTerminal() throws IOException{
         try {
             String rootPath = new File(System.getProperty("user.dir")).getPath();
             String mapLocation = rootPath + "/src/main/resources/FontForge/TowerofSilence.otf";

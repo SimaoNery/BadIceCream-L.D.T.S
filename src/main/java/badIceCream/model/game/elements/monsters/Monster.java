@@ -10,6 +10,8 @@ public abstract class Monster extends Element {
     public Monster(int x, int y) {
         super(x, y);
     }
+
+    @Override
     abstract public int getType();
 
     public GUI.ACTION getLastAction() {return lastAction;}

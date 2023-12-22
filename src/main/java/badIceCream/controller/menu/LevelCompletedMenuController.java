@@ -37,6 +37,7 @@ public class LevelCompletedMenuController extends MenuController<LevelCompletedM
                 if (getModel().isSelectedQuitToMainMenu()) {
                     game.setState(new MainMenuState(new MainMenu(), game.getState().getLevel()), Type.menu, 140,50);
                 }
+            default:
         }
     }
 }

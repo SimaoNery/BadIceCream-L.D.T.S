@@ -37,6 +37,7 @@ public class PauseMenuController extends MenuController<PauseMenu> {
                     game.setState(parent, Type.game, parent.getModel().getWidth(), parent.getModel().getHeight());
                 }
                 if (getModel().isSelectedMenu()) game.setState(new MainMenuState(new MainMenu(), game.getState().getLevel()), Type.nulo, 0, 0);
+            default:
         }
     }
 }

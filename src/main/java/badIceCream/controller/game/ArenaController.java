@@ -45,6 +45,7 @@ public class ArenaController extends GameController {
         }
     }
 
+    @Override
     public void step(Game game, GUI.ACTION action, long time) throws IOException {
         int fruit = iceCreamController.eatFruit();
         if (fruit != -1) {
