@@ -17,14 +17,14 @@ import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
 
 public class InstructionsMenuFirstPageControllerTest {
-    private InstructionsMenuFirstPageController InstructionsMenuFirstPageController;
+    private InstructionsMenuFirstPageController instructionsMenuFirstPageController;
 
     private Game game;
 
     @BeforeEach
     void setUp() {
         InstructionsMenuFirstPage instructionsMenuFirstPage = mock(InstructionsMenuFirstPage.class);
-        InstructionsMenuFirstPageController = new InstructionsMenuFirstPageController(instructionsMenuFirstPage);
+        instructionsMenuFirstPageController = new InstructionsMenuFirstPageController(instructionsMenuFirstPage);
         State state = mock(State.class);
         game = mock(Game.class);
         when(game.getState()).thenReturn(state);
@@ -33,14 +33,14 @@ public class InstructionsMenuFirstPageControllerTest {
 
     @Test
     void testCaseLeft() throws IOException  {
-        InstructionsMenuFirstPageController.step(game, GUI.ACTION.RIGHT, System.currentTimeMillis());
+        instructionsMenuFirstPageController.step(game, GUI.ACTION.RIGHT, System.currentTimeMillis());
 
         verify(game, times(1)).setState(any(InstructionsMenuSecondPageState.class), any(Type.class), anyInt(), anyInt());
     }
 
     @Test
     void testCaseSelectExit() throws IOException  {
-        InstructionsMenuFirstPageController.step(game, GUI.ACTION.PAUSE, System.currentTimeMillis());
+        instructionsMenuFirstPageController.step(game, GUI.ACTION.PAUSE, System.currentTimeMillis());
 
         verify(game, times(1)).setState(any(MainMenuState.class), any(Type.class), anyInt(), anyInt());
     }

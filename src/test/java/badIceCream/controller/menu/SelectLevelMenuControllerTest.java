@@ -90,7 +90,7 @@ public class SelectLevelMenuControllerTest {
     @Test
     void testCaseSelectLevel1WhenIn2() throws IOException  {
         when(selectLevelMenu.isSelectedLevel1()).thenReturn(true);
-        when(game.getState().getLevel()).thenReturn(2);
+        when(state.getLevel()).thenReturn(2);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
         
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
@@ -99,7 +99,7 @@ public class SelectLevelMenuControllerTest {
     @Test
     void testCaseSelectLevel2WhenIn2() throws IOException  {
         when(selectLevelMenu.isSelectedLevel2()).thenReturn(true);
-        when(game.getState().getLevel()).thenReturn(2);
+        when(state.getLevel()).thenReturn(2);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
         
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
@@ -108,7 +108,7 @@ public class SelectLevelMenuControllerTest {
     @Test
     void testCaseSelectLevel3WhenIn2() throws IOException  {
         when(selectLevelMenu.isSelectedLevel3()).thenReturn(true);
-        when(game.getState().getLevel()).thenReturn(2);
+        when(state.getLevel()).thenReturn(2);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
        
         verify(game, never()).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
@@ -117,7 +117,7 @@ public class SelectLevelMenuControllerTest {
     @Test
     void testCaseSelectLevel4WhenIn2() throws IOException  {
         when(selectLevelMenu.isSelectedLevel4()).thenReturn(true);
-        when(game.getState().getLevel()).thenReturn(2);
+        when(state.getLevel()).thenReturn(2);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
        
         verify(game, never()).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
@@ -126,7 +126,7 @@ public class SelectLevelMenuControllerTest {
     @Test
     void testCaseSelectLevel5WhenIn2() throws IOException  {
         when(selectLevelMenu.isSelectedLevel5()).thenReturn(true);
-        when(game.getState().getLevel()).thenReturn(2);
+        when(state.getLevel()).thenReturn(2);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
        
         verify(game, never()).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
@@ -135,7 +135,7 @@ public class SelectLevelMenuControllerTest {
     @Test
     void testCaseSelectLevel1WhenIn3() throws IOException  {
         when(selectLevelMenu.isSelectedLevel1()).thenReturn(true);
-        when(game.getState().getLevel()).thenReturn(3);
+        when(state.getLevel()).thenReturn(3);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
         
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
@@ -144,7 +144,7 @@ public class SelectLevelMenuControllerTest {
     @Test
     void testCaseSelectLevel2WhenIn3() throws IOException  {
         when(selectLevelMenu.isSelectedLevel2()).thenReturn(true);
-        when(game.getState().getLevel()).thenReturn(3);
+        when(state.getLevel()).thenReturn(3);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
         
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
@@ -153,7 +153,7 @@ public class SelectLevelMenuControllerTest {
     @Test
     void testCaseSelectLevel3WhenIn3() throws IOException  {
         when(selectLevelMenu.isSelectedLevel3()).thenReturn(true);
-        when(game.getState().getLevel()).thenReturn(3);
+        when(state.getLevel()).thenReturn(3);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
         
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
@@ -162,7 +162,7 @@ public class SelectLevelMenuControllerTest {
     @Test
     void testCaseSelectLevel4WhenIn3() throws IOException  {
         when(selectLevelMenu.isSelectedLevel4()).thenReturn(true);
-        when(game.getState().getLevel()).thenReturn(3);
+        when(state.getLevel()).thenReturn(3);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
        
         verify(game, never()).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
@@ -171,7 +171,7 @@ public class SelectLevelMenuControllerTest {
     @Test
     void testCaseSelectLevel5WhenIn3() throws IOException  {
         when(selectLevelMenu.isSelectedLevel5()).thenReturn(true);
-        when(game.getState().getLevel()).thenReturn(3);
+        when(state.getLevel()).thenReturn(3);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
        
         verify(game, never()).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
@@ -180,7 +180,7 @@ public class SelectLevelMenuControllerTest {
     @Test
     void testCaseSelectLevel1WhenIn4() throws IOException  {
         when(selectLevelMenu.isSelectedLevel1()).thenReturn(true);
-        when(game.getState().getLevel()).thenReturn(4);
+        when(state.getLevel()).thenReturn(4);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
         
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
@@ -189,7 +189,7 @@ public class SelectLevelMenuControllerTest {
     @Test
     void testCaseSelectLevel2WhenIn4() throws IOException  {
         when(selectLevelMenu.isSelectedLevel2()).thenReturn(true);
-        when(game.getState().getLevel()).thenReturn(4);
+        when(state.getLevel()).thenReturn(4);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
         
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
@@ -198,7 +198,7 @@ public class SelectLevelMenuControllerTest {
     @Test
     void testCaseSelectLevel3WhenIn4() throws IOException  {
         when(selectLevelMenu.isSelectedLevel3()).thenReturn(true);
-        when(game.getState().getLevel()).thenReturn(4);
+        when(state.getLevel()).thenReturn(4);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
         
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
@@ -207,7 +207,7 @@ public class SelectLevelMenuControllerTest {
     @Test
     void testCaseSelectLevel4WhenIn4() throws IOException  {
         when(selectLevelMenu.isSelectedLevel4()).thenReturn(true);
-        when(game.getState().getLevel()).thenReturn(4);
+        when(state.getLevel()).thenReturn(4);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
         
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
@@ -216,7 +216,7 @@ public class SelectLevelMenuControllerTest {
     @Test
     void testCaseSelectLevel5WhenIn4() throws IOException  {
         when(selectLevelMenu.isSelectedLevel5()).thenReturn(true);
-        when(game.getState().getLevel()).thenReturn(4);
+        when(state.getLevel()).thenReturn(4);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
        
         verify(game, never()).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
@@ -225,7 +225,7 @@ public class SelectLevelMenuControllerTest {
     @Test
     void testCaseSelectLevel1WhenIn5() throws IOException  {
         when(selectLevelMenu.isSelectedLevel1()).thenReturn(true);
-        when(game.getState().getLevel()).thenReturn(5);
+        when(state.getLevel()).thenReturn(5);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
         
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
@@ -234,7 +234,7 @@ public class SelectLevelMenuControllerTest {
     @Test
     void testCaseSelectLevel2WhenIn5() throws IOException  {
         when(selectLevelMenu.isSelectedLevel2()).thenReturn(true);
-        when(game.getState().getLevel()).thenReturn(5);
+        when(state.getLevel()).thenReturn(5);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
         
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
@@ -243,7 +243,7 @@ public class SelectLevelMenuControllerTest {
     @Test
     void testCaseSelectLevel3WhenIn5() throws IOException  {
         when(selectLevelMenu.isSelectedLevel3()).thenReturn(true);
-        when(game.getState().getLevel()).thenReturn(5);
+        when(state.getLevel()).thenReturn(5);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
         
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
@@ -252,7 +252,7 @@ public class SelectLevelMenuControllerTest {
     @Test
     void testCaseSelectLevel4WhenIn5() throws IOException  {
         when(selectLevelMenu.isSelectedLevel4()).thenReturn(true);
-        when(game.getState().getLevel()).thenReturn(5);
+        when(state.getLevel()).thenReturn(5);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
         
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());
@@ -261,7 +261,7 @@ public class SelectLevelMenuControllerTest {
     @Test
     void testCaseSelectLevel5WhenIn5() throws IOException  {
         when(selectLevelMenu.isSelectedLevel5()).thenReturn(true);
-        when(game.getState().getLevel()).thenReturn(5);
+        when(state.getLevel()).thenReturn(5);
         selectLevelMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
         
         verify(game, times(1)).setState(any(GameState.class), any(Type.class), anyInt(), anyInt());

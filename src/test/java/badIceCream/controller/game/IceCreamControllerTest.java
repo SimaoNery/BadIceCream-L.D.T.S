@@ -85,7 +85,7 @@ class IceCreamControllerTest {
         Position position = mock(Position.class);
         Position previous = mock(Position.class);
         when(iceCream.getPosition()).thenReturn(previous);
-        when(iceCream.getPosition().getRight()).thenReturn(position);
+        when(previous.getRight()).thenReturn(position);
         when(arena.isEmpty(position)).thenReturn(false);
         when(arena.hasMonster(position)).thenReturn(null);
         when(iceCream.isStrawberryActive()).thenReturn(false);
@@ -157,7 +157,7 @@ class IceCreamControllerTest {
 
     @Test
     void eatFruitTest() {
-        when(arena.eatFruit(iceCream.getPosition())).thenReturn(1);
+        when(arena.eatFruit(any())).thenReturn(1);
 
         assertEquals(controller.eatFruit(), 1);
     }

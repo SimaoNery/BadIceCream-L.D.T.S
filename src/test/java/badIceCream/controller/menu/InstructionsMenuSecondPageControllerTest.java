@@ -19,7 +19,7 @@ import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
 
 public class InstructionsMenuSecondPageControllerTest {
-    private InstructionsMenuSecondPageController InstructionsMenuSecondPageController;
+    private InstructionsMenuSecondPageController instructionsMenuSecondPageController;
     @Mock
     private InstructionsMenuSecondPage instructionsMenuSecondPage;
     @Mock
@@ -30,21 +30,21 @@ public class InstructionsMenuSecondPageControllerTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        InstructionsMenuSecondPageController = new InstructionsMenuSecondPageController(instructionsMenuSecondPage);
+        instructionsMenuSecondPageController = new InstructionsMenuSecondPageController(instructionsMenuSecondPage);
         when(game.getState()).thenReturn(state);
     }
 
 
     @Test
     void testCaseLeft() throws IOException {
-        InstructionsMenuSecondPageController.step(game, GUI.ACTION.LEFT, System.currentTimeMillis());
+        instructionsMenuSecondPageController.step(game, GUI.ACTION.LEFT, System.currentTimeMillis());
 
         verify(game, times(1)).setState(any(InstructionsMenuFirstPageState.class), any(Type.class), anyInt(), anyInt());
     }
 
     @Test
     void testCaseSelectExit() throws IOException  {
-        InstructionsMenuSecondPageController.step(game, GUI.ACTION.PAUSE, System.currentTimeMillis());
+        instructionsMenuSecondPageController.step(game, GUI.ACTION.PAUSE, System.currentTimeMillis());
 
         verify(game, times(1)).setState(any(MainMenuState.class), any(Type.class), anyInt(), anyInt());
     }

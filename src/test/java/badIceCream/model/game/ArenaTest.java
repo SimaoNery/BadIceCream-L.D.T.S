@@ -40,8 +40,6 @@ public class ArenaTest {
     private RunnerMonster runnerMonster;
     @Mock
     private HotFloor hotFloor;
-    @Mock
-    private IceCream iceCream;
 
     @BeforeEach
     public void setUp() {
@@ -58,7 +56,6 @@ public class ArenaTest {
         when(jumperMonster.getPosition()).thenReturn(new Position(0, 9));
         when(runnerMonster.getPosition()).thenReturn(new Position(1, 0));
         when(hotFloor.getPosition()).thenReturn(new Position(1, 1));
-        when(iceCream.getPosition()).thenReturn(new Position(1, 2));
         List<Wall> walls = new ArrayList<>(Arrays.asList(stoneWall, iceWall));
         List<Monster> monsters = new ArrayList<>(Arrays.asList(defaultMonster, wallBreakerMonster, jumperMonster, runnerMonster));
         List<Fruit> fruits = new ArrayList<>(Arrays.asList(bananaFruit, appleFruit, cherryFruit, pineappleFruit, strawberryFruit));

@@ -59,7 +59,7 @@ public class GameOverMenuControllerTest {
 
     @Test
     void testCaseSelectPlayAgain() throws IOException {
-        when(game.getState().getLevel()).thenReturn(1);
+        when(state.getLevel()).thenReturn(1);
         when(gameOverMenu.isSelectedQuitToMainMenu()).thenReturn(false);
         when(gameOverMenu.isSelectedPlayAgain()).thenReturn(true);
 

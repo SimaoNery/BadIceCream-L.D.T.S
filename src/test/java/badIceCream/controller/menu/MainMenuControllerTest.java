@@ -63,7 +63,7 @@ public class MainMenuControllerTest {
     @Test
     void testCaseSelectInstructions() throws IOException{
         when(mainMenu.isSelectedInstructions()).thenReturn(true);
-        when(game.getState().getLevel()).thenReturn(1);
+        when(state.getLevel()).thenReturn(1);
 
         mainMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
 
@@ -73,7 +73,7 @@ public class MainMenuControllerTest {
     @Test
     void testCaseSelectStart() throws IOException {
         when(mainMenu.isSelectedStart()).thenReturn(true);
-        when(game.getState().getLevel()).thenReturn(1);
+        when(state.getLevel()).thenReturn(1);
 
         mainMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
 

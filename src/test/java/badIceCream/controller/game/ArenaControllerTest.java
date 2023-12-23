@@ -7,6 +7,7 @@ import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.fruits.Fruit;
+import badIceCream.model.game.elements.monsters.Monster;
 import badIceCream.states.*;
 import badIceCream.utils.Type;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,6 +34,8 @@ class ArenaControllerTest {
     @Mock
     private List<MonsterController> monsterControllers;
     @Mock
+    private MonsterController monsterController1, monsterController2;
+    @Mock
     private IceCream iceCream;
     @Mock
     private GameState state;
@@ -51,8 +54,6 @@ class ArenaControllerTest {
         when(iceCream.isStrawberryActive()).thenReturn(false);
         when(arena.getIceCream()).thenReturn(iceCream);
 
-        MonsterController monsterController1 = mock(MonsterController.class);
-        MonsterController monsterController2 = mock(MonsterController.class);
 
         monsterControllers = new ArrayList<>(Arrays.asList(monsterController1, monsterController2));
 
@@ -409,8 +410,8 @@ class ArenaControllerTest {
         long currentTime = System.currentTimeMillis();
         arenaController.stepMonsters(currentTime);
 
-        verify(monsterControllers.get(0)).step(currentTime);
-        verify(monsterControllers.get(1)).step(currentTime);
+        verify(monsterController1).step(currentTime);
+        verify(monsterController2).step(currentTime);
     }
 
 }
