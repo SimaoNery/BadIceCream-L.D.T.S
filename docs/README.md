@@ -289,6 +289,14 @@ O código para as classes envolvidas encontra-se nos seguintes links:
 
 ## _Code Smells_
 
+O tratamento das exceções poderia ter sido mais completo. Isto é, em alguns casos, optou-se por utilizar o método printStackTrace() para imprimir o stack trace associado a cada exceção, permitindo obter informações detalhadas sobre a sequência de chamadas de métodos que levaram à ocorrência da exceção. Este método deveria ser substituído por logging mais robusto ou por tratamento local da exceção.
+
+Apesar de todo o cuidado que se teve, o facto de o programa utilizar múltiplas threads, torna-o propício a erros associados à concorrência entre threads.
+
+As chamadas feitas a Thread.sleep(sleeptime) no método start() da classe Game no interior de loops podem levar a busy waiting. Esta é uma prática em que o programa espera ativamente que algo ocorra, levando ao consumo de recursos do CPU, sem a realização de tarefas úteis.  
+
+Todos os erros indicados pelo error-prone foram corrigidos. Não foram identificados mais code smells relevantes, além dos supramencionados.
+
 
 ## Testes
 ### _Coverage Report_
