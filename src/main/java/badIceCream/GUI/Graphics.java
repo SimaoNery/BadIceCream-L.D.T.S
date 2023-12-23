@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class Graphics {
     private GUI gui;
-    private Screen screen;
+    private final Screen screen;
 
     public Graphics(GUI gui) throws IOException {
         this.gui = gui;
