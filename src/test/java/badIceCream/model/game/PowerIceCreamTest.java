@@ -1,12 +1,11 @@
 package badIceCream.model.game;
+
 import badIceCream.GUI.GUI;
 import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.*;
 import badIceCream.model.game.elements.monsters.DefaultMonster;
 import badIceCream.model.game.elements.monsters.Monster;
-import badIceCream.utils.Audio;
-import badIceCream.utils.AudioController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -17,8 +16,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.mockito.Mockito.when;
 
 public class PowerIceCreamTest {
     private Arena arena;

@@ -1,4 +1,4 @@
-package badIceCream.model.utils;
+package badIceCream.utils;
 
 import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
@@ -8,7 +8,6 @@ import badIceCream.model.game.elements.Wall;
 import badIceCream.model.game.elements.monsters.DefaultMonster;
 import badIceCream.model.game.elements.monsters.Monster;
 import badIceCream.model.game.elements.monsters.RunnerMonster;
-import badIceCream.utils.ShortestPathNextMove;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;

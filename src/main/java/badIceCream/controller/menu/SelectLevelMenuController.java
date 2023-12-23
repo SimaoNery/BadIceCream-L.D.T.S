@@ -6,11 +6,8 @@ import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.arena.LoaderArenaBuilder;
 import badIceCream.model.menu.SelectLevelMenu;
 import badIceCream.states.GameState;
-import badIceCream.utils.Audio;
 import badIceCream.utils.Type;
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 
 public class SelectLevelMenuController extends MenuController<SelectLevelMenu> {
@@ -48,6 +45,7 @@ public class SelectLevelMenuController extends MenuController<SelectLevelMenu> {
                     Arena arena = new LoaderArenaBuilder(5).createArena();
                     game.setState(new GameState(arena, game.getState().getLevel()), Type.game, arena.getWidth(), arena.getHeight());
                 }
+                // fall through
             default:
         }
     }

@@ -2,15 +2,14 @@ package badIceCream.viewer.menu;
 
 import badIceCream.GUI.Graphics;
 import badIceCream.model.Position;
-import badIceCream.model.menu.GameOverMenu;
 import badIceCream.model.menu.InstructionsMenuFirstPage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 public class InstructionsMenuFirstPageViewerTest {
     @Mock

@@ -3,14 +3,12 @@ package badIceCream.viewer;
 import badIceCream.GUI.Graphics;
 import badIceCream.model.Position;
 import badIceCream.model.game.elements.fruits.*;
-import badIceCream.viewer.FruitViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.times;
 
 public class FruitViewerTest {
     private FruitViewer viewer;

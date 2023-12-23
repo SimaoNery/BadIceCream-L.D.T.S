@@ -1,16 +1,22 @@
 package badIceCream.model.game;
+
 import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
-import badIceCream.model.game.elements.*;
+import badIceCream.model.game.elements.HotFloor;
+import badIceCream.model.game.elements.IceWall;
+import badIceCream.model.game.elements.StoneWall;
+import badIceCream.model.game.elements.Wall;
 import badIceCream.model.game.elements.fruits.*;
 import badIceCream.model.game.elements.monsters.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -40,8 +46,6 @@ public class ArenaTest {
     private RunnerMonster runnerMonster;
     @Mock
     private HotFloor hotFloor;
-    @Mock
-    private IceCream iceCream;
 
     @BeforeEach
     public void setUp() {
@@ -58,7 +62,6 @@ public class ArenaTest {
         when(jumperMonster.getPosition()).thenReturn(new Position(0, 9));
         when(runnerMonster.getPosition()).thenReturn(new Position(1, 0));
         when(hotFloor.getPosition()).thenReturn(new Position(1, 1));
-        when(iceCream.getPosition()).thenReturn(new Position(1, 2));
         List<Wall> walls = new ArrayList<>(Arrays.asList(stoneWall, iceWall));
         List<Monster> monsters = new ArrayList<>(Arrays.asList(defaultMonster, wallBreakerMonster, jumperMonster, runnerMonster));
         List<Fruit> fruits = new ArrayList<>(Arrays.asList(bananaFruit, appleFruit, cherryFruit, pineappleFruit, strawberryFruit));

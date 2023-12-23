@@ -6,13 +6,8 @@ import badIceCream.model.menu.MainMenu;
 import badIceCream.model.menu.PauseMenu;
 import badIceCream.states.GameState;
 import badIceCream.states.MainMenuState;
-import badIceCream.states.State;
-import badIceCream.utils.Audio;
 import badIceCream.utils.Type;
 
-
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 
 public class PauseMenuController extends MenuController<PauseMenu> {
@@ -37,6 +32,7 @@ public class PauseMenuController extends MenuController<PauseMenu> {
                     game.setState(parent, Type.game, parent.getModel().getWidth(), parent.getModel().getHeight());
                 }
                 if (getModel().isSelectedMenu()) game.setState(new MainMenuState(new MainMenu(), game.getState().getLevel()), Type.nulo, 0, 0);
+                // fall through
             default:
         }
     }

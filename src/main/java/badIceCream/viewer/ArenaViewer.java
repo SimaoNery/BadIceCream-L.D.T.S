@@ -2,17 +2,13 @@ package badIceCream.viewer;
 
 import badIceCream.GUI.Graphics;
 import badIceCream.model.game.arena.Arena;
-import badIceCream.model.game.elements.Element;
 import badIceCream.model.game.elements.HotFloor;
 import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.Wall;
 import badIceCream.model.game.elements.fruits.Fruit;
 import badIceCream.model.game.elements.monsters.Monster;
-import badIceCream.viewer.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 
 public class ArenaViewer extends Viewer<Arena> {

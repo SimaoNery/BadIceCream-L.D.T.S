@@ -4,14 +4,17 @@ import badIceCream.GUI.GUI;
 import badIceCream.GUI.Graphics;
 import badIceCream.Game;
 import badIceCream.model.menu.GameOverMenu;
-import badIceCream.states.*;
-import badIceCream.utils.Audio;
+import badIceCream.states.GameState;
+import badIceCream.states.MainMenuState;
+import badIceCream.states.State;
 import badIceCream.utils.Type;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
 import java.io.IOException;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -27,11 +30,11 @@ public class GameOverMenuControllerTest {
     private Graphics graphics;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws IOException {
         MockitoAnnotations.openMocks(this);
         when(game.getState()).thenReturn(state);
         gameOverMenuController = new GameOverMenuController(gameOverMenu);
-        game.setAll(state, graphics);
+        when(game.getGraphicsForGame(any(Type.class), anyInt(), anyInt())).thenReturn(graphics);
     }
 
     @Test
@@ -59,7 +62,7 @@ public class GameOverMenuControllerTest {
 
     @Test
     void testCaseSelectPlayAgain() throws IOException {
-        when(game.getState().getLevel()).thenReturn(1);
+        when(state.getLevel()).thenReturn(1);
         when(gameOverMenu.isSelectedQuitToMainMenu()).thenReturn(false);
         when(gameOverMenu.isSelectedPlayAgain()).thenReturn(true);
 

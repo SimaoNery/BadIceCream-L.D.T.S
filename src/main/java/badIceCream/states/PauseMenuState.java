@@ -1,10 +1,7 @@
 package badIceCream.states;
 
-import badIceCream.controller.menu.InstructionsMenuFirstPageController;
 import badIceCream.controller.menu.PauseMenuController;
-import badIceCream.model.menu.InstructionsMenuFirstPage;
 import badIceCream.model.menu.PauseMenu;
-import badIceCream.viewer.menu.InstructionsMenuFirstPageViewer;
 import badIceCream.viewer.menu.PauseMenuViewer;
 
 

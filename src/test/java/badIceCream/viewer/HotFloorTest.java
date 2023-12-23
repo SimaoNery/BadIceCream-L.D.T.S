@@ -3,7 +3,6 @@ package badIceCream.viewer;
 import badIceCream.GUI.Graphics;
 import badIceCream.model.Position;
 import badIceCream.model.game.elements.HotFloor;
-import badIceCream.viewer.HotFloorViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;

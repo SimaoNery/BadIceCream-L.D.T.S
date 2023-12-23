@@ -17,7 +17,6 @@ import java.io.IOException;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.times;
 
 public class PauseMenuControllerTest {
     private PauseMenuController pauseMenuController;
@@ -39,8 +38,7 @@ public class PauseMenuControllerTest {
         pauseMenuController = new PauseMenuController(pauseMenu, state);
         when(pauseMenu.isSelectedMenu()).thenReturn(false);
         when(pauseMenu.isSelectedResume()).thenReturn(false);
-        game.setAll(state, graphics);
-        when(game.getGraphicsForGame(any(Type.class), anyInt(), anyInt())).thenReturn(null);
+        when(game.getGraphicsForGame(any(Type.class), anyInt(), anyInt())).thenReturn(graphics);
         when(arena.getHeight()).thenReturn(5);
         when(arena.getHeight()).thenReturn(5);
         when(state.getModel()).thenReturn(arena);

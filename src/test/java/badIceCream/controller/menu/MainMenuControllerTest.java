@@ -1,6 +1,7 @@
 package badIceCream.controller.menu;
 
 import badIceCream.GUI.GUI;
+import badIceCream.GUI.Graphics;
 import badIceCream.Game;
 import badIceCream.model.menu.MainMenu;
 import badIceCream.states.InstructionsMenuFirstPageState;
@@ -25,12 +26,15 @@ public class MainMenuControllerTest {
     @Mock
     private Game game;
 
+    @Mock
+    private Graphics graphics;
+
     @BeforeEach
     void setUp() throws IOException {
         MockitoAnnotations.openMocks(this);
         when(game.getState()).thenReturn(state);
         mainMenuController = new MainMenuController(mainMenu);
-        when(game.getGraphicsForGame(any(Type.class), anyInt(), anyInt())).thenReturn(null);
+        when(game.getGraphicsForGame(any(Type.class), anyInt(), anyInt())).thenReturn(graphics);
     }
 
     @Test
@@ -59,7 +63,7 @@ public class MainMenuControllerTest {
     @Test
     void testCaseSelectInstructions() throws IOException{
         when(mainMenu.isSelectedInstructions()).thenReturn(true);
-        when(game.getState().getLevel()).thenReturn(1);
+        when(state.getLevel()).thenReturn(1);
 
         mainMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
 
@@ -69,7 +73,7 @@ public class MainMenuControllerTest {
     @Test
     void testCaseSelectStart() throws IOException {
         when(mainMenu.isSelectedStart()).thenReturn(true);
-        when(game.getState().getLevel()).thenReturn(1);
+        when(state.getLevel()).thenReturn(1);
 
         mainMenuController.step(game, GUI.ACTION.SELECT, System.currentTimeMillis());
 

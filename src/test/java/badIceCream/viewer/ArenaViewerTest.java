@@ -83,8 +83,6 @@
             IceWall iceWallJumperLeft = mock(IceWall.class);
 
             when(stoneWall.getType()).thenReturn(2);
-            Position stonePosition = mock(Position.class);
-            when(arena.hasMonster(stonePosition)).thenReturn(null);
 
             when(iceWallDefault.getType()).thenReturn(1);
             Position defaultPosition = mock(Position.class);
@@ -189,9 +187,7 @@
             HotFloor pineappleHotFloor = mock(HotFloor.class);
             HotFloor strawberryHotFloor = mock(HotFloor.class);
             HotFloor iceCreamUpHotFloor = mock(HotFloor.class);
-            HotFloor iceCreamRightHotFloor = mock(HotFloor.class);
-            HotFloor iceCreamLeftHotFloor = mock(HotFloor.class);
-            HotFloor iceCreamDownHotFloor = mock(HotFloor.class);
+
 
             when(iceCream.getPosition()).thenReturn(new Position(1, 2));
 

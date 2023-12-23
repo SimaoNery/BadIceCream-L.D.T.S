@@ -1,6 +1,6 @@
-package badIceCream.utils;
-import javax.sound.sampled.*;
+package badIceCream.audio;
 
+import javax.sound.sampled.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -29,7 +29,6 @@ public class Audio {
 
             return soundClip;
         } catch (Exception e) {
-            e.printStackTrace();
             throw new FileNotFoundException("Couldn't get the sound!");
         }
     }

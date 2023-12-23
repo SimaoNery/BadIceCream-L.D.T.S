@@ -4,7 +4,6 @@ import badIceCream.GUI.GUI;
 import badIceCream.GUI.Graphics;
 import badIceCream.model.Position;
 import badIceCream.model.game.elements.IceCream;
-import badIceCream.viewer.IceCreamViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;

@@ -3,8 +3,8 @@ package badIceCream.states;
 import badIceCream.GUI.GUI;
 import badIceCream.GUI.Graphics;
 import badIceCream.Game;
-import badIceCream.viewer.Viewer;
 import badIceCream.controller.Controller;
+import badIceCream.viewer.Viewer;
 
 import java.io.IOException;
 

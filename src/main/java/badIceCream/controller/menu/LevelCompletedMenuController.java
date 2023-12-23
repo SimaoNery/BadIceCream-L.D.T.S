@@ -8,11 +8,8 @@ import badIceCream.model.menu.LevelCompletedMenu;
 import badIceCream.model.menu.MainMenu;
 import badIceCream.states.GameState;
 import badIceCream.states.MainMenuState;
-import badIceCream.utils.Audio;
 import badIceCream.utils.Type;
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 
 public class LevelCompletedMenuController extends MenuController<LevelCompletedMenu> {
@@ -37,6 +34,7 @@ public class LevelCompletedMenuController extends MenuController<LevelCompletedM
                 if (getModel().isSelectedQuitToMainMenu()) {
                     game.setState(new MainMenuState(new MainMenu(), game.getState().getLevel()), Type.menu, 140,50);
                 }
+                // fall through
             default:
         }
     }

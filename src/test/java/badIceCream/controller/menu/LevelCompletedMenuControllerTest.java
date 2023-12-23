@@ -7,7 +7,6 @@ import badIceCream.model.menu.LevelCompletedMenu;
 import badIceCream.states.GameState;
 import badIceCream.states.MainMenuState;
 import badIceCream.states.State;
-import badIceCream.utils.Audio;
 import badIceCream.utils.Type;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,7 +17,6 @@ import java.io.IOException;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.times;
 
 public class LevelCompletedMenuControllerTest {
     private LevelCompletedMenuController levelCompletedMenuController;
@@ -33,14 +31,14 @@ public class LevelCompletedMenuControllerTest {
     private Graphics graphics;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws IOException {
         MockitoAnnotations.openMocks(this);
         when(state.getLevel()).thenReturn(1);
         when(game.getState()).thenReturn(state);
         levelCompletedMenuController = new LevelCompletedMenuController(levelCompletedMenu);
         when(levelCompletedMenu.isSelectedQuitToMainMenu()).thenReturn(false);
         when(levelCompletedMenu.isSelectedNextLevel()).thenReturn(false);
-        game.setAll(state, graphics);
+        when(game.getGraphicsForGame(any(Type.class), anyInt(), anyInt())).thenReturn(graphics);
     }
 
     @Test
