@@ -38,6 +38,7 @@ public class GameOverMenuController extends MenuController<GameOverMenu> {
                     Arena arena = new LoaderArenaBuilder(game.getState().getLevel()).createArena();
                     game.setState(new GameState(arena, game.getState().getLevel()), Type.game, arena.getWidth(), arena.getHeight());
                 }
+                // fall through
             default:
         }
     }

@@ -31,8 +31,7 @@ public class SelectLevelMenuControllerTest {
         MockitoAnnotations.openMocks(this);
         when(game.getState()).thenReturn(state);
         selectLevelMenuController = new SelectLevelMenuController(selectLevelMenu);
-        game.setAll(state, graphics);
-        when(game.getGraphicsForGame(any(Type.class), anyInt(), anyInt())).thenReturn(null);
+        when(game.getGraphicsForGame(any(Type.class), anyInt(), anyInt())).thenReturn(graphics);
     }
 
     @Test

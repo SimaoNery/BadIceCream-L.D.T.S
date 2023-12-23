@@ -27,11 +27,11 @@ public class GameOverMenuControllerTest {
     private Graphics graphics;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws IOException {
         MockitoAnnotations.openMocks(this);
         when(game.getState()).thenReturn(state);
         gameOverMenuController = new GameOverMenuController(gameOverMenu);
-        game.setAll(state, graphics);
+        when(game.getGraphicsForGame(any(Type.class), anyInt(), anyInt())).thenReturn(graphics);
     }
 
     @Test

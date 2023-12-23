@@ -22,7 +22,7 @@ public class Game {
         AudioController.playMenuMusic();
     }
 
-    public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException {
+    public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException, InterruptedException {
         new Game().start();
     }
     public void setState(State state, Type type, int width, int height) throws IOException {
@@ -59,12 +59,12 @@ public class Game {
                 AudioController.stopLevelCompleteMusic();
                 AudioController.stopGameOverMusic();
                 AudioController.playLevelMusic();
+                // fall through
             default:
         }
     }
 
     public void setAll(State state, Graphics gui) {
-
         this.state = state;
         this.gui = gui;
     }
@@ -83,7 +83,7 @@ public class Game {
         };
     }
 
-    public synchronized void start() throws IOException {
+    public synchronized void start() throws IOException, InterruptedException {
         Thread normalThread = new Thread(() -> {
             while (state != null) {
                 long startTime = System.currentTimeMillis();
@@ -94,10 +94,12 @@ public class Game {
                 }
                 long elapsedTime = System.currentTimeMillis() - startTime;
                 long sleepTime = 1000 / 60 - elapsedTime;
-                try {
-                    if (sleepTime > 0) Thread.sleep(sleepTime);
-                } catch (InterruptedException ignored) {
-                    ignored.printStackTrace();
+                if (sleepTime > 0) {
+                    try {
+                        Thread.sleep(sleepTime);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
         });
@@ -112,9 +114,12 @@ public class Game {
                 }
                 long elapsedTime = System.currentTimeMillis() - startTime;
                 long sleepTime = 1000 / 2 - elapsedTime;
-                try {
-                    if (sleepTime > 0) Thread.sleep(sleepTime);
-                } catch (InterruptedException ignored) {
+                if (sleepTime > 0) {
+                    try {
+                        Thread.sleep(sleepTime);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
         });
@@ -122,12 +127,8 @@ public class Game {
         normalThread.start();
         monsterThread.start();
 
-        try {
-            normalThread.join();
-            monsterThread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        normalThread.join();
+        monsterThread.join();
 
         gui.close();
     }

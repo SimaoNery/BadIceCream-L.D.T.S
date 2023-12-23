@@ -1,13 +1,9 @@
 package badIceCream.controller.game;
 
-import badIceCream.GUI.Graphics;
-import badIceCream.Game;
 import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.monsters.Monster;
-import badIceCream.states.State;
-import badIceCream.utils.Audio;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -20,30 +16,20 @@ public class MonsterControllerTest {
     @Mock
     private Arena arena;
     @Mock
-    private Game game;
-    @Mock
     private IceCream iceCream;
     @Mock
     private StepMonsters step;
     @Mock
     private Monster monster;
-    @Mock
-    private State state;
-    @Mock
-    private Graphics graphics;
-    @Mock
-    private Audio audio;
     private MonsterController monsterController;
 
     @BeforeEach
-    void setUp() {
+    void setUp()  {
         MockitoAnnotations.openMocks(this);
         when(iceCream.getPosition()).thenReturn(new Position(5, 5));
         when(monster.getPosition()).thenReturn(new Position(1, 2));
         when(arena.getIceCream()).thenReturn(iceCream);
         monsterController = new MonsterController(arena, step, monster);
-        when(game.getState()).thenReturn(state);
-        game.setAll(state, graphics);
     }
 
     @Test

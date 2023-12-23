@@ -8,11 +8,13 @@ import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.monsters.Monster;
 import badIceCream.states.State;
+import badIceCream.utils.Type;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -33,7 +35,7 @@ class IceCreamControllerTest {
     private Graphics graphics;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws IOException {
         MockitoAnnotations.openMocks(this);
 
 
@@ -54,7 +56,7 @@ class IceCreamControllerTest {
         when(iceCream.getPosition()).thenReturn(position);
 
         controller = new IceCreamController(arena);
-        game.setAll(state, graphics);
+        when(game.getGraphicsForGame(any(Type.class), anyInt(), anyInt())).thenReturn(graphics);
     }
 
     @Test

@@ -33,14 +33,14 @@ public class LevelCompletedMenuControllerTest {
     private Graphics graphics;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws IOException {
         MockitoAnnotations.openMocks(this);
         when(state.getLevel()).thenReturn(1);
         when(game.getState()).thenReturn(state);
         levelCompletedMenuController = new LevelCompletedMenuController(levelCompletedMenu);
         when(levelCompletedMenu.isSelectedQuitToMainMenu()).thenReturn(false);
         when(levelCompletedMenu.isSelectedNextLevel()).thenReturn(false);
-        game.setAll(state, graphics);
+        when(game.getGraphicsForGame(any(Type.class), anyInt(), anyInt())).thenReturn(graphics);
     }
 
     @Test

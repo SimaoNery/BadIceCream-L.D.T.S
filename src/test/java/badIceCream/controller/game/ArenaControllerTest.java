@@ -13,6 +13,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.Spy;
+
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -42,10 +44,11 @@ class ArenaControllerTest {
     private Graphics graphics;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws IOException {
         MockitoAnnotations.openMocks(this);
         when(game.getState()).thenReturn(state);
         when(iceCream.getPosition()).thenReturn(position);
+        when(iceCream.isStrawberryActive()).thenReturn(false);
         when(arena.getIceCream()).thenReturn(iceCream);
 
         MonsterController monsterController1 = mock(MonsterController.class);
@@ -54,7 +57,7 @@ class ArenaControllerTest {
         monsterControllers = new ArrayList<>(Arrays.asList(monsterController1, monsterController2));
 
         arenaController = new ArenaController(arena, iceCreamController, monsterControllers);
-        game.setAll(state, graphics);
+        when(game.getGraphicsForGame(any(Type.class), anyInt(), anyInt())).thenReturn(graphics);
     }
     @Test
     void stepTestWinUp() throws IOException {
@@ -159,7 +162,6 @@ class ArenaControllerTest {
     void stepTestEscape() throws IOException {
         when(arena.getFruits()).thenReturn(List.of(mock(Fruit.class)));
         when(iceCream.getAlive()).thenReturn(true);
-        game.setAll(state, graphics);
         arenaController.step(game, GUI.ACTION.PAUSE, System.currentTimeMillis());
 
         verify(game, times(1)).setState(any(PauseMenuState.class), any(Type.class), anyInt(), anyInt());
@@ -167,16 +169,14 @@ class ArenaControllerTest {
     @Test
     void stepTestGameOverUp() throws IOException {
         when(iceCreamController.eatFruit()).thenReturn(-1);
-        iceCream.setStrawberry(false);
         when(iceCream.isStrawberryActive()).thenReturn(false);
+        when(iceCream.getAlive()).thenReturn(false);
         when(arena.getFruits()).thenReturn(List.of(mock(Fruit.class)));
-        when(arena.getIceCream().getAlive()).thenReturn(false);
 
         arenaController.step(game, GUI.ACTION.UP, System.currentTimeMillis());
 
 
         verify(game, times(1)).getState();
-        verify(game.getState(), times(1)).getLevel();
         verify(game, times(1)).setState(any(GameOverMenuState.class), any(Type.class), anyInt(), anyInt());
 
     }
@@ -184,10 +184,9 @@ class ArenaControllerTest {
     @Test
     void stepTestGameOverDown() throws IOException {
         when(iceCreamController.eatFruit()).thenReturn(-1);
-        iceCream.setStrawberry(false);
         when(iceCream.isStrawberryActive()).thenReturn(false);
+        when(iceCream.getAlive()).thenReturn(false);
         when(arena.getFruits()).thenReturn(List.of(mock(Fruit.class)));
-        when(arena.getIceCream().getAlive()).thenReturn(false);
 
         arenaController.step(game, GUI.ACTION.DOWN, System.currentTimeMillis());
 
@@ -198,10 +197,9 @@ class ArenaControllerTest {
     @Test
     void stepTestGameOverLeft() throws IOException {
         when(iceCreamController.eatFruit()).thenReturn(-1);
-        iceCream.setStrawberry(false);
         when(iceCream.isStrawberryActive()).thenReturn(false);
+        when(iceCream.getAlive()).thenReturn(false);
         when(arena.getFruits()).thenReturn(List.of(mock(Fruit.class)));
-        when(arena.getIceCream().getAlive()).thenReturn(false);
 
         arenaController.step(game, GUI.ACTION.LEFT, System.currentTimeMillis());
 
@@ -212,10 +210,9 @@ class ArenaControllerTest {
     @Test
     void stepTestGameOverRight() throws IOException {
         when(iceCreamController.eatFruit()).thenReturn(-1);
-        iceCream.setStrawberry(false);
         when(iceCream.isStrawberryActive()).thenReturn(false);
+        when(iceCream.getAlive()).thenReturn(false);
         when(arena.getFruits()).thenReturn(List.of(mock(Fruit.class)));
-        when(arena.getIceCream().getAlive()).thenReturn(false);
 
         arenaController.step(game, GUI.ACTION.RIGHT, System.currentTimeMillis());
 

@@ -31,7 +31,9 @@ public class MainMenuController extends MenuController<MainMenu> {
                 }
                 if (getModel().isSelectedInstructions()) game.setState(new InstructionsMenuFirstPageState(new InstructionsMenuFirstPage(), game.getState().getLevel()), Type.nulo,0,0);
                 if (getModel().isSelectedStart()) game.setState(new SelectLevelMenuState(new SelectLevelMenu(), game.getState().getLevel()), Type.nulo,0,0);
-            default:
+                // fall through
+
+                default:
         }
     }
 }

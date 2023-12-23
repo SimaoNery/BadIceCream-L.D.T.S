@@ -35,15 +35,15 @@ public class WallBreakerMovementTest {
     @Test
     void testMoveMonsterUpdatesPositionAndChecksIceCream() {
         Position newPosition = new Position(2, 2);
-        when(arena.getIceCream().isStrawberryActive()).thenReturn(false);
-        when(arena.getIceCream().getPosition()).thenReturn(newPosition);
+        when(iceCream.getAlive()).thenReturn(false);
+        when(iceCream.getPosition()).thenReturn(newPosition);
 
         wallBreakerMovement.moveMonster(monster, newPosition, arena);
 
         verify(monster, times(1)).setPosition(newPosition);
-        verify(arena.getIceCream(), times(1)).isStrawberryActive();
-        verify(arena.getIceCream(), times(1)).getPosition();
-        verify(arena.getIceCream(), times(1)).changeAlive();
+        verify(iceCream, times(1)).isStrawberryActive();
+        verify(iceCream, times(1)).getPosition();
+        verify(iceCream, times(1)).changeAlive();
     }
 
     @Test
@@ -71,7 +71,7 @@ public class WallBreakerMovementTest {
         verify(monster, times(5)).getPosition();
         verify(monster, times(1)).setLastAction(any(GUI.ACTION.class));
         verify(arena, times(1)).getIceCream();
-        verify(arena.getIceCream(), never()).changeAlive();
+        verify(iceCream, never()).changeAlive();
     }
 
     @Test
@@ -105,7 +105,7 @@ public class WallBreakerMovementTest {
 
         verify(monster, times(1)).setLastAction(GUI.ACTION.LEFT);
         verify(monster, times(1)).setPosition(new Position(1,2));
-        verify(arena.getIceCream(), never()).changeAlive();
+        verify(iceCream, never()).changeAlive();
     }
 
     @Test
@@ -121,8 +121,7 @@ public class WallBreakerMovementTest {
 
         verify(monster, times(1)).setLastAction(GUI.ACTION.RIGHT);
         verify(monster, times(1)).setPosition(new Position(3,2));
-        verify(arena.getIceCream(), times(1)).isStrawberryActive();
-        verify(arena.getIceCream(), never()).changeAlive();
+        verify(iceCream, never()).changeAlive();
     }
 
     @Test
@@ -138,8 +137,7 @@ public class WallBreakerMovementTest {
 
         verify(monster, times(1)).setLastAction(GUI.ACTION.UP);
         verify(monster, times(1)).setPosition(new Position(2,1));
-        verify(arena.getIceCream(), times(1)).isStrawberryActive();
-        verify(arena.getIceCream(), never()).changeAlive();
+        verify(iceCream, never()).changeAlive();
     }
 
     @Test
@@ -155,7 +153,6 @@ public class WallBreakerMovementTest {
 
         verify(monster, times(1)).setLastAction(GUI.ACTION.DOWN);
         verify(monster, times(1)).setPosition(new Position(2,3));
-        verify(arena.getIceCream(), times(1)).isStrawberryActive();
-        verify(arena.getIceCream(), never()).changeAlive();
+        verify(iceCream, never()).changeAlive();
     }
 }

@@ -24,7 +24,7 @@ public class ShortestPathNextMove {
 
             if (current.position.equals(iceCreamPos)) {
 
-                while (current.parent.position != monsterPos) {
+                while (!Objects.equals(current.parent.position, monsterPos)) {
                     current = current.parent;
                 }
                 return current.position;
