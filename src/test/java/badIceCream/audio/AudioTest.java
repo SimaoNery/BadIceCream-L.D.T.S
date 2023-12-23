@@ -1,11 +1,9 @@
-package badIceCream.utils;
+package badIceCream.audio;
 
-import badIceCream.utils.Audio;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.opentest4j.AssertionFailedError;
 
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
@@ -13,7 +11,8 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 

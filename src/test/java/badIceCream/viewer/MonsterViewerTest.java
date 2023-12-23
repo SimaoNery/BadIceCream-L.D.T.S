@@ -7,7 +7,6 @@ import badIceCream.model.game.elements.monsters.DefaultMonster;
 import badIceCream.model.game.elements.monsters.JumperMonster;
 import badIceCream.model.game.elements.monsters.RunnerMonster;
 import badIceCream.model.game.elements.monsters.WallBreakerMonster;
-import badIceCream.viewer.MonsterViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;

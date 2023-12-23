@@ -6,11 +6,8 @@ import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.arena.LoaderArenaBuilder;
 import badIceCream.model.menu.SelectLevelMenu;
 import badIceCream.states.GameState;
-import badIceCream.utils.Audio;
 import badIceCream.utils.Type;
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 
 public class SelectLevelMenuController extends MenuController<SelectLevelMenu> {

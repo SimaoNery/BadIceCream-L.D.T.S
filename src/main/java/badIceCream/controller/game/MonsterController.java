@@ -1,15 +1,11 @@
 package badIceCream.controller.game;
 
-import badIceCream.Game;
-import badIceCream.controller.game.monsters.RunnerMovementEnabled;
+import badIceCream.audio.AudioController;
 import badIceCream.controller.game.monsters.RunnerMovementDisabled;
+import badIceCream.controller.game.monsters.RunnerMovementEnabled;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.monsters.Monster;
-import badIceCream.utils.Audio;
-import badIceCream.utils.AudioController;
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.util.Random;
 

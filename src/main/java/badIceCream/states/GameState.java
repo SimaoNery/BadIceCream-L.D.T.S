@@ -2,20 +2,10 @@ package badIceCream.states;
 
 import badIceCream.controller.game.ArenaController;
 import badIceCream.controller.game.IceCreamController;
-import badIceCream.controller.menu.GameOverMenuController;
 import badIceCream.model.game.arena.Arena;
-import badIceCream.model.menu.GameOverMenu;
-import badIceCream.utils.Audio;
-import badIceCream.utils.AudioController;
 import badIceCream.viewer.*;
-import badIceCream.viewer.menu.GameOverMenuViewer;
 
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class GameState extends State<Arena> {
     public GameState(Arena arena, int level) {

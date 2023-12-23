@@ -7,7 +7,6 @@ import badIceCream.model.menu.LevelCompletedMenu;
 import badIceCream.states.GameState;
 import badIceCream.states.MainMenuState;
 import badIceCream.states.State;
-import badIceCream.utils.Audio;
 import badIceCream.utils.Type;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,7 +17,6 @@ import java.io.IOException;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.times;
 
 public class LevelCompletedMenuControllerTest {
     private LevelCompletedMenuController levelCompletedMenuController;

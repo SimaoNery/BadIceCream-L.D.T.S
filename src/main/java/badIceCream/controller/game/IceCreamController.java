@@ -1,9 +1,9 @@
 package badIceCream.controller.game;
 
-import badIceCream.Game;
-import badIceCream.model.game.arena.Arena;
-import badIceCream.model.Position;
 import badIceCream.GUI.GUI;
+import badIceCream.Game;
+import badIceCream.model.Position;
+import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.IceCream;
 
 

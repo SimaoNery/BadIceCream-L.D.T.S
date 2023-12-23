@@ -4,14 +4,17 @@ import badIceCream.GUI.GUI;
 import badIceCream.GUI.Graphics;
 import badIceCream.Game;
 import badIceCream.model.menu.GameOverMenu;
-import badIceCream.states.*;
-import badIceCream.utils.Audio;
+import badIceCream.states.GameState;
+import badIceCream.states.MainMenuState;
+import badIceCream.states.State;
 import badIceCream.utils.Type;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
 import java.io.IOException;
+
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 

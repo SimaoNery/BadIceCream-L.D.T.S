@@ -1,11 +1,7 @@
 package badIceCream.states;
 
-import badIceCream.controller.menu.InstructionsMenuFirstPageController;
 import badIceCream.controller.menu.LevelCompletedMenuController;
-import badIceCream.model.menu.InstructionsMenuFirstPage;
 import badIceCream.model.menu.LevelCompletedMenu;
-import badIceCream.utils.Audio;
-import badIceCream.viewer.menu.InstructionsMenuFirstPageViewer;
 import badIceCream.viewer.menu.LevelCompletedMenuViewer;
 
 public class LevelCompletedMenuState extends MenuState<LevelCompletedMenu> {

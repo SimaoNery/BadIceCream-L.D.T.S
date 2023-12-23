@@ -1,16 +1,22 @@
 package badIceCream.model.game;
+
 import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
-import badIceCream.model.game.elements.*;
+import badIceCream.model.game.elements.HotFloor;
+import badIceCream.model.game.elements.IceWall;
+import badIceCream.model.game.elements.StoneWall;
+import badIceCream.model.game.elements.Wall;
 import badIceCream.model.game.elements.fruits.*;
 import badIceCream.model.game.elements.monsters.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 

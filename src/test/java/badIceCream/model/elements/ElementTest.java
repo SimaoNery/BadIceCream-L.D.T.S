@@ -10,6 +10,7 @@ import badIceCream.model.game.elements.monsters.JumperMonster;
 import badIceCream.model.game.elements.monsters.RunnerMonster;
 import badIceCream.model.game.elements.monsters.WallBreakerMonster;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ElementTest {

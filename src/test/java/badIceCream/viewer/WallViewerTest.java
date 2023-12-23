@@ -4,7 +4,6 @@ import badIceCream.GUI.Graphics;
 import badIceCream.model.Position;
 import badIceCream.model.game.elements.IceWall;
 import badIceCream.model.game.elements.StoneWall;
-import badIceCream.viewer.WallViewer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;

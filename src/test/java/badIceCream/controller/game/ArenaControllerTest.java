@@ -7,12 +7,16 @@ import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.fruits.Fruit;
-import badIceCream.states.*;
+import badIceCream.states.GameOverMenuState;
+import badIceCream.states.GameState;
+import badIceCream.states.LevelCompletedMenuState;
+import badIceCream.states.PauseMenuState;
 import badIceCream.utils.Type;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;

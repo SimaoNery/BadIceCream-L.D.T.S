@@ -1,20 +1,22 @@
 package badIceCream.controller.game;
 
-import badIceCream.Game;
-import badIceCream.controller.game.monsters.*;
-import badIceCream.model.game.arena.Arena;
 import badIceCream.GUI.GUI;
+import badIceCream.Game;
+import badIceCream.controller.game.monsters.DefaultMovement;
+import badIceCream.controller.game.monsters.JumperMovement;
+import badIceCream.controller.game.monsters.RunnerMovementDisabled;
+import badIceCream.controller.game.monsters.WallBreakerMovement;
+import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.monsters.Monster;
 import badIceCream.model.menu.GameOverMenu;
 import badIceCream.model.menu.LevelCompletedMenu;
 import badIceCream.model.menu.PauseMenu;
-import badIceCream.states.*;
-import badIceCream.utils.Audio;
+import badIceCream.states.GameOverMenuState;
+import badIceCream.states.GameState;
+import badIceCream.states.LevelCompletedMenuState;
+import badIceCream.states.PauseMenuState;
 import badIceCream.utils.Type;
 
-
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.util.List;
 

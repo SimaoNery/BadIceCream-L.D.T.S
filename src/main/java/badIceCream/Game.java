@@ -3,11 +3,12 @@ package badIceCream;
 import badIceCream.GUI.GameGraphics;
 import badIceCream.GUI.Graphics;
 import badIceCream.GUI.MenuGraphics;
+import badIceCream.audio.AudioController;
 import badIceCream.model.menu.MainMenu;
 import badIceCream.states.MainMenuState;
 import badIceCream.states.State;
-import badIceCream.utils.AudioController;
 import badIceCream.utils.Type;
+
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -63,11 +64,7 @@ public class Game {
             default:
         }
     }
-
-    public void setAll(State state, Graphics gui) {
-        this.state = state;
-        this.gui = gui;
-    }
+    
     public Graphics getGui(){
         return this.gui;
     }

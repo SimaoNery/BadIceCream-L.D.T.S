@@ -1,10 +1,7 @@
 package badIceCream.states;
 
-import badIceCream.controller.menu.InstructionsMenuFirstPageController;
 import badIceCream.controller.menu.SelectLevelMenuController;
-import badIceCream.model.menu.InstructionsMenuFirstPage;
 import badIceCream.model.menu.SelectLevelMenu;
-import badIceCream.viewer.menu.InstructionsMenuFirstPageViewer;
 import badIceCream.viewer.menu.SelectLevelMenuViewer;
 
 public class SelectLevelMenuState extends MenuState<SelectLevelMenu> {

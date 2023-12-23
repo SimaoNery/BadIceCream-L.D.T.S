@@ -1,4 +1,4 @@
-package badIceCream.utils;
+package badIceCream.audio;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;

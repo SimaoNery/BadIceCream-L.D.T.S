@@ -1,12 +1,11 @@
 package badIceCream.model.game.arena;
 
 import badIceCream.GUI.GUI;
+import badIceCream.audio.AudioController;
 import badIceCream.model.Position;
 import badIceCream.model.game.elements.*;
 import badIceCream.model.game.elements.fruits.*;
 import badIceCream.model.game.elements.monsters.Monster;
-import badIceCream.utils.Audio;
-import badIceCream.utils.AudioController;
 
 import java.util.List;
 import java.util.Random;

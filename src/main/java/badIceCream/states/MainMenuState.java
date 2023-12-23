@@ -1,10 +1,7 @@
 package badIceCream.states;
 
-import badIceCream.controller.menu.InstructionsMenuFirstPageController;
-import badIceCream.model.menu.InstructionsMenuFirstPage;
-import badIceCream.model.menu.MainMenu;
 import badIceCream.controller.menu.MainMenuController;
-import badIceCream.viewer.menu.InstructionsMenuFirstPageViewer;
+import badIceCream.model.menu.MainMenu;
 import badIceCream.viewer.menu.MainMenuViewer;
 
 public class MainMenuState extends MenuState<MainMenu> {

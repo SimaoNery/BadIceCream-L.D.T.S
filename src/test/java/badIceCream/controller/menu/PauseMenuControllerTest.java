@@ -17,7 +17,6 @@ import java.io.IOException;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.times;
 
 public class PauseMenuControllerTest {
     private PauseMenuController pauseMenuController;
