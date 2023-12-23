@@ -295,9 +295,11 @@ O código para as classes envolvidas encontra-se nos seguintes links:
 ![](resources/TestCoverage.png)
 
 ### _Mutation Testing Report_
+#### _Terminal Report_
 ![](resources/PITestTerminal.png)
 
-![](resources/PITestReport.png)
+#### _Web Report_
+<img src="resources/PITestReport.png" width="970" height="600"/>
 
 ## Self-evaluation
 Nelson Neto 33.3% <br />
