@@ -48,7 +48,7 @@ public class WallBreakerMovementTest {
 
     @Test
     void testStepDoesNotMoveMonsterBeforeInterval() throws IOException {
-        long currentTime = 200L;
+        long currentTime = 299L;
         long lastMovement = 100L;
 
         wallBreakerMovement.step(monster, arena, currentTime, lastMovement);
@@ -66,7 +66,7 @@ public class WallBreakerMovementTest {
         when(arena.isEmptyNoStoneWall(any(Position.class))).thenReturn(true);
         when(monster.getPosition()).thenReturn(new Position(5,5));
 
-        wallBreakerMovement.step(monster, arena, 500L, 200L);
+        wallBreakerMovement.step(monster, arena, 400L, 200L);
 
         verify(monster, times(5)).getPosition();
         verify(monster, times(1)).setLastAction(any(GUI.ACTION.class));
@@ -85,7 +85,7 @@ public class WallBreakerMovementTest {
         when(arena.isIceWall(new Position(1,2))).thenReturn(true);
         when(monster.getPosition()).thenReturn(new Position(2,2));
 
-        wallBreakerMovement.step(monster, arena, 500L, 200L);
+        wallBreakerMovement.step(monster, arena, 400L, 200L);
 
         verify(arena, times(1)).iceWallDestroyed(new Position(1,2));
         verify(monster, times(1)).setLastAction(GUI.ACTION.LEFT);
@@ -101,7 +101,7 @@ public class WallBreakerMovementTest {
         when(arena.isEmptyNoStoneWall(new Position(1,2))).thenReturn(true);
         when(monster.getPosition()).thenReturn(new Position(2,2));
 
-        wallBreakerMovement.step(monster, arena, 500L, 200L);
+        wallBreakerMovement.step(monster, arena, 400L, 200L);
 
         verify(monster, times(1)).setLastAction(GUI.ACTION.LEFT);
         verify(monster, times(1)).setPosition(new Position(1,2));
@@ -117,7 +117,7 @@ public class WallBreakerMovementTest {
         when(arena.isEmptyNoStoneWall(new Position(3,2))).thenReturn(true);
         when(monster.getPosition()).thenReturn(new Position(2,2));
 
-        wallBreakerMovement.step(monster, arena, 500L, 200L);
+        wallBreakerMovement.step(monster, arena, 400L, 200L);
 
         verify(monster, times(1)).setLastAction(GUI.ACTION.RIGHT);
         verify(monster, times(1)).setPosition(new Position(3,2));
@@ -133,7 +133,7 @@ public class WallBreakerMovementTest {
         when(arena.isEmptyNoStoneWall(new Position(2,1))).thenReturn(true);
         when(monster.getPosition()).thenReturn(new Position(2,2));
 
-        wallBreakerMovement.step(monster, arena, 500L, 200L);
+        wallBreakerMovement.step(monster, arena, 400L, 200L);
 
         verify(monster, times(1)).setLastAction(GUI.ACTION.UP);
         verify(monster, times(1)).setPosition(new Position(2,1));
@@ -149,7 +149,7 @@ public class WallBreakerMovementTest {
         when(arena.isEmptyNoStoneWall(new Position(2,3))).thenReturn(true);
         when(monster.getPosition()).thenReturn(new Position(2,2));
 
-        wallBreakerMovement.step(monster, arena, 500L, 200L);
+        wallBreakerMovement.step(monster, arena, 400L, 200L);
 
         verify(monster, times(1)).setLastAction(GUI.ACTION.DOWN);
         verify(monster, times(1)).setPosition(new Position(2,3));

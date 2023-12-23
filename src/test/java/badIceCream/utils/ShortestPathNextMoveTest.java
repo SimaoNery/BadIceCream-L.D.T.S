@@ -1,4 +1,4 @@
-package badIceCream.model.utils;
+package badIceCream.utils;
 
 import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;

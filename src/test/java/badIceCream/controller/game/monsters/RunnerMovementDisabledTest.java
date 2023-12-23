@@ -51,7 +51,7 @@ public class RunnerMovementDisabledTest {
 
     @Test
     void testStepDoesNotMoveMonsterBeforeInterval() throws IOException {
-        long currentTime = 200L;
+        long currentTime = 249L;
         long lastMovement = 100L;
 
         runnerMovementDisabled.step(monster, arena, currentTime, lastMovement);
@@ -65,7 +65,7 @@ public class RunnerMovementDisabledTest {
         when(iceCream.getPosition()).thenReturn(new Position(1,1));
         when(iceCream.isStrawberryActive()).thenReturn(true);
 
-        long currentTime = 500L;
+        long currentTime = 350L;
         long lastMovement = 200L;
         when(monster.getPosition()).thenReturn(new Position(1, 1));
         when(arena.isEmptyMonsters(any())).thenReturn(true);
@@ -102,7 +102,7 @@ public class RunnerMovementDisabledTest {
 
         when(arena.isEmptyMonsters(any(Position.class))).thenReturn(false);
 
-        runnerMovementDisabled.step(monster, arena, 500L, 200L);
+        runnerMovementDisabled.step(monster, arena, 350L, 200L);
 
         verify(monster, never()).setPosition(newPosition);
         verify(monster, never()).setLastAction(any(GUI.ACTION.class));
@@ -117,7 +117,7 @@ public class RunnerMovementDisabledTest {
 
         when(arena.isEmptyMonsters(newPosition)).thenReturn(true);
 
-        runnerMovementDisabled.step(monster, arena, 500L, 200L);
+        runnerMovementDisabled.step(monster, arena, 350L, 200L);
 
         verify(monster, times(1)).setPosition(newPosition);
         verify(monster, times(1)).setLastAction(GUI.ACTION.LEFT);
@@ -135,7 +135,7 @@ public class RunnerMovementDisabledTest {
 
         when(arena.isEmptyMonsters(newPosition)).thenReturn(true);
 
-        runnerMovementDisabled.step(monster, arena, 500L, 200L);
+        runnerMovementDisabled.step(monster, arena, 350L, 200L);
 
         verify(monster, times(1)).setPosition(newPosition);
         verify(monster, times(1)).setLastAction(GUI.ACTION.DOWN);
@@ -153,7 +153,7 @@ public class RunnerMovementDisabledTest {
 
         when(arena.isEmptyMonsters(newPosition)).thenReturn(true);
 
-        runnerMovementDisabled.step(monster, arena, 500L, 200L);
+        runnerMovementDisabled.step(monster, arena, 350L, 200L);
 
         verify(monster, times(1)).setPosition(newPosition);
         verify(monster, times(1)).setLastAction(GUI.ACTION.UP);
@@ -171,7 +171,7 @@ public class RunnerMovementDisabledTest {
 
         when(arena.isEmptyMonsters(newPosition)).thenReturn(true);
 
-        runnerMovementDisabled.step(monster, arena, 500L, 200L);
+        runnerMovementDisabled.step(monster, arena, 350L, 200L);
 
         verify(monster, times(1)).setPosition(newPosition);
         verify(monster, times(1)).setLastAction(GUI.ACTION.RIGHT);

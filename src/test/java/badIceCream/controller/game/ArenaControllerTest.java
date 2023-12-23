@@ -7,15 +7,12 @@ import badIceCream.model.Position;
 import badIceCream.model.game.arena.Arena;
 import badIceCream.model.game.elements.IceCream;
 import badIceCream.model.game.elements.fruits.Fruit;
-import badIceCream.model.game.elements.monsters.Monster;
 import badIceCream.states.*;
 import badIceCream.utils.Type;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.Spy;
-
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -273,6 +270,64 @@ class ArenaControllerTest {
         long currentTime = System.currentTimeMillis() + 40000;
 
         arenaController.step(game, GUI.ACTION.RIGHT, currentTime);
+
+        verify(iceCream, times(1)).setStrawberry(false);
+
+    }
+
+    @Test
+    void testStrawberryNoExpiration() throws IOException {
+
+        when(iceCream.getAlive()).thenReturn(true);
+        when(iceCreamController.eatFruit()).thenReturn(-1);
+        long currentTime = System.currentTimeMillis() + 30000;
+
+
+        Field firstField;
+        try {
+            firstField = ArenaController.class.getDeclaredField("strawberry");
+        } catch (NoSuchFieldException e) {
+            throw new RuntimeException(e);
+        }
+        firstField.setAccessible(true);
+        try {
+            firstField.set(arenaController, currentTime);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+
+        arenaController.step(game, GUI.ACTION.LEFT, currentTime);
+        when(iceCream.isStrawberryActive()).thenReturn(true);
+        arenaController.step(game, GUI.ACTION.LEFT, currentTime + 9999);
+
+        verify(iceCream, never()).setStrawberry(false);
+
+    }
+
+    @Test
+    void testStrawberryExpirationLowerLimit() throws IOException {
+
+        when(iceCream.getAlive()).thenReturn(true);
+        when(iceCreamController.eatFruit()).thenReturn(-1);
+        long currentTime = System.currentTimeMillis() + 30000;
+
+
+        Field firstField;
+        try {
+            firstField = ArenaController.class.getDeclaredField("strawberry");
+        } catch (NoSuchFieldException e) {
+            throw new RuntimeException(e);
+        }
+        firstField.setAccessible(true);
+        try {
+            firstField.set(arenaController, currentTime);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+
+        arenaController.step(game, GUI.ACTION.LEFT, currentTime);
+        when(iceCream.isStrawberryActive()).thenReturn(true);
+        arenaController.step(game, GUI.ACTION.LEFT, currentTime + 10000);
 
         verify(iceCream, times(1)).setStrawberry(false);
 

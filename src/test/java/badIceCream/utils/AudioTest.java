@@ -1,4 +1,4 @@
-package badIceCream.model.utils;
+package badIceCream.utils;
 
 import badIceCream.utils.Audio;
 import org.junit.jupiter.api.BeforeEach;
@@ -45,7 +45,7 @@ public class AudioTest {
         verify(sound,times(1)).stop();
     }
     @Test
-    public void loadMusicNull() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+    public void loadMusicNull() {
         assertThrows(FileNotFoundException.class, () -> {
             Audio.loadMusic("test.wav");
         });

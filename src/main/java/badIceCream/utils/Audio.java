@@ -29,7 +29,6 @@ public class Audio {
 
             return soundClip;
         } catch (Exception e) {
-            e.printStackTrace();
             throw new FileNotFoundException("Couldn't get the sound!");
         }
     }

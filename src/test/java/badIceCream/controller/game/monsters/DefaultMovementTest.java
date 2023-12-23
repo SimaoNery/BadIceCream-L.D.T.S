@@ -9,9 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
 import java.io.IOException;
-
 import static org.mockito.Mockito.*;
 
 public class DefaultMovementTest {
@@ -49,7 +47,7 @@ public class DefaultMovementTest {
 
     @Test
     void testStepDoesNotMoveMonsterBeforeInterval() throws IOException {
-        long currentTime = 200L;
+        long currentTime = 324L;
         long lastMovement = 100L;
 
         defaultMovement.step(monster, arena, currentTime, lastMovement);
@@ -63,8 +61,8 @@ public class DefaultMovementTest {
         when(iceCream.getPosition()).thenReturn(new Position(1,1));
         when(iceCream.isStrawberryActive()).thenReturn(true);
 
-        long currentTime = 500L;
-        long lastMovement = 200L;
+        long currentTime = 325L;
+        long lastMovement = 100L;
         when(monster.getPosition()).thenReturn(new Position(1, 1));
         when(arena.isEmptyMonsters(any())).thenReturn(true);
 
@@ -99,7 +97,7 @@ public class DefaultMovementTest {
 
         when(arena.isEmptyMonsters(any(Position.class))).thenReturn(false);
 
-        defaultMovement.step(monster, arena, 500L, 200L);
+        defaultMovement.step(monster, arena, 325L, 100L);
 
         verify(monster, never()).setPosition(newPosition);
         verify(monster, never()).setLastAction(any(GUI.ACTION.class));
@@ -113,7 +111,7 @@ public class DefaultMovementTest {
 
         when(arena.isEmptyMonsters(newPosition)).thenReturn(true);
 
-        defaultMovement.step(monster, arena, 500L, 200L);
+        defaultMovement.step(monster, arena, 325L, 100L);
 
         verify(monster, times(1)).setPosition(newPosition);
         verify(monster, times(1)).setLastAction(GUI.ACTION.LEFT);
@@ -131,7 +129,7 @@ public class DefaultMovementTest {
 
         when(arena.isEmptyMonsters(newPosition)).thenReturn(true);
 
-        defaultMovement.step(monster, arena, 500L, 200L);
+        defaultMovement.step(monster, arena, 325L, 100L);
 
         verify(monster, times(1)).setPosition(newPosition);
         verify(monster, times(1)).setLastAction(GUI.ACTION.DOWN);
@@ -149,7 +147,7 @@ public class DefaultMovementTest {
 
         when(arena.isEmptyMonsters(newPosition)).thenReturn(true);
 
-        defaultMovement.step(monster, arena, 500L, 200L);
+        defaultMovement.step(monster, arena, 325L, 100L);
 
         verify(monster, times(1)).setPosition(newPosition);
         verify(monster, times(1)).setLastAction(GUI.ACTION.UP);
@@ -167,7 +165,7 @@ public class DefaultMovementTest {
 
         when(arena.isEmptyMonsters(newPosition)).thenReturn(true);
 
-        defaultMovement.step(monster, arena, 500L, 200L);
+        defaultMovement.step(monster, arena, 325L, 100L);
 
         verify(monster, times(1)).setPosition(newPosition);
         verify(monster, times(1)).setLastAction(GUI.ACTION.RIGHT);
@@ -175,5 +173,6 @@ public class DefaultMovementTest {
         verify(iceCream, times(1)).getPosition();
         verify(iceCream, never()).changeAlive();
     }
+
 
 }

@@ -2,33 +2,27 @@ package badIceCream.model.menu;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-
+import java.util.ArrayList;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+
 
 public class MenuTest {
     private Menu menu;
-    @Mock
     private List<String> entries;
 
     @BeforeEach
     public void setUp() {
-        MockitoAnnotations.openMocks(this);
-        when(entries.size()).thenReturn(5);
-        when(entries.get(3)).thenReturn("test");
+        entries = new ArrayList<>(List.of("test1", "test2", "test4", "test3", "test5"));
         menu = new Menu(entries);
     }
     @Test
     public void getEntry() {
-        assertEquals(entries.get(3),menu.getEntry(3));
+        assertEquals("test3",menu.getEntry(3));
     }
     @Test
     public void getNumberEntries() {
-        assertEquals(entries.size(), menu.getNumberEntries());
+        assertEquals(5, menu.getNumberEntries());
     }
     @Test
     public void nextEntryNotMoreThanNumEntries() {
